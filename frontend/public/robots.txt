@@ -1,0 +1,20 @@
+
+User-agent: *
+Disallow: /adminlogin/
+Disallow: /add-destination/
+Disallow: /manage-destination/
+Disallow: /manage-package/
+Disallow: /add-package/
+Disallow: /add-galaries/
+Disallow: /update-galaries/
+Disallow: /create-review/
+Disallow: /manage-review/
+Disallow: /add-faqs/
+Disallow: /manage-faqs/
+Disallow: /create-blog/
+Disallow: /manage-blog/
+Disallow: /create-job/
+Disallow: /call-backs/
+Disallow: /signout/
+
+Sitemap: https://triptortoise.com/sitemap.xml
