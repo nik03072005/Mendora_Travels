@@ -16,14 +16,14 @@ const TermsAndConditions = () => {
       title: "DEFINITIONS",
       content: (
         <>
-          <p className="mb-4">1.1) Wherever you find We, Us, and Our in these Terms and Conditions, they refer to Trip Tortoise Holidays Pvt Ltd.</p>
-          <p className="mb-4">1.2) Similarly, wherever You and Your are written, it refers to the entity that enters into a contract with Trip Tortoise Holidays Pvt Ltd.</p>
+          <p className="mb-4">1.1) Wherever you find We, Us, and Our in these Terms and Conditions, they refer to Mendora Travels.</p>
+          <p className="mb-4">1.2) Similarly, wherever You and Your are written, it refers to the entity that enters into a contract with Mendora Travels.</p>
           <p className="mb-4">1.3) Infant is anyone below 2 years of age while Child refers to individuals between 2 and 12 years of age.</p>
           <p className="mb-4">1.4) When we write Contractor or Supplier, we are referring to an individual who supplies any infrastructural facility. This includes but is not limited to hotel management, caterers, airlines, restaurants, and places of entertainment like showrooms, theme parks, art galleries, museums, etc. Similarly, the entities that provide services to clients include coach, cruise, ferry, railway, and shipping companies.</p>
           <p className="mb-4">1.5) Tour refers to any inclusive arrangement that you book. This could be a holiday, package, or trip.</p>
           <p className="mb-4">1.6) Tour Cost refers to the actual and total tour cost, as mentioned online or in brochures or Booking forms. It includes other payments, such as surcharges and taxes, that are payable to the Company by the client.</p>
           <p className="mb-4">1.7) A brochure primarily refers to a printed brochure. It may also refer to a website, leaflets, itinerary, Price Grid, or booklet.</p>
-          <p className="mb-4">1.8) When we say Written or in writing, it could refer to any correspondence which may have been received by post or by email. This correspondence could be between Trip Tortoise Holidays Pvt Ltd and you or could be in the form of a website, booklet, leaflet, itinerary, or a relevant brochure.</p>
+          <p className="mb-4">1.8) When we say Written or in writing, it could refer to any correspondence which may have been received by post or by email. This correspondence could be between Mendora Travels and you or could be in the form of a website, booklet, leaflet, itinerary, or a relevant brochure.</p>
         </>
       ),
     },
@@ -84,7 +84,7 @@ const TermsAndConditions = () => {
             <li>OR A ‘No-show’ on the tour – 100% of Tour Cost.</li>
           </ul>
           <p className="mb-4">However, even if you do not issue a cancellation notice, you shall be deemed to have canceled your tour in the following cases. The above Cancellation Charges are only for Ground Services /Land Package (Hotels – Transfers – Sightseeing). When we consider Flight ticket cancellation, this will be based on Airline's discretion. Refunds for the same will be issued based on Airline's Policy & Timeline.</p>
-          <p className="mb-4">5.4) We at Trip Tortoise Holidays Pvt Ltd and our allied agents do not accept any responsibility in case your Visa is rejected. In this case, Terms and Conditions will be applicable as per policy.</p>
+          <p className="mb-4">5.4) We at Mendora Travels and our allied agents do not accept any responsibility in case your Visa is rejected. In this case, Terms and Conditions will be applicable as per policy.</p>
           <p className="mb-4">5.5) If you do not make timely payment of tour costs or commit any other default associated with your booking, we may treat such failure or default as canceling the booking. In this case, the cancellation charges will be computed concerning the date on which we issue a notice of cancellation.</p>
           <p className="mb-4">5.6) If on your failure of payment or other default, no notice of cancellation is issued by us but your payment or default remains outstanding on the date of departure, the booking shall be deemed to have been canceled by you without any advance notice, inviting the highest cancellation charge. You expressly agree to abide by the foregoing terms and conditions.</p>
           <p className="mb-4">5.7) If you intend to change or amend your booking, please communicate your request to us in writing. These requests can be accepted but it is subject to availability. We’ll inform you about the related charges before we proceed with them.</p>
@@ -97,7 +97,7 @@ const TermsAndConditions = () => {
         <>
           <p className="mb-4">6.1) Refunds (If any) for Changes and/or cancellations will be paid directly to you. This is true for all bookings made directly at the company’s office or website. The processing of refunds takes at least 30 working days.</p>
           <p className="mb-4">6.2) For all unutilized or partially utilized services, no refunds are payable. This includes Airline Tickets, Entrance Fees, Meals, Hotel Sightseeing, and Optional Tours. The refund for the foreign exchange component of the tour will be refunded in INR only and will be at the current day's rate of exchange of the company.</p>
-          <p className="mb-4">6.3) All third Party refunds, will take 30 to 90 working days to be issued. This includes airlines, overseas suppliers, and cruise. For the same relevant supporting documents need to be provided to the company. Issuance of third-party refunds is up to the discretion of the concerned company and Trip Tortoise holds no liability towards the same.</p>
+          <p className="mb-4">6.3) All third Party refunds, will take 30 to 90 working days to be issued. This includes airlines, overseas suppliers, and cruise. For the same relevant supporting documents need to be provided to the company. Issuance of third-party refunds is up to the discretion of the concerned company and Mendora Travels holds no liability towards the same.</p>
         </>
       ),
     },
@@ -165,10 +165,10 @@ const TermsAndConditions = () => {
           <p className="mb-4">11.3) The client will need to pay Airport taxes / Airport Development fees, as applicable, over & above the Tour Cost in case there is a price rise after printing the brochure. All the booking/cancellation/change of the airline ticket and the travel on such airline ticket will be subject to the terms and conditions of the respective Airlines. The same may be provided to the client by us upon request, subject to availability.</p>
           <p className="mb-4">11.4) Concerning weight restrictions, all airlines have their own dynamic set of regulations and rules. Please look into the updated baggage rules of individual airlines. The correct details will be available with our sales staff and they will furnish upon request.</p>
           <p className="mb-4">11.5) In case you are liable if defined by airline restrictions, temporary or otherwise, you are unable to carry any baggage or have to pay any extra charges. You shall be liable to pay all such charges directly to the airline. We are not liable for any loss or damage to baggage while it is in the custody of the airline.</p>
-          <p className="mb-4">11.6) In case you are booked on a group fare ticket, please note that seat allotment will be made only when you physically report at the airport check-in counter. It is recommendable that at least 3-4 hours before departure, you report at the counter. Seat allocation is a matter of airlines’ discretion and availability of seats is not in the control of Trip Tortoise Holidays Pvt Ltd. In case you do not get seats together or do not get your preferred seats, we may not be held liable for the same.</p>
+          <p className="mb-4">11.6) In case you are booked on a group fare ticket, please note that seat allotment will be made only when you physically report at the airport check-in counter. It is recommendable that at least 3-4 hours before departure, you report at the counter. Seat allocation is a matter of airlines' discretion and availability of seats is not in the control of Mendora Travels. In case you do not get seats together or do not get your preferred seats, we may not be held liable for the same.</p>
           <p className="mb-4">11.7) If you plan to return after the tour officially ends (for example, staying back a few more days on your own), then it is your responsibility to reconfirm your flight tickets at least 72 hours (3 days) before your return flight.</p>
-          <p className="mb-4">11.8) If the concerned airline cancels or modifies the flight, leading to hampering or modification of Ground Service Arrangement, Trip Tortoise Holidays Pvt Ltd may not be held responsible and will not be liable to compensate the guest by any means. There will be no refund for unused services. Any additional Transfers, Hotels, or sightseeing can be arranged only on fresh payment by the guest.</p>
-          <p className="mb-4">11.9) If the guest is not able to arrive on the date of actual arrival, Trip Tortoise can mark the Booking as a no-show and withhold the right not to offer any further services.</p>
+          <p className="mb-4">11.8) If the concerned airline cancels or modifies the flight, leading to hampering or modification of Ground Service Arrangement, Mendora Travels may not be held responsible and will not be liable to compensate the guest by any means. There will be no refund for unused services. Any additional Transfers, Hotels, or sightseeing can be arranged only on fresh payment by the guest.</p>
+          <p className="mb-4">11.9) If the guest is not able to arrive on the date of actual arrival, Mendora Travels can mark the Booking as a no-show and withhold the right not to offer any further services.</p>
         </>
       ),
     },
@@ -325,7 +325,7 @@ const TermsAndConditions = () => {
       title: "Liability Disclaimer",
       content: (
         <>
-          <p className="mb-4">Trip Tortoise is a modern travel community that arranges and organizes travel trips to the mountains. These activities involve the risk of accidents, bodily injury, loss of life, and financial repercussions. Neither Trip Tortoise nor our affiliated agents or entities are responsible for these losses or any related damages whatsoever, including damage or loss to baggage or property, or loss of enjoyment.</p>
+          <p className="mb-4">Mendora Travels is a modern travel community that arranges and organizes travel trips to the mountains. These activities involve the risk of accidents, bodily injury, loss of life, and financial repercussions. Neither Mendora Travels nor our affiliated agents or entities are responsible for these losses or any related damages whatsoever, including damage or loss to baggage or property, or loss of enjoyment.</p>
         </>
       ),
     },
@@ -335,7 +335,7 @@ const TermsAndConditions = () => {
         <>
           <ul className="list-disc list-inside mb-4 space-y-2">
             <li>Misconduct Intolerance: No act of misconduct or indiscipline is tolerated.</li>
-            <li>Trip Tortoise’s Right: Trip Tortoise reserves the right to take appropriate action, including removal from the tour at the traveler's expense.</li>
+            <li>Mendora Travels's Right: Mendora Travels reserves the right to take appropriate action, including removal from the tour at the traveler's expense.</li>
           </ul>
         </>
       ),
@@ -345,7 +345,7 @@ const TermsAndConditions = () => {
       content: (
         <>
           <ul className="list-disc list-inside mb-4 space-y-2">
-            <li>Trip Tortoise’s Responsibility: Trip Tortoise accepts no responsibility for alterations or delays in programs.</li>
+            <li>Mendora Travels's Responsibility: Mendora Travels accepts no responsibility for alterations or delays in programs.</li>
             <li>Indirect Expenses: We accept no responsibility for indirectly incurred expenses caused by natural hazards, weather conditions, accidents, and ferry cancellations.</li>
           </ul>
         </>
@@ -376,7 +376,7 @@ const TermsAndConditions = () => {
         <>
           <ul className="list-disc list-inside mb-4 space-y-2">
             <li>Predefined Stops: Lunch/Dinner stops at predefined places chosen by the Trip Captain or Driver.</li>
-            <li>Itinerary Alterations: A host of factors could possibly alter the itinerary. They include road closure and driver's recommendations. Trip Tortoise reserves the right to make all necessary changes to the schedule.</li>
+            <li>Itinerary Alterations: A host of factors could possibly alter the itinerary. They include road closure and driver's recommendations. Mendora Travels reserves the right to make all necessary changes to the schedule.</li>
           </ul>
         </>
       ),
@@ -397,7 +397,7 @@ const TermsAndConditions = () => {
       title: "Triple Sharing Rooms",
       content: (
         <>
-          <p className="mb-4">Extra Mattress: if it is a triple-sharing room that you go for, an extra mattress will be provided but not an extra bed. For detailed Terms and Conditions, please refer to our website <a href="https://www.triptortoise.com" className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">www.triptortoise.com</a>.</p>
+          <p className="mb-4">Extra Mattress: if it is a triple-sharing room that you go for, an extra mattress will be provided but not an extra bed. For detailed Terms and Conditions, please refer to our website <a href="https://www.mendoratravels.com" className="text-blue-600 underline" target="_blank" rel="noopener noreferrer">www.mendoratravels.com</a>.</p>
         </>
       ),
     },
@@ -406,8 +406,8 @@ const TermsAndConditions = () => {
   return (
     <>
       <Helmet>
-        <title>Terms & Conditions | Trip Tortoise</title>
-        <meta name="description" content="Read the Terms & Conditions for using Trip Tortoise' website and booking services. Understand your rights, responsibilities, and our service policies." />
+        <title>Terms & Conditions | Mendora Travels</title>
+        <meta name="description" content="Read the Terms & Conditions for using Mendora Travels' website and booking services. Understand your rights, responsibilities, and our service policies." />
       </Helmet>
       <TNavbar />
       <div className="text-gray-800">
@@ -460,7 +460,7 @@ const TermsAndConditions = () => {
             </div>
 
             <p className="mb-4 mt-6">
-              For further/detailed terms and condition and definition refer us at Email us at <span className="text-blue-600 underline">support@triptortoise.com</span>.
+              For further/detailed terms and condition and definition refer us at Email us at <span className="text-blue-600 underline">support@mendoratravels.com</span>.
             </p>
           </section>
 

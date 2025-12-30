@@ -283,10 +283,10 @@ useEffect(() => {
             <h2 className="text-xl font-bold mb-2">WhatsApp Chat</h2>
             <p className="text-gray-600 mb-4">Talk with our travel expert!</p>
             <p className="text-green-700 text-lg font-semibold">
-              +91 90514 83390
+              +91 95473 06912
             </p>
             <a
-              href="https://wa.me/919051483390"
+              href="https://wa.me/919547306912"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-block bg-green-600  cursor-pointer text-white px-4 py-2 rounded hover:bg-green-700 transition"

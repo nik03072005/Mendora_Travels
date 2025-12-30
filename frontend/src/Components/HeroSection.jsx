@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFire, faSearch, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { TextField, InputAdornment } from '@mui/material';
-import logo from '../assets/logo-red.png';
+import logo from '../assets/mendora-logo.png';
 
 const HeroSection = () => {
   const destinations = [
@@ -33,12 +33,12 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="shadow-md mx-2 sm:mx-4 md:mx-6 lg:mx-12 py-2 sm:py-4">
+    <div className="shadow-md mx-2 sm:mx-4 md:mx-6 lg:mx-12 py-1 sm:py-2">
       <div className="max-w-full sm:max-w-4xl md:max-w-5xl lg:max-w-4xl mx-auto bg-white border-2 border-[#f37002] rounded-lg">
         {/* First Line: Logo, Search, Currency */}
-        <div className="flex items-center justify-between mb-1 mx-4 sm:mx-9">
-          <div className="flex items-center space-x-2">
-            <img src={logo} alt="Trip Tortoise Logo" className="w-12 h-12 sm:w-16 sm:h-16" />
+        <div className="flex items-center justify-between mx-2 sm:mx-4">
+          <div className="flex items-center overflow-hidden">
+            <img src={logo} alt="Mendora Travels Logo" className="h-40 sm:h-56 w-auto object-contain -my-8 sm:-my-12" />
           </div>
 
           <div className="mx-2 hidden sm:block w-full sm:w-auto">
@@ -122,7 +122,7 @@ const HeroSection = () => {
       </div>
 
       {/* Inline CSS for Slider */}
-      <style jsx>{`
+      <style>{`
         .destinations-container {
           scrollbar-width: none; /* Firefox */
           -ms-overflow-style: none; /* IE and Edge */

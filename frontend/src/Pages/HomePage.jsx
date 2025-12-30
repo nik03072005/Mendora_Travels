@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrency } from "../../Redux/currencySLice";
-import axios from "axios";
 import Skeleton from 'react-loading-skeleton'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faXTwitter, faFacebookF } from "@fortawesome/free-brands-svg-icons";
@@ -43,7 +42,7 @@ import SearchModal from "../Components/Search/SearchModal";
 
 
 // Assets
-import logo from "../assets/Tript.png";
+import logo from "../assets/mendora-logo.png";
 import { Helmet } from "react-helmet-async";
 import { fetchDestinations } from "../../Redux/destinationSlice";
 
@@ -228,12 +227,12 @@ useEffect(() => {
 
   // Render functions
   const renderSearchAndCurrency = () => (
-    <div className="flex items-center justify-between mb-1 mx-4 sm:mx-9">
-      <div className="flex items-center space-x-2">
+    <div className="flex items-center justify-between mx-2 sm:mx-4">
+      <div className="flex items-center overflow-hidden">
         <img
           src={logo}
-          alt="Trip Tortoise Logo"
-          className="w-16 h-8 sm:w-42 sm:h-16"
+          alt="Mendora Travels Logo"
+          className="h-40 sm:h-56 w-auto object-contain -my-8 sm:-my-12"
         />
       </div>
 
@@ -501,18 +500,18 @@ useEffect(() => {
   return (
     <div>
       <Helmet>
-      <title>Trip Tortoise | Book Customized International & Domestic Trip Packages</title>
+      <title>Mendora Travels | Book Customized International & Domestic Trip Packages</title>
       <meta
-        name="description" content="Experience unforgettable multi-day tours with Trip Tortoise. From handcrafted getaways to offbeat adventures—trusted by travelers, we plan the trip, you live the story."/>
+        name="description" content="Experience unforgettable multi-day tours with Mendora Travels. From handcrafted getaways to offbeat adventures—trusted by travelers, we plan the trip, you live the story."/>
 	  <meta name="robots" content="index,follow"/>
     </Helmet>
 	   <Helmet>
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Trip Tortoise | Book Customized International & Domestic Trip Packages" />
-        <meta property="og:description" content="Experience unforgettable multi-day tours with Trip Tortoise. From handcrafted getaways to offbeat adventures—trusted by travelers, we plan the trip, you live the story." />
-        <meta property="og:url" content="https://triptortoise.com/" />
-        <meta property="og:image" content="https://cloud.triptortoise.com/images/logo.png" />
-        <meta property="og:site_name" content="Trip Tortoise" />
+        <meta property="og:title" content="Mendora Travels | Book Customized International & Domestic Trip Packages" />
+        <meta property="og:description" content="Experience unforgettable multi-day tours with Mendora Travels. From handcrafted getaways to offbeat adventures—trusted by travelers, we plan the trip, you live the story." />
+        <meta property="og:url" content="https://mendoratravels.com/" />
+        <meta property="og:image" content="https://mendoratravels.com/images/logo.png" />
+        <meta property="og:site_name" content="Mendora Travels" />
       </Helmet>
       {isOpen && <SearchModal onClose={() => setIsOpen(false)} />}
       
@@ -540,7 +539,7 @@ useEffect(() => {
           <div className="w-full h-full bg-gradient-to-t from-white to-transparent" />
         </div>
 
-        <style jsx>{`
+        <style>{`
           .destinations-container {
             scrollbar-width: none;
             -ms-overflow-style: none;

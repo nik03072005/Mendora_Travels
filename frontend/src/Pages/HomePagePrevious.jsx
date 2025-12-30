@@ -18,7 +18,7 @@ import {
 import { TextField, InputAdornment } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import logo from "../assets/logo-red.png";
+import logo from "../assets/mendora-logo.png";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -221,7 +221,7 @@ function HomePage() {
                   <div className="flex items-center space-x-2">
                     <img
                       src={logo}
-                      alt="Trip Tortoise Logo"
+                      alt="Mendora Travels Logo"
                       className="w-12 h-12 sm:w-16 sm:h-16"
                     />
                   </div>
@@ -351,7 +351,7 @@ function HomePage() {
         </div>
 
         {/* Inline CSS for Slider */}
-        <style jsx>{`
+        <style>{`
           .destinations-container {
             scrollbar-width: none; /* Firefox */
             -ms-overflow-style: none; /* IE and Edge */

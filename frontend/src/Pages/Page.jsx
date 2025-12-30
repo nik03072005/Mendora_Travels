@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import AllPackageCards from '../Components/Packages/AllPackages';
-import logo from '../assets/logo-red.png';
+import logo from '../assets/mendora-logo.png';
 import banner from '../assets/banner.png';
 import ReviewCardsD from '../Components/Reviews/ReviewbyDestinationId';
 import { Helmet } from 'react-helmet-async';
@@ -80,7 +80,7 @@ export default function DestinationPage() {
   return (
     <div className="bg-gray-50">
       <Helmet>
-        <title>Explore the Best of {destinationName} | Tours & Travel Packages | Trip Tortoise</title>
+        <title>Explore the Best of {destinationName} | Tours & Travel Packages | Mendora Travels</title>
         <meta
           name="description"
           content={`Discover ${destinationName} with expertly curated tours, cultural experiences, and scenic adventures. Plan your perfect trip with trusted guides and affordable packages.`}
@@ -170,10 +170,10 @@ export default function DestinationPage() {
             <h2 className="text-xl font-bold mb-2">WhatsApp Chat</h2>
             <p className="text-gray-600 mb-4">Talk with our travel expert!</p>
             <p className="text-green-700 text-lg font-semibold">
-              +91 90514 83390
+              +91 95473 06912
             </p>
             <a
-              href="https://wa.me/919051483390"
+              href="https://wa.me/919547306912"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-block bg-green-600  cursor-pointer text-white px-4 py-2 rounded hover:bg-green-700 transition"

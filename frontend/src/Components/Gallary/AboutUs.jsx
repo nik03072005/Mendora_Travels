@@ -74,7 +74,7 @@ const AboutGallery = ({ destinationId }) => {
 
   return (
     <div className="w-full bg-white shadow-sm rounded-lg max-w-6xl mx-auto p-4">
-      {/* <h2 className="text-xl font-semibold mb-4">Life at Trip Tortoise - Picture Gallery</h2> */}
+      {/* <h2 className="text-xl font-semibold mb-4">Life at Mendora Travels - Picture Gallery</h2> */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-2 ">
         {/* Main Large Image */}
         <div className=" overflow-hidden relative md:col-span-2 rounded-lg">

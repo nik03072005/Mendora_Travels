@@ -66,7 +66,7 @@ export const Contact = () => {
 
     try {
       console.log(formData.email, formData.name, formData.phone, formData.travel_date, formData.message, formData.referenceId, formData.referenceModel, formData.packageTitle, formData.packagePrice, formData.traveller_count);
-      const response = await axios.post(
+      await axios.post(
         `${import.meta.env.VITE_API_URL}/api/travel-inquiry/submit-inquiry`,
         formData
       );
@@ -90,11 +90,11 @@ export const Contact = () => {
     <>
       <Helmet>
         <title>
-          Contact Trip Tortoise | Get in Touch for Travel Inquiries & Support
+          Contact Mendora Travels | Get in Touch for Travel Inquiries & Support
         </title>
         <meta
           name="description"
-          content="Have questions or need help planning your trip? Contact Trip Tortoise for travel inquiries, support, or custom tour packages. We're here to assist you."
+          content="Have questions or need help planning your trip? Contact Mendora Travels for travel inquiries, support, or custom tour packages. We're here to assist you."
         />
       </Helmet>
 
@@ -118,8 +118,7 @@ export const Contact = () => {
                   </div>
                   <div>
                     <p className="text-xs sm:text-sm font-medium text-gray-900">Phone</p>
-                    <p className="text-xs sm:text-sm text-gray-600">+91 9330405098</p>
-                    <p className="text-xs sm:text-sm text-gray-600">+91 9051483390</p>
+                    <p className="text-xs sm:text-sm text-gray-600">+91 9547306912</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 sm:gap-4">
@@ -128,7 +127,7 @@ export const Contact = () => {
                   </div>
                   <div>
                     <p className="text-xs sm:text-sm font-medium text-gray-900">Whatsapp</p>
-                    <p className="text-xs sm:text-sm text-gray-600">+91 9051483390</p>
+                    <p className="text-xs sm:text-sm text-gray-600">+91 9547306912</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 sm:gap-4">
@@ -138,7 +137,10 @@ export const Contact = () => {
                   <div>
                     <p className="text-xs sm:text-sm font-medium text-gray-900">Email</p>
                     <p className="text-xs sm:text-sm text-gray-600">
-                      info@triptoise.com
+                      mendoratravels@gmail.com
+                    </p>
+                    <p className="text-xs sm:text-sm text-gray-600">
+                      info@mendoratravels.com
                     </p>
                   </div>
                 </div>
@@ -149,7 +151,7 @@ export const Contact = () => {
                   <div>
                     <p className="text-xs sm:text-sm font-medium text-gray-900">Address</p>
                     <p className="text-xs sm:text-sm text-gray-600">
-                      D-6/6 Dr. B.C Roy Sarani 3rd Floor Bidhan Nagar Municipal Corporation Kolkata- 700059, West Bengal, India
+                      Baguihati, Kolkata, West Bengal, India
                     </p>
                   </div>
                 </div>

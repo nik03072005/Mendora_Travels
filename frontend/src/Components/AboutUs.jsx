@@ -7,7 +7,6 @@ import PNavbar from "./PackageNavbar";
 import AboutGallery from "./Gallary/AboutUs";
 import tripVideo from "../assets/trip-video.mp4";
 import founderImg from "../assets/founder-trip.jpg";
-import timeline1 from "../assets/timeline1.jpg";
 import timelinefirst from "../assets/timelinefirst.jpg";
 import timeline2 from "../assets/timeline2.jpg";
 import timeline3 from "../assets/timeline3.jpg";
@@ -80,10 +79,10 @@ const AboutUs = () => {
   return (
     <>
       <Helmet>
-        <title>About Trip Tortoise | Your Trusted Travel Partner</title>
+        <title>About Mendora Travels | Your Trusted Travel Partner</title>
         <meta
           name="description"
-          content="Learn about Trip Tortoise, your trusted partner in travel. We craft unforgettable experiences with curated tour packages, expert guides, and a passion for exploration."
+          content="Learn about Mendora Travels, your trusted partner in travel. We craft unforgettable experiences with curated tour packages, expert guides, and a passion for exploration."
         />
       </Helmet>
 
@@ -101,7 +100,7 @@ const AboutUs = () => {
               variant="h6"
               className="text-gray-500 uppercase tracking-wider mb-2 text-sm md:text-base"
             >
-              Trip Tortoise
+              Mendora Travels
             </Typography>
             <Typography
               variant="h2"
@@ -254,20 +253,20 @@ const AboutUs = () => {
               variant="body1"
               className="text-gray-600 mx-auto leading-relaxed text-sm md:text-base w-full"
             >
-              The factor demarking the services of Tour Tortoise as a tour operator is our great enthusiasm and energy to serve the best to all travelers. Our commitment to innovation makes it all possible, reinstating our position as one of the pioneers in modern-day travel. Our holistic outlook makes the journey and the destination a more delightful experience and we take utmost care at every step along the way.
+              The factor demarking the services of Mendora Travels as a tour operator is our great enthusiasm and energy to serve the best to all travelers. Our commitment to innovation makes it all possible, reinstating our position as one of the pioneers in modern-day travel. Our holistic outlook makes the journey and the destination a more delightful experience and we take utmost care at every step along the way.
             </Typography>
           </div>
         </Container>
       </div>
 
-      {/* Fourth Section: Trip Tortoise's Journey Timeline */}
+      {/* Fourth Section: Mendora Travels's Journey Timeline */}
       <div className="py-10 md:py-16" style={{ backgroundColor: "#f4f6f9" }}>
         <Container maxWidth="lg">
           <Typography
             variant="h4"
             className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-6"
           >
-            <span className="text-orange-500">Trip Tortoise's</span> Journey
+            <span className="text-orange-500">Mendora Travels's</span> Journey
           </Typography>
           <Typography variant="subtitle1" className="text-gray-600 mb-12 text-sm md:text-base">
             Carefully curated experiences for the discerning traveler!
@@ -290,7 +289,7 @@ const AboutUs = () => {
                   THE JOURNEY BEGINS - A VISION TO TRANSFORM TRAVEL
                 </Typography>
                 <Typography variant="body1" className="text-gray-600 mt-2 text-sm md:text-base">
-                  Trip Tortoise Holidays Pvt. Ltd. was launched in 2017 under the visionary leadership of Abhijit Biswas. From humble beginnings, the goal was clear—to redefine how people explore the world by offering carefully curated travel experiences that go beyond the ordinary. With passion and a traveler-first mindset, the foundation for a unique, customer-centric travel company was laid.
+                  Mendora Travels was launched with a vision to redefine how people explore the world by offering carefully curated travel experiences that go beyond the ordinary. With passion and a traveler-first mindset, the foundation for a unique, customer-centric travel company was laid.
                 </Typography>
               </div>
               <div className="w-full md:w-1/2 pl-0 md:pl-8 mb-6 md:mb-0 order-1 md:order-2">
@@ -316,7 +315,7 @@ const AboutUs = () => {
                   BUILDING TRUST, EXPANDING HORIZONS
                 </Typography>
                 <Typography variant="body1" className="text-gray-600 mt-2 text-sm md:text-base">
-                  Within just a few years, Trip Tortoise had made a mark in the travel and tourism space. With 10+ domestic and international packages and a growing network of trusted partners, the company built a reputation for reliability and personalized service, earning the trust of travelers across India.
+                  Within just a few years, Mendora Travels had made a mark in the travel and tourism space. With 10+ domestic and international packages and a growing network of trusted partners, the company built a reputation for reliability and personalized service, earning the trust of travelers across India.
                 </Typography>
               </div>
               <div className="w-full md:w-1/2 pr-0 md:pr-8 mb-6 md:mb-0 order-1 md:order-2">
@@ -342,7 +341,7 @@ const AboutUs = () => {
                   RECOGNITION & RAPID SCALING
                 </Typography>
                 <Typography variant="body1" className="text-gray-600 mt-2 text-sm md:text-base">
-                  With 35+ domestic and international packages and an ever-expanding network of partners, Trip Tortoise further strengthened its position in the industry. By the end of 2024, the company had proudly served over 3,000 happy travelers, including groups, families, and corporate clients. A commitment to quality, transparency, and memorable experiences remained at the heart of its growth journey.
+                  With 35+ domestic and international packages and an ever-expanding network of partners, Mendora Travels further strengthened its position in the industry. By the end of 2024, the company had proudly served over 3,000 happy travelers, including groups, families, and corporate clients. A commitment to quality, transparency, and memorable experiences remained at the heart of its growth journey.
                 </Typography>
               </div>
               <div className="w-full md:w-1/2 pl-0 md:pl-8 mb-6 md:mb-0 order-1 md:order-2">
@@ -360,7 +359,7 @@ const AboutUs = () => {
         </Container>
       </div>
 
-      {/* Fifth Section: Life at Trip Tortoise - Picture Gallery */}
+      {/* Fifth Section: Life at Mendora Travels - Picture Gallery */}
       <div className="py-10 md:py-16">
         <Container maxWidth="lg">
           <div className="mb-12 md:mb-16">
@@ -368,7 +367,7 @@ const AboutUs = () => {
               variant="h4"
               className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-6"
             >
-              <span className="text-orange-500">Trip Tortoise</span> Picture Gallery
+              <span className="text-orange-500">Mendora Travels</span> Picture Gallery
             </Typography>
             <AboutGallery destinationId={"682e1d2a999a672f22edc6d2"} />
           </div>
@@ -383,7 +382,7 @@ const AboutUs = () => {
             className="text-lg sm:text-xl md:text-2xl font-bold text-center text-orange-500 mb-2"
           >
             <span className="text-gray-800">Stories That Move Our World At</span>{" "}
-            Trip Tortoise
+            Mendora Travels
           </Typography>
           <Typography variant="subtitle1" className="text-gray-600 mb-8 text-center text-sm md:text-base">
             Blogs, news releases, and the latest in the world of travel!

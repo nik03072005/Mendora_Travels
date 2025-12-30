@@ -56,11 +56,11 @@ const Career = () => {
   return (
     <>
       <Helmet>
-        <title>Careers at Trip Tortoise | Join Our Team & Grow With Us</title>
+        <title>Careers at Mendora Travels | Join Our Team & Grow With Us</title>
 
         <meta
           name="description"
-          content="Explore exciting career opportunities at Trip Tortoise. Join a team that values innovation, growth, and your unique contributions. Apply today and build your future with us."
+          content="Explore exciting career opportunities at Mendora Travels. Join a team that values innovation, growth, and your unique contributions. Apply today and build your future with us."
         />
       </Helmet>
       <PNavbar />

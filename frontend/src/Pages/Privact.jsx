@@ -7,10 +7,10 @@ const PrivacyPolicy = () => {
   return (
     <>
       <Helmet>
-        <title>Privacy Policy | Trip Tortoise</title>
+        <title>Privacy Policy | Mendora Travels</title>
         <meta
           name="description"
-          content="Trip Tortoise is committed to protecting your privacy. Learn how we collect, use, and protect your personal information."
+          content="Mendora Travels is committed to protecting your privacy. Learn how we collect, use, and protect your personal information."
         />
       </Helmet>
       <TNavbar />
@@ -36,16 +36,16 @@ const PrivacyPolicy = () => {
           <section className="mb-10">
             <h2 className="text-2xl font-bold mb-4">INTRODUCTION:</h2>
             <p className="mb-4">
-              In this documentation, whenever we mention We, Our, Us, or Company, it implies that we are referring to Trip Tortoise Holidays Pvt Ltd. Similarly, "Yourself," "Your," and "You" indicate users.
+              In this documentation, whenever we mention We, Our, Us, or Company, it implies that we are referring to Mendora Travels. Similarly, "Yourself," "Your," and "You" indicate users.
             </p>
             <p className="mb-4">
               The Privacy Policy is in place to act as an electronic record. Established under the Information Technology Act of 2000; this Privacy Policy acts as a legally binding contract. 
             </p>
             <p className="mb-4">
-              In this Privacy Policy, we acknowledge the statutes that govern electronic records and documents. Please note that for this Privacy Policy, a digital, electronic, or physical signature is not required. Instead, this is a legally binding document between Trip Tortoise Holidays Pvt Ltd and yourself.
+              In this Privacy Policy, we acknowledge the statutes that govern electronic records and documents. Please note that for this Privacy Policy, a digital, electronic, or physical signature is not required. Instead, this is a legally binding document between Mendora Travels and yourself.
             </p>
             <p className="mb-4">
-              Upon your accepting the terms of the Privacy Policy, it comes into action. The Privacy Policy has been put in place to govern the relationship that you share with Trip Tortoise Holidays Pvt Ltd regarding your use of the website.
+              Upon your accepting the terms of the Privacy Policy, it comes into action. The Privacy Policy has been put in place to govern the relationship that you share with Mendora Travels regarding your use of the website.
             </p>
             <p className="mb-4">
               To formulate this document, we have closely considered the provisions of the Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011, and the Information Technology Act, 2000. These regulations make the publishing of a Privacy Policy mandatory, wherein the rules for transfer, storage, usage, and collection of information or sensitive personal data have been defined.
@@ -139,7 +139,7 @@ const PrivacyPolicy = () => {
             <p className="mb-4">
               Email:{" "}
               <span className="text-blue-600 underline">
-                info@triptortoise.com
+                info@mendoratravels.com
               </span>
             </p>
           </section>

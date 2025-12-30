@@ -493,10 +493,10 @@ if (loading) {
   return (
     <div className="bg-gray-50 min-h-screen ">
        <Helmet>
-                  <title>Top Travel Packages for {tripData.name} | Affordable Tours & Deals | Trip Tortoise</title>
+                  <title>Top Travel Packages for {tripData.name} | Affordable Tours & Deals | Mendora Travels</title>
                   <meta
                     name="description"
-                    content={`Explore the best travel packages to ${tripData.name}, including guided tours, adventure trips, and cultural experiences. Enjoy affordable prices with trusted service from Trip Tortoise.`}
+                    content={`Explore the best travel packages to ${tripData.name}, including guided tours, adventure trips, and cultural experiences. Enjoy affordable prices with trusted service from Mendora Travels.`}
                   />
                 </Helmet>
 

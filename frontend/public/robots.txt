@@ -17,4 +17,4 @@ Disallow: /create-job/
 Disallow: /call-backs/
 Disallow: /signout/
 
-Sitemap: https://triptortoise.com/sitemap.xml
+Sitemap: https://mendoratravels.com/sitemap.xml

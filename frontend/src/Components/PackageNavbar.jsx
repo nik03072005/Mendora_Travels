@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import logo from "../assets/Tript.png"; // Adjust the path to your logo image
+import logo from "../assets/mendora-logo.png"; // Adjust the path to your logo image
 import { useNavigate } from "react-router-dom";
 import CallUsButton from "./Callback/CallUsButton";
 
@@ -9,13 +9,13 @@ const PNavbar = () => {
   const navigate = useNavigate();
 
   return (
-    <nav className="bg-white shadow-md   px-6 py-2 fixed w-full z-50 top-0">
-      <div className="max-w-6xl  mx-auto   justify-between">
-        <div    className="max-w-7xl mx-auto flex items-center justify-between">
+    <nav className="bg-white shadow-md px-2 fixed w-full z-50 top-0">
+      <div className="max-w-6xl mx-auto justify-between">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <div className="text-2xl font-bold text-orange-500 cursor-pointer">
-          <img onClick={()=>navigate('/')} src={logo} alt=""
-          className=" h-12 scale-150 object-contain" />
+        <div className="cursor-pointer overflow-hidden">
+          <img onClick={()=>navigate('/')} src={logo} alt="Mendora Travels"
+          className="h-32 sm:h-48 w-auto object-contain -my-6 sm:-my-10" />
         </div>
 
         {/* Desktop Contact Button */}
