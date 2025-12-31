@@ -38,7 +38,7 @@ const HeroSection = () => {
         {/* First Line: Logo, Search, Currency */}
         <div className="flex items-center justify-between mx-2 sm:mx-4">
           <div className="flex items-center overflow-hidden">
-            <img src={logo} alt="Mendora Travels Logo" className="h-40 sm:h-56 w-auto object-contain -my-8 sm:-my-12" />
+            <img src={logo} alt="Mendora Travels Logo" className="h-8 sm:h-10 w-auto object-contain" />
           </div>
 
           <div className="mx-2 hidden sm:block w-full sm:w-auto">

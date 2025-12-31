@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Test</title>
+    <style>
+        body { margin: 0; padding: 0; overflow: hidden; }
+        video { width: 100vw; height: 100vh; object-fit: cover; }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted playsinline controls>
+        <source src="https://pub-0b67f355528a459b82e08d0ec786c68a.r2.dev/45569-443244046_small.mp4" type="video/mp4">
+    </video>
+    <script>
+        const video = document.querySelector('video');
+        video.addEventListener('loadeddata', () => console.log('Video loaded'));
+        video.addEventListener('error', (e) => console.error('Video error:', e));
+        video.addEventListener('play', () => console.log('Video playing'));
+    </script>
+</body>
+</html>

@@ -15,7 +15,7 @@ const TNavbar = () => {
         {/* Logo */}
         <div className="cursor-pointer overflow-hidden">
           <img onClick={()=>navigate('/')} src={logo} alt="Mendora Travels"
-          className="h-40 sm:h-64 w-auto object-contain -my-8 sm:-my-16" />
+          className="h-8 sm:h-10 w-auto object-contain" />
         </div>
 
         {/* Desktop Contact Button */}

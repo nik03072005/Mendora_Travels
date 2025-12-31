@@ -15,7 +15,7 @@ const PNavbar = () => {
         {/* Logo */}
         <div className="cursor-pointer overflow-hidden">
           <img onClick={()=>navigate('/')} src={logo} alt="Mendora Travels"
-          className="h-32 sm:h-48 w-auto object-contain -my-6 sm:-my-10" />
+          className="h-8 sm:h-10 w-auto object-contain" />
         </div>
 
         {/* Desktop Contact Button */}
