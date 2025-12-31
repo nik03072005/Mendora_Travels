@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faMapMarkerAlt, faCalendarAlt, faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import greece from '../assets/greece.jpg';
 
 const MONTHS = [
@@ -49,6 +49,56 @@ const TRIPS_DATA = [
     duration: "2N/3D",
     location: "Delhi - Delhi",
     date: "29 Dec"
+  },
+  {
+    id: 5,
+    title: "Bali Adventure Trip - New Year Special Edition",
+    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/trips/bali.jpeg",
+    originalPrice: "69,999",
+    discountedPrice: "64,999",
+    duration: "5N/6D",
+    location: "Bali - Bali",
+    date: "30 Dec"
+  },
+  {
+    id: 6,
+    title: "Vietnam Backpacking Trip - Winter Special",
+    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/trips/vietnam.jpeg",
+    originalPrice: "54,999",
+    discountedPrice: "49,999",
+    duration: "6N/7D",
+    location: "Hanoi - Ho Chi Minh",
+    date: "31 Dec"
+  },
+  {
+    id: 7,
+    title: "Kashmir Winter Wonderland - New Year Celebration",
+    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/trips/kashmir.jpeg",
+    originalPrice: "32,999",
+    discountedPrice: "28,999",
+    duration: "4N/5D",
+    location: "Srinagar - Srinagar",
+    date: "01 Jan"
+  },
+  {
+    id: 8,
+    title: "Goa Beach Party - New Year Eve Special",
+    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/trips/goa.jpeg",
+    originalPrice: "24,999",
+    discountedPrice: "21,999",
+    duration: "3N/4D",
+    location: "Goa - Goa",
+    date: "30 Dec"
+  },
+  {
+    id: 9,
+    title: "Manali Snow Adventure - Winter Wonderland Trip",
+    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/trips/manali.jpeg",
+    originalPrice: "18,999",
+    discountedPrice: "15,999",
+    duration: "4N/5D",
+    location: "Delhi - Delhi",
+    date: "02 Jan"
   }
 ];
 
@@ -59,19 +109,10 @@ const UpcomingTrips = () => {
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             Upcoming Community Trips
           </h2>
-          <a 
-            href="/group-tours" 
-            className="flex items-center gap-2 text-teal-600 hover:text-teal-700 font-semibold transition-colors"
-          >
-            View All
-            <div className="w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center hover:bg-teal-700 transition-colors">
-              <FontAwesomeIcon icon={faArrowRight} className="text-white text-xs" />
-            </div>
-          </a>
         </div>
 
         {/* Month Filter Buttons */}
@@ -91,61 +132,69 @@ const UpcomingTrips = () => {
           ))}
         </div>
 
-        {/* Trip Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {TRIPS_DATA.map((trip) => (
+        {/* Trip Cards Grid - 4x2 Compact Cards */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {TRIPS_DATA.slice(0, 8).map((trip) => (
             <div 
               key={trip.id}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow cursor-pointer"
+              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
             >
               {/* Image */}
-              <div className="relative">
+              <div className="relative h-32">
                 <img 
                   src={trip.image} 
                   alt={trip.title}
-                  className="w-full h-48 object-cover"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                {/* Duration Badge */}
+                <div className="absolute top-2 right-2 bg-white/90 text-gray-900 px-2 py-0.5 rounded-full text-[10px] font-semibold">
+                  {trip.duration}
+                </div>
+                {/* Date Badge */}
+                <div className="absolute bottom-2 left-2 bg-yellow-400 text-gray-900 px-2 py-0.5 rounded-full text-[10px] font-semibold">
+                  {trip.date}
+                </div>
               </div>
 
               {/* Content */}
-              <div className="p-4">
-                {/* Pricing */}
-                <div className="flex items-center gap-2 mb-2">
-                  {trip.originalPrice && (
-                    <span className="text-gray-400 line-through text-sm">
-                      ₹{trip.originalPrice}/-
-                    </span>
-                  )}
-                  <span className="text-lg font-bold text-gray-900">
-                    ₹{trip.discountedPrice}/-
-                  </span>
-                  <span className="text-sm text-gray-500">Onwards</span>
-                </div>
-
+              <div className="p-3">
                 {/* Title */}
-                <h3 className="text-sm font-semibold text-gray-900 mb-3 line-clamp-2 min-h-[40px]">
+                <h3 className="text-xs font-semibold text-gray-900 mb-2 line-clamp-2 min-h-[32px]">
                   {trip.title}
                 </h3>
 
-                {/* Details */}
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2 text-xs text-gray-500">
-                    <FontAwesomeIcon icon={faClock} />
-                    <span>{trip.duration}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs text-gray-500">
-                    <FontAwesomeIcon icon={faMapMarkerAlt} />
-                    <span className="line-clamp-1">{trip.location}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-xs text-gray-500">
-                    <FontAwesomeIcon icon={faCalendarAlt} />
-                    <span>{trip.date}</span>
-                  </div>
+                {/* Location */}
+                <div className="flex items-center gap-1 text-[10px] text-gray-500 mb-2">
+                  <FontAwesomeIcon icon={faMapMarkerAlt} className="text-teal-600 text-[10px]" />
+                  <span className="line-clamp-1">{trip.location}</span>
+                </div>
+
+                {/* Pricing */}
+                <div className="flex items-center gap-1">
+                  {trip.originalPrice && (
+                    <span className="text-gray-400 line-through text-[10px]">
+                      ₹{trip.originalPrice}
+                    </span>
+                  )}
+                  <span className="text-sm font-bold text-teal-600">
+                    ₹{trip.discountedPrice}
+                  </span>
                 </div>
               </div>
             </div>
           ))}
+        </div>
+
+        {/* View More Button */}
+        <div className="flex justify-center mt-10">
+          <a 
+            href="/group-tours" 
+            className="flex items-center gap-2 bg-teal-600 text-white px-8 py-3 rounded-full hover:bg-teal-700 font-semibold transition-colors"
+          >
+            View More
+            <FontAwesomeIcon icon={faArrowRight} className="text-white text-sm" />
+          </a>
         </div>
       </div>
 
