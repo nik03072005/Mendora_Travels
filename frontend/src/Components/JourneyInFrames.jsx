@@ -1,96 +1,95 @@
 import React from 'react';
-import greece from '../assets/greece.jpg';
 
 const GALLERY_DESTINATIONS = [
   {
     id: 1,
     name: "Vietnam",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/vietnam%202.jpeg"
+    image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80"
   },
   {
     id: 2,
     name: "Dubai",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/dubai%20re%2001.jpeg?updatedAt=1711452484035"
+    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80"
   },
   {
     id: 3,
     name: "Bhutan",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/bhutan%204.jpeg"
+    image: "https://images.unsplash.com/photo-1553856622-d1b352e9a211?w=800&q=80"
   },
   {
     id: 4,
     name: "Kerala",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/kerala-trips-1.jpeg"
+    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=800&q=80"
   },
   {
     id: 5,
     name: "Meghalaya",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/meghalaya.jpeg"
+    image: "https://images.unsplash.com/photo-1597074866923-dc0589150358?w=800&q=80"
   },
   {
     id: 6,
     name: "Uttarakhand",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/uttarakhand.jpeg"
+    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80"
   },
   {
     id: 7,
     name: "Rajasthan",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/rajasthan.jpeg"
+    image: "https://images.unsplash.com/photo-1477587458883-47145ed94245?w=800&q=80"
   },
   {
     id: 8,
     name: "Sikkim",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/sikkim.jpeg"
+    image: "https://images.unsplash.com/photo-1622308644420-4eb86a2f9814?w=800&q=80"
   },
   {
     id: 9,
     name: "Ladakh",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/ladakh.jpeg"
+    image: "https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=80"
   },
   {
     id: 10,
     name: "Himachal",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/himachal.jpeg"
+    image: "https://images.unsplash.com/photo-1585516482738-d8afd4d9693a?w=800&q=80"
   },
   {
     id: 11,
     name: "Spiti",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/spiti.jpeg"
+    image: "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=800&q=80"
   },
   {
     id: 12,
     name: "Thailand",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/thailand.jpeg"
+    image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80"
   },
   {
     id: 13,
     name: "Vietnam",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/vietnam.jpeg"
+    image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&q=80"
   },
   {
     id: 14,
     name: "Bhutan",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/bhutan.jpeg"
+    image: "https://images.unsplash.com/photo-1578128178001-2c3e37ce5b3a?w=800&q=80"
   },
   {
     id: 15,
     name: "Kashmir",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/kashmir.jpeg"
+    image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=800&q=80"
   },
   {
     id: 16,
     name: "Andaman",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/andaman.jpeg"
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80"
   },
   {
     id: 17,
     name: "Europe",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/europe.jpeg"
+    image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80"
   },
   {
     id: 18,
     name: "Bali",
-    image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Gallery/bali.jpeg"
+    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80"
   }
 ];
 

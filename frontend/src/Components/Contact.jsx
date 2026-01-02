@@ -149,9 +149,11 @@ export const Contact = () => {
                     <MapPin className="h-4 sm:h-5 w-4 sm:w-5 text-[#f37002]" />
                   </div>
                   <div>
-                    <p className="text-xs sm:text-sm font-medium text-gray-900">Address</p>
+                    <p className="text-xs sm:text-sm font-medium text-gray-900">Office Address</p>
                     <p className="text-xs sm:text-sm text-gray-600">
-                      Baguihati, Kolkata, West Bengal, India
+                      28/9, 3rd Floor, Harrington Mansion<br />
+                      8, Ho Chi Minh Sarani, Park Street<br />
+                      Kolkata - 700071
                     </p>
                   </div>
                 </div>

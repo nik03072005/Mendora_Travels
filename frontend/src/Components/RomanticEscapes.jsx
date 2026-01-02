@@ -1,54 +1,52 @@
 import React from 'react';
-import greece from '../assets/greece.jpg';
-import tripVideo from '../assets/trip-video.mp4';
 
 const ROMANTIC_DESTINATIONS = [
   {
     id: 1,
     name: "Bali",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/romantic%20escapes/bali-romantic-02.jpeg",
+    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80",
     price: "44,999"
   },
   {
     id: 2,
     name: "Maldives",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/International/maldives.jpeg",
+    image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80",
     price: "74,999"
   },
   {
     id: 3,
     name: "Singapore",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/romantic%20escapes/singapore-romantic-02.jpeg",
+    image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80",
     price: "34,999"
   },
   {
     id: 4,
     name: "Thailand",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/romantic%20escapes/thailand-romantic-02.jpeg",
+    image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80",
     price: "44,999"
   },
   {
     id: 5,
     name: "Vietnam",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/International/vietnam.jpeg",
+    image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80",
     price: "57,999"
   },
   {
     id: 6,
     name: "Kashmir",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/Explore%20India/kashmir.jpeg",
+    image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=800&q=80",
     price: "24,499"
   },
   {
     id: 7,
     name: "Andaman",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/Explore%20India/andaman.jpeg",
+    image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
     price: "29,999"
   },
   {
     id: 8,
     name: "Kerala",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/Explore%20India/kerala.jpeg",
+    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=800&q=80",
     price: "14,000"
   }
 ];
@@ -66,12 +64,10 @@ const RomanticEscapes = () => {
               loop 
               muted
               playsInline
-              poster={greece}
-              // poster="https://wanderon-images.gumlet.io/new-homepage-data/Hero%20Section/romantic-thumbnail.jpeg"
+              poster="https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80"
             >
               <source 
-                src={tripVideo}
-                // src="https://wanderon-video.gumlet.io/category-section/honeymoon_(1)+(540p).mp4" 
+                src="https://player.vimeo.com/external/370467553.sd.mp4?s=ce49c8c6d8e28a89298ffb4c53a2e842bdb11546&profile_id=139&oauth2_token_id=57447761" 
                 type="video/mp4" 
               />
             </video>

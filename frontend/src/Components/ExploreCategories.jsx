@@ -1,47 +1,46 @@
 import React from 'react';
-import greece from '../assets/greece.jpg';
 
 const EXPLORE_CATEGORIES = [
   {
     id: 1,
     title: "Events & Festivals",
-    image: greece, // "https://wanderon-images.gumlet.io/Events+And+Festivals+(mob)+(1).png",
+    image: "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80",
     link: "/events"
   },
   {
     id: 2,
     title: "Group Trips",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/Hero%20Section/group-thumbnails.jpeg",
+    image: "https://images.unsplash.com/photo-1539635278303-d4002c07eae3?w=800&q=80",
     link: "/group-tours"
   },
   {
     id: 3,
     title: "International Trips",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/Hero%20Section/International-thumbnail.jpeg",
+    image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80",
     link: "/international-trips"
   },
   {
     id: 4,
     title: "Explore India",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/Hero%20Section/India-explore-thumbnail.jpeg",
+    image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80",
     link: "/domestic-trips"
   },
   {
     id: 5,
     title: "Corporate Trips",
-    image: greece, // "https://wanderon-images.gumlet.io/mice-images-collection/japan-trip.jpeg?updatedAt=1701069889216",
+    image: "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800&q=80",
     link: "/corporate"
   },
   {
     id: 6,
     title: "Romantic Escapes",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/Hero%20Section/romantic-thumbnails.jpeg",
+    image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80",
     link: "/honeymoon"
   },
   {
     id: 7,
     title: "Weekend Trips",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/Hero%20Section/weekend-thumbnail.jpeg",
+    image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&q=80",
     link: "/weekend"
   }
 ];

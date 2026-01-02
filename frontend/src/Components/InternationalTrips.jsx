@@ -1,48 +1,46 @@
 import React from 'react';
-import greece from '../assets/greece.jpg';
-import tripVideo from '../assets/trip-video.mp4';
 
 const InternationalTrips = () => {
   const destinations = [
     {
       name: "Europe",
       price: "1,49,999",
-      image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/International/europe.jpeg"
+      image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80"
     },
     {
       name: "Vietnam",
       price: "59,999",
-      image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/International/vietnam.jpeg"
+      image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80"
     },
     {
       name: "Bali",
       price: "49,999",
-      image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/International/bali.jpeg"
+      image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80"
     },
     {
       name: "Thailand",
       price: "44,999",
-      image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/International/thailand.jpeg"
+      image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80"
     },
     {
       name: "Japan",
       price: "1,29,999",
-      image: greece // "https://wanderon-images.gumlet.io/Card%20Image/japan_card.jpeg?updatedAt=1725356230489"
+      image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80"
     },
     {
       name: "Sri Lanka",
       price: "28,999",
-      image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/International/sri-lanka.jpeg"
+      image: "https://images.unsplash.com/photo-1586016413664-864c0dd76f53?w=800&q=80"
     },
     {
       name: "Philippines",
       price: "79,990",
-      image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/International/philippines.jpeg"
+      image: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=800&q=80"
     },
     {
       name: "Kazakhstan",
       price: "47,999",
-      image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/International/kazakhstan.jpeg"
+      image: "https://images.unsplash.com/photo-1565967511849-76a60a516170?w=800&q=80"
     }
   ];
 
@@ -58,16 +56,12 @@ const InternationalTrips = () => {
               loop
               playsInline
               muted
-              poster={greece}
+              poster="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80"
             >
               <source
-                src={tripVideo}
+                src="https://player.vimeo.com/external/370467553.sd.mp4?s=ce49c8c6d8e28a89298ffb4c53a2e842bdb11546&profile_id=139&oauth2_token_id=57447761"
                 type="video/mp4"
               />
-              {/* <source
-                src="https://wanderon-video.gumlet.io/category-section/international_(1)+(540p).mp4"
-                type="video/mp4"
-              /> */}
             </video>
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
             <div className="absolute bottom-6 left-6 text-white">

@@ -87,7 +87,7 @@ function HomePage() {
       {/* Explore India Section */}
       <ExploreIndia />
 
-      {/* Upcoming Community Trips Section */}
+      {/* Popular Trips Section */}
       <UpcomingTrips />
 
       {/* Romantic Escapes Section */}

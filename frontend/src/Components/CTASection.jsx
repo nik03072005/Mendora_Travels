@@ -1,5 +1,4 @@
 import React from 'react';
-import greece from '../assets/greece.jpg';
 
 const CTASection = () => {
   return (
@@ -7,8 +6,7 @@ const CTASection = () => {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img 
-          src={greece}
-          // src="https://wanderon-images.gumlet.io/new-homepage-data/cta%20homepage%20-%20desktop.png" 
+          src="https://wanderon-images.gumlet.io/new-homepage-data/cta%20homepage%20-%20desktop.png" 
           alt="CTA Background"
           className="w-full h-full object-cover"
         />

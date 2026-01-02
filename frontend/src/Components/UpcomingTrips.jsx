@@ -1,19 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import greece from '../assets/greece.jpg';
-
-const MONTHS = [
-  'DEC \'25', 'JAN \'26', 'FEB \'26', 'MAR \'26', 
-  'APR \'26', 'MAY \'26', 'JUN \'26', 'JUL \'26', 
-  'AUG \'26', 'SEP \'26', 'OCT \'26'
-];
 
 const TRIPS_DATA = [
   {
     id: 1,
     title: "6-Days Dubai & Abu Dhabi Community Trip | New Year Edition",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/trips/dubai.jpeg",
+    image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
     originalPrice: "89,999",
     discountedPrice: "82,999",
     duration: "5N/6D",
@@ -23,7 +16,7 @@ const TRIPS_DATA = [
   {
     id: 2,
     title: "Meghalaya With Kaziranga Road Trip - Christmas and New Year Special Edition",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/trips/meghalaya.jpeg",
+    image: "https://images.unsplash.com/photo-1597074866923-dc0589150358?w=800&q=80",
     originalPrice: "36,999",
     discountedPrice: "32,999",
     duration: "6N/7D",
@@ -33,7 +26,7 @@ const TRIPS_DATA = [
   {
     id: 3,
     title: "Fantastic Thailand Vacation | Christmas and New Year Special Tour Package",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/trips/thailand.jpeg",
+    image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80",
     originalPrice: "79,999",
     discountedPrice: "74,999",
     duration: "6N/7D",
@@ -43,7 +36,7 @@ const TRIPS_DATA = [
   {
     id: 4,
     title: "Chopta Tungnath Christmas - New Year Trip Package",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/trips/chopta.jpeg",
+    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80",
     originalPrice: null,
     discountedPrice: "12,999",
     duration: "2N/3D",
@@ -53,7 +46,7 @@ const TRIPS_DATA = [
   {
     id: 5,
     title: "Bali Adventure Trip - New Year Special Edition",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/trips/bali.jpeg",
+    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80",
     originalPrice: "69,999",
     discountedPrice: "64,999",
     duration: "5N/6D",
@@ -63,7 +56,7 @@ const TRIPS_DATA = [
   {
     id: 6,
     title: "Vietnam Backpacking Trip - Winter Special",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/trips/vietnam.jpeg",
+    image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80",
     originalPrice: "54,999",
     discountedPrice: "49,999",
     duration: "6N/7D",
@@ -73,7 +66,7 @@ const TRIPS_DATA = [
   {
     id: 7,
     title: "Kashmir Winter Wonderland - New Year Celebration",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/trips/kashmir.jpeg",
+    image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=800&q=80",
     originalPrice: "32,999",
     discountedPrice: "28,999",
     duration: "4N/5D",
@@ -83,7 +76,7 @@ const TRIPS_DATA = [
   {
     id: 8,
     title: "Goa Beach Party - New Year Eve Special",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/trips/goa.jpeg",
+    image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800&q=80",
     originalPrice: "24,999",
     discountedPrice: "21,999",
     duration: "3N/4D",
@@ -93,7 +86,7 @@ const TRIPS_DATA = [
   {
     id: 9,
     title: "Manali Snow Adventure - Winter Wonderland Trip",
-    image: greece, // "https://wanderon-images.gumlet.io/new-homepage-data/trips/manali.jpeg",
+    image: "https://images.unsplash.com/photo-1605649487212-47bdab064df7?w=800&q=80",
     originalPrice: "18,999",
     discountedPrice: "15,999",
     duration: "4N/5D",
@@ -103,33 +96,14 @@ const TRIPS_DATA = [
 ];
 
 const UpcomingTrips = () => {
-  const [selectedMonth, setSelectedMonth] = useState('DEC \'25');
-
   return (
     <section className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="flex items-center justify-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-            Upcoming Community Trips
+            Popular Trips
           </h2>
-        </div>
-
-        {/* Month Filter Buttons */}
-        <div className="flex gap-4 mb-8 overflow-x-auto pb-2 scrollbar-hide">
-          {MONTHS.map((month) => (
-            <button
-              key={month}
-              onClick={() => setSelectedMonth(month)}
-              className={`px-4 py-2 rounded-full whitespace-nowrap transition-colors ${
-                selectedMonth === month
-                  ? 'bg-yellow-400 text-gray-900 font-semibold'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
-            >
-              {month}
-            </button>
-          ))}
         </div>
 
         {/* Trip Cards Grid - 4x2 Compact Cards */}

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faPhone, faEnvelope, faComment } from '@fortawesome/free-solid-svg-icons';
-import greece from '../assets/greece.jpg';
+// import greece from '../assets/greece.jpg';
 
 const ContactFormSection = () => {
   const [formData, setFormData] = useState({
@@ -32,8 +32,8 @@ const ContactFormSection = () => {
           {/* Illustration */}
           <div>
             <img 
-              src={greece}
-              // src="https://wanderon-images.gumlet.io//contact-form-illustration.png?updatedAt=1739353843005" 
+              // src={greece}
+              src="https://wanderon-images.gumlet.io//contact-form-illustration.png?updatedAt=1739353843005" 
               alt="Contact Illustration"
               className="w-full max-w-md mx-auto"
             />

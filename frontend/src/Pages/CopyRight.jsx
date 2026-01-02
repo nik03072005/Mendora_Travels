@@ -155,7 +155,9 @@ const Copyright = () => {
 
               <p className="mb-4 font-semibold">Contact:</p>
               <p className="mb-4">
-                Baguihati, Kolkata, West Bengal, India<br/>
+                28/9, 3rd Floor, Harrington Mansion<br/>
+                8, Ho Chi Minh Sarani, Park Street<br/>
+                Kolkata - 700071<br/><br/>
                 Email: mendoratravels@gmail.com | info@mendoratravels.com<br/>
                 Phone: +91 9547306912
               </p>

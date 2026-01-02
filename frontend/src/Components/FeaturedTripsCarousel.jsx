@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import greece from '../assets/greece.jpg';
+// import greece from '../assets/greece.jpg';
 
 const FeaturedTripsCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const carouselImages = [
-    { alt: "F1 Japan Special", src: greece }, // "https://wanderon-images.gumlet.io/f1-japan-special-banner-desktop-thumbnail.png"
-    { alt: "Japan Cherry Blossom", src: greece }, // "https://wanderon-images.gumlet.io/japan-cheery-blossom-poster-thumbnail-desktop.jpg"
-    { alt: "Northern Lights", src: greece }, // "https://wanderon-images.gumlet.io/nlights-poster-desktop-thumbnail.png"
-    { alt: "Thailand Backpacking", src: greece }, // "https://wanderon-images.gumlet.io/fullmoon-t-d.png"
-    { alt: "Bali", src: greece } // "https://wanderon-images.gumlet.io/bali-t-d.png"
+    { alt: "F1 Japan Special", src: "https://wanderon-images.gumlet.io/f1-japan-special-banner-desktop-thumbnail.png" }, // "https://wanderon-images.gumlet.io/f1-japan-special-banner-desktop-thumbnail.png"
+    { alt: "Japan Cherry Blossom", src: "https://wanderon-images.gumlet.io/japan-cheery-blossom-poster-thumbnail-desktop.jpg" }, // "https://wanderon-images.gumlet.io/japan-cheery-blossom-poster-thumbnail-desktop.jpg"
+    { alt: "Northern Lights", src: "https://wanderon-images.gumlet.io/nlights-poster-desktop-thumbnail.png" }, // "https://wanderon-images.gumlet.io/nlights-poster-desktop-thumbnail.png"
+    { alt: "Thailand Backpacking", src: "https://wanderon-images.gumlet.io/fullmoon-t-d.png" }, // "https://wanderon-images.gumlet.io/fullmoon-t-d.png"
+    { alt: "Bali", src: "https://wanderon-images.gumlet.io/bali-t-d.png" } // "https://wanderon-images.gumlet.io/bali-t-d.png"
   ];
 
   useEffect(() => {
@@ -53,10 +53,10 @@ const FeaturedTripsCarousel = () => {
           </div>
         </div>
 
-        {/* Upcoming Community Trips Banner */}
+        {/* Popular Trips Banner */}
         <div className="mt-8">
           <img
-            alt="Upcoming Community Trips"
+            alt="Popular Trips"
             className="w-full rounded-xl"
             src="https://wanderon-images.gumlet.io//uct-desktop-new.webp?updatedAt=1738909844156"
           />

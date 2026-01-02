@@ -1,48 +1,46 @@
 import React from 'react';
-import greece from '../assets/greece.jpg';
-import tripVideo from '../assets/trip-video.mp4';
 
 const ExploreIndia = () => {
   const destinations = [
     {
       name: "Rajasthan",
       price: "12,999",
-      image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Explore%20India/rajasthan.jpeg"
+      image: "https://images.unsplash.com/photo-1477587458883-47145ed94245?w=800&q=80"
     },
     {
       name: "Meghalaya",
       price: "21,499",
-      image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Explore%20India/meghalaya.jpeg"
+      image: "https://images.unsplash.com/photo-1597074866923-dc0589150358?w=800&q=80"
     },
     {
       name: "Andaman",
       price: "29,999",
-      image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Explore%20India/andaman.jpeg"
+      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80"
     },
     {
       name: "Spiti",
       price: "17,999",
-      image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Explore%20India/spiti.jpeg"
+      image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80"
     },
     {
       name: "Leh Ladakh",
       price: "21,999",
-      image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Explore%20India/ladakh.jpeg"
+      image: "https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=80"
     },
     {
       name: "Himachal",
       price: "7,999",
-      image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Explore%20India/himachal.jpeg"
+      image: "https://images.unsplash.com/photo-1585516482738-d8afd4d9693a?w=800&q=80"
     },
     {
       name: "Kashmir",
       price: "24,499",
-      image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Explore%20India/kashmir.jpeg"
+      image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=800&q=80"
     },
     {
       name: "Sikkim",
       price: "14,999",
-      image: greece // "https://wanderon-images.gumlet.io/new-homepage-data/Explore%20India/sikkim.jpeg"
+      image: "https://images.unsplash.com/photo-1622308644420-4eb86a2f9814?w=800&q=80"
     }
   ];
 
@@ -58,16 +56,12 @@ const ExploreIndia = () => {
               loop
               playsInline
               muted
-              poster={greece}
+              poster="https://images.unsplash.com/photo-1477587458883-47145ed94245?w=800&q=80"
             >
               <source
-                src={tripVideo}
+                src="https://player.vimeo.com/external/370467553.sd.mp4?s=ce49c8c6d8e28a89298ffb4c53a2e842bdb11546&profile_id=139&oauth2_token_id=57447761"
                 type="video/mp4"
               />
-              {/* <source
-                src="https://wanderon-video.gumlet.io/category-section/india_(1)+(540p).mp4"
-                type="video/mp4"
-              /> */}
             </video>
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
             <div className="absolute bottom-6 left-6 text-white">
