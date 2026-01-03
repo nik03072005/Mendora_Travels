@@ -19,6 +19,7 @@ import HomeNavbar from "../Components/HomeNavbar";
 import HomeHeroSection from "../Components/HomeHeroSection";
 import DestinationsSlider from "../Components/DestinationsSlider";
 import PackageCardsSection from "../Components/PackageCardsSection";
+import Testimonials from "../Components/Testimonials";
 
 function HomePage() {
   const [selectedDestination, setSelectedDestination] = useState(null);
@@ -107,6 +108,9 @@ function HomePage() {
 
       {/* Contact Form Section */}
       <ContactFormSection />
+
+      {/* Testimonials Section */}
+      <Testimonials />
 
       {/* Package Cards Section */}
       {/* <div className="px-4 sm:px-6 lg:px-8 mt-8 pb-12">
