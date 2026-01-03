@@ -34,7 +34,7 @@ const HeroSection = () => {
 
   return (
     <div className="shadow-md mx-2 sm:mx-4 md:mx-6 lg:mx-12 py-1 sm:py-2">
-      <div className="max-w-full sm:max-w-4xl md:max-w-5xl lg:max-w-4xl mx-auto bg-white border-2 border-[#f37002] rounded-lg">
+      <div className="max-w-full sm:max-w-4xl md:max-w-5xl lg:max-w-4xl mx-auto bg-white border-2 border-[#007aff] rounded-lg">
         {/* First Line: Logo, Search, Currency */}
         <div className="flex items-center justify-between mx-2 sm:mx-4">
           <div className="flex items-center overflow-hidden">
@@ -88,7 +88,7 @@ const HeroSection = () => {
 
           {/* Destinations Slider */}
           <div className="destinations-container flex items-center space-x-2 sm:space-x-4 overflow-x-auto scroll-smooth px-4 sm:px-8 py-1 sm:py-2 ml-1">
-            <div className="flex flex-col items-center text-orange-500 font-semibold min-w-max">
+            <div className="flex flex-col items-center bg-[#007aff]-500 font-semibold min-w-max">
               <FontAwesomeIcon icon={faFire} className="text-sm sm:text-base" />
               <span className="text-xs mt-1">Explore</span>
             </div>
@@ -98,7 +98,7 @@ const HeroSection = () => {
                 key={index}
                 href="#"
                 className={`flex flex-col items-center min-w-max ${
-                  destination.highlighted ? 'text-orange-500' : 'text-gray-600'
+                  destination.highlighted ? 'bg-[#007aff]-500' : 'text-gray-600'
                 } hover:text-blue-500`}
               >
                 <img

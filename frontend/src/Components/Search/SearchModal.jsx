@@ -162,7 +162,7 @@ export default function SearchModal({ onClose }) {
                 onClick={() => setPackageType(type)}
                 className={`px-4 py-2 rounded-full border ${
                   packageType === type
-                    ? "bg-[#f37002] text-white"
+                    ? "bg-[#007aff] text-white"
                     : "bg-white text-black"
                 }`}
               >
@@ -181,7 +181,7 @@ export default function SearchModal({ onClose }) {
                 onClick={() => setTripDuration(duration)}
                 className={`px-4 py-2 rounded-full border ${
                   tripDuration === duration
-                    ? "bg-[#f37002] text-white"
+                    ? "bg-[#007aff] text-white"
                     : "bg-white text-black"
                 }`}
               >
@@ -193,7 +193,7 @@ export default function SearchModal({ onClose }) {
 
         {/* Results Section */}
         <div className="bg-white mt-6">
-          {error && <p className="text-[#f37002] mb-4">{error}</p>}
+          {error && <p className="text-[#007aff] mb-4">{error}</p>}
           {loading && <p className="text-gray-500 mb-4">Loading...</p>}
           {results.length > 0 && (
             <div>

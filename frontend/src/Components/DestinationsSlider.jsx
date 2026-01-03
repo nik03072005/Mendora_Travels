@@ -60,7 +60,7 @@ const DestinationsSlider = ({ selectedDestination, onDestinationClick, onExplore
           >
             <div
               onClick={onExploreClick}
-              className="flex flex-col items-center cursor-pointer text-orange-500 font-semibold min-w-max hover:scale-110 transition-transform"
+              className="flex flex-col items-center cursor-pointer bg-[#007aff]-500 font-semibold min-w-max hover:scale-110 transition-transform"
             >
               <FontAwesomeIcon icon={faFire} className="text-xl mb-2" />
               <span className="text-sm">Explore</span>
@@ -72,8 +72,8 @@ const DestinationsSlider = ({ selectedDestination, onDestinationClick, onExplore
                 onClick={() => onDestinationClick(destination)}
                 className={`flex flex-col items-center min-w-max transition-all hover:scale-110 ${
                   selectedDestination === destination.name
-                    ? "text-orange-500 font-bold"
-                    : "text-gray-700 hover:text-orange-500"
+                    ? "bg-[#007aff]-500 font-bold"
+                    : "text-gray-700 hover:bg-[#007aff]-500"
                 }`}
               >
                 <img

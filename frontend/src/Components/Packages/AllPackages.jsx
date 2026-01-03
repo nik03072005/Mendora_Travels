@@ -186,20 +186,20 @@ const AllPackageCards = ({ title, packages, viewAllRoute }) => {
           <span className="line-through text-gray-400">
             {pkg.originalPrice}
           </span>
-          <span className="text-[#f37002] font-semibold">
+          <span className="text-[#007aff] font-semibold">
             {pkg.discountedPrice}
           </span>
         </div>
         <div className="flex text-nowrap gap-4 justify-start mt-4">
           <button
             onClick={handleChatNow}
-            className="border border-[#f37002] text-[#f37002] px-4 py-2 cursor-pointer rounded-sm text-sm hover:bg-red-100 transition"
+            className="border border-[#007aff] text-[#007aff] px-4 py-2 cursor-pointer rounded-sm text-sm hover:bg-red-100 transition"
           >
             Chat Now
           </button>
           <button
             onClick={() => handleCallback(pkg)}
-            className="bg-[#f37002] w-[280px] text-white px-4 py-2 cursor-pointer rounded-sm text-sm "
+            className="bg-[#007aff] w-[280px] text-white px-4 py-2 cursor-pointer rounded-sm text-sm "
           >
             Request Callback
           </button>

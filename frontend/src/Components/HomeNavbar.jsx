@@ -111,10 +111,10 @@ const HomeNavbar = ({ onSearchClick }) => {
 
           {/* Right Menu Items */}
           <div className="hidden lg:flex items-center space-x-4 text-xs sm:text-sm">
-            <a href="/blogs" className={`hover:text-orange-400 transition-colors font-medium ${isScrolled ? 'text-gray-900' : 'text-white'}`}>Blogs</a>
-            <a href="/about-us" className={`hover:text-orange-400 transition-colors font-medium ${isScrolled ? 'text-gray-900' : 'text-white'}`}>About Us</a>
-            <a href="/contact-us" className={`hover:text-orange-400 transition-colors font-medium ${isScrolled ? 'text-gray-900' : 'text-white'}`}>Contact</a>
-            <a href="tel:+919547306912" className={`hover:text-orange-400 transition-colors font-semibold ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
+            <a href="/blogs" className={`hover:bg-[#007aff]-400 transition-colors font-medium ${isScrolled ? 'text-gray-900' : 'text-white'}`}>Blogs</a>
+            <a href="/about-us" className={`hover:bg-[#007aff]-400 transition-colors font-medium ${isScrolled ? 'text-gray-900' : 'text-white'}`}>About Us</a>
+            <a href="/contact-us" className={`hover:bg-[#007aff]-400 transition-colors font-medium ${isScrolled ? 'text-gray-900' : 'text-white'}`}>Contact</a>
+            <a href="tel:+919547306912" className={`hover:bg-[#007aff]-400 transition-colors font-semibold ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
               +91-9547306912
             </a>
             <div className="flex items-center gap-1">

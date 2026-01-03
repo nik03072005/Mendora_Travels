@@ -56,26 +56,26 @@ const AboutUs = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-6">
-              <button onClick={() => navigate('/group-tours')} className={`text-sm font-medium transition-all hover:text-orange-500 ${scrolled ? 'text-gray-700' : 'text-white drop-shadow-md'}`}>
+              <button onClick={() => navigate('/group-tours')} className={`text-sm font-medium transition-all hover:bg-[#007aff]-500 ${scrolled ? 'text-gray-700' : 'text-white drop-shadow-md'}`}>
                 Upcoming Trips
               </button>
-              <button onClick={() => navigate('/corporate')} className={`text-sm font-medium transition-all hover:text-orange-500 ${scrolled ? 'text-gray-700' : 'text-white drop-shadow-md'}`}>
+              <button onClick={() => navigate('/corporate')} className={`text-sm font-medium transition-all hover:bg-[#007aff]-500 ${scrolled ? 'text-gray-700' : 'text-white drop-shadow-md'}`}>
                 Corporate Tours
               </button>
-              <button onClick={() => navigate('/blogs')} className={`text-sm font-medium transition-all hover:text-orange-500 ${scrolled ? 'text-gray-700' : 'text-white drop-shadow-md'}`}>
+              <button onClick={() => navigate('/blogs')} className={`text-sm font-medium transition-all hover:bg-[#007aff]-500 ${scrolled ? 'text-gray-700' : 'text-white drop-shadow-md'}`}>
                 Blogs
               </button>
-              <button className={`text-sm font-bold transition-all ${scrolled ? 'text-orange-500' : 'text-orange-300 drop-shadow-md'}`}>
+              <button className={`text-sm font-bold transition-all ${scrolled ? 'bg-[#007aff]-500' : 'bg-[#007aff]-300 drop-shadow-md'}`}>
                 About Us
               </button>
-              <button onClick={() => navigate('/payment')} className={`text-sm font-medium transition-all hover:text-orange-500 ${scrolled ? 'text-gray-700' : 'text-white drop-shadow-md'}`}>
+              <button onClick={() => navigate('/payment')} className={`text-sm font-medium transition-all hover:bg-[#007aff]-500 ${scrolled ? 'text-gray-700' : 'text-white drop-shadow-md'}`}>
                 Payments
               </button>
             </nav>
 
             {/* Desktop Phone Number */}
             <div className="hidden lg:flex items-center">
-              <a href="tel:+919547306912" className={`px-4 py-2 text-sm font-medium transition-all hover:scale-105 ${scrolled ? 'text-gray-700 hover:text-orange-500' : 'text-white hover:text-orange-300 drop-shadow-md'}`}>
+              <a href="tel:+919547306912" className={`px-4 py-2 text-sm font-medium transition-all hover:scale-105 ${scrolled ? 'text-gray-700 hover:bg-[#007aff]-500' : 'text-white hover:bg-[#007aff]-300 drop-shadow-md'}`}>
                 +91-9547306912
               </a>
             </div>
@@ -104,7 +104,7 @@ const AboutUs = () => {
               <button onClick={() => { navigate('/blogs'); setMobileMenuOpen(false); }} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">
                 Blogs
               </button>
-              <button className="block w-full text-left px-4 py-2 text-sm text-orange-500 font-bold hover:bg-gray-100 rounded">
+              <button className="block w-full text-left px-4 py-2 text-sm bg-[#007aff]-500 font-bold hover:bg-gray-100 rounded">
                 About Us
               </button>
               <button onClick={() => { navigate('/payment'); setMobileMenuOpen(false); }} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">
@@ -120,25 +120,25 @@ const AboutUs = () => {
         {/* Mobile Bottom Navigation */}
         <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40">
           <div className="grid grid-cols-4 gap-1">
-            <button onClick={() => navigate('/')} className="flex flex-col items-center py-2 px-1 text-xs text-gray-600 hover:text-orange-500">
+            <button onClick={() => navigate('/')} className="flex flex-col items-center py-2 px-1 text-xs text-gray-600 hover:bg-[#007aff]-500">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
               </svg>
               <span>Home</span>
             </button>
-            <button className="flex flex-col items-center py-2 px-1 text-xs text-gray-600 hover:text-orange-500">
+            <button className="flex flex-col items-center py-2 px-1 text-xs text-gray-600 hover:bg-[#007aff]-500">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <span>Explore</span>
             </button>
-            <button onClick={() => navigate('/search')} className="flex flex-col items-center py-2 px-1 text-xs text-gray-600 hover:text-orange-500">
+            <button onClick={() => navigate('/search')} className="flex flex-col items-center py-2 px-1 text-xs text-gray-600 hover:bg-[#007aff]-500">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
               <span>Search</span>
             </button>
-            <button onClick={() => navigate('/contact-us')} className="flex flex-col items-center py-2 px-1 text-xs text-gray-600 hover:text-orange-500">
+            <button onClick={() => navigate('/contact-us')} className="flex flex-col items-center py-2 px-1 text-xs text-gray-600 hover:bg-[#007aff]-500">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
@@ -167,7 +167,7 @@ const AboutUs = () => {
             <h1 className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-2xl">About Mendora Travels</h1>
             <p className="text-xl md:text-2xl font-light mb-8 drop-shadow-lg">Creating unforgettable journeys and memories that last a lifetime</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-              <button onClick={() => navigate('/contact-us')} className="bg-white text-teal-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-orange-500 hover:text-white transition-all hover:scale-105 shadow-xl">
+              <button onClick={() => navigate('/contact-us')} className="bg-white text-teal-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-[#007aff]-500 hover:text-white transition-all hover:scale-105 shadow-xl">
                 Start Your Journey
               </button>
               <button onClick={() => navigate('/international-trips')} className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-white hover:text-teal-600 transition-all hover:scale-105 shadow-xl backdrop-blur-sm">
@@ -412,7 +412,7 @@ const AboutUs = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button
               onClick={() => navigate('/contact-us')}
-              className="bg-white text-teal-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-orange-500 hover:text-white transition-all hover:scale-105 shadow-xl"
+              className="bg-white text-teal-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#007aff]-500 hover:text-white transition-all hover:scale-105 shadow-xl"
             >
               Contact Us
             </button>

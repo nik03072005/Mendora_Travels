@@ -112,7 +112,7 @@ export default function DestinationPage() {
           <div className="absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 z-20">
             <button
               onClick={() => setShowChat(true)}
-              className="bg-[#f37002] text-base sm:text-lg cursor-pointer text-white px-6 sm:px-8 py-2 sm:py-3 rounded-[30px] shadow-lg hover:bg-[#e65c00] transition duration-300"
+              className="bg-[#007aff] text-base sm:text-lg cursor-pointer text-white px-6 sm:px-8 py-2 sm:py-3 rounded-[30px] shadow-lg hover:bg-[#e65c00] transition duration-300"
             >
               Chat Now
             </button>

@@ -152,7 +152,7 @@ const BasicInfoSection = ({ tripData }) => (
         <span className="line-through text-gray-500">
           {tripData.originalPrice}
         </span>
-        <span className="text-[#f37002] font-bold text-lg">
+        <span className="text-[#007aff] font-bold text-lg">
           {tripData.discountedPrice}
         </span>
       </div>
@@ -165,7 +165,7 @@ const InclusionsSection = ({ tripData }) => (
     <div className="max-w-5xl mx-auto gap-4 sm:px-4 flex sm:gap-6 sm:text-center flex-wrap pl-4 pr-4">
       {inclusions.map((item, index) => (
         <div key={index} className="flex items-center gap-2">
-          <div className="text-4xl text-[#f37002]">{item.icon}</div>
+          <div className="text-4xl text-[#007aff]">{item.icon}</div>
           <div className="text-sm font-medium text-gray-800">
             {item.title}
           </div>
@@ -184,7 +184,7 @@ const HighlightsSection = ({ tripData }) => (
     <ul className="space-y-2 text-gray-700 text-sm">
       {tripData.highlights.map((point, index) => (
         <li key={index} className="flex items-center gap-2">
-          <span className="text-[#f37002] text-lg">⦿</span>
+          <span className="text-[#007aff] text-lg">⦿</span>
           <span>{point}</span>
         </li>
       ))}
@@ -200,7 +200,7 @@ const NavigationTabs = ({ sectionRefs, scrollToSection }) => (
         <button
           key={section}
           onClick={() => scrollToSection(section)}
-          className= " relative cursor-pointer text-sm font-semibold text-gray-600 hover:text-[#f37002] transition-colors duration-300 border-b-4 border-transparent hover:border-[#f37002] whitespace-nowrap after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:bg-[#f37002] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 focus:outline-none"
+          className= " relative cursor-pointer text-sm font-semibold text-gray-600 hover:text-[#007aff] transition-colors duration-300 border-b-4 border-transparent hover:border-[#007aff] whitespace-nowrap after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-full after:bg-[#007aff] after:scale-x-0 after:origin-left after:transition-transform after:duration-300 hover:after:scale-x-100 focus:outline-none"
         >
           {section}
         </button>
@@ -238,16 +238,16 @@ const ItinerarySection = ({ refProp, tripData }) => {
           <div key={item.day} className="border border-orange-300 rounded-xl p-4 bg-white shadow-sm">
             <div className="flex items-center justify-between mb-2">
               <div className="flex items-center gap-2">
-                <span className="bg-orange-100 text-[#f37002] text-sm font-semibold px-3 py-1 rounded-full">
+                <span className="bg-[#007aff]-100 text-[#007aff] text-sm font-semibold px-3 py-1 rounded-full">
                   Day {item.day}
                 </span>
-                <h4 className="text-[#f37002] font-semibold text-md">
+                <h4 className="text-[#007aff] font-semibold text-md">
                   {item.title || "Day Plan"}
                 </h4>
               </div>
               <button
                 onClick={() => toggleItem(item.day)}
-                className="text-[#f37002] cursor-pointer hover:text-orange-600 transition-colors duration-200 focus:outline-none"
+                className="text-[#007aff] cursor-pointer hover:bg-[#007aff]-600 transition-colors duration-200 focus:outline-none"
                 aria-label={openItems[item.day] ? "Hide details" : "Show details"}
               >
                 {openItems[item.day] ? (
@@ -356,7 +356,7 @@ const PackageDetailsSection = ({ refProp,tripData }) => (
         <ul className="space-y-2 text-gray-600">
           {tripData.packageDetails.excluded.map((item, idx) => (
             <li key={idx} className="flex items-start">
-              <span className="text-[#f37002] mt-1 mr-2">✘</span>
+              <span className="text-[#007aff] mt-1 mr-2">✘</span>
               <span>{item}</span>
             </li>
           ))}
@@ -368,7 +368,7 @@ const PackageDetailsSection = ({ refProp,tripData }) => (
 
 const ReviewsSection = ({ refProp,tripData }) => (
   <section ref={refProp}>
-    <h3 className="text-lg font-semibold text-[#f37002] mb-2">Reviews</h3>
+    <h3 className="text-lg font-semibold text-[#007aff] mb-2">Reviews</h3>
     <p className="italic text-gray-500">Reviews section coming soon...</p>
   </section>
 );
@@ -480,7 +480,7 @@ if (loading) {
     </div>
   );
 }
-  if (error) return <div className="text-center py-8 text-[#f37002]">Error: {error}</div>;
+  if (error) return <div className="text-center py-8 text-[#007aff]">Error: {error}</div>;
   if (!tripData) return <div className="text-center py-8">No trip data available</div>;
 
   const selectedPackage = {

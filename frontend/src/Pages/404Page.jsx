@@ -15,7 +15,7 @@ const NotFoundPage = () => {
         className="w-40 h-40 mb-6 animate-bounce"
       />
 
-      <h1 className="text-6xl font-extrabold text-orange-500 mb-2">404</h1>
+      <h1 className="text-6xl font-extrabold bg-[#007aff]-500 mb-2">404</h1>
       <h2 className="text-2xl sm:text-3xl font-semibold text-gray-800 mb-4">
         Oops! You're off the map.
       </h2>
@@ -25,7 +25,7 @@ const NotFoundPage = () => {
 
       <button
         onClick={() => navigate("/")}
-        className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full font-medium transition"
+        className="bg-[#007aff]-500 hover:bg-[#007aff]-600 text-white px-6 py-2 rounded-full font-medium transition"
       >
         🧭 Go Back Home
       </button>

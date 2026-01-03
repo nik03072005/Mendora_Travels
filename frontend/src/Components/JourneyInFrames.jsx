@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const GALLERY_DESTINATIONS = [
   {
@@ -94,6 +94,9 @@ const GALLERY_DESTINATIONS = [
 ];
 
 const JourneyInFrames = () => {
+  const [showAll, setShowAll] = useState(false);
+  const displayedDestinations = showAll ? GALLERY_DESTINATIONS : GALLERY_DESTINATIONS.slice(0, 12);
+
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4">
@@ -109,7 +112,7 @@ const JourneyInFrames = () => {
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {GALLERY_DESTINATIONS.map((destination) => (
+          {displayedDestinations.map((destination) => (
             <div 
               key={destination.id}
               className="group cursor-pointer"
@@ -128,6 +131,30 @@ const JourneyInFrames = () => {
             </div>
           ))}
         </div>
+
+        {/* View More Button */}
+        {!showAll && GALLERY_DESTINATIONS.length > 12 && (
+          <div className="text-center mt-8">
+            <button
+              onClick={() => setShowAll(true)}
+              className="bg-gradient-to-r from-teal-600 to-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:from-teal-700 hover:to-blue-700 transition-all hover:scale-105 shadow-lg"
+            >
+              View More
+            </button>
+          </div>
+        )}
+
+        {/* View Less Button */}
+        {showAll && (
+          <div className="text-center mt-8">
+            <button
+              onClick={() => setShowAll(false)}
+              className="bg-gradient-to-r from-gray-600 to-gray-700 text-white px-8 py-3 rounded-full text-lg font-semibold hover:from-gray-700 hover:to-gray-800 transition-all hover:scale-105 shadow-lg"
+            >
+              View Less
+            </button>
+          </div>
+        )}
       </div>
     </section>
   );

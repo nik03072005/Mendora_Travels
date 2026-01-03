@@ -215,7 +215,7 @@ function HomePage() {
         <div className="absolute inset-0 z-20">
           <div className="py-5">
             <div className="mx-2 sm:mx-4 md:mx-6 lg:mx-12 py-2 sm:py-4">
-              <div className="max-w-full sm:max-w-4xl md:max-w-5xl lg:max-w-4xl mx-auto bg-white border-2 border-[#f37002] rounded-lg">
+              <div className="max-w-full sm:max-w-4xl md:max-w-5xl lg:max-w-4xl mx-auto bg-white border-2 border-[#007aff] rounded-lg">
                 {/* First Line: Logo, Search, Currency */}
                 <div className="flex items-center justify-between mb-1 mx-4 sm:mx-9">
                   <div className="flex items-center space-x-2">
@@ -293,7 +293,7 @@ function HomePage() {
                       onClick={() => (
                         fetchDestinations(), setSelectedDestination(null)
                       )}
-                      className="flex flex-col items-center cursor-pointer text-orange-500 font-semibold min-w-max"
+                      className="flex flex-col items-center cursor-pointer bg-[#007aff]-500 font-semibold min-w-max"
                     >
                       <FontAwesomeIcon
                         icon={faFire}
@@ -309,7 +309,7 @@ function HomePage() {
                         onClick={() => handleDestinationClick(destination)}
                         className={`flex cursor-pointer flex-col items-center min-w-max ${
                           selectedDestination === destination.name
-                            ? "text-orange-500 font-semibold border-b-2 border-orange-500"
+                            ? "bg-[#007aff]-500 font-semibold border-b-2 border-orange-500"
                             : "text-gray-600 hover:text-blue-500"
                         }`}
                       >

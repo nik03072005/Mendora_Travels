@@ -173,7 +173,7 @@ useEffect(() => {
         {viewAllRoute && (
           <button
             onClick={handleViewAll}
-            className="text-[#f37002] hover:underline cursor-pointer text-sm md:text-base"
+            className="text-[#007aff] hover:underline cursor-pointer text-sm md:text-base"
           >
             View All<IoIosArrowDroprightCircle onClick={handleViewAll} className="text-xl inline mb-1 ml-1" />
           </button>
@@ -202,20 +202,20 @@ useEffect(() => {
           <span className="line-through text-gray-400">
             {pkg.originalPrice}
           </span>
-          <span className="text-[#f37002] font-semibold">
+          <span className="text-[#007aff] font-semibold">
             {pkg.discountedPrice}
           </span>
         </div>
         <div className="flex gap-4  mt-4  text-nowrap">
           <button
             onClick={handleChatNow}
-            className="border border-[#f37002] text-[#f37002] px-4 py-2 rounded-sm cursor-pointer text-md hover:bg-red-100 transition"
+            className="border border-[#007aff] text-[#007aff] px-4 py-2 rounded-sm cursor-pointer text-md hover:bg-red-100 transition"
           >
             Chat Now
           </button>
           <button
             onClick={() => handleCallback(pkg)}
-            className="bg-[#f37002] text-white w-[200px] px-4 py-2 rounded-sm cursor-pointer text-md hover:bg-[#f37002] transition"
+            className="bg-[#007aff] text-white w-[200px] px-4 py-2 rounded-sm cursor-pointer text-md hover:bg-[#007aff] transition"
           >
             Request Callback
           </button>
@@ -247,20 +247,20 @@ useEffect(() => {
           <span className="line-through text-gray-400">
             {pkg.originalPrice}
           </span>
-          <span className="text-[#f37002] font-semibold">
+          <span className="text-[#007aff] font-semibold">
             {pkg.discountedPrice}
           </span>
         </div>
         <div className="flex text-nowrap gap-4 justify-start mt-4">
           <button
             onClick={handleChatNow}
-            className="border border-[#f37002] text-[#f37002] px-4 py-2 cursor-pointer rounded-sm text-lg hover:bg-red-100 transition"
+            className="border border-[#007aff] text-[#007aff] px-4 py-2 cursor-pointer rounded-sm text-lg hover:bg-red-100 transition"
           >
             Chat Now
           </button>
           <button
             onClick={() => handleCallback(pkg)}
-            className="bg-[#f37002] text-white w-[280px] px-4 py-2 cursor-pointer rounded-sm text-lg hover:bg-[#f37002] transition"
+            className="bg-[#007aff] text-white w-[280px] px-4 py-2 cursor-pointer rounded-sm text-lg hover:bg-[#007aff] transition"
           >
             Request Callback
           </button>

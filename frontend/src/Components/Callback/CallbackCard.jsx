@@ -100,11 +100,11 @@ const RequestCallbackCard = ({ selectedPackage }) => {
         />
         <div>
           <h3 className="text-base font-bold">{packageData.title}</h3>
-          <p className="text-[#f37002] font-semibold text-sm">{packageData.discountedPrice}</p>
+          <p className="text-[#007aff] font-semibold text-sm">{packageData.discountedPrice}</p>
         </div>
       </div>
 
-      <h2 className="text-lg font-bold mb-2 text-[#f37002]">Request a Callback</h2>
+      <h2 className="text-lg font-bold mb-2 text-[#007aff]">Request a Callback</h2>
       <form onSubmit={handleSubmit} className="space-y-3">
         <input
           type="text"
@@ -164,7 +164,7 @@ const RequestCallbackCard = ({ selectedPackage }) => {
         {submitStatus && (
           <p
             className={`text-xs ${
-              submitStatus.type === "success" ? "text-green-600" : "text-[#f37002]"
+              submitStatus.type === "success" ? "text-green-600" : "text-[#007aff]"
             }`}
           >
             {submitStatus.message}
@@ -176,7 +176,7 @@ const RequestCallbackCard = ({ selectedPackage }) => {
           className={`w-full py-2 rounded-md transition cursor-pointer text-sm ${
             isSubmitting
               ? "bg-gray-400 cursor-not-allowed"
-              : "bg-[#f37002] text-white"
+              : "bg-[#007aff] text-white"
           }`}
         >
           {isSubmitting ? "Submitting..." : "Submit"}
