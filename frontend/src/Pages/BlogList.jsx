@@ -52,30 +52,30 @@ const BlogList = () => {
         />
       </Helmet>
       <PNavbar />
-      <div className="container mx-auto">
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 text-center">
-          Discover Our Adventures | Travel Blogs
-        </h1>
-        {loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 mx-4 sm:mx-6 lg:mx-12 xl:mx-50">
-            {[...Array(6)].map((_, index) => (
-              <div key={index} className="border rounded-lg shadow-md w-full">
-                <Skeleton height={192} className="w-full" />
-                <div className="p-4">
-                  <Skeleton count={2} />
+      <div className="min-h-screen bg-gray-50 pt-16 sm:pt-20 pb-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 text-center text-gray-900">
+            Discover Our Adventures | Travel Blogs
+          </h1>
+          {loading ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+              {[...Array(6)].map((_, index) => (
+                <div key={index} className="bg-white rounded-xl shadow-md overflow-hidden">
+                  <Skeleton height={192} className="w-full" />
+                  <div className="p-4">
+                    <Skeleton count={2} />
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        ) : blogs.length === 0 ? (
-          <p className="text-center text-gray-500 text-base sm:text-lg">No blogs available.</p>
-        ) : (
-          <div className="px-4 py-4 w-full mx-auto max-w-6xl relative">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              ))}
+            </div>
+          ) : blogs.length === 0 ? (
+            <p className="text-center text-gray-500 text-base sm:text-lg py-12">No blogs available.</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {blogs.map((blog) => (
                 <div
                   key={blog._id}
-                  className="border rounded-lg shadow-md cursor-pointer hover-shadow-lg transition-transform transform hover:scale-105 bg-white w-full"
+                  className="bg-white rounded-xl shadow-md cursor-pointer hover:shadow-xl transition-all transform hover:scale-[1.02]"
                   onClick={() => navigate(`/blog/${createSlug(blog.title)}`)}
                   role="button"
                   tabIndex={0}
@@ -88,18 +88,18 @@ const BlogList = () => {
                   <img
                     src={blog.bannerImage}
                     alt={blog.title}
-                    className="w-full h-48 sm:h-56 md:h-64 object-cover rounded-t-lg"
+                    className="w-full h-48 sm:h-56 object-cover"
                     onError={(e) => (e.target.src = 'https://via.placeholder.com/300x192?text=Image+Not+Found')}
                     loading="lazy"
                   />
                   <div className="p-4 sm:p-6">
-                    <h2 className="text-lg sm:text-xl font-semibold line-clamp-2">{blog.title}</h2>
+                    <h2 className="text-lg sm:text-xl font-semibold line-clamp-2 text-gray-900">{blog.title}</h2>
                   </div>
                 </div>
               ))}
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </>
   );

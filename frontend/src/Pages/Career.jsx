@@ -64,39 +64,40 @@ const Career = () => {
         />
       </Helmet>
       <PNavbar />
-      {/* Full-Width Banner Section */}
-      <div className="w-full mt-18">
-        <img
-          src={careerbanner}
-          alt="Career Banner"
-          className="w-full h-96 sm:h-64 lg:h-[500px] object-cover"
-        />
-      </div>
-      {/* Content Container */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 max-w-6xl">
-        <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-center">
-          Job Listings
-        </h1>
+      <div className="min-h-screen bg-gray-50">
+        {/* Full-Width Banner Section */}
+        <div className="w-full pt-14 sm:pt-16">
+          <img
+            src={careerbanner}
+            alt="Career Banner"
+            className="w-full h-64 sm:h-80 lg:h-[400px] object-cover"
+          />
+        </div>
+        {/* Content Container */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 text-center text-gray-900">
+            Job Listings
+          </h1>
         {jobs.length === 0 ? (
-          <p className="text-center text-gray-500">No jobs found.</p>
+          <p className="text-center text-gray-500 text-lg py-12">No jobs available at the moment.</p>
         ) : (
           <div className="space-y-4">
             {jobs.map((job) => (
-              <div key={job._id} className="border rounded-lg shadow-sm">
+              <div key={job._id} className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow">
                 <button
                   onClick={() => toggleJobContent(job._id)}
-                  className="w-full cursor-pointer flex justify-between items-center px-4 py-3 text-left text-sm sm:text-base font-medium text-gray-900 hover:bg-gray-100 hover:rounded-lg focus:outline-none"
+                  className="w-full cursor-pointer flex justify-between items-center px-4 sm:px-6 py-4 text-left text-sm sm:text-base font-semibold text-gray-900 hover:bg-gray-50 rounded-xl focus:outline-none transition-colors"
                 >
-                  <span className="truncate">{job.title}</span>
+                  <span className="truncate pr-4">{job.title}</span>
                   <FontAwesomeIcon
                     icon={
                       selectedJobId === job._id ? faChevronUp : faChevronDown
                     }
-                    className="text-gray-500"
+                    className="text-gray-500 flex-shrink-0"
                   />
                 </button>
                 {selectedJobId === job._id && (
-                  <div className="px-4 py-3 prose prose-sm sm:prose-base max-w-none prose-img:rounded-lg prose-img:w-full prose-img:object-cover">
+                  <div className="px-4 sm:px-6 py-4 border-t border-gray-200 prose prose-sm sm:prose-base max-w-none prose-img:rounded-lg prose-img:w-full prose-img:object-cover prose-headings:text-gray-900">
                     <div
                       dangerouslySetInnerHTML={{
                         __html: DOMPurify.sanitize(job.content),
@@ -109,6 +110,7 @@ const Career = () => {
           </div>
         )}
       </div>
+    </div>
     </>
   );
 };

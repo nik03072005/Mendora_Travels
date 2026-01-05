@@ -17,7 +17,7 @@ const FeaturedTripsCarousel = () => {
       setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [carouselImages.length]);
 
   return (
     <section className="py-8 bg-white">

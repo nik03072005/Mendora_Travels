@@ -33,11 +33,16 @@ const BlogDetail = () => {
 
   if (loading) {
     return (
-      <div className="container mx-auto p-4">
-        <Skeleton height={400} className="mb-4" />
-        <Skeleton height={40} width={300} className="mb-4" />
-        <Skeleton count={10} />
-      </div>
+      <>
+        <PNavbar />
+        <div className="min-h-screen bg-gray-50 pt-16 sm:pt-20 pb-12">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <Skeleton height={400} className="mb-4 rounded-xl" />
+            <Skeleton height={40} width={300} className="mb-4" />
+            <Skeleton count={10} />
+          </div>
+        </div>
+      </>
     );
   }
 
@@ -48,7 +53,14 @@ const BlogDetail = () => {
   };
 
   if (!blog) {
-    return <div className="container mx-auto p-4 text-center text-gray-500">Blog not found.</div>;
+    return (
+      <>
+        <PNavbar />
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center pt-16">
+          <div className="text-center text-gray-500 text-lg">Blog not found.</div>
+        </div>
+      </>
+    );
   }
 
   const description = stripHtml(blog.content).slice(0, 50);
@@ -60,18 +72,22 @@ const BlogDetail = () => {
         <meta name="description" content={description} />
       </Helmet>
       <PNavbar />
-      <div className="container mx-auto p-4 max-w-6xl text-justify mt-14">
-        <img
-          src={blog.bannerImage}
-          alt={blog.title}
-          className="w-full h-96 object-cover rounded-lg mb-6"
-          onError={(e) => (e.target.src = 'https://via.placeholder.com/1200x400?text=Image+Not+Found')}
-        />
-        <h1 className="text-4xl font-bold mb-6 text-center">{blog.title}</h1>
-        <div
-          className="prose max-w-none prose-img:rounded-lg prose-img:max-w-full"
-          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blog.content) }}
-        />
+      <div className="min-h-screen bg-gray-50 pt-16 sm:pt-20 pb-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <img
+            src={blog.bannerImage}
+            alt={blog.title}
+            className="w-full h-64 sm:h-80 lg:h-96 object-cover rounded-xl mb-6 sm:mb-8 shadow-lg"
+            onError={(e) => (e.target.src = 'https://via.placeholder.com/1200x400?text=Image+Not+Found')}
+          />
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 text-center text-gray-900">{blog.title}</h1>
+          <div className="bg-white rounded-xl shadow-md p-6 sm:p-8 lg:p-10">
+            <div
+              className="prose sm:prose-lg max-w-none prose-img:rounded-lg prose-img:max-w-full prose-headings:text-gray-900 text-justify"
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(blog.content) }}
+            />
+          </div>
+        </div>
       </div>
     </>
   );

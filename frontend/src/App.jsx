@@ -50,13 +50,37 @@ const AdminLoginRoute = () => {
 };
 
 function App() {
-  // const [count, setCount] = useState(0)
-
-   const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchDestinations());
   }, [dispatch]);
+
+  // BotPenguin chat widget - loads once for entire app
+  useEffect(() => {
+    // Only add script if it doesn't already exist
+    if (document.getElementById('messenger-widget-b')) {
+      return;
+    }
+
+    const script = document.createElement('script');
+    script.id = 'messenger-widget-b';
+    script.src = 'https://cdn.botpenguin.com/website-bot.js';
+    script.defer = true;
+    
+    // Add bot configuration
+    const botConfig = document.createTextNode('695b57982cd09804d72cf510,69594a69959c8904ca1af798');
+    script.appendChild(botConfig);
+    
+    document.body.appendChild(script);
+
+    return () => {
+      const existingScript = document.getElementById('messenger-widget-b');
+      if (existingScript) {
+        existingScript.remove();
+      }
+    };
+  }, []);
 
   return (
     <BrowserRouter>

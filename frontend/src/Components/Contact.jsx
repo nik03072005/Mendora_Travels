@@ -99,54 +99,51 @@ export const Contact = () => {
       </Helmet>
 
       <PNavbar />
-      <div className="flex flex-col min-h-screen bg-white">
+      <div className="flex flex-col min-h-screen bg-gray-50">
         <main className="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 lg:pt-24 pb-10 sm:pb-12">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#007aff] mb-6 sm:mb-8 text-center">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 sm:mb-8 text-center">
             Let's Get In Touch
           </h1>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12">
             {/* Contact Information Section */}
-            <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-4 sm:p-6 lg:p-8">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#007aff] mb-4 sm:mb-6">
+            <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 lg:p-8">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">
                 Contact Information
               </h2>
               <div className="space-y-4 sm:space-y-6">
                 <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="p-2 bg-[#007aff]/10 rounded-full">
-                    <Phone className="h-4 sm:h-5 w-4 sm:w-5 text-[#007aff]" />
+                  <div className="p-2 bg-blue-50 rounded-full">
+                    <Phone className="h-4 sm:h-5 w-4 sm:w-5 text-blue-600" />
                   </div>
                   <div>
                     <p className="text-xs sm:text-sm font-medium text-gray-900">Phone</p>
-                    <p className="text-xs sm:text-sm text-gray-600">+91 9547306912</p>
+                    <p className="text-xs sm:text-sm text-gray-600">+91 9147144627</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="p-2 bg-[#007aff]/10 rounded-full">
-                    <FaWhatsapp className="h-4 sm:h-5 w-4 sm:w-5 text-[#007aff]" />
+                  <div className="p-2 bg-green-50 rounded-full">
+                    <FaWhatsapp className="h-4 sm:h-5 w-4 sm:w-5 text-green-600" />
                   </div>
                   <div>
                     <p className="text-xs sm:text-sm font-medium text-gray-900">Whatsapp</p>
-                    <p className="text-xs sm:text-sm text-gray-600">+91 9547306912</p>
+                    <p className="text-xs sm:text-sm text-gray-600">+91 9147144627</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="p-2 bg-[#007aff]/10 rounded-full">
-                    <Mail className="h-4 sm:h-5 w-4 sm:w-5 text-[#007aff]" />
+                  <div className="p-2 bg-blue-50 rounded-full">
+                    <Mail className="h-4 sm:h-5 w-4 sm:w-5 text-blue-600" />
                   </div>
                   <div>
                     <p className="text-xs sm:text-sm font-medium text-gray-900">Email</p>
                     <p className="text-xs sm:text-sm text-gray-600">
-                      mendoratravels@gmail.com
-                    </p>
-                    <p className="text-xs sm:text-sm text-gray-600">
-                      info@mendoratravels.com
+                      contact@mendoratravels.com
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3 sm:gap-4">
-                  <div className="p-2 bg-[#007aff]/10 rounded-full">
-                    <MapPin className="h-4 sm:h-5 w-4 sm:w-5 text-[#007aff]" />
+                  <div className="p-2 bg-blue-50 rounded-full">
+                    <MapPin className="h-4 sm:h-5 w-4 sm:w-5 text-blue-600" />
                   </div>
                   <div>
                     <p className="text-xs sm:text-sm font-medium text-gray-900">Office Address</p>
@@ -168,8 +165,8 @@ export const Contact = () => {
             </div>
 
             {/* Form Section */}
-            <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-4 sm:p-6 lg:p-8">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-[#007aff] mb-4 sm:mb-6">
+            <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6 lg:p-8">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-900 mb-4 sm:mb-6">
                 Send Us a Message
               </h2>
               <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
@@ -185,9 +182,9 @@ export const Contact = () => {
                         placeholder="Enter your full name..."
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
-                        className="w-full pl-9 sm:pl-10 p-2 sm:p-2.5 border border-gray-300 rounded-md focus:ring-[#007aff] focus:border-[#007aff] text-sm"
+                        className="w-full pl-9 sm:pl-10 p-2 sm:p-2.5 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm"
                       />
-                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 sm:h-5 w-4 sm:w-5 text-[#007aff]" />
+                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 sm:h-5 w-4 sm:w-5 text-blue-600" />
                     </div>
                     {errors.fullName && (
                       <p className="text-xs sm:text-sm text-red-600 mt-1">
@@ -207,9 +204,9 @@ export const Contact = () => {
                         placeholder="Enter your email address..."
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full pl-9 sm:pl-10 p-2 sm:p-2.5 border border-gray-300 rounded-md focus:ring-[#007aff] focus:border-[#007aff] text-sm"
+                        className="w-full pl-9 sm:pl-10 p-2 sm:p-2.5 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm"
                       />
-                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 sm:h-5 w-4 sm:w-5 text-[#007aff]" />
+                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 sm:h-5 w-4 sm:w-5 text-blue-600" />
                     </div>
                     {errors.email && (
                       <p className="text-xs sm:text-sm text-red-600 mt-1">
@@ -231,9 +228,9 @@ export const Contact = () => {
                         placeholder="Enter your phone number..."
                         value={phoneNumber}
                         onChange={(e) => setPhoneNumber(e.target.value)}
-                        className="w-full pl-9 sm:pl-10 p-2 sm:p-2.5 border border-gray-300 rounded-md focus:ring-[#007aff] focus:border-[#007aff] text-sm"
+                        className="w-full pl-9 sm:pl-10 p-2 sm:p-2.5 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm"
                       />
-                      <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 sm:h-5 w-4 sm:w-5 text-[#007aff]" />
+                      <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 sm:h-5 w-4 sm:w-5 text-blue-600" />
                     </div>
                     {errors.phoneNumber && (
                       <p className="text-xs sm:text-sm text-red-600 mt-1">
@@ -251,7 +248,7 @@ export const Contact = () => {
                       <select
                         value={destination}
                         onChange={(e) => setDestination(e.target.value)}
-                        className="w-full pl-9 sm:pl-10 p-2 sm:p-2.5 border border-gray-300 rounded-md focus:ring-[#007aff] focus:border-[#007aff] text-sm"
+                        className="w-full pl-9 sm:pl-10 p-2 sm:p-2.5 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm"
                       >
                         <option value="">Select a destination...</option>
                         {Destinations.map((dest) => (
@@ -260,7 +257,7 @@ export const Contact = () => {
                           </option>
                         ))}
                       </select>
-                      <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 sm:h-5 w-4 sm:w-5 text-[#007aff]" />
+                      <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 sm:h-5 w-4 sm:w-5 text-blue-600" />
                     </div>
                     {errors.destination && (
                       <p className="text-xs sm:text-sm text-red-600 mt-1">
@@ -280,9 +277,9 @@ export const Contact = () => {
                       type="date"
                       value={travelDate}
                       onChange={(e) => setTravelDate(e.target.value)}
-                      className="w-full pl-9 sm:pl-10 p-2 sm:p-2.5 border border-gray-300 rounded-md focus:ring-[#007aff] focus:border-[#007aff] text-sm"
+                      className="w-full pl-9 sm:pl-10 p-2 sm:p-2.5 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 text-sm"
                     />
-                    <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 sm:h-5 w-4 sm:w-5 text-[#007aff]" />
+                    <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 sm:h-5 w-4 sm:w-5 text-blue-600" />
                   </div>
                   {errors.travelDate && (
                     <p className="text-xs sm:text-sm text-red-600 mt-1">
@@ -301,9 +298,9 @@ export const Contact = () => {
                       placeholder="Enter your message here..."
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      className="w-full pl-9 sm:pl-10 pt-3 border border-gray-300 rounded-md focus:ring-[#007aff] focus:border-[#007aff] min-h-[100px] sm:min-h-[120px] text-sm"
+                      className="w-full pl-9 sm:pl-10 pt-3 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500 min-h-[100px] sm:min-h-[120px] text-sm"
                     />
-                    <MessageSquare className="absolute left-3 top-4 h-4 sm:h-5 w-4 sm:w-5 text-[#007aff]" />
+                    <MessageSquare className="absolute left-3 top-4 h-4 sm:h-5 w-4 sm:w-5 text-blue-600" />
                   </div>
                   {errors.message && (
                     <p className="text-xs sm:text-sm text-red-600 mt-1">
@@ -316,7 +313,7 @@ export const Contact = () => {
                 <div className="flex flex-col items-end">
                   <button
                     type="submit"
-                    className="bg-[#007aff] hover:bg-[#d65e02] text-white px-4 sm:px-6 py-2 rounded-md transition-colors duration-200 text-sm sm:text-base"
+                    className="bg-blue-600 hover:bg-blue-700 text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-lg font-medium transition-colors duration-200 text-sm sm:text-base shadow-md hover:shadow-lg"
                   >
                     Submit Form
                   </button>
