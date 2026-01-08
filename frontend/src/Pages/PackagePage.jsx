@@ -4,7 +4,7 @@ import { LiaHotelSolid } from "react-icons/lia";
 import { MdEmojiTransportation } from "react-icons/md";
 import { GiBinoculars } from "react-icons/gi";
 import PNavbar from "../Components/PackageNavbar";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import FAQ from "../Components/Admin/FAQS/Faqs";
 import { FaCar, FaChevronDown, FaChevronUp, FaParachuteBox } from "react-icons/fa";
 import ReviewCards from "../Components/Reviews/Review";
@@ -160,7 +160,7 @@ const BasicInfoSection = ({ tripData }) => (
   </div>
 );
 
-const InclusionsSection = ({ tripData }) => (
+const InclusionsSection = () => (
   <section className="bg-white shadow-lg mt-2 rounded-lg py-8">
     <div className="max-w-5xl mx-auto gap-4 sm:px-4 flex sm:gap-6 sm:text-center flex-wrap pl-4 pr-4">
       {inclusions.map((item, index) => (
@@ -366,7 +366,7 @@ const PackageDetailsSection = ({ refProp,tripData }) => (
   </section>
 );
 
-const ReviewsSection = ({ refProp,tripData }) => (
+const ReviewsSection = ({ refProp }) => (
   <section ref={refProp}>
     <h3 className="text-lg font-semibold text-[#007aff] mb-2">Reviews</h3>
     <p className="italic text-gray-500">Reviews section coming soon...</p>
@@ -506,7 +506,7 @@ if (loading) {
       <div className="mt-0 lg:flex gap-4 max-w-6xl mx-auto p-4">
         <div className="flex lg:w-[1500px] flex-col">
           <BasicInfoSection  tripData={tripData} />
-          <InclusionsSection  tripData={tripData} />
+          <InclusionsSection />
           <HighlightsSection tripData={tripData} />
           
           <NavigationTabs sectionRefs={sectionRefs} scrollToSection={scrollToSection} />

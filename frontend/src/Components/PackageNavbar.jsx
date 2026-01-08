@@ -23,13 +23,13 @@ const PNavbar = () => {
 
   const menuItems = [
     { name: "Home", path: "/" },
-    { name: "International", path: "/international" },
-    { name: "Domestic", path: "/domestic" },
-    { name: "Destinations", path: "/destinations" },
-    { name: "Interests", path: "/interests" },
-    { name: "Our Blogs", path: "/blogs" },
-    { name: "Why Choose Us", path: "/why-choose-us" },
-    { name: "FAQ", path: "/faq" },
+    { name: "International", path: "/international-trips" },
+    { name: "Domestic", path: "/#domestic-trips" },
+    { name: "Destinations", path: "/#destinations" },
+    { name: "Interests", path: "/#explore-categories" },
+    { name: "Blogs", path: "/blogs" },
+    { name: "Why Choose Us", path: "/#why-choose-us" },
+    { name: "FAQ", path: "/#testimonials" },
     { name: "Contact Us", path: "/contact-us" },
   ];
 

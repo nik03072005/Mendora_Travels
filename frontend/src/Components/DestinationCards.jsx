@@ -36,7 +36,7 @@ export default function DestinationsSection() {
       return;
     }
 
-    navigate(`/destination/${preparedDestination.destinationName}`, {
+    navigate(`/international-trips/${preparedDestination.destinationName}`, {
       state: { destination: preparedDestination },
     });
   };

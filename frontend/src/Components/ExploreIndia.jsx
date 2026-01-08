@@ -1,48 +1,63 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ExploreIndia = () => {
+  const navigate = useNavigate();
+
   const destinations = [
     {
       name: "Rajasthan",
+      slug: "rajasthan",
       price: "12,999",
       image: "https://images.unsplash.com/photo-1477587458883-47145ed94245?w=800&q=80"
     },
     {
       name: "Meghalaya",
+      slug: "meghalaya",
       price: "21,499",
       image: "https://images.unsplash.com/photo-1597074866923-dc0589150358?w=800&q=80"
     },
     {
       name: "Andaman",
+      slug: "andaman",
       price: "29,999",
       image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80"
     },
     {
       name: "Spiti",
+      slug: "spiti-valley",
       price: "17,999",
       image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80"
     },
     {
       name: "Leh Ladakh",
+      slug: "ladakh",
       price: "21,999",
       image: "https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=80"
     },
     {
       name: "Himachal",
+      slug: "himachal-pradesh",
       price: "7,999",
       image: "https://images.unsplash.com/photo-1585516482738-d8afd4d9693a?w=800&q=80"
     },
     {
       name: "Kashmir",
+      slug: "kashmir",
       price: "24,499",
       image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=800&q=80"
     },
     {
       name: "Sikkim",
+      slug: "sikkim",
       price: "14,999",
       image: "https://images.unsplash.com/photo-1622308644420-4eb86a2f9814?w=800&q=80"
     }
   ];
+
+  const handleDestinationClick = (slug) => {
+    navigate(`/domestic-trips/${slug}`);
+  };
 
   return (
     <section className="py-16 bg-gray-50">
@@ -79,7 +94,11 @@ const ExploreIndia = () => {
           {/* Right: Destination Grid */}
           <div className="grid grid-cols-4 gap-4 flex-1 ml-8">
             {destinations.map((destination, index) => (
-              <div key={index} className="group cursor-pointer">
+              <div 
+                key={index} 
+                className="group cursor-pointer"
+                onClick={() => handleDestinationClick(destination.slug)}
+              >
                 <div className="relative overflow-hidden rounded-lg">
                   <img
                     alt={destination.name}

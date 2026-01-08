@@ -65,7 +65,7 @@ useEffect(() => {
 
     
    if (destinationData?.slug) {
-    navigate(`/destination/${destinationData.slug}`);
+    navigate(`/international-trips/${destinationData.slug}`);
   } else {
     toast.error("Missing slug for destinationData:");
     // Optionally show a toast or fallback

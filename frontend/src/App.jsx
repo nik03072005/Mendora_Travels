@@ -41,6 +41,7 @@ import BlogDetail from './Pages/BlogDetail'
 import CreateJob from './Components/Admin/CreateJob'
 import ManageJobs from './Components/Admin/ManageJobs'
 import Career from './Pages/Career'
+import InternationalTripsPage from './Pages/InternationalTripsPage'
 
 
 
@@ -87,8 +88,29 @@ function App() {
     <ScrollToTop/>
     <Routes>
           <Route path='/' element={<Layout><HomePage/></Layout>}/>
-          <Route path="/destination/:id" element={<Layout><Page /></Layout>} />
-            <Route path="/tours/:slug" element={<Layout><TripCard/></Layout>} />
+          
+          {/* Listing Pages */}
+          <Route path="/international-trips" element={<Layout><InternationalTripsPage /></Layout>} />
+          
+          {/* Individual Destination Pages */}
+          <Route path="/international-trips/:id" element={<Layout><Page /></Layout>} />
+          <Route path="/domestic-trips/:id" element={<Layout><Page /></Layout>} />
+          <Route path="/tours/:slug" element={<Layout><TripCard/></Layout>} />
+          
+          {/* Navigation Routes - Show HomePage with specific sections */}
+          <Route path="/international" element={<Layout><HomePage/></Layout>} />
+          <Route path="/domestic" element={<Layout><HomePage/></Layout>} />
+          <Route path="/destinations" element={<Layout><HomePage/></Layout>} />
+          <Route path="/interests" element={<Layout><HomePage/></Layout>} />
+          <Route path="/why-choose-us" element={<Layout><HomePage/></Layout>} />
+          <Route path="/faq" element={<Layout><HomePage/></Layout>} />
+          
+          {/* Special Trip Categories */}
+          <Route path="/group-tours" element={<Layout><HomePage/></Layout>} />
+          <Route path="/honeymoon" element={<Layout><HomePage/></Layout>} />
+          <Route path="/corporate" element={<Layout><HomePage/></Layout>} />
+          <Route path="/weekend" element={<Layout><HomePage/></Layout>} />
+          
           <Route path="/privacy-policy" element={<Layout><PrivacyPolicy/></Layout>} />
           <Route path="/blogs" element={<Layout><BlogList/></Layout>} />
           <Route path="/blog/:title" element={<Layout><BlogDetail/></Layout>} />

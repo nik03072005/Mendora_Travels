@@ -54,7 +54,7 @@ export default function SearchModal({ onClose }) {
       return;
     }
 
-    navigate(`/destination/${preparedDestination?.destinationName?.toLowerCase()}`, {
+    navigate(`/international-trips/${preparedDestination?.destinationName?.toLowerCase()}`, {
       state: { destination: preparedDestination },
     });
   };

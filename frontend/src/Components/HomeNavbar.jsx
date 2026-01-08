@@ -52,25 +52,25 @@ const HomeNavbar = ({ onSearchClick }) => {
               <a href="/" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
                 Home
               </a>
-              <a href="/international" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
+              <a href="/international-trips" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
                 International
               </a>
-              <a href="/domestic" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
+              <a href="/#domestic-trips" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
                 Domestic
               </a>
-              <a href="/destinations" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
+              <a href="/#destinations" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
                 Destinations
               </a>
-              <a href="/interests" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
+              <a href="/#explore-categories" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
                 Interests
               </a>
               <a href="/blogs" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
                 Our Blogs
               </a>
-              <a href="/why-choose-us" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
+              <a href="/#why-choose-us" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
                 Why Choose Us
               </a>
-              <a href="/faq" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
+              <a href="/#testimonials" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
                 FAQ
               </a>
               <a href="/contact-us" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>

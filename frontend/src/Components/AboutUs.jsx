@@ -107,11 +107,11 @@ const AboutUs = () => {
               <button className="block w-full text-left px-4 py-2 text-sm bg-[#007aff]-500 font-bold hover:bg-gray-100 rounded">
                 About Us
               </button>
-              <button onClick={() => { navigate('/payment'); setMobileMenuOpen(false); }} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">
-                Payments
+              <button onClick={() => { navigate('/career'); setMobileMenuOpen(false); }} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">
+                Career
               </button>
-              <a href="tel:+919547306912" className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">
-                Call: +91-9547306912
+              <a href="tel:+919147144627" className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">
+                Call: +91-9147144627
               </a>
             </div>
           </div>
@@ -170,7 +170,7 @@ const AboutUs = () => {
               <button onClick={() => navigate('/contact-us')} className="bg-white text-teal-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-[#007aff]-500 hover:text-white transition-all hover:scale-105 shadow-xl">
                 Start Your Journey
               </button>
-              <button onClick={() => navigate('/international-trips')} className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-white hover:text-teal-600 transition-all hover:scale-105 shadow-xl backdrop-blur-sm">
+              <button onClick={() => navigate('/')} className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-white hover:text-teal-600 transition-all hover:scale-105 shadow-xl backdrop-blur-sm">
                 Explore Destinations
               </button>
             </div>
@@ -417,7 +417,7 @@ const AboutUs = () => {
               Contact Us
             </button>
             <button
-              onClick={() => navigate('/international-trips')}
+              onClick={() => navigate('/')}
               className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-teal-600 transition-all hover:scale-105 shadow-xl backdrop-blur-sm"
             >
               Explore Packages

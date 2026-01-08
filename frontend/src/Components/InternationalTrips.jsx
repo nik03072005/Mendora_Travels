@@ -1,48 +1,63 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const InternationalTrips = () => {
+  const navigate = useNavigate();
+
   const destinations = [
     {
       name: "Europe",
+      slug: "europe",
       price: "1,49,999",
       image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80"
     },
     {
       name: "Vietnam",
+      slug: "vietnam",
       price: "59,999",
       image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80"
     },
     {
       name: "Bali",
+      slug: "bali",
       price: "49,999",
       image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80"
     },
     {
       name: "Thailand",
+      slug: "thailand",
       price: "44,999",
       image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80"
     },
     {
       name: "Japan",
+      slug: "japan",
       price: "1,29,999",
       image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80"
     },
     {
       name: "Sri Lanka",
+      slug: "sri-lanka",
       price: "28,999",
       image: "https://images.unsplash.com/photo-1586016413664-864c0dd76f53?w=800&q=80"
     },
     {
       name: "Philippines",
+      slug: "philippines",
       price: "79,990",
       image: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=800&q=80"
     },
     {
       name: "Kazakhstan",
+      slug: "kazakhstan",
       price: "47,999",
       image: "https://images.unsplash.com/photo-1565967511849-76a60a516170?w=800&q=80"
     }
   ];
+
+  const handleDestinationClick = (slug) => {
+    navigate(`/international-trips/${slug}`);
+  };
 
   return (
     <section className="py-16 bg-white">
@@ -79,7 +94,11 @@ const InternationalTrips = () => {
           {/* Right: Destination Grid */}
           <div className="grid grid-cols-4 gap-4 flex-1 ml-8">
             {destinations.map((destination, index) => (
-              <div key={index} className="group cursor-pointer">
+              <div 
+                key={index} 
+                className="group cursor-pointer"
+                onClick={() => handleDestinationClick(destination.slug)}
+              >
                 <div className="relative overflow-hidden rounded-lg">
                   <img
                     alt={destination.name}

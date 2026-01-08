@@ -66,7 +66,7 @@ function HomePage() {
       <HomeHeroSection />
 
       {/* Destinations Slider Section - Below Hero */}
-      <section className="py-6 bg-white">
+      <section id="destinations" className="py-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <DestinationsSlider 
             selectedDestination={selectedDestination}
@@ -83,10 +83,14 @@ function HomePage() {
       <FeaturedTripsCarousel />
 
       {/* International Trips Section */}
-      <InternationalTrips />
+      <div id="international-trips">
+        <InternationalTrips />
+      </div>
 
       {/* Explore India Section */}
-      <ExploreIndia />
+      <div id="domestic-trips">
+        <ExploreIndia />
+      </div>
 
       {/* Popular Trips Section */}
       <UpcomingTrips />
@@ -95,13 +99,17 @@ function HomePage() {
       <RomanticEscapes />
 
       {/* Explore Categories Section */}
-      <ExploreCategories />
+      <div id="explore-categories">
+        <ExploreCategories />
+      </div>
 
       {/* CTA Section */}
       <CTASection />
 
       {/* Why Choose Us Section */}
-      <WhyChooseUs />
+      <div id="why-choose-us">
+        <WhyChooseUs />
+      </div>
 
       {/* Journey In Frames Gallery Section */}
       <JourneyInFrames />
@@ -110,7 +118,9 @@ function HomePage() {
       <ContactFormSection />
 
       {/* Testimonials Section */}
-      <Testimonials />
+      <div id="testimonials">
+        <Testimonials />
+      </div>
 
       {/* Package Cards Section */}
       {/* <div className="px-4 sm:px-6 lg:px-8 mt-8 pb-12">
