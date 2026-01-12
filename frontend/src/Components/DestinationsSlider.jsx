@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFire, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -30,6 +31,7 @@ const DESTINATIONS = [
 
 const DestinationsSlider = ({ selectedDestination, onDestinationClick, onExploreClick }) => {
   const containerRef = useRef(null);
+  const navigate = useNavigate();
 
   const scrollLeft = () => {
     if (containerRef.current) {
@@ -69,7 +71,12 @@ const DestinationsSlider = ({ selectedDestination, onDestinationClick, onExplore
             {DESTINATIONS.map((destination, index) => (
               <button
                 key={index}
-                onClick={() => onDestinationClick(destination)}
+                onClick={() => {
+                  if (onDestinationClick) {
+                    onDestinationClick(destination);
+                  }
+                  navigate(`/destination/${destination.name}`);
+                }}
                 className={`flex flex-col items-center min-w-max transition-all hover:scale-110 ${
                   selectedDestination === destination.name
                     ? "bg-[#007aff]-500 font-bold"
