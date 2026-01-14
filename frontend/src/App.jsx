@@ -94,7 +94,7 @@ function App() {
           <Route path="/international-trips" element={<Layout><InternationalTripsPage /></Layout>} />
           
           {/* Individual Destination Pages */}
-          <Route path="/international-trips/:id" element={<Layout><Page /></Layout>} />
+          <Route path="/international-trips/:id" element={<Layout><DestinationPackagesPage /></Layout>} />
           <Route path="/domestic-trips/:id" element={<Layout><Page /></Layout>} />
           <Route path="/tours/:slug" element={<Layout><TripCard/></Layout>} />
           

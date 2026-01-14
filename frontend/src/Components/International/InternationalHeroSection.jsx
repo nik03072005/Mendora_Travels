@@ -14,7 +14,7 @@ const InternationalHeroSection = ({
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&q=80')`,
+            backgroundImage: `url('https://images.unsplash.com/photo-1579033461380-adb47c3eb938?w=1920&q=80')`,
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-white/50 via-white/40 to-white/30" />

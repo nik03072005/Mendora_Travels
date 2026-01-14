@@ -20,7 +20,7 @@ import RequestCallbackCard from '../Components/Callback/CallbackCard';
 import slugify from "slugify";
 
 const DestinationPackagesPage = () => {
-  const { destination } = useParams();
+  const { destination, id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   
@@ -50,9 +50,14 @@ const DestinationPackagesPage = () => {
     try {
       setLoading(true);
       
-      // Find destination from Redux store by name
+      // Use id or destination param (id for international-trips route, destination for generic route)
+      const searchTerm = (id || destination)?.toLowerCase();
+      
+      // Find destination from Redux store by name or slug
       const matchedDestination = destinations.find(
-        (dest) => dest.destinationName?.toLowerCase() === destination?.toLowerCase()
+        (dest) => 
+          dest.destinationName?.toLowerCase() === searchTerm ||
+          dest.slug?.toLowerCase() === searchTerm
       );
 
       if (!matchedDestination) {
