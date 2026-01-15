@@ -82,12 +82,12 @@ const ExploreIndia = () => {
             <div className="absolute bottom-6 left-6 text-white">
               <h2 className="text-3xl font-bold mb-2">Explore India</h2>
               <p className="text-lg mb-4">A Journey Through Time, Colour And Culture</p>
-              <a
+              <button
                 className="inline-block bg-white text-gray-900 px-6 py-2 rounded-full hover:bg-gray-100 transition-colors whitespace-nowrap"
-                href="/domestic-trips"
+                onClick={() => navigate('/domestic-trips')}
               >
                 Explore
-              </a>
+              </button>
             </div>
           </div>
 

@@ -42,6 +42,7 @@ import CreateJob from './Components/Admin/CreateJob'
 import ManageJobs from './Components/Admin/ManageJobs'
 import Career from './Pages/Career'
 import InternationalTripsPage from './Pages/InternationalTripsPage'
+import DomesticTripsPage from './Pages/DomesticTripsPage'
 import DestinationPackagesPage from './Pages/DestinationPackagesPage'
 
 
@@ -92,10 +93,11 @@ function App() {
           
           {/* Listing Pages */}
           <Route path="/international-trips" element={<Layout><InternationalTripsPage /></Layout>} />
+          <Route path="/domestic-trips" element={<Layout><DomesticTripsPage /></Layout>} />
           
           {/* Individual Destination Pages */}
           <Route path="/international-trips/:id" element={<Layout><DestinationPackagesPage /></Layout>} />
-          <Route path="/domestic-trips/:id" element={<Layout><Page /></Layout>} />
+          <Route path="/domestic-trips/:id" element={<Layout><DestinationPackagesPage /></Layout>} />
           <Route path="/tours/:slug" element={<Layout><TripCard/></Layout>} />
           
           {/* Dynamic Destination Packages Page */}

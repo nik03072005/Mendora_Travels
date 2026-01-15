@@ -55,7 +55,7 @@ const HomeNavbar = ({ onSearchClick }) => {
               <a href="/international-trips" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
                 International
               </a>
-              <a href="/#domestic-trips" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
+              <a href="/domestic-trips" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
                 Domestic
               </a>
               <a href="/#destinations" className={`transition-colors font-medium ${isScrolled ? 'text-gray-900 hover:text-[#007aff]' : 'text-white hover:text-white/80'}`}>
