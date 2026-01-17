@@ -28,6 +28,7 @@ import NotFoundPage from './Pages/404Page'
 import AboutUs from './Components/AboutUs'
 import CreateBlog from './Components/Admin/CreateBlog'
 import ReviewCardsD from './Components/Reviews/ReviewbyDestinationId'
+import HoneymoonPage from './Pages/HoneymoonPage'
 import ManageBlog from './Components/Admin/ManageBlog'
 import PrivacyPolicy from './Pages/Privact'
 import TermsAndConditions from './Pages/TermsandCond'
@@ -113,7 +114,7 @@ function App() {
           
           {/* Special Trip Categories */}
           <Route path="/group-tours" element={<Layout><HomePage/></Layout>} />
-          <Route path="/honeymoon" element={<Layout><HomePage/></Layout>} />
+          <Route path="/honeymoon" element={<Layout><HoneymoonPage/></Layout>} />
           <Route path="/corporate" element={<Layout><HomePage/></Layout>} />
           <Route path="/weekend" element={<Layout><HomePage/></Layout>} />
           
