@@ -32,9 +32,10 @@ const BlogList = () => {
       try {
         setLoading(true);
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/blog/get-blogs`);
-        setBlogs(response.data.blogs);
+        setBlogs(response.data.blogs || []);
       } catch (error) {
         toast.error('Error fetching blogs: ' + error.message);
+        setBlogs([]);
       } finally {
         setLoading(false);
       }

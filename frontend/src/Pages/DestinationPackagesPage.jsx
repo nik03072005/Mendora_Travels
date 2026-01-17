@@ -170,10 +170,10 @@ const createSlug = (title) => {
   return (
     <div className="bg-gray-50 min-h-screen">
       <Helmet>
-        <title>{destination} Tour Packages | Mendora Travels</title>
+        <title>{destinationData?.destinationName || id || destination || 'Destination'} Tour Packages | Mendora Travels</title>
         <meta
           name="description"
-          content={`Explore amazing tour packages for ${destination}. Best deals and curated experiences.`}
+          content={`Explore amazing tour packages for ${destinationData?.destinationName || id || destination || 'this destination'}. Best deals and curated experiences.`}
         />
       </Helmet>
 

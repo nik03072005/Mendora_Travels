@@ -1,17 +1,17 @@
 import React from 'react';
-import { FaHeart } from 'react-icons/fa';
+import { FaUsers } from 'react-icons/fa';
 
 const DestinationGrid = ({ destinations, onDestinationClick }) => {
   return (
     <div className="mb-16">
       <div className="text-center mb-12">
         <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-          Top Honeymoon Destinations
+          Popular Group Tour Destinations
         </h2>
         <p className="text-lg text-gray-600 mb-4">
-          Discover romantic getaways perfect for celebrating your love
+          Join like-minded travelers on these amazing group adventures
         </p>
-        <div className="w-24 h-1 bg-pink-600 mx-auto rounded-full"></div>
+        <div className="w-24 h-1 bg-orange-600 mx-auto rounded-full"></div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -23,8 +23,8 @@ const DestinationGrid = ({ destinations, onDestinationClick }) => {
           >
             {/* Popular Badge */}
             {destination.popular && (
-              <div className="absolute top-4 right-4 z-10 bg-pink-600 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
-                <FaHeart className="text-xs" />
+              <div className="absolute top-4 right-4 z-10 bg-orange-600 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                <FaUsers className="text-xs" />
                 Popular
               </div>
             )}
@@ -49,7 +49,7 @@ const DestinationGrid = ({ destinations, onDestinationClick }) => {
                   <div className="text-xl font-bold">₹{destination.price}</div>
                 </div>
                 <div className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
-                  <span className="text-white text-xs font-medium">{destination.duration}</span>
+                  <span className="text-white text-xs font-medium">{destination.groupSize} people</span>
                 </div>
               </div>
             </div>

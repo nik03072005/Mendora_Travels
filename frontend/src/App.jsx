@@ -45,6 +45,9 @@ import Career from './Pages/Career'
 import InternationalTripsPage from './Pages/InternationalTripsPage'
 import DomesticTripsPage from './Pages/DomesticTripsPage'
 import DestinationPackagesPage from './Pages/DestinationPackagesPage'
+import GroupToursPage from './Pages/GroupToursPage'
+import CorporateTripsPage from './Pages/CorporateTripsPage'
+import WeekendGetawaysPage from './Pages/WeekendGetawaysPage'
 
 
 
@@ -113,10 +116,10 @@ function App() {
           <Route path="/faq" element={<Layout><HomePage/></Layout>} />
           
           {/* Special Trip Categories */}
-          <Route path="/group-tours" element={<Layout><HomePage/></Layout>} />
+          <Route path="/group-tours" element={<Layout><GroupToursPage/></Layout>} />
           <Route path="/honeymoon" element={<Layout><HoneymoonPage/></Layout>} />
-          <Route path="/corporate" element={<Layout><HomePage/></Layout>} />
-          <Route path="/weekend" element={<Layout><HomePage/></Layout>} />
+          <Route path="/corporate" element={<Layout><CorporateTripsPage/></Layout>} />
+          <Route path="/weekend" element={<Layout><WeekendGetawaysPage/></Layout>} />
           
           <Route path="/privacy-policy" element={<Layout><PrivacyPolicy/></Layout>} />
           <Route path="/blogs" element={<Layout><BlogList/></Layout>} />

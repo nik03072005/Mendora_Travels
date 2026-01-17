@@ -20,10 +20,6 @@ import blogRoutes from './routes/blogRoutes.js'
 import jobRoutes from './routes/jobRoutes.js'
 import bodyParser from 'body-parser';
 
-
-// Connect to MongoDB
-connectDB();
-
 const app = express();
 
 // CORS configuration - more secure for development
@@ -69,6 +65,22 @@ app.use('/api',searchRoutes)
 //   }
 // });
 
-// Start server
+// Connect to MongoDB and start server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+const startServer = async () => {
+  try {
+    // Connect to MongoDB first
+    await connectDB();
+    
+    // Start server after DB connection
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error('Failed to start server:', error);
+    process.exit(1);
+  }
+};
+
+startServer();

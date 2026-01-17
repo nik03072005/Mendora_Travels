@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import HomeNavbar from '../Components/HomeNavbar';
-import HoneymoonHeroSection from '../Components/Honeymoon/HoneymoonHeroSection';
-import DestinationGrid from '../Components/Honeymoon/DestinationGrid';
-import PackageCard from '../Components/Honeymoon/PackageCard';
-import WhyChooseUsSection from '../Components/Honeymoon/WhyChooseUsSection';
+import WeekendGetawaysHeroSection from '../Components/WeekendGetaways/WeekendGetawaysHeroSection';
+import DestinationGrid from '../Components/WeekendGetaways/DestinationGrid';
+import PackageCard from '../Components/WeekendGetaways/PackageCard';
+import WhyChooseUsSection from '../Components/WeekendGetaways/WhyChooseUsSection';
 import ContactFormSection from '../Components/Domestic/ContactFormSection';
 import { 
-  internationalHoneymoonPackages, 
-  domesticHoneymoonPackages,
-  honeymoonDestinations 
-} from '../Components/Honeymoon/packagesData';
+  internationalWeekendGetaways, 
+  domesticWeekendGetaways,
+  weekendDestinations 
+} from '../Components/WeekendGetaways/packagesData';
 
-const HoneymoonPage = () => {
+const WeekendGetawaysPage = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('international');
+  const [activeTab, setActiveTab] = useState('domestic');
   
   // Form state
   const [formData, setFormData] = useState({
@@ -53,7 +53,6 @@ const HoneymoonPage = () => {
   };
 
   const handleDestinationClick = (slug, type) => {
-    // Navigate to appropriate destination page based on type
     if (type === 'international') {
       navigate(`/international-trips/${slug}`);
     } else {
@@ -64,31 +63,31 @@ const HoneymoonPage = () => {
   // Get packages based on active tab
   const getDisplayedPackages = () => {
     if (activeTab === 'international') {
-      return internationalHoneymoonPackages(navigate);
+      return internationalWeekendGetaways(navigate);
     } else if (activeTab === 'domestic') {
-      return domesticHoneymoonPackages(navigate);
+      return domesticWeekendGetaways(navigate);
     }
-    return [...internationalHoneymoonPackages(navigate), ...domesticHoneymoonPackages(navigate)];
+    return [...internationalWeekendGetaways(navigate), ...domesticWeekendGetaways(navigate)];
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-pink-50 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-green-50 to-white">
       <Helmet>
-        <title>Honeymoon Packages - Romantic Getaways | Mendora Travels</title>
+        <title>Weekend Getaway Packages - Quick Trips | Mendora Travels</title>
         <meta 
           name="description" 
-          content="Create unforgettable memories with our romantic honeymoon packages. Explore international and domestic destinations perfect for newlyweds." 
+          content="Book perfect weekend getaways with our short trip packages. Quick 2-3 day trips to nearby destinations at budget-friendly prices." 
         />
         <meta 
           name="keywords" 
-          content="honeymoon packages, romantic getaways, honeymoon destinations, couple tours, honeymoon trips" 
+          content="weekend getaways, short trips, weekend packages, quick trips, 2 day trips" 
         />
       </Helmet>
 
       <HomeNavbar />
 
       {/* Hero Section */}
-      <HoneymoonHeroSection
+      <WeekendGetawaysHeroSection
         formData={formData}
         handleFormChange={handleFormChange}
         handleFormSubmit={handleFormSubmit}
@@ -100,7 +99,7 @@ const HoneymoonPage = () => {
         
         {/* Destinations Grid */}
         <DestinationGrid
-          destinations={honeymoonDestinations}
+          destinations={weekendDestinations}
           onDestinationClick={(slug, type) => handleDestinationClick(slug, type)}
         />
 
@@ -108,43 +107,43 @@ const HoneymoonPage = () => {
         <div className="mb-16">
           <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">
-              Romantic Honeymoon Packages
+              Weekend Getaway Packages
             </h2>
             <p className="text-lg text-gray-600 mb-6">
-              Choose from our handpicked collection of honeymoon packages
+              Choose from our curated collection of quick escapes
             </p>
-            <div className="w-24 h-1 bg-pink-600 mx-auto rounded-full"></div>
+            <div className="w-24 h-1 bg-green-600 mx-auto rounded-full"></div>
           </div>
 
           {/* Tabs */}
           <div className="flex justify-center mb-8">
             <div className="inline-flex bg-white rounded-full p-1 shadow-lg">
               <button
-                onClick={() => setActiveTab('international')}
-                className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
-                  activeTab === 'international'
-                    ? 'bg-pink-600 text-white shadow-lg'
-                    : 'text-gray-600 hover:text-pink-600'
-                }`}
-              >
-                International
-              </button>
-              <button
                 onClick={() => setActiveTab('domestic')}
                 className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                   activeTab === 'domestic'
-                    ? 'bg-pink-600 text-white shadow-lg'
-                    : 'text-gray-600 hover:text-pink-600'
+                    ? 'bg-green-600 text-white shadow-lg'
+                    : 'text-gray-600 hover:text-green-600'
                 }`}
               >
                 Domestic
               </button>
               <button
+                onClick={() => setActiveTab('international')}
+                className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+                  activeTab === 'international'
+                    ? 'bg-green-600 text-white shadow-lg'
+                    : 'text-gray-600 hover:text-green-600'
+                }`}
+              >
+                International
+              </button>
+              <button
                 onClick={() => setActiveTab('all')}
                 className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
                   activeTab === 'all'
-                    ? 'bg-pink-600 text-white shadow-lg'
-                    : 'text-gray-600 hover:text-pink-600'
+                    ? 'bg-green-600 text-white shadow-lg'
+                    : 'text-gray-600 hover:text-green-600'
                 }`}
               >
                 View All
@@ -161,18 +160,18 @@ const HoneymoonPage = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="mb-16 bg-gradient-to-r from-pink-600 to-purple-600 rounded-3xl p-12 text-center text-white shadow-2xl">
+        <div className="mb-16 bg-gradient-to-r from-green-600 to-emerald-600 rounded-3xl p-12 text-center text-white shadow-2xl">
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-            Ready to Plan Your Dream Honeymoon?
+            Ready for Your Weekend Adventure?
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-            Let our honeymoon experts create a personalized itinerary that perfectly matches your vision
+            Book now and make the most of your weekend with our curated packages
           </p>
           <button 
             onClick={() => navigate('/contact')}
-            className="bg-white text-pink-600 hover:bg-gray-100 font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
+            className="bg-white text-green-600 hover:bg-gray-100 font-bold text-lg px-8 py-4 rounded-full transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
-            Get Started Now
+            Book Now
           </button>
         </div>
 
@@ -191,4 +190,4 @@ const HoneymoonPage = () => {
   );
 };
 
-export default HoneymoonPage;
+export default WeekendGetawaysPage;
