@@ -66,7 +66,7 @@ const AboutUs = () => {
                 Blogs
               </button>
               <button className={`text-sm font-bold transition-all ${scrolled ? 'bg-[#007aff]-500' : 'bg-[#007aff]-300 drop-shadow-md'}`}>
-                About Us
+                Team Section
               </button>
               <button onClick={() => navigate('/payment')} className={`text-sm font-medium transition-all hover:bg-[#007aff]-500 ${scrolled ? 'text-gray-700' : 'text-white drop-shadow-md'}`}>
                 Payments
@@ -105,7 +105,7 @@ const AboutUs = () => {
                 Blogs
               </button>
               <button className="block w-full text-left px-4 py-2 text-sm bg-[#007aff]-500 font-bold hover:bg-gray-100 rounded">
-                About Us
+                Team Section
               </button>
               <button onClick={() => { navigate('/career'); setMobileMenuOpen(false); }} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">
                 Career
@@ -152,7 +152,7 @@ const AboutUs = () => {
       <div className="relative h-screen bg-gradient-to-br from-teal-600 via-blue-600 to-purple-600 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            alt="About Us"
+            alt="Team Section"
             className="w-full h-full object-cover opacity-30 mix-blend-overlay"
             src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?w=1200&q=80"
           />

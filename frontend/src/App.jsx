@@ -48,6 +48,16 @@ import DestinationPackagesPage from './Pages/DestinationPackagesPage'
 import GroupToursPage from './Pages/GroupToursPage'
 import CorporateTripsPage from './Pages/CorporateTripsPage'
 import WeekendGetawaysPage from './Pages/WeekendGetawaysPage'
+import EuropeTourPackagesPage from './Pages/EuropeTourPackagesPage'
+import BaliTourPackagesPage from './Pages/BaliTourPackagesPage'
+import ThailandTourPackagesPage from './Pages/ThailandTourPackagesPage'
+import VietnamTourPackagesPage from './Pages/VietnamTourPackagesPage'
+import DubaiTourPackagesPage from './Pages/DubaiTourPackagesPage'
+import MaldivesTourPackagesPage from './Pages/MaldivesTourPackagesPage'
+import SingaporeTourPackagesPage from './Pages/SingaporeTourPackagesPage'
+import MalaysiaTourPackagesPage from './Pages/MalaysiaTourPackagesPage'
+import BhutanTourPackagesPage from './Pages/BhutanTourPackagesPage'
+import KazakhstanTourPackagesPage from './Pages/KazakhstanTourPackagesPage'
 
 
 
@@ -98,6 +108,18 @@ function App() {
           {/* Listing Pages */}
           <Route path="/international-trips" element={<Layout><InternationalTripsPage /></Layout>} />
           <Route path="/domestic-trips" element={<Layout><DomesticTripsPage /></Layout>} />
+          
+          {/* International Destination Pages */}
+          <Route path="/international-trips/europe" element={<Layout><EuropeTourPackagesPage /></Layout>} />
+          <Route path="/international-trips/bali" element={<Layout><BaliTourPackagesPage /></Layout>} />
+          <Route path="/international-trips/thailand" element={<Layout><ThailandTourPackagesPage /></Layout>} />
+          <Route path="/international-trips/vietnam" element={<Layout><VietnamTourPackagesPage /></Layout>} />
+          <Route path="/international-trips/dubai" element={<Layout><DubaiTourPackagesPage /></Layout>} />
+          <Route path="/international-trips/maldives" element={<Layout><MaldivesTourPackagesPage /></Layout>} />
+          <Route path="/international-trips/singapore" element={<Layout><SingaporeTourPackagesPage /></Layout>} />
+          <Route path="/international-trips/malaysia" element={<Layout><MalaysiaTourPackagesPage /></Layout>} />
+          <Route path="/international-trips/bhutan" element={<Layout><BhutanTourPackagesPage /></Layout>} />
+          <Route path="/international-trips/kazakhstan" element={<Layout><KazakhstanTourPackagesPage /></Layout>} />
           
           {/* Individual Destination Pages */}
           <Route path="/international-trips/:id" element={<Layout><DestinationPackagesPage /></Layout>} />

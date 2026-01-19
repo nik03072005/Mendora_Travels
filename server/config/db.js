@@ -3,15 +3,19 @@ import dotenv from 'dotenv';
 
 // Load environment variables
 dotenv.config();
+
 const connectDB = async () => {
   try {
-    console.log(process.env.MONGO_URI,"cfhbhdfhbfhbdfbgf");
-    await mongoose.connect(process.env.MONGO_URI);
-    console.log('MongoDB connected');
-  } catch (error) {
-    console.error('MongoDB connection error:', error);
-    process.exit(1); // Exit process with failure
+    const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/trip';
+    await mongoose.connect(mongoURI, {
+      serverSelectionTimeoutMS: 5000,
+      family: 4 // Force IPv4
+    });
+    console.log('MongoDB connected...');
+  } catch (err) {
+    console.error('MongoDB connection error:', err.message);
+    console.error('Full error:', err);
+    process.exit(1);
   }
 };
-
 export default connectDB;
