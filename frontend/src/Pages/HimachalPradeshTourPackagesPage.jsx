@@ -3,56 +3,56 @@ import { Helmet } from 'react-helmet-async';
 import HomeNavbar from '../Components/HomeNavbar';
 import { FaMapMarkerAlt, FaStar, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
-const KazakhstanTourPackagesPage = () => {
+const HimachalPradeshTourPackagesPage = () => {
   const [expandedAbout, setExpandedAbout] = useState(false);
   const [activeFAQ, setActiveFAQ] = useState(null);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
 
   const groupTours = [
-    { id: 1, name: "Kazakhstan Explorer", date: "May 15, 2026", seats: 12, booked: 8, price: "₹69,999", duration: "7 Days", highlights: ["Almaty City", "Medeu", "Big Almaty Lake"] },
-    { id: 2, name: "Silk Road Tour", date: "June 20, 2026", seats: 10, booked: 6, price: "₹89,999", duration: "9 Days", highlights: ["Turkestan", "Historic Sites", "Ancient Cities"] },
-    { id: 3, name: "Almaty & Astana", date: "July 25, 2026", seats: 15, booked: 10, price: "₹79,999", duration: "8 Days", highlights: ["Two Capitals", "Modern & Ancient", "Culture"] },
-    { id: 4, name: "Complete Kazakhstan", date: "September 10, 2026", seats: 8, booked: 5, price: "₹94,999", duration: "10 Days", highlights: ["All Major Cities", "Canyons", "Nature Reserves"] }
+    { id: 1, name: "Himachal Adventure", date: "April 20, 2026", seats: 15, booked: 11, price: "₹19,999", duration: "6 Days", highlights: ["Manali", "Solang Valley", "Rohtang Pass"] },
+    { id: 2, name: "Shimla Manali", date: "June 15, 2026", seats: 12, booked: 9, price: "₹24,999", duration: "7 Days", highlights: ["Shimla Mall Road", "Manali", "Adventure"] },
+    { id: 3, name: "Complete Himachal", date: "October 10, 2026", seats: 10, booked: 6, price: "₹29,999", duration: "9 Days", highlights: ["Shimla", "Manali", "Dharamshala"] },
+    { id: 4, name: "Hill Stations Retreat", date: "December 5, 2026", seats: 8, booked: 5, price: "₹32,999", duration: "8 Days", highlights: ["Kasauli", "Dalhousie", "McLeodganj"] }
   ];
 
   const tourPackages = [
-    { id: 1, title: "Almaty Discovery", duration: "6 Days", startingPrice: "₹69,999", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80", locations: ["Almaty", "Medeu", "Big Lake"], rating: 4.8, reviews: 280 },
-    { id: 2, title: "Silk Road Heritage", duration: "9 Days", startingPrice: "₹89,999", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80", locations: ["Turkestan", "Shymkent", "Taraz"], rating: 4.9, reviews: 240 },
-    { id: 3, title: "Astana & Almaty", duration: "7 Days", startingPrice: "₹79,999", image: "https://images.unsplash.com/photo-1565192286976-9352bf89d75d?w=800&q=80", locations: ["Astana", "Almaty", "Museums"], rating: 4.7, reviews: 310 },
-    { id: 4, title: "Charyn Canyon Adventure", duration: "6 Days", startingPrice: "₹74,999", image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&q=80", locations: ["Charyn Canyon", "Kolsai Lakes", "Almaty"], rating: 4.8, reviews: 260 },
-    { id: 5, title: "Cultural Kazakhstan", duration: "10 Days", startingPrice: "₹94,999", image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80", locations: ["All Cities", "Historical Sites", "Nature"], rating: 4.9, reviews: 220 },
-    { id: 6, title: "Complete Kazakhstan", duration: "12 Days", startingPrice: "₹1,09,999", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80", locations: ["Almaty", "Astana", "Turkestan", "Canyons"], rating: 5.0, reviews: 190 }
+    { id: 1, title: "Shimla Manali Special", duration: "7 Days", startingPrice: "₹17,999", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80", locations: ["Shimla", "Manali", "Solang Valley"], rating: 4.9, reviews: 1350 },
+    { id: 2, title: "Dharamshala McLeodganj", duration: "5 Days", startingPrice: "₹19,999", image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80", locations: ["Dharamshala", "McLeodganj", "Triund"], rating: 4.8, reviews: 920 },
+    { id: 3, title: "Adventure Himachal", duration: "8 Days", startingPrice: "₹26,999", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80", locations: ["Manali", "Bir Billing", "Rishikesh"], rating: 5.0, reviews: 1150 },
+    { id: 4, title: "Kinnaur Spiti Circuit", duration: "10 Days", startingPrice: "₹32,999", image: "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=800&q=80", locations: ["Kinnaur", "Spiti", "Kaza", "Tabo"], rating: 4.9, reviews: 780 },
+    { id: 5, title: "Complete Himachal Package", duration: "12 Days", startingPrice: "₹29,999", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80", locations: ["Shimla", "Manali", "Dharamshala", "Dalhousie"], rating: 4.8, reviews: 1520 },
+    { id: 6, title: "Hill Station Retreat", duration: "6 Days", startingPrice: "₹18,999", image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80", locations: ["Kasol", "Kullu", "Manikaran"], rating: 4.7, reviews: 850 }
   ];
 
   const activities = [
-    { id: 1, title: "Skiing in Shymbulak", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80", location: "Almaty" },
-    { id: 2, title: "Nomadic Culture", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", location: "Steppes" },
-    { id: 3, title: "Charyn Canyon Trek", image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=600&q=80", location: "Charyn National Park" },
-    { id: 4, title: "Big Almaty Lake", image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80", location: "Almaty Region" }
+    { id: 1, title: "Paragliding", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80", location: "Bir Billing - Paragliding Capital" },
+    { id: 2, title: "River Rafting", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", location: "Kullu & Rishikesh" },
+    { id: 3, title: "Rohtang Pass", image: "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=600&q=80", location: "Snow Adventure - Manali" },
+    { id: 4, title: "Monastery Tours", image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80", location: "Dalai Lama Temple" }
   ];
 
   const destinations = [
-    { id: 1, name: "Almaty", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80", packages: 18 },
-    { id: 2, name: "Astana (Nur-Sultan)", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1565192286976-9352bf89d75d?w=600&q=80", packages: 14 },
-    { id: 3, name: "Shymkent", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", packages: 10 },
-    { id: 4, name: "Turkestan", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80", packages: 11 },
-    { id: 5, name: "Charyn Canyon", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=600&q=80", packages: 12 },
-    { id: 6, name: "Kolsai Lakes", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80", packages: 9 }
+    { id: 1, name: "Shimla", country: "Himachal Pradesh", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", packages: 32 },
+    { id: 2, name: "Manali", country: "Himachal Pradesh", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80", packages: 35 },
+    { id: 3, name: "Dharamshala", country: "Himachal Pradesh", image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80", packages: 28 },
+    { id: 4, name: "Kasol", country: "Himachal Pradesh", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", packages: 22 },
+    { id: 5, name: "Kullu", country: "Himachal Pradesh", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80", packages: 25 },
+    { id: 6, name: "Dalhousie", country: "Himachal Pradesh", image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80", packages: 20 }
   ];
 
   const faqs = [
-    { id: 1, question: "What is the best time to visit Kazakhstan?", answer: "April-June and September-October are ideal with pleasant weather. July-August is warm but good for mountains. December-February is cold (-15°C to -30°C) but great for skiing." },
-    { id: 2, question: "Do I need a visa for Kazakhstan?", answer: "Indian passport holders get 14-day visa-free entry. For longer stays, apply for e-visa online (2-5 working days). We assist with visa process if needed." },
-    { id: 3, question: "What is included in the package?", answer: "Packages include flights, hotels with breakfast, airport transfers, guided city tours, transport for excursions, and select attractions like Medeu and Shymbulak." },
-    { id: 4, question: "Is Kazakhstan expensive?", answer: "Moderate pricing. Hotels ₹3,000-8,000/night, meals ₹500-1,500. Transport and attractions affordable. Better value than Dubai or Europe for similar experiences." },
-    { id: 5, question: "What currency is used?", answer: "Kazakhstani Tenge (KZT) is used. 1 KZT ≈ ₹0.18. 1 USD ≈ 450-500 KZT. Cards accepted in cities. ATMs available. Carry some cash for rural areas." },
-    { id: 6, question: "Can I customize my tour?", answer: "Yes! Add trekking, extend stays, include specific regions, upgrade hotels, or arrange eagle hunting experiences. We tailor packages to your interests." }
+    { id: 1, question: "What is the best time to visit Himachal Pradesh?", answer: "March to June (summer) for pleasant weather, sightseeing, adventure activities. December to February for snow lovers - Shimla, Manali, Kufri have snowfall. September-November (autumn) offers post-monsoon beauty. Monsoon (July-August) brings landslide risks but lush landscapes. Each season has unique charm depending on your preference." },
+    { id: 2, question: "What adventure activities are available?", answer: "Paragliding in Bir Billing (best in India), river rafting in Kullu valley, skiing in Solang Valley and Narkanda, trekking (Triund, Hampta Pass, Pin Parvati), zorbing, zip-lining, camping, mountain biking. Summer offers all activities. Winter has skiing, snowboarding. We arrange certified operators for safe adventures." },
+    { id: 3, question: "Do I need permits for Spiti Valley?", answer: "Indian citizens don't need special permits for most Himachal areas. However, Inner Line Permit (ILP) required for certain areas near Tibet border (parts of Kinnaur, restricted zones). Can be obtained online or at district headquarters. Valid ID proof mandatory everywhere. We assist with all permit arrangements for Spiti Circuit tours." },
+    { id: 4, question: "What should I pack for Himachal trip?", answer: "Comfortable walking shoes, warm clothes (even in summer, evenings are cold), woollens for winter, sunscreen (SPF 50+), sunglasses, cap, medicines (altitude sickness if visiting high areas), power bank, torch, raincoat (monsoon/unexpected rain). Winter requires heavy jackets, thermals, gloves. Layers work best as temperature varies throughout day." },
+    { id: 5, question: "How to reach major Himachal destinations?", answer: "By Air: Nearest airports - Shimla (Jubbarhatti), Kullu-Manali (Bhuntar), Dharamshala (Gaggal). By Train: Kalka-Shimla toy train (UNESCO heritage), Pathankot for Dharamshala. By Road: Well-connected from Delhi (volvo buses, taxis). We arrange pickups from all entry points and handle all transfers throughout the journey." },
+    { id: 6, question: "Can I customize my Himachal package?", answer: "Absolutely! Add adventure activities (paragliding, rafting, skiing), include offbeat destinations (Tirthan Valley, Malana, Chitkul), extend stays in favorite places, upgrade to luxury resorts, plan Spiti Valley circuit, combine with Ladakh, add monastery visits, or focus on nature/adventure. We create personalized itineraries matching your interests and budget." }
   ];
 
   const reviews = [
-    { id: 1, name: "Vikram Desai", rating: 5, date: "January 2024", comment: "Amazing adventure! Charyn Canyon was stunning like Grand Canyon. Big Almaty Lake was beautiful. Almaty city was modern and clean. Unique destination!", location: "Mumbai" },
-    { id: 2, name: "Nisha Kapoor", rating: 5, date: "December 2023", comment: "Incredible experience! Skiing at Shymbulak was fantastic. Nomadic culture tour was fascinating. Astana architecture was futuristic. Highly recommend!", location: "Delhi" },
-    { id: 3, name: "Sanjay Verma", rating: 4, date: "November 2023", comment: "Great trip! Turkestan mausoleum was impressive. Food was delicious, especially beshbarmak. Only issue was language barrier but guide helped. Worth visiting!", location: "Bangalore" }
+    { id: 1, name: "Rohit Malhotra", rating: 5, date: "May 2023", comment: "Perfect mountain escape! Shimla charming, Manali breathtaking, Solang Valley adventure thrilling. Rohtang Pass snow experience unforgettable. Himachal's beauty beyond words. Will definitely return!", location: "Delhi" },
+    { id: 2, name: "Pooja Nair", rating: 5, date: "April 2023", comment: "Amazing trip! Paragliding in Bir Billing lifetime experience. Dharamshala peaceful, McLeodganj spiritual. Tibetan culture fascinating. Food delicious. Well-organized tour. Highly recommend!", location: "Bangalore" },
+    { id: 3, name: "Arun Kumar", rating: 4, date: "March 2023", comment: "Wonderful family vacation! Kids loved toy train, snow activities fun. Kullu valley beautiful. Only issue was traffic on Mall Road. Overall fantastic experience in mountains!", location: "Chennai" }
   ];
 
   const handleFormChange = (e) => {
@@ -69,26 +69,26 @@ const KazakhstanTourPackagesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Kazakhstan Tour Packages | Mendora Travels</title>
-        <meta name="description" content="Explore Kazakhstan with our curated tour packages. Visit Almaty, Astana, Charyn Canyon, Kolsai Lakes and more with Mendora Travels." />
+        <title>Himachal Pradesh Tour Packages | Mendora Travels</title>
+        <meta name="description" content="Explore Himachal Pradesh Land of Gods with our curated tour packages. Visit Shimla, Manali, Dharamshala, experience adventure, mountains with Mendora Travels." />
       </Helmet>
 
       <HomeNavbar />
 
-      <div className="relative h-[60vh] md:h-[70vh] bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&q=80')` }}>
+      <div className="relative h-[60vh] md:h-[70vh] bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80')` }}>
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-white text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Kazakhstan Tour Packages</h1>
-          <p className="text-xl md:text-2xl mb-6">Heart of Central Asia</p>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Himachal Pradesh Tour Packages</h1>
+          <p className="text-xl md:text-2xl mb-6">Land of Gods</p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <div className="bg-blue-600 bg-opacity-90 px-6 py-3 rounded-full"><span className="font-semibold text-white">Starting from ₹69,999</span></div>
-            <div className="bg-blue-600 bg-opacity-90 px-6 py-3 rounded-full"><span className="font-semibold text-white">6-12 Days</span></div>
+            <div className="bg-blue-600 bg-opacity-90 px-6 py-3 rounded-full"><span className="font-semibold text-white">Starting from ₹17,999</span></div>
+            <div className="bg-blue-600 bg-opacity-90 px-6 py-3 rounded-full"><span className="font-semibold text-white">5-12 Days</span></div>
           </div>
         </div>
       </div>
 
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Kazakhstan Tour Packages</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Himachal Pradesh Tour Packages</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {tourPackages.map((pkg) => (
               <div key={pkg.id} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
@@ -123,13 +123,13 @@ const KazakhstanTourPackagesPage = () => {
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">About Kazakhstan Tours</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">About Himachal Pradesh Tours</h2>
           <div className="max-w-4xl mx-auto">
-            <p className="text-gray-700 mb-4">Kazakhstan is Central Asia's largest country featuring stunning mountain ranges, dramatic canyons, pristine lakes, futuristic cities, rich nomadic heritage, and the historic Silk Road. Our Kazakhstan packages offer adventure, culture, and unique experiences in this emerging destination.</p>
+            <p className="text-gray-700 mb-4">Himachal Pradesh, the "Land of Gods," is India's ultimate mountain destination featuring majestic Himalayas, charming hill stations, adventure sports paradise, ancient monasteries, and pristine landscapes. Our Himachal packages offer adventure, spirituality, romance, and unforgettable Himalayan experiences.</p>
             {expandedAbout && (
               <div className="text-gray-700 space-y-4">
-                <p>Experience breathtaking Charyn Canyon (like Grand Canyon), turquoise Big Almaty Lake, modern Astana architecture, historic Turkestan mausoleum, world-class skiing at Shymbulak, scenic Kolsai Lakes, and traditional nomadic yurt stays. Enjoy delicious Central Asian cuisine and warm Kazakh hospitality.</p>
-                <p>Our packages include comfortable hotels, experienced guides, transport, and complete arrangements for an unforgettable Kazakhstan adventure.</p>
+                <p>Experience colonial charm in Shimla with Mall Road and Ridge, adventure capital Manali with Solang Valley and Rohtang Pass, spiritual Dharamshala home to Dalai Lama, paragliding capital Bir Billing, hippie paradise Kasol in Parvati Valley, thrilling river rafting in Kullu, snow activities in winter, mysterious Spiti Valley cold desert, apple orchards, and pine forests.</p>
+                <p>Our packages include comfortable hotels/resorts, experienced mountain drivers familiar with hill roads, adventure activity arrangements with certified operators, all transfers, and complete arrangements for a safe, memorable, thrilling, and hassle-free experience throughout your mountain adventure in the Land of Gods.</p>
               </div>
             )}
             <button onClick={() => setExpandedAbout(!expandedAbout)} className="text-blue-600 font-semibold mt-4 flex items-center gap-2 hover:text-blue-700">
@@ -142,7 +142,7 @@ const KazakhstanTourPackagesPage = () => {
 
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Top Activities in Kazakhstan</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Top Activities in Himachal Pradesh</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {activities.map((activity) => (
               <div key={activity.id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
@@ -157,8 +157,7 @@ const KazakhstanTourPackagesPage = () => {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            ))}  </div>
         </div>
       </section>
 
@@ -210,7 +209,7 @@ const KazakhstanTourPackagesPage = () => {
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Kazakhstan Destinations</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Himachal Pradesh Destinations</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {destinations.map((dest) => (
               <div key={dest.id} className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
@@ -267,15 +266,15 @@ const KazakhstanTourPackagesPage = () => {
       <section className="py-16 bg-blue-600 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Plan Your Kazakhstan Trip</h2>
-            <p className="mb-8">Get in touch with our travel experts to customize your perfect Kazakhstan adventure</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Plan Your Himachal Pradesh Trip</h2>
+            <p className="mb-8">Get in touch with our travel experts to customize your perfect Himachal Pradesh adventure</p>
             <form onSubmit={handleFormSubmit} className="bg-white rounded-lg p-8 text-gray-800">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleFormChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600" required />
                 <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleFormChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600" required />
               </div>
               <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleFormChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600 mb-4" required />
-              <textarea name="message" placeholder="Tell us about your dream Kazakhstan trip..." value={formData.message} onChange={handleFormChange} rows="4" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600 mb-4" required></textarea>
+              <textarea name="message" placeholder="Tell us about your dream Himachal Pradesh trip..." value={formData.message} onChange={handleFormChange} rows="4" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600 mb-4" required></textarea>
               <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Submit Inquiry</button>
             </form>
           </div>
@@ -285,4 +284,4 @@ const KazakhstanTourPackagesPage = () => {
   );
 };
 
-export default KazakhstanTourPackagesPage;
+export default HimachalPradeshTourPackagesPage;

@@ -3,56 +3,56 @@ import { Helmet } from 'react-helmet-async';
 import HomeNavbar from '../Components/HomeNavbar';
 import { FaMapMarkerAlt, FaStar, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
-const KazakhstanTourPackagesPage = () => {
+const NagalandTourPackagesPage = () => {
   const [expandedAbout, setExpandedAbout] = useState(false);
   const [activeFAQ, setActiveFAQ] = useState(null);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
 
   const groupTours = [
-    { id: 1, name: "Kazakhstan Explorer", date: "May 15, 2026", seats: 12, booked: 8, price: "₹69,999", duration: "7 Days", highlights: ["Almaty City", "Medeu", "Big Almaty Lake"] },
-    { id: 2, name: "Silk Road Tour", date: "June 20, 2026", seats: 10, booked: 6, price: "₹89,999", duration: "9 Days", highlights: ["Turkestan", "Historic Sites", "Ancient Cities"] },
-    { id: 3, name: "Almaty & Astana", date: "July 25, 2026", seats: 15, booked: 10, price: "₹79,999", duration: "8 Days", highlights: ["Two Capitals", "Modern & Ancient", "Culture"] },
-    { id: 4, name: "Complete Kazakhstan", date: "September 10, 2026", seats: 8, booked: 5, price: "₹94,999", duration: "10 Days", highlights: ["All Major Cities", "Canyons", "Nature Reserves"] }
+    { id: 1, name: "Hornbill Festival Special", date: "October 15, 2026", seats: 15, booked: 12, price: "₹24,999", duration: "7 Days", highlights: ["Festival Experience", "Tribal Culture", "Kohima"] },
+    { id: 2, name: "Nagaland Heritage", date: "November 20, 2026", seats: 12, booked: 8, price: "₹27,999", duration: "8 Days", highlights: ["War Cemetery", "Villages", "Local Culture"] },
+    { id: 3, name: "Tribal Villages Tour", date: "December 10, 2026", seats: 10, booked: 6, price: "₹29,999", duration: "6 Days", highlights: ["Khonoma", "Touphema", "Traditional Life"] },
+    { id: 4, name: "Complete Nagaland", date: "March 15, 2027", seats: 8, booked: 5, price: "₹32,999", duration: "9 Days", highlights: ["All Districts", "Nature", "Culture"] }
   ];
 
   const tourPackages = [
-    { id: 1, title: "Almaty Discovery", duration: "6 Days", startingPrice: "₹69,999", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80", locations: ["Almaty", "Medeu", "Big Lake"], rating: 4.8, reviews: 280 },
-    { id: 2, title: "Silk Road Heritage", duration: "9 Days", startingPrice: "₹89,999", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80", locations: ["Turkestan", "Shymkent", "Taraz"], rating: 4.9, reviews: 240 },
-    { id: 3, title: "Astana & Almaty", duration: "7 Days", startingPrice: "₹79,999", image: "https://images.unsplash.com/photo-1565192286976-9352bf89d75d?w=800&q=80", locations: ["Astana", "Almaty", "Museums"], rating: 4.7, reviews: 310 },
-    { id: 4, title: "Charyn Canyon Adventure", duration: "6 Days", startingPrice: "₹74,999", image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&q=80", locations: ["Charyn Canyon", "Kolsai Lakes", "Almaty"], rating: 4.8, reviews: 260 },
-    { id: 5, title: "Cultural Kazakhstan", duration: "10 Days", startingPrice: "₹94,999", image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80", locations: ["All Cities", "Historical Sites", "Nature"], rating: 4.9, reviews: 220 },
-    { id: 6, title: "Complete Kazakhstan", duration: "12 Days", startingPrice: "₹1,09,999", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80", locations: ["Almaty", "Astana", "Turkestan", "Canyons"], rating: 5.0, reviews: 190 }
+    { id: 1, title: "Hornbill Festival Special", duration: "7 Days", startingPrice: "₹26,999", image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=800&q=80", locations: ["Kohima", "Kisama", "Dzukou Valley"], rating: 4.9, reviews: 450 },
+    { id: 2, title: "Kohima Heritage Tour", duration: "5 Days", startingPrice: "₹21,999", image: "https://images.unsplash.com/photo-1566552881560-0be862a7c445?w=800&q=80", locations: ["Kohima", "War Cemetery", "Cathedral"], rating: 4.7, reviews: 380 },
+    { id: 3, title: "Dzukou Valley Trek", duration: "6 Days", startingPrice: "₹24,999", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80", locations: ["Dzukou Valley", "Kohima", "Khonoma"], rating: 4.8, reviews: 520 },
+    { id: 4, title: "Naga Village Tours", duration: "6 Days", startingPrice: "₹23,999", image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80", locations: ["Khonoma", "Touphema", "Longkhum"], rating: 4.7, reviews: 410 },
+    { id: 5, title: "Complete Nagaland Package", duration: "8 Days", startingPrice: "₹32,999", image: "https://images.unsplash.com/photo-1605540436563-5bca919ae766?w=800&q=80", locations: ["Kohima", "Dimapur", "Mon", "Mokokchung"], rating: 4.9, reviews: 590 },
+    { id: 6, title: "Cultural Experience Tour", duration: "5 Days", startingPrice: "₹22,999", image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80", locations: ["Kohima", "Tribal Villages", "Museums"], rating: 4.6, reviews: 340 }
   ];
 
   const activities = [
-    { id: 1, title: "Skiing in Shymbulak", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80", location: "Almaty" },
-    { id: 2, title: "Nomadic Culture", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", location: "Steppes" },
-    { id: 3, title: "Charyn Canyon Trek", image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=600&q=80", location: "Charyn National Park" },
-    { id: 4, title: "Big Almaty Lake", image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80", location: "Almaty Region" }
+    { id: 1, title: "Hornbill Festival", image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=600&q=80", location: "Festival of Festivals - December" },
+    { id: 2, title: "Dzukou Valley Trek", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", location: "Valley of Flowers - Northeast" },
+    { id: 3, title: "Naga Village Tour", image: "https://images.unsplash.com/photo-1566552881560-0be862a7c445?w=600&q=80", location: "Traditional Tribal Culture" },
+    { id: 4, title: "War Cemetery Visit", image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80", location: "World War II Memorial" }
   ];
 
   const destinations = [
-    { id: 1, name: "Almaty", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80", packages: 18 },
-    { id: 2, name: "Astana (Nur-Sultan)", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1565192286976-9352bf89d75d?w=600&q=80", packages: 14 },
-    { id: 3, name: "Shymkent", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", packages: 10 },
-    { id: 4, name: "Turkestan", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80", packages: 11 },
-    { id: 5, name: "Charyn Canyon", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=600&q=80", packages: 12 },
-    { id: 6, name: "Kolsai Lakes", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80", packages: 9 }
+    { id: 1, name: "Kohima", country: "Nagaland", image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=600&q=80", packages: 18 },
+    { id: 2, name: "Dimapur", country: "Nagaland", image: "https://images.unsplash.com/photo-1566552881560-0be862a7c445?w=600&q=80", packages: 15 },
+    { id: 3, name: "Mon", country: "Nagaland", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", packages: 12 },
+    { id: 4, name: "Mokokchung", country: "Nagaland", image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80", packages: 10 },
+    { id: 5, name: "Wokha", country: "Nagaland", image: "https://images.unsplash.com/photo-1605540436563-5bca919ae766?w=600&q=80", packages: 8 },
+    { id: 6, name: "Tuensang", country: "Nagaland", image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=600&q=80", packages: 7 }
   ];
 
   const faqs = [
-    { id: 1, question: "What is the best time to visit Kazakhstan?", answer: "April-June and September-October are ideal with pleasant weather. July-August is warm but good for mountains. December-February is cold (-15°C to -30°C) but great for skiing." },
-    { id: 2, question: "Do I need a visa for Kazakhstan?", answer: "Indian passport holders get 14-day visa-free entry. For longer stays, apply for e-visa online (2-5 working days). We assist with visa process if needed." },
-    { id: 3, question: "What is included in the package?", answer: "Packages include flights, hotels with breakfast, airport transfers, guided city tours, transport for excursions, and select attractions like Medeu and Shymbulak." },
-    { id: 4, question: "Is Kazakhstan expensive?", answer: "Moderate pricing. Hotels ₹3,000-8,000/night, meals ₹500-1,500. Transport and attractions affordable. Better value than Dubai or Europe for similar experiences." },
-    { id: 5, question: "What currency is used?", answer: "Kazakhstani Tenge (KZT) is used. 1 KZT ≈ ₹0.18. 1 USD ≈ 450-500 KZT. Cards accepted in cities. ATMs available. Carry some cash for rural areas." },
-    { id: 6, question: "Can I customize my tour?", answer: "Yes! Add trekking, extend stays, include specific regions, upgrade hotels, or arrange eagle hunting experiences. We tailor packages to your interests." }
+    { id: 1, question: "What is the best time to visit Nagaland?", answer: "October to March is ideal with pleasant weather and clear skies. December is peak season for Hornbill Festival (1-10 Dec). Avoid monsoons (Jun-Sep) as heavy rains can disrupt travel. October offers post-monsoon greenery while March has comfortable temperatures." },
+    { id: 2, question: "Do I need Inner Line Permit (ILP) for Nagaland?", answer: "Yes, ILP is mandatory for all domestic tourists except Nagaland residents. Can be obtained online through official Nagaland government portal or on arrival at entry points. Valid for 10-30 days. We assist with ILP applications for hassle-free entry." },
+    { id: 3, question: "How to reach Nagaland?", answer: "By Air: Fly to Dimapur (only airport in Nagaland) from Delhi, Kolkata, Guwahati. By Rail: Dimapur railway station connected to major cities. By Road: Well connected from Guwahati (275 km), Imphal, Shillong. We arrange pickups from all entry points." },
+    { id: 4, question: "What is special about Naga tribal culture?", answer: "Nagaland has 16 major tribes with unique traditions, colorful festivals, intricate handicrafts, and warrior heritage. Experience traditional Morungs (bachelor dormitories), witness folk dances, taste Naga cuisine, and interact with hospitable tribal communities. Hornbill Festival showcases all tribes together." },
+    { id: 5, question: "Is Nagaland safe for tourists?", answer: "Yes, Nagaland is very safe for tourists. The insurgency issues are resolved. Local people are extremely warm and welcoming. However, respect local customs, seek permission before photographing people, avoid political discussions, and travel with registered tour operators for best experience." },
+    { id: 6, question: "Can I customize my Nagaland package?", answer: "Absolutely! We offer fully customizable packages. Extend Hornbill Festival stay, add trekking routes like Dzukou Valley, include specific villages (Khonoma, Longkhum), combine with nearby states (Manipur, Meghalaya), or focus on cultural immersion. Contact us for personalized itineraries." }
   ];
 
   const reviews = [
-    { id: 1, name: "Vikram Desai", rating: 5, date: "January 2024", comment: "Amazing adventure! Charyn Canyon was stunning like Grand Canyon. Big Almaty Lake was beautiful. Almaty city was modern and clean. Unique destination!", location: "Mumbai" },
-    { id: 2, name: "Nisha Kapoor", rating: 5, date: "December 2023", comment: "Incredible experience! Skiing at Shymbulak was fantastic. Nomadic culture tour was fascinating. Astana architecture was futuristic. Highly recommend!", location: "Delhi" },
-    { id: 3, name: "Sanjay Verma", rating: 4, date: "November 2023", comment: "Great trip! Turkestan mausoleum was impressive. Food was delicious, especially beshbarmak. Only issue was language barrier but guide helped. Worth visiting!", location: "Bangalore" }
+    { id: 1, name: "Vikram Singh", rating: 5, date: "December 2023", comment: "Hornbill Festival was spectacular! Witnessed all 16 tribes showcasing their culture. Dzukou Valley trek stunning. Naga people incredibly warm. Unique experience unlike anywhere in India!", location: "Delhi" },
+    { id: 2, name: "Meera Nair", rating: 5, date: "November 2023", comment: "Amazing cultural journey! Village tours were authentic, traditional Morungs fascinating. Naga cuisine adventurous but delicious. War Cemetery moving. Nagaland exceeded all expectations!", location: "Kochi" },
+    { id: 3, name: "Aditya Sharma", rating: 4, date: "January 2023", comment: "Wonderful off-beat destination! Kohima beautiful, people friendly, landscapes gorgeous. Limited tourist facilities but that's the charm. Perfect for culture and nature lovers!", location: "Pune" }
   ];
 
   const handleFormChange = (e) => {
@@ -69,26 +69,26 @@ const KazakhstanTourPackagesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Kazakhstan Tour Packages | Mendora Travels</title>
-        <meta name="description" content="Explore Kazakhstan with our curated tour packages. Visit Almaty, Astana, Charyn Canyon, Kolsai Lakes and more with Mendora Travels." />
+        <title>Nagaland Tour Packages | Mendora Travels</title>
+        <meta name="description" content="Explore Nagaland Land of Festivals with our curated tour packages. Experience Hornbill Festival, tribal culture, Dzukou Valley and more with Mendora Travels." />
       </Helmet>
 
       <HomeNavbar />
 
-      <div className="relative h-[60vh] md:h-[70vh] bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&q=80')` }}>
+      <div className="relative h-[60vh] md:h-[70vh] bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=1920&q=80')` }}>
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-white text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Kazakhstan Tour Packages</h1>
-          <p className="text-xl md:text-2xl mb-6">Heart of Central Asia</p>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Nagaland Tour Packages</h1>
+          <p className="text-xl md:text-2xl mb-6">Land of Festivals</p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <div className="bg-blue-600 bg-opacity-90 px-6 py-3 rounded-full"><span className="font-semibold text-white">Starting from ₹69,999</span></div>
-            <div className="bg-blue-600 bg-opacity-90 px-6 py-3 rounded-full"><span className="font-semibold text-white">6-12 Days</span></div>
+            <div className="bg-blue-600 bg-opacity-90 px-6 py-3 rounded-full"><span className="font-semibold text-white">Starting from ₹21,999</span></div>
+            <div className="bg-blue-600 bg-opacity-90 px-6 py-3 rounded-full"><span className="font-semibold text-white">5-8 Days</span></div>
           </div>
         </div>
       </div>
 
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Kazakhstan Tour Packages</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Nagaland Tour Packages</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {tourPackages.map((pkg) => (
               <div key={pkg.id} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
@@ -123,13 +123,13 @@ const KazakhstanTourPackagesPage = () => {
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">About Kazakhstan Tours</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">About Nagaland Tours</h2>
           <div className="max-w-4xl mx-auto">
-            <p className="text-gray-700 mb-4">Kazakhstan is Central Asia's largest country featuring stunning mountain ranges, dramatic canyons, pristine lakes, futuristic cities, rich nomadic heritage, and the historic Silk Road. Our Kazakhstan packages offer adventure, culture, and unique experiences in this emerging destination.</p>
+            <p className="text-gray-700 mb-4">Nagaland, the "Land of Festivals," is India's most vibrant tribal state featuring 16 unique tribes, colorful Hornbill Festival, lush Dzukou Valley, warrior heritage, and warm hospitality. Our Nagaland packages offer cultural immersion, adventure, and unforgettable Northeast experiences.</p>
             {expandedAbout && (
               <div className="text-gray-700 space-y-4">
-                <p>Experience breathtaking Charyn Canyon (like Grand Canyon), turquoise Big Almaty Lake, modern Astana architecture, historic Turkestan mausoleum, world-class skiing at Shymbulak, scenic Kolsai Lakes, and traditional nomadic yurt stays. Enjoy delicious Central Asian cuisine and warm Kazakh hospitality.</p>
-                <p>Our packages include comfortable hotels, experienced guides, transport, and complete arrangements for an unforgettable Kazakhstan adventure.</p>
+                <p>Experience the magnificent Hornbill Festival showcasing all Naga tribes, trek through stunning Dzukou Valley (Valley of Flowers), visit traditional Naga villages like Khonoma (Asia's first green village), explore historic War Cemetery, witness intricate bamboo and wood handicrafts, taste unique Naga cuisine, and interact with welcoming tribal communities.</p>
+                <p>Our packages include comfortable accommodations, experienced local guides who understand Naga culture, Inner Line Permit assistance, all transfers, and complete arrangements for a safe, authentic, and memorable Nagaland experience throughout your cultural journey.</p>
               </div>
             )}
             <button onClick={() => setExpandedAbout(!expandedAbout)} className="text-blue-600 font-semibold mt-4 flex items-center gap-2 hover:text-blue-700">
@@ -142,7 +142,7 @@ const KazakhstanTourPackagesPage = () => {
 
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Top Activities in Kazakhstan</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Top Activities in Nagaland</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {activities.map((activity) => (
               <div key={activity.id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
@@ -157,8 +157,7 @@ const KazakhstanTourPackagesPage = () => {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            ))}  </div>
         </div>
       </section>
 
@@ -210,7 +209,7 @@ const KazakhstanTourPackagesPage = () => {
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Kazakhstan Destinations</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Nagaland Destinations</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {destinations.map((dest) => (
               <div key={dest.id} className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
@@ -267,15 +266,15 @@ const KazakhstanTourPackagesPage = () => {
       <section className="py-16 bg-blue-600 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Plan Your Kazakhstan Trip</h2>
-            <p className="mb-8">Get in touch with our travel experts to customize your perfect Kazakhstan adventure</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Plan Your Nagaland Trip</h2>
+            <p className="mb-8">Get in touch with our travel experts to customize your perfect Nagaland adventure</p>
             <form onSubmit={handleFormSubmit} className="bg-white rounded-lg p-8 text-gray-800">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleFormChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600" required />
                 <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleFormChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600" required />
               </div>
               <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleFormChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600 mb-4" required />
-              <textarea name="message" placeholder="Tell us about your dream Kazakhstan trip..." value={formData.message} onChange={handleFormChange} rows="4" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600 mb-4" required></textarea>
+              <textarea name="message" placeholder="Tell us about your dream Nagaland trip..." value={formData.message} onChange={handleFormChange} rows="4" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600 mb-4" required></textarea>
               <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Submit Inquiry</button>
             </form>
           </div>
@@ -285,4 +284,4 @@ const KazakhstanTourPackagesPage = () => {
   );
 };
 
-export default KazakhstanTourPackagesPage;
+export default NagalandTourPackagesPage;

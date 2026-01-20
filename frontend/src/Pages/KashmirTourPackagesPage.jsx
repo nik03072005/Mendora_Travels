@@ -3,56 +3,56 @@ import { Helmet } from 'react-helmet-async';
 import HomeNavbar from '../Components/HomeNavbar';
 import { FaMapMarkerAlt, FaStar, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
-const KazakhstanTourPackagesPage = () => {
+const KashmirTourPackagesPage = () => {
   const [expandedAbout, setExpandedAbout] = useState(false);
   const [activeFAQ, setActiveFAQ] = useState(null);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
 
   const groupTours = [
-    { id: 1, name: "Kazakhstan Explorer", date: "May 15, 2026", seats: 12, booked: 8, price: "₹69,999", duration: "7 Days", highlights: ["Almaty City", "Medeu", "Big Almaty Lake"] },
-    { id: 2, name: "Silk Road Tour", date: "June 20, 2026", seats: 10, booked: 6, price: "₹89,999", duration: "9 Days", highlights: ["Turkestan", "Historic Sites", "Ancient Cities"] },
-    { id: 3, name: "Almaty & Astana", date: "July 25, 2026", seats: 15, booked: 10, price: "₹79,999", duration: "8 Days", highlights: ["Two Capitals", "Modern & Ancient", "Culture"] },
-    { id: 4, name: "Complete Kazakhstan", date: "September 10, 2026", seats: 8, booked: 5, price: "₹94,999", duration: "10 Days", highlights: ["All Major Cities", "Canyons", "Nature Reserves"] }
+    { id: 1, name: "Kashmir Paradise", date: "April 20, 2026", seats: 15, booked: 11, price: "₹21,999", duration: "6 Days", highlights: ["Srinagar", "Gulmarg", "Pahalgam"] },
+    { id: 2, name: "Gulmarg Special", date: "May 15, 2026", seats: 12, booked: 9, price: "₹24,999", duration: "5 Days", highlights: ["Gondola Ride", "Snow Activities", "Meadows"] },
+    { id: 3, name: "Complete Kashmir", date: "July 10, 2026", seats: 10, booked: 6, price: "₹29,999", duration: "8 Days", highlights: ["Srinagar", "Sonamarg", "All Valleys"] },
+    { id: 4, name: "Houseboat Experience", date: "October 5, 2026", seats: 8, booked: 5, price: "₹32,999", duration: "7 Days", highlights: ["Dal Lake", "Shikara Ride", "Gardens"] }
   ];
 
   const tourPackages = [
-    { id: 1, title: "Almaty Discovery", duration: "6 Days", startingPrice: "₹69,999", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80", locations: ["Almaty", "Medeu", "Big Lake"], rating: 4.8, reviews: 280 },
-    { id: 2, title: "Silk Road Heritage", duration: "9 Days", startingPrice: "₹89,999", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80", locations: ["Turkestan", "Shymkent", "Taraz"], rating: 4.9, reviews: 240 },
-    { id: 3, title: "Astana & Almaty", duration: "7 Days", startingPrice: "₹79,999", image: "https://images.unsplash.com/photo-1565192286976-9352bf89d75d?w=800&q=80", locations: ["Astana", "Almaty", "Museums"], rating: 4.7, reviews: 310 },
-    { id: 4, title: "Charyn Canyon Adventure", duration: "6 Days", startingPrice: "₹74,999", image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&q=80", locations: ["Charyn Canyon", "Kolsai Lakes", "Almaty"], rating: 4.8, reviews: 260 },
-    { id: 5, title: "Cultural Kazakhstan", duration: "10 Days", startingPrice: "₹94,999", image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80", locations: ["All Cities", "Historical Sites", "Nature"], rating: 4.9, reviews: 220 },
-    { id: 6, title: "Complete Kazakhstan", duration: "12 Days", startingPrice: "₹1,09,999", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80", locations: ["Almaty", "Astana", "Turkestan", "Canyons"], rating: 5.0, reviews: 190 }
+    { id: 1, title: "Srinagar Delights", duration: "5 Days", startingPrice: "₹18,999", image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=800&q=80", locations: ["Srinagar", "Dal Lake", "Mughal Gardens"], rating: 4.9, reviews: 850 },
+    { id: 2, title: "Gulmarg Skiing Adventure", duration: "6 Days", startingPrice: "₹24,999", image: "https://images.unsplash.com/photo-1605540436563-5bca919ae766?w=800&q=80", locations: ["Gulmarg", "Gondola", "Alpather Lake"], rating: 5.0, reviews: 920 },
+    { id: 3, title: "Pahalgam Valley Explorer", duration: "6 Days", startingPrice: "₹22,999", image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80", locations: ["Pahalgam", "Betaab Valley", "Aru Valley"], rating: 4.8, reviews: 780 },
+    { id: 4, title: "Sonmarg Meadows Tour", duration: "5 Days", startingPrice: "₹21,999", image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80", locations: ["Sonmarg", "Thajiwas Glacier", "Vishansar Lake"], rating: 4.7, reviews: 690 },
+    { id: 5, title: "Complete Kashmir Package", duration: "8 Days", startingPrice: "₹34,999", image: "https://images.unsplash.com/photo-1605540436563-5bca919ae766?w=800&q=80", locations: ["Srinagar", "Gulmarg", "Pahalgam", "Sonmarg"], rating: 4.9, reviews: 1020 },
+    { id: 6, title: "Houseboat Experience", duration: "4 Days", startingPrice: "₹19,999", image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=800&q=80", locations: ["Dal Lake", "Nigeen Lake", "Srinagar"], rating: 4.8, reviews: 620 }
   ];
 
   const activities = [
-    { id: 1, title: "Skiing in Shymbulak", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80", location: "Almaty" },
-    { id: 2, title: "Nomadic Culture", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", location: "Steppes" },
-    { id: 3, title: "Charyn Canyon Trek", image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=600&q=80", location: "Charyn National Park" },
-    { id: 4, title: "Big Almaty Lake", image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80", location: "Almaty Region" }
+    { id: 1, title: "Shikara Ride", image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=600&q=80", location: "Dal Lake, Srinagar" },
+    { id: 2, title: "Gulmarg Gondola", image: "https://images.unsplash.com/photo-1605540436563-5bca919ae766?w=600&q=80", location: "World's Highest Cable Car" },
+    { id: 3, title: "Tulip Garden", image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=600&q=80", location: "Asia's Largest Tulip Garden" },
+    { id: 4, title: "Mughal Gardens", image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=600&q=80", location: "Shalimar Bagh, Nishat Bagh" }
   ];
 
   const destinations = [
-    { id: 1, name: "Almaty", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80", packages: 18 },
-    { id: 2, name: "Astana (Nur-Sultan)", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1565192286976-9352bf89d75d?w=600&q=80", packages: 14 },
-    { id: 3, name: "Shymkent", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", packages: 10 },
-    { id: 4, name: "Turkestan", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80", packages: 11 },
-    { id: 5, name: "Charyn Canyon", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=600&q=80", packages: 12 },
-    { id: 6, name: "Kolsai Lakes", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80", packages: 9 }
+    { id: 1, name: "Srinagar", country: "Kashmir", image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=600&q=80", packages: 25 },
+    { id: 2, name: "Gulmarg", country: "Kashmir", image: "https://images.unsplash.com/photo-1605540436563-5bca919ae766?w=600&q=80", packages: 22 },
+    { id: 3, name: "Pahalgam", country: "Kashmir", image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=600&q=80", packages: 20 },
+    { id: 4, name: "Sonmarg", country: "Kashmir", image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80", packages: 18 },
+    { id: 5, name: "Yusmarg", country: "Kashmir", image: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=600&q=80", packages: 12 },
+    { id: 6, name: "Doodhpathri", country: "Kashmir", image: "https://images.unsplash.com/photo-1605540436563-5bca919ae766?w=600&q=80", packages: 10 }
   ];
 
   const faqs = [
-    { id: 1, question: "What is the best time to visit Kazakhstan?", answer: "April-June and September-October are ideal with pleasant weather. July-August is warm but good for mountains. December-February is cold (-15°C to -30°C) but great for skiing." },
-    { id: 2, question: "Do I need a visa for Kazakhstan?", answer: "Indian passport holders get 14-day visa-free entry. For longer stays, apply for e-visa online (2-5 working days). We assist with visa process if needed." },
-    { id: 3, question: "What is included in the package?", answer: "Packages include flights, hotels with breakfast, airport transfers, guided city tours, transport for excursions, and select attractions like Medeu and Shymbulak." },
-    { id: 4, question: "Is Kazakhstan expensive?", answer: "Moderate pricing. Hotels ₹3,000-8,000/night, meals ₹500-1,500. Transport and attractions affordable. Better value than Dubai or Europe for similar experiences." },
-    { id: 5, question: "What currency is used?", answer: "Kazakhstani Tenge (KZT) is used. 1 KZT ≈ ₹0.18. 1 USD ≈ 450-500 KZT. Cards accepted in cities. ATMs available. Carry some cash for rural areas." },
-    { id: 6, question: "Can I customize my tour?", answer: "Yes! Add trekking, extend stays, include specific regions, upgrade hotels, or arrange eagle hunting experiences. We tailor packages to your interests." }
+    { id: 1, question: "What is the best time to visit Kashmir?", answer: "April to October is ideal for Kashmir. Spring (Apr-May) offers blooming gardens and tulips. Summer (Jun-Aug) has pleasant weather. Autumn (Sep-Oct) showcases golden chinars. Winter (Dec-Feb) is perfect for snow lovers and skiing in Gulmarg." },
+    { id: 2, question: "Is Kashmir safe for tourists?", answer: "Yes, Kashmir is safe for tourists. The situation has improved significantly. Tourist areas like Srinagar, Gulmarg, Pahalgam are well-protected. Follow local guidelines, stay updated on advisories, and travel with registered tour operators for a safe experience." },
+    { id: 3, question: "Do I need any permits to visit Kashmir?", answer: "Indian citizens don't need special permits for most Kashmir areas. Foreign nationals require Protected Area Permit (PAP) for certain regions. Valid ID proof is mandatory. We assist with all documentation and permit arrangements for hassle-free travel." },
+    { id: 4, question: "What are the must-do activities in Kashmir?", answer: "Must-try: Shikara ride on Dal Lake, stay in houseboat, Gulmarg Gondola ride, skiing in winter, visit Mughal Gardens, explore Pahalgam valleys, trek to Thajiwas Glacier, shop for Pashmina shawls, taste Kashmiri Wazwan cuisine." },
+    { id: 5, question: "What should I pack for Kashmir?", answer: "Pack warm clothes (even in summer, evenings are cold), comfortable walking shoes, sunscreen, sunglasses, medicines, power bank, camera. Winter requires heavy woolens, thermals, gloves, caps. Layers work best as temperature varies throughout the day." },
+    { id: 6, question: "Can I customize my Kashmir package?", answer: "Absolutely! We offer fully customizable packages. Add extra days, include specific destinations like Yusmarg or Doodhpathri, upgrade to deluxe houseboats, include adventure activities, plan honeymoon specials, or combine with Ladakh. Contact us for personalized itineraries." }
   ];
 
   const reviews = [
-    { id: 1, name: "Vikram Desai", rating: 5, date: "January 2024", comment: "Amazing adventure! Charyn Canyon was stunning like Grand Canyon. Big Almaty Lake was beautiful. Almaty city was modern and clean. Unique destination!", location: "Mumbai" },
-    { id: 2, name: "Nisha Kapoor", rating: 5, date: "December 2023", comment: "Incredible experience! Skiing at Shymbulak was fantastic. Nomadic culture tour was fascinating. Astana architecture was futuristic. Highly recommend!", location: "Delhi" },
-    { id: 3, name: "Sanjay Verma", rating: 4, date: "November 2023", comment: "Great trip! Turkestan mausoleum was impressive. Food was delicious, especially beshbarmak. Only issue was language barrier but guide helped. Worth visiting!", location: "Bangalore" }
+    { id: 1, name: "Anjali Verma", rating: 5, date: "May 2023", comment: "Kashmir is truly paradise on earth! Dal Lake shikara ride was magical, Gulmarg breathtaking, and Mughal Gardens stunning. Houseboat stay was unique experience. Highly recommend!", location: "Delhi" },
+    { id: 2, name: "Rohan Kapoor", rating: 5, date: "June 2023", comment: "Perfect honeymoon destination! Pahalgam valleys were gorgeous, Gulmarg Gondola thrilling. Kashmiri hospitality and food amazing. Best decision to visit Kashmir. Will come back again!", location: "Mumbai" },
+    { id: 3, name: "Sanjay Reddy", rating: 4, date: "April 2023", comment: "Beautiful experience! Tulip Garden in full bloom was spectacular. Sonmarg's natural beauty incredible. Only downside was unpredictable weather. Overall fantastic trip with family!", location: "Hyderabad" }
   ];
 
   const handleFormChange = (e) => {
@@ -69,26 +69,26 @@ const KazakhstanTourPackagesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Kazakhstan Tour Packages | Mendora Travels</title>
-        <meta name="description" content="Explore Kazakhstan with our curated tour packages. Visit Almaty, Astana, Charyn Canyon, Kolsai Lakes and more with Mendora Travels." />
+        <title>Kashmir Tour Packages | Mendora Travels</title>
+        <meta name="description" content="Explore Kashmir Paradise on Earth with our curated tour packages. Visit Srinagar, Gulmarg, Pahalgam, Sonmarg and more with Mendora Travels." />
       </Helmet>
 
       <HomeNavbar />
 
-      <div className="relative h-[60vh] md:h-[70vh] bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&q=80')` }}>
+      <div className="relative h-[60vh] md:h-[70vh] bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=1920&q=80')` }}>
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-white text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Kazakhstan Tour Packages</h1>
-          <p className="text-xl md:text-2xl mb-6">Heart of Central Asia</p>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Kashmir Tour Packages</h1>
+          <p className="text-xl md:text-2xl mb-6">Paradise on Earth</p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <div className="bg-blue-600 bg-opacity-90 px-6 py-3 rounded-full"><span className="font-semibold text-white">Starting from ₹69,999</span></div>
-            <div className="bg-blue-600 bg-opacity-90 px-6 py-3 rounded-full"><span className="font-semibold text-white">6-12 Days</span></div>
+            <div className="bg-blue-600 bg-opacity-90 px-6 py-3 rounded-full"><span className="font-semibold text-white">Starting from ₹18,999</span></div>
+            <div className="bg-blue-600 bg-opacity-90 px-6 py-3 rounded-full"><span className="font-semibold text-white">4-8 Days</span></div>
           </div>
         </div>
       </div>
 
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Kazakhstan Tour Packages</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Kashmir Tour Packages</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {tourPackages.map((pkg) => (
               <div key={pkg.id} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
@@ -123,13 +123,13 @@ const KazakhstanTourPackagesPage = () => {
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">About Kazakhstan Tours</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">About Kashmir Tours</h2>
           <div className="max-w-4xl mx-auto">
-            <p className="text-gray-700 mb-4">Kazakhstan is Central Asia's largest country featuring stunning mountain ranges, dramatic canyons, pristine lakes, futuristic cities, rich nomadic heritage, and the historic Silk Road. Our Kazakhstan packages offer adventure, culture, and unique experiences in this emerging destination.</p>
+            <p className="text-gray-700 mb-4">Kashmir, rightly called "Paradise on Earth," is India's crown jewel featuring pristine Dal Lake, magnificent Mughal Gardens, snow-capped mountains, lush valleys, and warm hospitality. Our Kashmir packages offer romance, adventure, and unforgettable Himalayan experiences.</p>
             {expandedAbout && (
               <div className="text-gray-700 space-y-4">
-                <p>Experience breathtaking Charyn Canyon (like Grand Canyon), turquoise Big Almaty Lake, modern Astana architecture, historic Turkestan mausoleum, world-class skiing at Shymbulak, scenic Kolsai Lakes, and traditional nomadic yurt stays. Enjoy delicious Central Asian cuisine and warm Kazakh hospitality.</p>
-                <p>Our packages include comfortable hotels, experienced guides, transport, and complete arrangements for an unforgettable Kazakhstan adventure.</p>
+                <p>Experience the iconic Shikara ride on Dal Lake, stay in traditional houseboats, witness Asia's largest Tulip Garden in bloom, ski in Gulmarg's snow paradise, explore Pahalgam's enchanting valleys, visit ancient Mughal Gardens, trek to Thajiwas Glacier in Sonmarg, and savor authentic Kashmiri Wazwan cuisine.</p>
+                <p>Our packages include comfortable accommodations ranging from houseboats to luxury hotels, experienced guides who know Kashmir intimately, all transfers, and complete arrangements for a safe, memorable, and hassle-free Kashmir experience throughout your journey.</p>
               </div>
             )}
             <button onClick={() => setExpandedAbout(!expandedAbout)} className="text-blue-600 font-semibold mt-4 flex items-center gap-2 hover:text-blue-700">
@@ -142,7 +142,7 @@ const KazakhstanTourPackagesPage = () => {
 
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Top Activities in Kazakhstan</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Top Activities in Kashmir</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {activities.map((activity) => (
               <div key={activity.id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
@@ -157,8 +157,7 @@ const KazakhstanTourPackagesPage = () => {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            ))}  </div>
         </div>
       </section>
 
@@ -210,7 +209,7 @@ const KazakhstanTourPackagesPage = () => {
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Kazakhstan Destinations</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Kashmir Destinations</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {destinations.map((dest) => (
               <div key={dest.id} className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
@@ -267,15 +266,15 @@ const KazakhstanTourPackagesPage = () => {
       <section className="py-16 bg-blue-600 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Plan Your Kazakhstan Trip</h2>
-            <p className="mb-8">Get in touch with our travel experts to customize your perfect Kazakhstan adventure</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Plan Your Kashmir Trip</h2>
+            <p className="mb-8">Get in touch with our travel experts to customize your perfect Kashmir adventure</p>
             <form onSubmit={handleFormSubmit} className="bg-white rounded-lg p-8 text-gray-800">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleFormChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600" required />
                 <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleFormChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600" required />
               </div>
               <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleFormChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600 mb-4" required />
-              <textarea name="message" placeholder="Tell us about your dream Kazakhstan trip..." value={formData.message} onChange={handleFormChange} rows="4" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600 mb-4" required></textarea>
+              <textarea name="message" placeholder="Tell us about your dream Kashmir trip..." value={formData.message} onChange={handleFormChange} rows="4" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600 mb-4" required></textarea>
               <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Submit Inquiry</button>
             </form>
           </div>
@@ -285,4 +284,4 @@ const KazakhstanTourPackagesPage = () => {
   );
 };
 
-export default KazakhstanTourPackagesPage;
+export default KashmirTourPackagesPage;

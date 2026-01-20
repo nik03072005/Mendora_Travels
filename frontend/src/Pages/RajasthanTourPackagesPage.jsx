@@ -3,56 +3,56 @@ import { Helmet } from 'react-helmet-async';
 import HomeNavbar from '../Components/HomeNavbar';
 import { FaMapMarkerAlt, FaStar, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
-const KazakhstanTourPackagesPage = () => {
+const RajasthanTourPackagesPage = () => {
   const [expandedAbout, setExpandedAbout] = useState(false);
   const [activeFAQ, setActiveFAQ] = useState(null);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
 
   const groupTours = [
-    { id: 1, name: "Kazakhstan Explorer", date: "May 15, 2026", seats: 12, booked: 8, price: "₹69,999", duration: "7 Days", highlights: ["Almaty City", "Medeu", "Big Almaty Lake"] },
-    { id: 2, name: "Silk Road Tour", date: "June 20, 2026", seats: 10, booked: 6, price: "₹89,999", duration: "9 Days", highlights: ["Turkestan", "Historic Sites", "Ancient Cities"] },
-    { id: 3, name: "Almaty & Astana", date: "July 25, 2026", seats: 15, booked: 10, price: "₹79,999", duration: "8 Days", highlights: ["Two Capitals", "Modern & Ancient", "Culture"] },
-    { id: 4, name: "Complete Kazakhstan", date: "September 10, 2026", seats: 8, booked: 5, price: "₹94,999", duration: "10 Days", highlights: ["All Major Cities", "Canyons", "Nature Reserves"] }
+    { id: 1, name: "Royal Rajasthan", date: "October 20, 2026", seats: 15, booked: 12, price: "₹22,999", duration: "7 Days", highlights: ["Jaipur", "Udaipur", "Jaisalmer"] },
+    { id: 2, name: "Desert Safari Special", date: "November 15, 2026", seats: 12, booked: 9, price: "₹27,999", duration: "6 Days", highlights: ["Camel Safari", "Desert Camping", "Folk Dance"] },
+    { id: 3, name: "Heritage Tour", date: "January 10, 2027", seats: 10, booked: 6, price: "₹32,999", duration: "9 Days", highlights: ["Forts & Palaces", "Culture", "History"] },
+    { id: 4, name: "Complete Rajasthan", date: "March 5, 2027", seats: 8, booked: 5, price: "₹37,999", duration: "10 Days", highlights: ["All Major Cities", "Desert", "Lakes"] }
   ];
 
   const tourPackages = [
-    { id: 1, title: "Almaty Discovery", duration: "6 Days", startingPrice: "₹69,999", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80", locations: ["Almaty", "Medeu", "Big Lake"], rating: 4.8, reviews: 280 },
-    { id: 2, title: "Silk Road Heritage", duration: "9 Days", startingPrice: "₹89,999", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80", locations: ["Turkestan", "Shymkent", "Taraz"], rating: 4.9, reviews: 240 },
-    { id: 3, title: "Astana & Almaty", duration: "7 Days", startingPrice: "₹79,999", image: "https://images.unsplash.com/photo-1565192286976-9352bf89d75d?w=800&q=80", locations: ["Astana", "Almaty", "Museums"], rating: 4.7, reviews: 310 },
-    { id: 4, title: "Charyn Canyon Adventure", duration: "6 Days", startingPrice: "₹74,999", image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&q=80", locations: ["Charyn Canyon", "Kolsai Lakes", "Almaty"], rating: 4.8, reviews: 260 },
-    { id: 5, title: "Cultural Kazakhstan", duration: "10 Days", startingPrice: "₹94,999", image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80", locations: ["All Cities", "Historical Sites", "Nature"], rating: 4.9, reviews: 220 },
-    { id: 6, title: "Complete Kazakhstan", duration: "12 Days", startingPrice: "₹1,09,999", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80", locations: ["Almaty", "Astana", "Turkestan", "Canyons"], rating: 5.0, reviews: 190 }
+    { id: 1, title: "Golden Triangle Special", duration: "7 Days", startingPrice: "₹19,999", image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80", locations: ["Jaipur", "Udaipur", "Jaisalmer"], rating: 4.9, reviews: 1280 },
+    { id: 2, title: "Jaipur Udaipur Delight", duration: "6 Days", startingPrice: "₹22,999", image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=800&q=80", locations: ["Jaipur", "Udaipur", "Pushkar"], rating: 4.8, reviews: 1050 },
+    { id: 3, title: "Desert Safari Adventure", duration: "5 Days", startingPrice: "₹21,999", image: "https://images.unsplash.com/photo-1477587458883-47145ed94245?w=800&q=80", locations: ["Jaisalmer", "Sam Dunes", "Camel Safari"], rating: 4.9, reviews: 980 },
+    { id: 4, title: "Heritage Forts Tour", duration: "8 Days", startingPrice: "₹29,999", image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=800&q=80", locations: ["Jaipur", "Jodhpur", "Bikaner", "Jaisalmer"], rating: 4.7, reviews: 890 },
+    { id: 5, title: "Complete Rajasthan Package", duration: "10 Days", startingPrice: "₹39,999", image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=800&q=80", locations: ["Jaipur", "Udaipur", "Jodhpur", "Jaisalmer", "Pushkar"], rating: 4.9, reviews: 1450 },
+    { id: 6, title: "Royal Experience", duration: "7 Days", startingPrice: "₹34,999", image: "https://images.unsplash.com/photo-1477587458883-47145ed94245?w=800&q=80", locations: ["Heritage Hotels", "Palace Tours", "Royal Dining"], rating: 5.0, reviews: 720 }
   ];
 
   const activities = [
-    { id: 1, title: "Skiing in Shymbulak", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80", location: "Almaty" },
-    { id: 2, title: "Nomadic Culture", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", location: "Steppes" },
-    { id: 3, title: "Charyn Canyon Trek", image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=600&q=80", location: "Charyn National Park" },
-    { id: 4, title: "Big Almaty Lake", image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80", location: "Almaty Region" }
+    { id: 1, title: "Camel Safari", image: "https://images.unsplash.com/photo-1477587458883-47145ed94245?w=600&q=80", location: "Thar Desert, Jaisalmer" },
+    { id: 2, title: "Palace Tours", image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80", location: "Jaipur & Udaipur" },
+    { id: 3, title: "Desert Camping", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80", location: "Sam Sand Dunes" },
+    { id: 4, title: "Folk Dance Shows", image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=600&q=80", location: "Cultural Performances" }
   ];
 
   const destinations = [
-    { id: 1, name: "Almaty", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80", packages: 18 },
-    { id: 2, name: "Astana (Nur-Sultan)", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1565192286976-9352bf89d75d?w=600&q=80", packages: 14 },
-    { id: 3, name: "Shymkent", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", packages: 10 },
-    { id: 4, name: "Turkestan", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=600&q=80", packages: 11 },
-    { id: 5, name: "Charyn Canyon", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=600&q=80", packages: 12 },
-    { id: 6, name: "Kolsai Lakes", country: "Kazakhstan", image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80", packages: 9 }
+    { id: 1, name: "Jaipur", country: "Rajasthan", image: "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=600&q=80", packages: 35 },
+    { id: 2, name: "Udaipur", country: "Rajasthan", image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=600&q=80", packages: 32 },
+    { id: 3, name: "Jodhpur", country: "Rajasthan", image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80", packages: 28 },
+    { id: 4, name: "Jaisalmer", country: "Rajasthan", image: "https://images.unsplash.com/photo-1477587458883-47145ed94245?w=600&q=80", packages: 25 },
+    { id: 5, name: "Pushkar", country: "Rajasthan", image: "https://images.unsplash.com/photo-1566552881560-0be862a7c445?w=600&q=80", packages: 20 },
+    { id: 6, name: "Bikaner", country: "Rajasthan", image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80", packages: 18 }
   ];
 
   const faqs = [
-    { id: 1, question: "What is the best time to visit Kazakhstan?", answer: "April-June and September-October are ideal with pleasant weather. July-August is warm but good for mountains. December-February is cold (-15°C to -30°C) but great for skiing." },
-    { id: 2, question: "Do I need a visa for Kazakhstan?", answer: "Indian passport holders get 14-day visa-free entry. For longer stays, apply for e-visa online (2-5 working days). We assist with visa process if needed." },
-    { id: 3, question: "What is included in the package?", answer: "Packages include flights, hotels with breakfast, airport transfers, guided city tours, transport for excursions, and select attractions like Medeu and Shymbulak." },
-    { id: 4, question: "Is Kazakhstan expensive?", answer: "Moderate pricing. Hotels ₹3,000-8,000/night, meals ₹500-1,500. Transport and attractions affordable. Better value than Dubai or Europe for similar experiences." },
-    { id: 5, question: "What currency is used?", answer: "Kazakhstani Tenge (KZT) is used. 1 KZT ≈ ₹0.18. 1 USD ≈ 450-500 KZT. Cards accepted in cities. ATMs available. Carry some cash for rural areas." },
-    { id: 6, question: "Can I customize my tour?", answer: "Yes! Add trekking, extend stays, include specific regions, upgrade hotels, or arrange eagle hunting experiences. We tailor packages to your interests." }
+    { id: 1, question: "What is the best time to visit Rajasthan?", answer: "October to March is ideal with pleasant weather and comfortable temperatures. October-November has festivals like Diwali, Pushkar Fair. December-February is peak season with cool weather perfect for sightseeing and desert safari. Summer (April-June) is extremely hot (40-45°C). Monsoon (July-September) is sparse but brings some relief." },
+    { id: 2, question: "Should I cover desert or cities first?", answer: "Depends on your interest. Start with cities (Jaipur, Udaipur, Jodhpur) for forts, palaces, culture, then desert (Jaisalmer) for unique experience. Or reverse for gradual build-up. Complete packages cover both. Desert is best in winter evenings. We design optimal routes minimizing travel time and maximizing experience." },
+    { id: 3, question: "Can I stay in heritage hotels?", answer: "Absolutely! Rajasthan has numerous heritage hotels - converted palaces, havelis, forts. Options range budget (₹3,000/night) to luxury (₹50,000+/night). Popular: Umaid Bhawan (Jodhpur), Lake Palace (Udaipur), Samode Palace (Jaipur). Book early, especially peak season. We include heritage hotels in our premium packages or can add to any package." },
+    { id: 4, question: "What should I expect in camel safari?", answer: "Camel safari in Thar Desert (Jaisalmer) - 2 hours to full-day options. Expect slow-paced ride through dunes, sunset views, desert camping with cultural program, traditional Rajasthani dinner, folk music and dance. Can be bumpy, so wear comfortable clothes. Best time: Oct-Mar. We arrange experienced guides and comfortable camps." },
+    { id: 5, question: "What is the approximate budget?", answer: "Budget trip: ₹15,000-25,000 per person for 7 days (budget hotels, public transport, basic meals). Mid-range: ₹30,000-50,000 (good hotels, private car, guided tours). Luxury: ₹70,000+ (heritage hotels, premium services). Add ₹5,000-10,000 for desert camping. Prices include accommodation, transport, meals, entry fees. Flight/train extra." },
+    { id: 6, question: "Can I customize my Rajasthan package?", answer: "Absolutely! Add specific forts (Amber, Mehrangarh, Jaisalmer), include Ranthambore tiger safari, extend stays in favorite cities, upgrade to heritage hotels, add camel/jeep safari, include cultural programs, plan destination weddings, or focus on photography. We create personalized itineraries matching your interests, budget, and pace." }
   ];
 
   const reviews = [
-    { id: 1, name: "Vikram Desai", rating: 5, date: "January 2024", comment: "Amazing adventure! Charyn Canyon was stunning like Grand Canyon. Big Almaty Lake was beautiful. Almaty city was modern and clean. Unique destination!", location: "Mumbai" },
-    { id: 2, name: "Nisha Kapoor", rating: 5, date: "December 2023", comment: "Incredible experience! Skiing at Shymbulak was fantastic. Nomadic culture tour was fascinating. Astana architecture was futuristic. Highly recommend!", location: "Delhi" },
-    { id: 3, name: "Sanjay Verma", rating: 4, date: "November 2023", comment: "Great trip! Turkestan mausoleum was impressive. Food was delicious, especially beshbarmak. Only issue was language barrier but guide helped. Worth visiting!", location: "Bangalore" }
+    { id: 1, name: "Neha Gupta", rating: 5, date: "February 2023", comment: "Royal experience! Jaipur's palaces magnificent, Udaipur's lakes romantic, Jaisalmer's desert magical. Camel safari sunset unforgettable. Heritage hotel stay felt like royalty. Rajasthan exceeded expectations!", location: "Kolkata" },
+    { id: 2, name: "Karthik Reddy", rating: 5, date: "January 2023", comment: "Amazing cultural journey! Every fort tells story, every city unique. Food delicious, people warm. Desert camping highlight with folk dance. Well-organized trip. Rajasthan is incredible!", location: "Hyderabad" },
+    { id: 3, name: "Riya Singh", rating: 4, date: "December 2022", comment: "Fantastic family vacation! Kids loved camel ride, forts fascinating, colors everywhere beautiful. Pushkar peaceful. Only issue was winter fog affecting some mornings. Overall wonderful experience!", location: "Pune" }
   ];
 
   const handleFormChange = (e) => {
@@ -69,26 +69,26 @@ const KazakhstanTourPackagesPage = () => {
   return (
     <>
       <Helmet>
-        <title>Kazakhstan Tour Packages | Mendora Travels</title>
-        <meta name="description" content="Explore Kazakhstan with our curated tour packages. Visit Almaty, Astana, Charyn Canyon, Kolsai Lakes and more with Mendora Travels." />
+        <title>Rajasthan Tour Packages | Mendora Travels</title>
+        <meta name="description" content="Explore Rajasthan Land of Kings with our curated tour packages. Visit Jaipur, Udaipur, Jaisalmer, experience desert safari, palaces and more with Mendora Travels." />
       </Helmet>
 
       <HomeNavbar />
 
-      <div className="relative h-[60vh] md:h-[70vh] bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1920&q=80')` }}>
+      <div className="relative h-[60vh] md:h-[70vh] bg-cover bg-center bg-no-repeat" style={{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1524492412937-b28074a5d7da?w=1920&q=80')` }}>
         <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-white text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Kazakhstan Tour Packages</h1>
-          <p className="text-xl md:text-2xl mb-6">Heart of Central Asia</p>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Rajasthan Tour Packages</h1>
+          <p className="text-xl md:text-2xl mb-6">Land of Kings</p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <div className="bg-blue-600 bg-opacity-90 px-6 py-3 rounded-full"><span className="font-semibold text-white">Starting from ₹69,999</span></div>
-            <div className="bg-blue-600 bg-opacity-90 px-6 py-3 rounded-full"><span className="font-semibold text-white">6-12 Days</span></div>
+            <div className="bg-blue-600 bg-opacity-90 px-6 py-3 rounded-full"><span className="font-semibold text-white">Starting from ₹19,999</span></div>
+            <div className="bg-blue-600 bg-opacity-90 px-6 py-3 rounded-full"><span className="font-semibold text-white">5-10 Days</span></div>
           </div>
         </div>
       </div>
 
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Kazakhstan Tour Packages</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Rajasthan Tour Packages</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {tourPackages.map((pkg) => (
               <div key={pkg.id} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-300">
@@ -123,13 +123,13 @@ const KazakhstanTourPackagesPage = () => {
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">About Kazakhstan Tours</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">About Rajasthan Tours</h2>
           <div className="max-w-4xl mx-auto">
-            <p className="text-gray-700 mb-4">Kazakhstan is Central Asia's largest country featuring stunning mountain ranges, dramatic canyons, pristine lakes, futuristic cities, rich nomadic heritage, and the historic Silk Road. Our Kazakhstan packages offer adventure, culture, and unique experiences in this emerging destination.</p>
+            <p className="text-gray-700 mb-4">Rajasthan, the "Land of Kings," is India's most colorful and majestic state featuring magnificent forts and palaces, golden Thar Desert, vibrant culture, rich heritage, and royal hospitality. Our Rajasthan packages offer history, adventure, romance, and unforgettable royal experiences.</p>
             {expandedAbout && (
               <div className="text-gray-700 space-y-4">
-                <p>Experience breathtaking Charyn Canyon (like Grand Canyon), turquoise Big Almaty Lake, modern Astana architecture, historic Turkestan mausoleum, world-class skiing at Shymbulak, scenic Kolsai Lakes, and traditional nomadic yurt stays. Enjoy delicious Central Asian cuisine and warm Kazakh hospitality.</p>
-                <p>Our packages include comfortable hotels, experienced guides, transport, and complete arrangements for an unforgettable Kazakhstan adventure.</p>
+                <p>Experience the pink city Jaipur with iconic Hawa Mahal and Amber Fort, romantic Udaipur with beautiful Lake Palace and City Palace, blue city Jodhpur with mighty Mehrangarh Fort, golden city Jaisalmer with stunning desert fort and camel safari in Thar Desert, spiritual Pushkar with holy lake, explore magnificent palaces converted to heritage hotels, and witness colorful folk performances.</p>
+                <p>Our packages include comfortable hotels (from budget to heritage properties), experienced local guides who bring history alive, all transfers in private vehicles, and complete arrangements for a safe, memorable, royal, and hassle-free experience throughout your majestic journey in the Land of Kings.</p>
               </div>
             )}
             <button onClick={() => setExpandedAbout(!expandedAbout)} className="text-blue-600 font-semibold mt-4 flex items-center gap-2 hover:text-blue-700">
@@ -142,7 +142,7 @@ const KazakhstanTourPackagesPage = () => {
 
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Top Activities in Kazakhstan</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Top Activities in Rajasthan</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {activities.map((activity) => (
               <div key={activity.id} className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
@@ -157,8 +157,7 @@ const KazakhstanTourPackagesPage = () => {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            ))}  </div>
         </div>
       </section>
 
@@ -210,7 +209,7 @@ const KazakhstanTourPackagesPage = () => {
 
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Kazakhstan Destinations</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Rajasthan Destinations</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {destinations.map((dest) => (
               <div key={dest.id} className="relative h-64 rounded-lg overflow-hidden group cursor-pointer">
@@ -267,15 +266,15 @@ const KazakhstanTourPackagesPage = () => {
       <section className="py-16 bg-blue-600 text-white">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Plan Your Kazakhstan Trip</h2>
-            <p className="mb-8">Get in touch with our travel experts to customize your perfect Kazakhstan adventure</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Plan Your Rajasthan Trip</h2>
+            <p className="mb-8">Get in touch with our travel experts to customize your perfect Rajasthan adventure</p>
             <form onSubmit={handleFormSubmit} className="bg-white rounded-lg p-8 text-gray-800">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleFormChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600" required />
                 <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleFormChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600" required />
               </div>
               <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleFormChange} className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600 mb-4" required />
-              <textarea name="message" placeholder="Tell us about your dream Kazakhstan trip..." value={formData.message} onChange={handleFormChange} rows="4" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600 mb-4" required></textarea>
+              <textarea name="message" placeholder="Tell us about your dream Rajasthan trip..." value={formData.message} onChange={handleFormChange} rows="4" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-600 mb-4" required></textarea>
               <button type="submit" className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">Submit Inquiry</button>
             </form>
           </div>
@@ -285,4 +284,4 @@ const KazakhstanTourPackagesPage = () => {
   );
 };
 
-export default KazakhstanTourPackagesPage;
+export default RajasthanTourPackagesPage;

@@ -8,6 +8,13 @@ const SingaporeTourPackagesPage = () => {
   const [activeFAQ, setActiveFAQ] = useState(null);
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });
 
+  const groupTours = [
+    { id: 1, name: "Singapore Explorer", date: "April 20, 2026", seats: 15, booked: 10, price: "₹44,999", duration: "5 Days", highlights: ["Marina Bay", "Sentosa Island", "Universal Studios"] },
+    { id: 2, name: "Family Fun Tour", date: "June 15, 2026", seats: 12, booked: 8, price: "₹54,999", duration: "6 Days", highlights: ["Theme Parks", "Zoo & Night Safari", "Aquarium"] },
+    { id: 3, name: "Shopping & Sentosa", date: "July 20, 2026", seats: 10, booked: 6, price: "₹52,999", duration: "5 Days", highlights: ["Orchard Road", "Sentosa Beach", "Marina Bay Sands"] },
+    { id: 4, name: "Complete Singapore", date: "September 10, 2026", seats: 12, booked: 7, price: "₹59,999", duration: "7 Days", highlights: ["All Attractions", "Gardens", "Cultural Sites"] }
+  ];
+
   const tourPackages = [
     { id: 1, title: "Singapore City Break", duration: "4 Days", startingPrice: "₹44,999", image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80", locations: ["Marina Bay", "Sentosa", "Gardens"], rating: 4.8, reviews: 480 },
     { id: 2, title: "Singapore Family Fun", duration: "5 Days", startingPrice: "₹54,999", image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80", locations: ["Universal Studios", "Zoo", "Aquarium"], rating: 4.9, reviews: 520 },
@@ -148,6 +155,52 @@ const SingaporeTourPackagesPage = () => {
                     <FaMapMarkerAlt className="text-red-500 text-sm" />
                     <span className="text-sm">{activity.location}</span>
                   </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Upcoming Group Tours</h2>
+          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Join our guided group tours with like-minded travelers. Fixed departures with expert guides and hassle-free arrangements.</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {groupTours.map((tour) => (
+              <div key={tour.id} className="bg-gradient-to-br from-blue-50 to-white rounded-lg p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-blue-100">
+                <div className="flex justify-between items-start mb-4">
+                  <div className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold">{tour.duration}</div>
+                  <div className="text-right">
+                    <p className="text-sm text-gray-600">Available Seats</p>
+                    <p className="text-2xl font-bold text-blue-600">{tour.seats - tour.booked}</p>
+                  </div>
+                </div>
+                <h3 className="font-bold text-lg mb-2 text-gray-800">{tour.name}</h3>
+                <div className="space-y-2 mb-4">
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" /></svg>
+                    <span className="text-sm">{tour.date}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" /></svg>
+                    <span className="text-sm">Group of {tour.seats}</span>
+                  </div>
+                </div>
+                <div className="border-t pt-3 mb-3">
+                  <p className="text-xs text-gray-600 mb-1">Tour Highlights:</p>
+                  <ul className="text-xs text-gray-700 space-y-1">
+                    {tour.highlights.map((highlight, idx) => (
+                      <li key={idx}>• {highlight}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-xs text-gray-600">Starting from</p>
+                    <p className="text-xl font-bold text-blue-600">{tour.price}</p>
+                  </div>
+                  <button className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition-colors">Book Now</button>
                 </div>
               </div>
             ))}

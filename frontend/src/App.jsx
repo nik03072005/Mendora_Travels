@@ -58,6 +58,15 @@ import SingaporeTourPackagesPage from './Pages/SingaporeTourPackagesPage'
 import MalaysiaTourPackagesPage from './Pages/MalaysiaTourPackagesPage'
 import BhutanTourPackagesPage from './Pages/BhutanTourPackagesPage'
 import KazakhstanTourPackagesPage from './Pages/KazakhstanTourPackagesPage'
+import LadakhTourPackagesPage from './Pages/LadakhTourPackagesPage'
+import SpitiValleyTourPackagesPage from './Pages/SpitiValleyTourPackagesPage'
+import MeghalayaTourPackagesPage from './Pages/MeghalayaTourPackagesPage'
+import KashmirTourPackagesPage from './Pages/KashmirTourPackagesPage'
+import NagalandTourPackagesPage from './Pages/NagalandTourPackagesPage'
+import AndamanTourPackagesPage from './Pages/AndamanTourPackagesPage'
+import KeralaTourPackagesPage from './Pages/KeralaTourPackagesPage'
+import RajasthanTourPackagesPage from './Pages/RajasthanTourPackagesPage'
+import HimachalPradeshTourPackagesPage from './Pages/HimachalPradeshTourPackagesPage'
 
 
 
@@ -120,6 +129,17 @@ function App() {
           <Route path="/international-trips/malaysia" element={<Layout><MalaysiaTourPackagesPage /></Layout>} />
           <Route path="/international-trips/bhutan" element={<Layout><BhutanTourPackagesPage /></Layout>} />
           <Route path="/international-trips/kazakhstan" element={<Layout><KazakhstanTourPackagesPage /></Layout>} />
+          
+          {/* Domestic Destination Pages */}
+          <Route path="/domestic-trips/ladakh" element={<Layout><LadakhTourPackagesPage /></Layout>} />
+          <Route path="/domestic-trips/spiti-valley" element={<Layout><SpitiValleyTourPackagesPage /></Layout>} />
+          <Route path="/domestic-trips/meghalaya" element={<Layout><MeghalayaTourPackagesPage /></Layout>} />
+          <Route path="/domestic-trips/kashmir" element={<Layout><KashmirTourPackagesPage /></Layout>} />
+          <Route path="/domestic-trips/nagaland" element={<Layout><NagalandTourPackagesPage /></Layout>} />
+          <Route path="/domestic-trips/andaman" element={<Layout><AndamanTourPackagesPage /></Layout>} />
+          <Route path="/domestic-trips/kerala" element={<Layout><KeralaTourPackagesPage /></Layout>} />
+          <Route path="/domestic-trips/rajasthan" element={<Layout><RajasthanTourPackagesPage /></Layout>} />
+          <Route path="/domestic-trips/himachal-pradesh" element={<Layout><HimachalPradeshTourPackagesPage /></Layout>} />
           
           {/* Individual Destination Pages */}
           <Route path="/international-trips/:id" element={<Layout><DestinationPackagesPage /></Layout>} />
