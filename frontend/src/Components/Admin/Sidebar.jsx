@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaMapMarkerAlt, FaBoxOpen, FaSignOutAlt,FaPhone , FaBars, FaTimes, FaImages, FaStar, FaQuestionCircle, FaBlog, FaBriefcase } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaBoxOpen, FaSignOutAlt,FaPhone , FaBars, FaTimes, FaImages, FaStar, FaQuestionCircle, FaBlog, FaBriefcase, FaGlobeAsia, FaFlag, FaChevronDown, FaChevronRight } from 'react-icons/fa';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,19 +15,35 @@ const Sidebar = () => {
 
   const navItems = [
     {
-      name: 'Destination',
-      icon: <FaMapMarkerAlt />,
+      name: 'Domestic',
+      icon: <FaFlag />,
       subItems: [
-        { name: 'Manage Destination', path: '/manage-destination' },
-        { name: 'Add Destination', path: '/add-destination' },
+        { name: 'View Destinations', path: '/admin/domestic-destinations' },
+        { name: 'Add Destination', path: '/add-destination?category=domestic' },
       ],
     },
     {
-      name: 'Package',
+      name: 'International',
+      icon: <FaGlobeAsia />,
+      subItems: [
+        { name: 'View Destinations', path: '/admin/international-destinations' },
+        { name: 'Add Destination', path: '/add-destination?category=international' },
+      ],
+    },
+    {
+      name: 'All Destinations',
+      icon: <FaMapMarkerAlt />,
+      subItems: [
+        { name: 'Manage All', path: '/manage-destination' },
+        { name: 'Add New', path: '/add-destination' },
+      ],
+    },
+    {
+      name: 'All Packages',
       icon: <FaBoxOpen />,
       subItems: [
-        { name: 'Manage Package', path: '/manage-package' },
-        { name: 'Add Package', path: '/add-package' },
+        { name: 'Manage All', path: '/manage-package' },
+        { name: 'Add New', path: '/add-package' },
       ],
     },
     {

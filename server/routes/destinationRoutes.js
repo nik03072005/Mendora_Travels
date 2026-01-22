@@ -14,4 +14,9 @@ router.post('/get/name', destinationController.getDestinationByName);
 router.put('/update/:id',authMiddleware, upload.single('imageFile'), destinationController.updateDestination);
 router.delete('/delete/:id',authMiddleware, destinationController.deleteDestination);
 
+// Group Tours Management Routes
+router.post('/:id/group-tours', authMiddleware, destinationController.addGroupTour);
+router.put('/:id/group-tours/:tourId', authMiddleware, destinationController.updateGroupTour);
+router.delete('/:id/group-tours/:tourId', authMiddleware, destinationController.deleteGroupTour);
+
 export default router;

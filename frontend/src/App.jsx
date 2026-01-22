@@ -20,6 +20,9 @@ import CreateGallery from './Components/Admin/CreateGallery'
 import UpdateGallery from './Components/Admin/UpdateGallery'
 import CreateReview from './Components/Admin/CreateReview'
 import ManageReviews from './Components/Admin/ManageReviews'
+import DestinationList from './Components/Admin/DestinationList'
+import ManageDestinationPackages from './Components/Admin/ManageDestinationPackages'
+import ManageGroupTours from './Components/Admin/ManageGroupTours'
 
 import { Contact } from './Components/Contact'
 import ProtectedRoute from './utils/ProtectedRoute'
@@ -93,32 +96,36 @@ function App() {
       return;
     }
 
-    console.log('[BotPenguin] Loading chat widget...');
-    
-    const script = document.createElement('script');
-    script.id = 'messenger-widget-b';
-    script.src = 'https://cdn.botpenguin.com/website-bot.js';
-    script.defer = true;
-    script.setAttribute('data-bot-id', '695b57982cd09804d72cf510');
-    script.setAttribute('data-cfasync', 'false'); // Prevent Cloudflare Rocket Loader interference
-    
-    // Add bot configuration
-    const botConfig = document.createTextNode('695b57982cd09804d72cf510,69594a69959c8904ca1af798');
-    script.appendChild(botConfig);
-    
-    // Add error handler
-    script.onerror = () => {
-      console.error('[BotPenguin] Failed to load chat widget');
-    };
-    
-    script.onload = () => {
-      console.log('[BotPenguin] Chat widget loaded successfully');
-    };
-    
-    document.body.appendChild(script);
+    // Add a small delay to prevent duplicate loading in strict mode
+    const loadTimer = setTimeout(() => {
+      console.log('[BotPenguin] Loading chat widget...');
+      
+      const script = document.createElement('script');
+      script.id = 'messenger-widget-b';
+      script.src = 'https://cdn.botpenguin.com/website-bot.js';
+      script.defer = true;
+      script.setAttribute('data-bot-id', '695b57982cd09804d72cf510');
+      script.setAttribute('data-cfasync', 'false');
+      
+      // Add bot configuration
+      const botConfig = document.createTextNode('695b57982cd09804d72cf510,69594a69959c8904ca1af798');
+      script.appendChild(botConfig);
+      
+      // Add error handler
+      script.onerror = () => {
+        console.error('[BotPenguin] Failed to load chat widget');
+      };
+      
+      script.onload = () => {
+        console.log('[BotPenguin] Chat widget loaded successfully');
+      };
+      
+      document.body.appendChild(script);
+    }, 100);
 
     // Cleanup function
     return () => {
+      clearTimeout(loadTimer);
       const existingScript = document.getElementById('messenger-widget-b');
       if (existingScript) {
         console.log('[BotPenguin] Cleaning up script...');
@@ -203,6 +210,13 @@ function App() {
 
       <Route element={<ProtectedRoute />}>
       <Route element={<AdminLayout />}>
+        {/* Domestic & International Destination Management */}
+        <Route path="/admin/domestic-destinations" element={<DestinationList />} />
+        <Route path="/admin/international-destinations" element={<DestinationList />} />
+        <Route path="/admin/destination/:destinationId/packages" element={<ManageDestinationPackages />} />
+        <Route path="/admin/destination/:destinationId/group-tours" element={<ManageGroupTours />} />
+        
+        {/* General Admin Routes */}
         <Route path="/add-destination" element={<AddDestination />} />
         <Route path="/add-package" element={<AddPackage />} />
         <Route path="/manage-destination" element={<Managedestination />} />

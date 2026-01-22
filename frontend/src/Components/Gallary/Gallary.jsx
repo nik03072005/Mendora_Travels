@@ -26,7 +26,6 @@ const DestinationGallery = ({ destinationId }) => {
           setImages([]);
           setError(null);
         } else {
-          console.error('Error fetching images:', err);
           setError('Failed to load images.');
         }
       } finally {

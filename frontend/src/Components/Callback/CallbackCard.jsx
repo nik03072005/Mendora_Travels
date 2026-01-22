@@ -2,7 +2,6 @@ import { useState } from 'react';
 
 const RequestCallbackCard = ({ selectedPackage }) => {
   // Define dummy data for fallback
-  console.log(selectedPackage)
   const dummyPackage = {
     _id: 'dummy-123',
     image: 'https://via.placeholder.com/80',

@@ -26,7 +26,6 @@ import Faq from "../models/Faq.js";
 export const getAllFaqs = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log("Destination ID:", id);
 
     if (!id) {
       return res.status(400).json({ message: 'Destination ID is required' });

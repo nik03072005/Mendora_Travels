@@ -53,7 +53,6 @@ const DubaiTourPackagesPage = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
     alert('Thank you! We will contact you soon.');
     setFormData({ name: '', email: '', phone: '', message: '' });
   };

@@ -45,7 +45,6 @@ const DomesticTripsPage = () => {
   
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
     setShowSuccessMessage(true);
     setFormData({ name: '', email: '', phoneNumber: '', message: '' });
     setTimeout(() => setShowSuccessMessage(false), 5000);

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faInstagram, faXTwitter, faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { setCurrency } from '../../Redux/currencySLice';
 import logo from '../assets/mendora-logo.png';

@@ -99,7 +99,6 @@ export const createTourPackage = async (req, res) => {
 
     res.status(201).json({ message: 'Tour package created successfully', tourPackage });
   } catch (error) {
-    console.error('Error creating tour package:', error);
     res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
@@ -109,30 +108,18 @@ export const getTourPackagesByDestination = async (req, res) => {
   try {
     const { destinationId } = req.params;
 
-     let destination=destinationId;
-    // console.log(destination,"op")
-    // Assuming you have a TourPackage model
-    const tourPackages = await TourPackage.find({ destination });
+    // Find all tour packages for this destination
+    const tourPackages = await TourPackage.find({ destination: destinationId });
 
     if (!tourPackages || tourPackages.length === 0) {
-      return res.status(404).json({ message: "No tour packages found for this destination" });
+      return res.status(200).json({ tourPackages: [] }); // Return empty array instead of 404
     }
 
-    // Format the response to match the frontend's expectations
-    const formattedPackages = tourPackages.map((pkg) => ({
-      Id: pkg._id,
-      name: pkg.name,
-      noOfNights: pkg.noOfNights,
-      noOfDays: pkg.noOfDays,
-      originalPrice: pkg.originalPrice || 0,
-      discountedPrice: pkg.discountedPrice || 0,
-      imageUrls: pkg.imageUrls || [],
-    }));
-
-    res.status(200).json(formattedPackages);
+    // Return complete package data
+    res.status(200).json({ tourPackages });
   } catch (error) {
-    console.error("Error fetching tour packages by destination ID:", error.message);
-    res.status(500).json({ message: "Server error while fetching tour packages" });
+    console.error('Error fetching tour packages:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
 
@@ -179,7 +166,6 @@ export const getTourPackageBySlug = async (req, res) => {
   try {
     // Extract the slug from request parameters
     const { slug } = req.params;
-    console.log(slug,"c")
 
     // Validate slug (basic check for non-empty and string format)
     if (!slug) {

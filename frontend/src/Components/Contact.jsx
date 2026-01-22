@@ -65,7 +65,6 @@ export const Contact = () => {
     };
 
     try {
-      console.log(formData.email, formData.name, formData.phone, formData.travel_date, formData.message, formData.referenceId, formData.referenceModel, formData.packageTitle, formData.packagePrice, formData.traveller_count);
       await axios.post(
         `${import.meta.env.VITE_API_URL}/api/travel-inquiry/submit-inquiry`,
         formData

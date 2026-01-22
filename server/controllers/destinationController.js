@@ -8,10 +8,9 @@ import { uploadToR2 } from '../utils/r2Utils.js';
 // Create a new destination
 export const createDestination = async (req, res) => {
   try {
-    // Extract destinationName from req.body
+    // Extract destinationName and category from req.body
   //  console.log(req.body.destinationName)
-    const destinationName=req.body.destinationName;
-    console.log(destinationName,"io")
+    const { destinationName, category } = req.body;
 
      let baseSlug = slugify(destinationName, {
           lower: true,
@@ -38,9 +37,19 @@ export const createDestination = async (req, res) => {
        const result = await uploadToR2(fileBuffer, fileName, bucketName);
 
     // Create and save the destination with the uploaded image URL
-    const destination = new Destination({ destinationName, imageUrl: result.fileUrl,slug });
+    const destinationData = { 
+      destinationName, 
+      imageUrl: result.fileUrl, 
+      slug 
+    };
+    
+    // Add category if provided, default to 'international'
+    if (category) {
+      destinationData.category = category;
+    }
+    
+    const destination = new Destination(destinationData);
     await destination.save();
-    console.log("first")
 
     res.status(201).json({ message: 'Destination created successfully', destination });
   } catch (error) {
@@ -52,12 +61,32 @@ export const createDestination = async (req, res) => {
 // Get all destinations with their tour packages
 export const getDestinations = async (req, res) => {
   try {
-    const destinations = await Destination.find().populate('tourPackages');
-    // Sort tourPackages for each destination by createdAt (latest first)
+    const { category } = req.query; // Get category from query params
+    
+    // Build filter based on category
+    // If category is specified, include destinations with that category OR no category (for backward compatibility)
+    const filter = category ? { 
+      $or: [
+        { category: category },
+        { category: { $exists: false } },
+        { category: null }
+      ]
+    } : {};
+    
+    const destinations = await Destination.find(filter)
+      .populate('tourPackages') // Populate to get actual package data
+      .lean(); // Use lean for better performance
+    
+    // Sort tourPackages for each destination by createdAt (latest first) and include groupTours
     const sortedDestinations = destinations.map(destination => ({
-      ...destination._doc, // Spread destination document
-      tourPackages: destination.tourPackages.sort((a, b) => b.createdAt - a.createdAt)
+      ...destination,
+      tourPackages: (destination.tourPackages || []).sort((a, b) => 
+        new Date(b.createdAt) - new Date(a.createdAt)
+      ),
+      groupTours: destination.groupTours || [] // Ensure groupTours is always an array
     }));
+    
+    // Return array directly for backward compatibility with existing code
     res.json(sortedDestinations);
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
@@ -82,7 +111,6 @@ export const getDestinationByName = async (req, res) => {
     // console.log(req.body)
     const { name } = req.body;
     // Validate input
-    console.log(name)
     if (!name || typeof name !== 'string') {
       return res.status(400).json({ message: 'Destination name is required and must be a string' });
     }
@@ -215,6 +243,93 @@ export const getDestinationPageData = async (req, res) => {
   }
 };
 
+// Add a group tour to a destination
+export const addGroupTour = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const tourData = req.body;
+
+    const destination = await Destination.findById(id);
+    if (!destination) {
+      return res.status(404).json({ message: 'Destination not found' });
+    }
+
+    destination.groupTours.push(tourData);
+    await destination.save();
+
+    res.status(201).json({ 
+      message: 'Group tour added successfully', 
+      destination 
+    });
+  } catch (error) {
+    console.error('Error adding group tour:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
+// Update a group tour
+export const updateGroupTour = async (req, res) => {
+  try {
+    const { id, tourId } = req.params;
+    const tourData = req.body;
+
+    const destination = await Destination.findById(id);
+    if (!destination) {
+      return res.status(404).json({ message: 'Destination not found' });
+    }
+
+    const tourIndex = destination.groupTours.findIndex(
+      tour => tour._id.toString() === tourId
+    );
+
+    if (tourIndex === -1) {
+      return res.status(404).json({ message: 'Group tour not found' });
+    }
+
+    // Update the tour
+    destination.groupTours[tourIndex] = {
+      ...destination.groupTours[tourIndex].toObject(),
+      ...tourData
+    };
+
+    await destination.save();
+
+    res.json({ 
+      message: 'Group tour updated successfully', 
+      destination 
+    });
+  } catch (error) {
+    console.error('Error updating group tour:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
+// Delete a group tour
+export const deleteGroupTour = async (req, res) => {
+  try {
+    const { id, tourId } = req.params;
+
+    const destination = await Destination.findById(id);
+    if (!destination) {
+      return res.status(404).json({ message: 'Destination not found' });
+    }
+
+    destination.groupTours = destination.groupTours.filter(
+      tour => tour._id.toString() !== tourId
+    );
+
+    await destination.save();
+
+    res.json({ 
+      message: 'Group tour deleted successfully', 
+      destination 
+    });
+  } catch (error) {
+    console.error('Error deleting group tour:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
 export default { 
   createDestination, 
   getDestinationByName,
@@ -222,5 +337,8 @@ export default {
   getDestinationById,
   updateDestination,
   deleteDestination,
-  getDestinationPageData
+  getDestinationPageData,
+  addGroupTour,
+  updateGroupTour,
+  deleteGroupTour
 };

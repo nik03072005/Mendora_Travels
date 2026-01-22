@@ -7,11 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
   faMapMarkerAlt, 
   faCalendarAlt, 
-  faMoneyBillWave,
   faPhone,
   faTimes,
-  faSearch,
-  faFilter
+  faSearch
 } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import TNavbar from '../Components/TransparentNavbar';
@@ -243,6 +241,25 @@ const createSlug = (title) => {
               <option value="medium">6-10 Days</option>
               <option value="long">10+ Days</option>
             </select>
+
+            {/* Price Range Filter */}
+            <div className="flex gap-2 items-center">
+              <input
+                type="number"
+                placeholder="Min Price"
+                value={priceRange.min}
+                onChange={(e) => setPriceRange({ ...priceRange, min: Number(e.target.value) })}
+                className="w-24 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+              <span>-</span>
+              <input
+                type="number"
+                placeholder="Max Price"
+                value={priceRange.max}
+                onChange={(e) => setPriceRange({ ...priceRange, max: Number(e.target.value) })}
+                className="w-24 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
           </div>
         </div>
       </div>

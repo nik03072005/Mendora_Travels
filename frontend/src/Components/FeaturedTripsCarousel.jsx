@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import greece from '../assets/greece.jpg';
 
 const FeaturedTripsCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

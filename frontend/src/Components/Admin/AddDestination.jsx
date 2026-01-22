@@ -1,15 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useSearchParams } from 'react-router-dom';
 
 const AddDestination = () => {
+  const [searchParams] = useSearchParams();
+  const categoryFromUrl = searchParams.get('category'); // Get category from URL
+  
   const [formData, setFormData] = useState({
     destinationName: '',
     imageFile: null,
+    category: categoryFromUrl || 'international', // Default to international if not specified
   });
   const token=localStorage.getItem('token')
   const [message, setMessage] = useState('');
   const [preview, setPreview] = useState(null);
   const [loading, setLoading] = useState(false); // New state for loading
+
+  // Update category when URL parameter changes
+  useEffect(() => {
+    if (categoryFromUrl) {
+      setFormData(prev => ({ ...prev, category: categoryFromUrl }));
+    }
+  }, [categoryFromUrl]);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -33,6 +45,7 @@ const AddDestination = () => {
     const data = new FormData();
     data.append('destinationName', formData.destinationName);
     data.append('imageFile', formData.imageFile);
+    data.append('category', formData.category);
 
     try {
       const response = await axios.post(
@@ -46,7 +59,11 @@ const AddDestination = () => {
         }
       );
       setMessage(response.data.message);
-      setFormData({ destinationName: '', imageFile: null });
+      setFormData({ 
+        destinationName: '', 
+        imageFile: null,
+        category: categoryFromUrl || 'international'
+      });
       setPreview(null);
     } catch (error) {
       setMessage(error.response?.data?.message || 'Error adding destination');
@@ -80,6 +97,21 @@ const AddDestination = () => {
             required
           />
         </div>
+        
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Category</label>
+          <select
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            className="mt-1 p-2 w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          >
+            <option value="international">International</option>
+            <option value="domestic">Domestic</option>
+          </select>
+        </div>
+        
         <div>
           <label className="block text-sm font-medium text-gray-700">Upload Image</label>
           <input

@@ -379,7 +379,6 @@ export default function TripCard() {
   const [error, setError] = useState(null);
   const [destinationId, setDestinationId] = useState(null);
   const {slug} = useParams();
-  //  console.log(id,"xd")
 
     const dispatch = useDispatch();
   const selectedCurrency = useSelector((state) => state.currency.currency);
@@ -418,7 +417,6 @@ export default function TripCard() {
       try {
         setLoading(true);
         const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tour-packages/slug/${slug}`);
-        console.log(response,"ff")
         if (!response.ok) {
           throw new Error(`Failed to fetch trip data: ${response.status}`);
         }

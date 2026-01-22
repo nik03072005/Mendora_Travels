@@ -19,7 +19,6 @@ export const submitInquiry = async (req, res) => {
       referenceModel,
       traveller_count
     } = req.body;
-    // console.log("Received inquiry data:", req.body);
 
     if (!name || !email || !phone || !travel_date || !message || !referenceId || !referenceModel || !traveller_count) {
       return res.status(400).json({ error: "All fields are required" });
@@ -36,9 +35,6 @@ export const submitInquiry = async (req, res) => {
       referenceModel,
     });
     
-    console.log(referenceModel,"f")
-    console.log(name,email,phone,travel_date,message)
-
     let referenceName = '';
     if (referenceModel === 'Destination') {
       const destination = await Destination.findById(referenceId);

@@ -83,7 +83,6 @@ export const getReviewsByDestination = async (req, res) => {
     }
 
     // Check if Destination exists
-    console.log(destinationId);
     const destination = await Destination.findById(destinationId);
     if (!destination) {
       return res.status(404).json({ error: 'Destination not found' });
