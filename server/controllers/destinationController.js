@@ -1,6 +1,8 @@
 import slugify from 'slugify';
 import Destination from '../models/Destination.js';
 import TourPackage from '../models/TourPackage.js';
+import Faq from '../models/Faq.js';
+import Review from '../models/reviewModel.js';
 import { uploadToR2 } from '../utils/r2Utils.js';
 
 // Create a new destination
@@ -171,4 +173,54 @@ export const deleteDestination = async (req, res) => {
   }
 };
 
-export default { createDestination, getDestinationByName,getDestinations, getDestinationById,updateDestination,deleteDestination };
+// Get complete destination page data by slug (for dynamic page rendering)
+export const getDestinationPageData = async (req, res) => {
+  try {
+    const { slug } = req.params;
+
+    // Find destination by slug
+    const destination = await Destination.findOne({ slug })
+      .populate('gallery');
+
+    if (!destination) {
+      return res.status(404).json({ message: 'Destination not found' });
+    }
+
+    // Fetch Tour Packages for this destination
+    const tourPackages = await TourPackage.find({ destination: destination._id })
+      .sort({ createdAt: -1 });
+
+    // Fetch FAQs for this destination
+    const faqs = await Faq.find({ destinationId: destination._id });
+
+    // Fetch Reviews for this destination
+    const reviews = await Review.find({ destinationId: destination._id })
+      .sort({ createdAt: -1 })
+      .limit(10);
+
+    // Return complete page data in one response
+    res.status(200).json({
+      destination: {
+        ...destination.toObject(),
+        tourPackages, // Add packages array
+        reviews // Add reviews to destination object
+      },
+      faqs,
+      success: true
+    });
+
+  } catch (error) {
+    console.error('Error fetching destination page data:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
+export default { 
+  createDestination, 
+  getDestinationByName,
+  getDestinations, 
+  getDestinationById,
+  updateDestination,
+  deleteDestination,
+  getDestinationPageData
+};

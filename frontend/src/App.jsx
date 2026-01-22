@@ -48,25 +48,25 @@ import DestinationPackagesPage from './Pages/DestinationPackagesPage'
 import GroupToursPage from './Pages/GroupToursPage'
 import CorporateTripsPage from './Pages/CorporateTripsPage'
 import WeekendGetawaysPage from './Pages/WeekendGetawaysPage'
-import EuropeTourPackagesPage from './Pages/EuropeTourPackagesPage'
-import BaliTourPackagesPage from './Pages/BaliTourPackagesPage'
-import ThailandTourPackagesPage from './Pages/ThailandTourPackagesPage'
-import VietnamTourPackagesPage from './Pages/VietnamTourPackagesPage'
-import DubaiTourPackagesPage from './Pages/DubaiTourPackagesPage'
-import MaldivesTourPackagesPage from './Pages/MaldivesTourPackagesPage'
-import SingaporeTourPackagesPage from './Pages/SingaporeTourPackagesPage'
-import MalaysiaTourPackagesPage from './Pages/MalaysiaTourPackagesPage'
-import BhutanTourPackagesPage from './Pages/BhutanTourPackagesPage'
-import KazakhstanTourPackagesPage from './Pages/KazakhstanTourPackagesPage'
-import LadakhTourPackagesPage from './Pages/LadakhTourPackagesPage'
-import SpitiValleyTourPackagesPage from './Pages/SpitiValleyTourPackagesPage'
-import MeghalayaTourPackagesPage from './Pages/MeghalayaTourPackagesPage'
-import KashmirTourPackagesPage from './Pages/KashmirTourPackagesPage'
-import NagalandTourPackagesPage from './Pages/NagalandTourPackagesPage'
-import AndamanTourPackagesPage from './Pages/AndamanTourPackagesPage'
-import KeralaTourPackagesPage from './Pages/KeralaTourPackagesPage'
-import RajasthanTourPackagesPage from './Pages/RajasthanTourPackagesPage'
-import HimachalPradeshTourPackagesPage from './Pages/HimachalPradeshTourPackagesPage'
+import EuropeTourPackagesPage from './Pages/EuropeTourPackagesPage_Dynamic'
+import BaliTourPackagesPage from './Pages/BaliTourPackagesPage_Dynamic'
+import ThailandTourPackagesPage from './Pages/ThailandTourPackagesPage_Dynamic'
+import VietnamTourPackagesPage from './Pages/VietnamTourPackagesPage_Dynamic'
+import DubaiTourPackagesPage from './Pages/DubaiTourPackagesPage_Dynamic'
+import MaldivesTourPackagesPage from './Pages/MaldivesTourPackagesPage_Dynamic'
+import SingaporeTourPackagesPage from './Pages/SingaporeTourPackagesPage_Dynamic'
+import MalaysiaTourPackagesPage from './Pages/MalaysiaTourPackagesPage_Dynamic'
+import BhutanTourPackagesPage from './Pages/BhutanTourPackagesPage_Dynamic'
+import KazakhstanTourPackagesPage from './Pages/KazakhstanTourPackagesPage_Dynamic'
+import LadakhTourPackagesPage from './Pages/LadakhTourPackagesPage_Dynamic'
+import SpitiValleyTourPackagesPage from './Pages/SpitiValleyTourPackagesPage_Dynamic'
+import MeghalayaTourPackagesPage from './Pages/MeghalayaTourPackagesPage_Dynamic'
+import KashmirTourPackagesPage from './Pages/KashmirTourPackagesPage_Dynamic'
+import NagalandTourPackagesPage from './Pages/NagalandTourPackagesPage_Dynamic'
+import AndamanTourPackagesPage from './Pages/AndamanTourPackagesPage_Dynamic'
+import KeralaTourPackagesPage from './Pages/KeralaTourPackagesPage_Dynamic'
+import RajasthanTourPackagesPage from './Pages/RajasthanTourPackagesPage_Dynamic'
+import HimachalPradeshTourPackagesPage from './Pages/HimachalPradeshTourPackagesPage_Dynamic'
 
 
 
@@ -84,26 +84,51 @@ function App() {
 
   // BotPenguin chat widget - loads once for entire app
   useEffect(() => {
-    // Only add script if it doesn't already exist
-    if (document.getElementById('messenger-widget-b')) {
+    // Check if bot is already loaded (script exists or bot element exists)
+    const botScript = document.getElementById('messenger-widget-b');
+    const botElement = document.querySelector('.bot-element, #botpenguin-container, [class*="botpenguin"]');
+    
+    if (botScript || botElement) {
+      console.log('[BotPenguin] Already loaded, skipping...');
       return;
     }
 
+    console.log('[BotPenguin] Loading chat widget...');
+    
     const script = document.createElement('script');
     script.id = 'messenger-widget-b';
     script.src = 'https://cdn.botpenguin.com/website-bot.js';
     script.defer = true;
+    script.setAttribute('data-bot-id', '695b57982cd09804d72cf510');
+    script.setAttribute('data-cfasync', 'false'); // Prevent Cloudflare Rocket Loader interference
     
     // Add bot configuration
     const botConfig = document.createTextNode('695b57982cd09804d72cf510,69594a69959c8904ca1af798');
     script.appendChild(botConfig);
     
+    // Add error handler
+    script.onerror = () => {
+      console.error('[BotPenguin] Failed to load chat widget');
+    };
+    
+    script.onload = () => {
+      console.log('[BotPenguin] Chat widget loaded successfully');
+    };
+    
     document.body.appendChild(script);
 
+    // Cleanup function
     return () => {
       const existingScript = document.getElementById('messenger-widget-b');
       if (existingScript) {
+        console.log('[BotPenguin] Cleaning up script...');
         existingScript.remove();
+      }
+      
+      // Remove bot container if exists
+      const botContainer = document.querySelector('.bot-element, #botpenguin-container, [class*="botpenguin"]');
+      if (botContainer) {
+        botContainer.remove();
       }
     };
   }, []);

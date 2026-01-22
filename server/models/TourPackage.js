@@ -33,6 +33,21 @@ const tourPackageSchema = new mongoose.Schema({
     required: [true, 'Number of nights is required'],
     min: [0, 'Number of nights cannot be negative'],
   },
+  locations: [{
+    type: String,
+    trim: true,
+  }],
+  rating: {
+    type: Number,
+    min: 0,
+    max: 5,
+    default: 0
+  },
+  reviewCount: {
+    type: Number,
+    min: 0,
+    default: 0
+  },
   tripSummary: [{
     day: {
       type: Number,

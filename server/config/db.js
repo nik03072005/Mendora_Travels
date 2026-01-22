@@ -6,7 +6,7 @@ dotenv.config();
 
 const connectDB = async () => {
   try {
-    const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/trip';
+    const mongoURI = process.env.MONGODB_URI || process.env.MONGO_URI || 'mongodb://localhost:27017/mendora_travels';
     await mongoose.connect(mongoURI, {
       serverSelectionTimeoutMS: 5000,
       family: 4 // Force IPv4

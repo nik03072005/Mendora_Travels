@@ -8,7 +8,8 @@ dotenv.config();
 const createAdmin = async () => {
   try {
     // Connect to MongoDB
-    await mongoose.connect(process.env.MONGO_URI);
+    const mongoURI = process.env.MONGODB_URI || process.env.MONGO_URI;
+    await mongoose.connect(mongoURI);
     console.log('Connected to MongoDB');
 
     // Get admin credentials from command line arguments or use defaults

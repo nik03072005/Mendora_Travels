@@ -19,9 +19,16 @@ const DestinationGallery = ({ destinationId }) => {
         setLoading(true);
         const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/gallery/get/${destinationId}`);
         setImages(response.data.images || []);
+        setError(null);
       } catch (err) {
-        console.error('Error fetching images:', err);
-        setError('Failed to load images.');
+        // If it's a 404, gallery doesn't exist yet - show placeholder
+        if (err.response?.status === 404) {
+          setImages([]);
+          setError(null);
+        } else {
+          console.error('Error fetching images:', err);
+          setError('Failed to load images.');
+        }
       } finally {
         setLoading(false);
       }
@@ -45,23 +52,41 @@ const DestinationGallery = ({ destinationId }) => {
   if (loading) {
     return (
       <div className="mt-16 w-full max-w-6xl mx-auto p-4 text-center">
-        <p>Loading images...</p>
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-48 mb-4 mx-auto"></div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
+            <div className="md:col-span-2 h-80 md:h-[450px] bg-gray-200 rounded-lg"></div>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="h-54 bg-gray-200 rounded-lg"></div>
+              <div className="h-54 bg-gray-200 rounded-lg"></div>
+              <div className="h-54 bg-gray-200 rounded-lg"></div>
+              <div className="h-54 bg-gray-200 rounded-lg"></div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="mt-16 w-full max-w-6xl mx-auto p-4 text-center">
-        <p className="text-red-500">{error}</p>
+      <div className="mt-16 w-full max-w-6xl mx-auto p-4">
+        <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
+          <p className="text-red-600 font-medium">{error}</p>
+          <p className="text-sm text-gray-600 mt-2">Please try again later or contact support.</p>
+        </div>
       </div>
     );
   }
 
   if (images.length === 0) {
     return (
-      <div className="mt-16 w-full max-w-6xl mx-auto p-4 text-center">
-        <p>No images found for this destination.</p>
+      <div className="mt-16 w-full max-w-6xl mx-auto p-4">
+        <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
+          <div className="text-gray-400 text-6xl mb-4">📸</div>
+          <h3 className="text-xl font-semibold text-gray-700 mb-2">No Gallery Images Yet</h3>
+          <p className="text-gray-600">Gallery images for this destination will be added soon.</p>
+        </div>
       </div>
     );
   }

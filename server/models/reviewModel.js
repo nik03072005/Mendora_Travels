@@ -5,6 +5,16 @@ const reviewSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Name is required'],
   },
+  rating: {
+    type: Number,
+    required: [true, 'Rating is required'],
+    min: 1,
+    max: 5
+  },
+  location: {
+    type: String,
+    required: false
+  },
   date: {
     type: Date,
     default: Date.now
