@@ -112,6 +112,7 @@ const UniversalDestinationPage = () => {
   };
 
   const faqs = pageData?.faqs || [];
+  const testimonials = (pageData?.testimonials || []).slice(0, 3);
 
   return (
     <>
@@ -163,9 +164,9 @@ const UniversalDestinationPage = () => {
         <FAQSection faqs={faqs} />
       )}
 
-      {/* Reviews Section */}
-      {destination.reviews && destination.reviews.length > 0 && (
-        <ReviewsSection reviews={destination.reviews} />
+      {/* Testimonials Section */}
+      {testimonials && testimonials.length > 0 && (
+        <ReviewsSection reviews={testimonials} />
       )}
 
       {/* Contact Form Section */}

@@ -53,26 +53,6 @@ import GroupToursPage from './Pages/GroupToursPage'
 import CorporateTripsPage from './Pages/CorporateTripsPage'
 import WeekendGetawaysPage from './Pages/WeekendGetawaysPage'
 import UniversalDestinationPage from './Pages/UniversalDestinationPage'
-import EuropeTourPackagesPage from './Pages/EuropeTourPackagesPage_Dynamic'
-import BaliTourPackagesPage from './Pages/BaliTourPackagesPage_Dynamic'
-import ThailandTourPackagesPage from './Pages/ThailandTourPackagesPage_Dynamic'
-import VietnamTourPackagesPage from './Pages/VietnamTourPackagesPage_Dynamic'
-import DubaiTourPackagesPage from './Pages/DubaiTourPackagesPage_Dynamic'
-import MaldivesTourPackagesPage from './Pages/MaldivesTourPackagesPage_Dynamic'
-import SingaporeTourPackagesPage from './Pages/SingaporeTourPackagesPage_Dynamic'
-import MalaysiaTourPackagesPage from './Pages/MalaysiaTourPackagesPage_Dynamic'
-import BhutanTourPackagesPage from './Pages/BhutanTourPackagesPage_Dynamic'
-import KazakhstanTourPackagesPage from './Pages/KazakhstanTourPackagesPage_Dynamic'
-import LadakhTourPackagesPage from './Pages/LadakhTourPackagesPage_Dynamic'
-import SpitiValleyTourPackagesPage from './Pages/SpitiValleyTourPackagesPage_Dynamic'
-import MeghalayaTourPackagesPage from './Pages/MeghalayaTourPackagesPage_Dynamic'
-import KashmirTourPackagesPage from './Pages/KashmirTourPackagesPage_Dynamic'
-import NagalandTourPackagesPage from './Pages/NagalandTourPackagesPage_Dynamic'
-import AndamanTourPackagesPage from './Pages/AndamanTourPackagesPage_Dynamic'
-import KeralaTourPackagesPage from './Pages/KeralaTourPackagesPage_Dynamic'
-import RajasthanTourPackagesPage from './Pages/RajasthanTourPackagesPage_Dynamic'
-import HimachalPradeshTourPackagesPage from './Pages/HimachalPradeshTourPackagesPage_Dynamic'
-
 
 
 const AdminLoginRoute = () => {
@@ -152,33 +132,10 @@ function App() {
           <Route path="/international-trips" element={<Layout><InternationalTripsPage /></Layout>} />
           <Route path="/domestic-trips" element={<Layout><DomesticTripsPage /></Layout>} />
           
-          {/* International Destination Pages */}
-          <Route path="/international-trips/europe" element={<Layout><EuropeTourPackagesPage /></Layout>} />
-          <Route path="/international-trips/bali" element={<Layout><BaliTourPackagesPage /></Layout>} />
-          <Route path="/international-trips/thailand" element={<Layout><ThailandTourPackagesPage /></Layout>} />
-          <Route path="/international-trips/vietnam" element={<Layout><VietnamTourPackagesPage /></Layout>} />
-          <Route path="/international-trips/dubai" element={<Layout><DubaiTourPackagesPage /></Layout>} />
-          <Route path="/international-trips/maldives" element={<Layout><MaldivesTourPackagesPage /></Layout>} />
-          <Route path="/international-trips/singapore" element={<Layout><SingaporeTourPackagesPage /></Layout>} />
-          <Route path="/international-trips/malaysia" element={<Layout><MalaysiaTourPackagesPage /></Layout>} />
-          <Route path="/international-trips/bhutan" element={<Layout><BhutanTourPackagesPage /></Layout>} />
-          <Route path="/international-trips/kazakhstan" element={<Layout><KazakhstanTourPackagesPage /></Layout>} />
-          
-          {/* Domestic Destination Pages */}
-          <Route path="/domestic-trips/ladakh" element={<Layout><LadakhTourPackagesPage /></Layout>} />
-          <Route path="/domestic-trips/spiti-valley" element={<Layout><SpitiValleyTourPackagesPage /></Layout>} />
-          <Route path="/domestic-trips/meghalaya" element={<Layout><MeghalayaTourPackagesPage /></Layout>} />
-          <Route path="/domestic-trips/kashmir" element={<Layout><KashmirTourPackagesPage /></Layout>} />
-          <Route path="/domestic-trips/nagaland" element={<Layout><NagalandTourPackagesPage /></Layout>} />
-          <Route path="/domestic-trips/andaman" element={<Layout><AndamanTourPackagesPage /></Layout>} />
-          <Route path="/domestic-trips/kerala" element={<Layout><KeralaTourPackagesPage /></Layout>} />
-          <Route path="/domestic-trips/rajasthan" element={<Layout><RajasthanTourPackagesPage /></Layout>} />
-          <Route path="/domestic-trips/himachal-pradesh" element={<Layout><HimachalPradeshTourPackagesPage /></Layout>} />
-          
-          {/* Catch-all route for any new International destinations created through admin */}
+          {/* Universal route for ALL International destinations */}
           <Route path="/international-trips/:slug" element={<Layout><UniversalDestinationPage /></Layout>} />
           
-          {/* Catch-all route for any new Domestic destinations created through admin */}
+          {/* Universal route for ALL Domestic destinations */}
           <Route path="/domestic-trips/:slug" element={<Layout><UniversalDestinationPage /></Layout>} />
           
           {/* Individual Destination Pages - Legacy support */}

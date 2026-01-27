@@ -112,6 +112,7 @@ export const getDestinations = async (req, res) => {
     
     const destinations = await Destination.find(filter)
       .populate('tourPackages') // Populate to get actual package data
+      .sort({ updatedAt: -1, createdAt: -1 }) // Sort by last updated first, then creation date
       .lean(); // Use lean for better performance
     
     // Sort tourPackages for each destination by createdAt (latest first) and include groupTours
@@ -293,10 +294,16 @@ export const getDestinationPageData = async (req, res) => {
     const tourPackages = await TourPackage.find({ destination: destination._id })
       .sort({ createdAt: -1 });
 
-    // Fetch FAQs for this destination
-    const faqs = await Faq.find({ destinationId: destination._id });
+    // Get FAQs from destination document or from separate collection (fallback)
+    let faqs = destination.faqs || [];
+    if (faqs.length === 0) {
+      faqs = await Faq.find({ destinationId: destination._id });
+    }
 
-    // Fetch Reviews for this destination
+    // Get testimonials from destination document
+    const testimonials = destination.testimonials || [];
+
+    // Fetch Reviews for this destination (from separate collection, if any)
     const reviews = await Review.find({ destinationId: destination._id })
       .sort({ createdAt: -1 })
       .limit(10);
@@ -309,6 +316,7 @@ export const getDestinationPageData = async (req, res) => {
         reviews // Add reviews to destination object
       },
       faqs,
+      testimonials,
       success: true
     });
 

@@ -122,6 +122,44 @@ const destinationSchema = new mongoose.Schema({
       type: String,
     }],
   }],
+  faqs: [{
+    question: {
+      type: String,
+      required: true,
+    },
+    answer: {
+      type: String,
+      required: true,
+    },
+  }],
+  testimonials: [{
+    name: {
+      type: String,
+      required: true,
+    },
+    location: {
+      type: String,
+      default: '',
+    },
+    rating: {
+      type: Number,
+      min: 1,
+      max: 5,
+      default: 5,
+    },
+    comment: {
+      type: String,
+      required: true,
+    },
+    date: {
+      type: String,
+      default: '',
+    },
+    image: {
+      type: String,
+      default: '',
+    },
+  }],
   category: {
     type: String,
     enum: ['international', 'domestic'],
