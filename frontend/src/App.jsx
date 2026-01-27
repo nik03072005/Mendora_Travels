@@ -6,6 +6,7 @@ import AdminLayout from './Pages/AdminLayout'
 
 import Page from './Pages/Page'
 import AddDestination from './Components/Admin/AddDestination'
+import EditDestination from './Components/Admin/EditDestination'
 import AddPackage from './Components/Admin/AddPackage'
 import Signout from './Components/Admin/Signout'
 import LoginPage from './Components/Admin/login'
@@ -51,6 +52,7 @@ import DestinationPackagesPage from './Pages/DestinationPackagesPage'
 import GroupToursPage from './Pages/GroupToursPage'
 import CorporateTripsPage from './Pages/CorporateTripsPage'
 import WeekendGetawaysPage from './Pages/WeekendGetawaysPage'
+import UniversalDestinationPage from './Pages/UniversalDestinationPage'
 import EuropeTourPackagesPage from './Pages/EuropeTourPackagesPage_Dynamic'
 import BaliTourPackagesPage from './Pages/BaliTourPackagesPage_Dynamic'
 import ThailandTourPackagesPage from './Pages/ThailandTourPackagesPage_Dynamic'
@@ -173,9 +175,13 @@ function App() {
           <Route path="/domestic-trips/rajasthan" element={<Layout><RajasthanTourPackagesPage /></Layout>} />
           <Route path="/domestic-trips/himachal-pradesh" element={<Layout><HimachalPradeshTourPackagesPage /></Layout>} />
           
-          {/* Individual Destination Pages */}
-          <Route path="/international-trips/:id" element={<Layout><DestinationPackagesPage /></Layout>} />
-          <Route path="/domestic-trips/:id" element={<Layout><DestinationPackagesPage /></Layout>} />
+          {/* Catch-all route for any new International destinations created through admin */}
+          <Route path="/international-trips/:slug" element={<Layout><UniversalDestinationPage /></Layout>} />
+          
+          {/* Catch-all route for any new Domestic destinations created through admin */}
+          <Route path="/domestic-trips/:slug" element={<Layout><UniversalDestinationPage /></Layout>} />
+          
+          {/* Individual Destination Pages - Legacy support */}
           <Route path="/tours/:slug" element={<Layout><TripCard/></Layout>} />
           
           {/* Dynamic Destination Packages Page */}
@@ -206,7 +212,6 @@ function App() {
           <Route path='/about-us' element={<Layout><AboutUs/></Layout>}/>
 
           <Route path='/contact-us' element={<Layout><Contact/></Layout>}/>
-          <Route path='*' element={<Layout><NotFoundPage/></Layout>}/>
 
       <Route element={<ProtectedRoute />}>
       <Route element={<AdminLayout />}>
@@ -218,6 +223,7 @@ function App() {
         
         {/* General Admin Routes */}
         <Route path="/add-destination" element={<AddDestination />} />
+        <Route path="/admin/edit-destination/:id" element={<EditDestination />} />
         <Route path="/add-package" element={<AddPackage />} />
         <Route path="/manage-destination" element={<Managedestination />} />
         <Route path="/manage-package" element={<ManagePackages />} />
@@ -236,6 +242,9 @@ function App() {
         <Route path="/signout" element={<Signout />} />
       </Route>
       </Route>
+      
+      {/* 404 Route - Must be last */}
+      <Route path='*' element={<Layout><NotFoundPage/></Layout>}/>
     </Routes>
     </BrowserRouter>
   )

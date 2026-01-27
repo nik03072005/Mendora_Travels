@@ -9,8 +9,7 @@ import { uploadToR2 } from '../utils/r2Utils.js';
 export const createDestination = async (req, res) => {
   try {
     // Extract destinationName and category from req.body
-  //  console.log(req.body.destinationName)
-    const { destinationName, category } = req.body;
+    const { destinationName, category, destinationData: customData } = req.body;
 
      let baseSlug = slugify(destinationName, {
           lower: true,
@@ -26,21 +25,59 @@ export const createDestination = async (req, res) => {
           count++;
         }
 
-    if (!req.file) {
-         return res.status(400).json({ error: 'No file uploaded' });
+    // Check for main image file
+    if (!req.files || !req.files.imageFile || !req.files.imageFile[0]) {
+         return res.status(400).json({ error: 'No main image file uploaded' });
        }
    
-       const fileBuffer = req.file.buffer;
-       const fileName = `images/${Date.now()}-${req.file.originalname}`; // e.g., 'images/1698765432100-my-image.jpg'
+       // Upload main destination image
+       const mainImageBuffer = req.files.imageFile[0].buffer;
+       const mainImageFileName = `images/${Date.now()}-${req.files.imageFile[0].originalname}`;
        const bucketName = 'travel'; // Replace with your R2 bucket name
    
-       const result = await uploadToR2(fileBuffer, fileName, bucketName);
+       const mainImageResult = await uploadToR2(mainImageBuffer, mainImageFileName, bucketName);
+       
+       // Upload hero image if provided
+       let heroImageUrl = mainImageResult.fileUrl; // Default to main image
+       if (req.files.heroImageFile && req.files.heroImageFile[0]) {
+         const heroImageBuffer = req.files.heroImageFile[0].buffer;
+         const heroImageFileName = `images/${Date.now()}-hero-${req.files.heroImageFile[0].originalname}`;
+         const heroImageResult = await uploadToR2(heroImageBuffer, heroImageFileName, bucketName);
+         heroImageUrl = heroImageResult.fileUrl;
+       }
 
-    // Create and save the destination with the uploaded image URL
+    // Parse custom data if provided
+    let parsedCustomData = {};
+    if (customData) {
+      try {
+        parsedCustomData = typeof customData === 'string' ? JSON.parse(customData) : customData;
+      } catch (err) {
+        console.error('Error parsing custom data:', err);
+      }
+    }
+
+    // Merge custom data with defaults
     const destinationData = { 
       destinationName, 
-      imageUrl: result.fileUrl, 
-      slug 
+      imageUrl: mainImageResult.fileUrl, 
+      slug,
+      // Hero Section - use custom or defaults
+      heroSection: {
+        title: parsedCustomData.heroSection?.title || `${destinationName} Tour Packages`,
+        tagline: parsedCustomData.heroSection?.tagline || `Discover the beauty of ${destinationName}`,
+        startingPrice: parsedCustomData.heroSection?.startingPrice || 0,
+        durationRange: parsedCustomData.heroSection?.durationRange || '5-7 Days',
+        heroImage: heroImageUrl, // Use uploaded hero image or main image as fallback
+      },
+      // About Section - use custom or defaults
+      aboutSection: {
+        shortDescription: parsedCustomData.aboutSection?.shortDescription || `Explore amazing ${destinationName} with our carefully curated tour packages.`,
+        expandedDescription: parsedCustomData.aboutSection?.expandedDescription || `${destinationName} offers unforgettable experiences for travelers. Book your dream vacation today!`,
+      },
+      // Arrays - use custom or empty
+      subDestinations: parsedCustomData.subDestinations || [],
+      activities: parsedCustomData.activities || [],
+      groupTours: parsedCustomData.groupTours || [],
     };
     
     // Add category if provided, default to 'international'
@@ -137,32 +174,71 @@ export const getDestinationByName = async (req, res) => {
 export const updateDestination = async (req, res) => {
   try {
     const { id } = req.params;
-     
-     
-
-    const { destinationName } = req.body;
+    const { destinationName, category, destinationData: customData } = req.body;
+    
     const existingDestination = await Destination.findById(id);
 
     if (!existingDestination) {
       return res.status(404).json({ message: 'Destination not found' });
     }
 
+    // Handle image uploads
     let imageURL = existingDestination.imageUrl;
+    let heroImageUrl = existingDestination.heroSection?.heroImage || existingDestination.imageUrl;
 
-    if (req.file) {
-    
-      const fileBuffer = req.file.buffer;
-      const fileName = `images/${Date.now()}-${req.file.originalname}`;
-      const bucketName = 'travel';
-      const result = await uploadToR2(fileBuffer, fileName, bucketName);
-    
-      imageURL = result.fileUrl;
+    if (req.files) {
+      // Upload main image if provided
+      if (req.files.imageFile && req.files.imageFile[0]) {
+        const mainImageBuffer = req.files.imageFile[0].buffer;
+        const mainImageFileName = `images/${Date.now()}-${req.files.imageFile[0].originalname}`;
+        const bucketName = 'travel';
+        const mainImageResult = await uploadToR2(mainImageBuffer, mainImageFileName, bucketName);
+        imageURL = mainImageResult.fileUrl;
+      }
+
+      // Upload hero image if provided
+      if (req.files.heroImageFile && req.files.heroImageFile[0]) {
+        const heroImageBuffer = req.files.heroImageFile[0].buffer;
+        const heroImageFileName = `images/${Date.now()}-hero-${req.files.heroImageFile[0].originalname}`;
+        const heroImageResult = await uploadToR2(heroImageBuffer, heroImageFileName, 'travel');
+        heroImageUrl = heroImageResult.fileUrl;
+      }
     }
 
-   
+    // Parse custom data if provided
+    let parsedCustomData = {};
+    if (customData) {
+      try {
+        parsedCustomData = typeof customData === 'string' ? JSON.parse(customData) : customData;
+      } catch (err) {
+        console.error('Error parsing custom data:', err);
+      }
+    }
+
+    // Build update object with all dynamic fields
+    const updateData = {
+      destinationName,
+      imageUrl: imageURL,
+      category: category || existingDestination.category,
+      heroSection: {
+        title: parsedCustomData.heroSection?.title || existingDestination.heroSection?.title || `${destinationName} Tour Packages`,
+        tagline: parsedCustomData.heroSection?.tagline || existingDestination.heroSection?.tagline || `Discover ${destinationName}`,
+        startingPrice: parsedCustomData.heroSection?.startingPrice ?? existingDestination.heroSection?.startingPrice ?? 0,
+        durationRange: parsedCustomData.heroSection?.durationRange || existingDestination.heroSection?.durationRange || '5-7 Days',
+        heroImage: heroImageUrl,
+      },
+      aboutSection: {
+        shortDescription: parsedCustomData.aboutSection?.shortDescription || existingDestination.aboutSection?.shortDescription || '',
+        expandedDescription: parsedCustomData.aboutSection?.expandedDescription || existingDestination.aboutSection?.expandedDescription || '',
+      },
+      subDestinations: parsedCustomData.subDestinations !== undefined ? parsedCustomData.subDestinations : existingDestination.subDestinations || [],
+      activities: parsedCustomData.activities !== undefined ? parsedCustomData.activities : existingDestination.activities || [],
+      groupTours: parsedCustomData.groupTours !== undefined ? parsedCustomData.groupTours : existingDestination.groupTours || [],
+    };
+
     const updatedDestination = await Destination.findOneAndUpdate(
       { _id: id },
-      { $set: { destinationName, imageUrl: imageURL } }, // Ensure field name matches schema
+      { $set: updateData },
       { new: true, runValidators: true }
     );
 
@@ -170,11 +246,10 @@ export const updateDestination = async (req, res) => {
       return res.status(404).json({ message: 'Destination not found' });
     }
 
-     
-    res.status(200).json(updatedDestination);
+    res.status(200).json({ message: 'Destination updated successfully', destination: updatedDestination });
   } catch (error) {
     console.error('Error details:', error.message, error.stack);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: 'Server error', error: error.message });
   }
 };
 
