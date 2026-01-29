@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import axios from 'axios';
 import HomeNavbar from '../Components/HomeNavbar';
 import InternationalHeroSection from '../Components/International/InternationalHeroSection';
 import DestinationGrid from '../Components/International/DestinationGrid';
@@ -50,129 +51,36 @@ const InternationalTripsPage = () => {
     setTimeout(() => setShowSuccessMessage(false), 5000);
   };
 
-  // International destinations data
-  const internationalDestinations = [
-    {
-      name: "Europe",
-      slug: "europe",
-      continent: "Europe",
-      price: "1,49,999",
-      duration: "10-15 Days",
-      image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80",
-      highlights: ["Eiffel Tower", "Roman Colosseum", "Swiss Alps"],
-      popular: true
-    },
-    {
-      name: "Thailand",
-      slug: "thailand",
-      continent: "Asia",
-      price: "44,999",
-      duration: "5-7 Days",
-      image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80",
-      highlights: ["Bangkok", "Phuket", "Pattaya"],
-      popular: true
-    },
-    {
-      name: "Bali",
-      slug: "bali",
-      continent: "Asia",
-      price: "49,999",
-      duration: "5-7 Days",
-      image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80",
-      highlights: ["Ubud", "Seminyak", "Nusa Penida"],
-      popular: true
-    },
-    {
-      name: "Vietnam",
-      slug: "vietnam",
-      continent: "Asia",
-      price: "59,999",
-      duration: "6-8 Days",
-      image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80",
-      highlights: ["Hanoi", "Ha Long Bay", "Ho Chi Minh"],
-      popular: false
-    },
-    {
-      name: "Dubai",
-      slug: "dubai",
-      continent: "Middle East",
-      price: "69,999",
-      duration: "4-6 Days",
-      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
-      highlights: ["Burj Khalifa", "Desert Safari", "Dubai Mall"],
-      popular: true
-    },
-    {
-      name: "Maldives",
-      slug: "maldives",
-      continent: "Asia",
-      price: "89,999",
-      duration: "4-6 Days",
-      image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80",
-      highlights: ["Water Villas", "Coral Reefs", "Island Hopping"],
-      popular: true
-    },
-    {
-      name: "Singapore",
-      slug: "singapore",
-      continent: "Asia",
-      price: "54,999",
-      duration: "4-5 Days",
-      image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80",
-      highlights: ["Marina Bay", "Sentosa", "Gardens by the Bay"],
-      popular: false
-    },
-    {
-      name: "Malaysia",
-      slug: "malaysia",
-      continent: "Asia",
-      price: "52,999",
-      duration: "5-7 Days",
-      image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=800&q=80",
-      highlights: ["Kuala Lumpur", "Langkawi", "Genting Highlands"],
-      popular: false
-    },
-    {
-      name: "Japan",
-      slug: "japan",
-      continent: "Asia",
-      price: "1,29,999",
-      duration: "7-10 Days",
-      image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80",
-      highlights: ["Tokyo", "Kyoto", "Mount Fuji"],
-      popular: false
-    },
-    {
-      name: "Kazakhstan",
-      slug: "kazakhstan",
-      continent: "Asia",
-      price: "47,999",
-      duration: "5-7 Days",
-      image: "https://images.unsplash.com/photo-1565967511849-76a60a516170?w=800&q=80",
-      highlights: ["Almaty", "Charyn Canyon", "Big Almaty Lake"],
-      popular: false
-    },
-    {
-      name: "Bhutan",
-      slug: "bhutan",
-      continent: "Asia",
-      price: "65,999",
-      duration: "5-7 Days",
-      image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=800&q=80",
-      highlights: ["Tiger's Nest", "Paro Valley", "Thimphu"],
-      popular: false
-    },
-    {
-      name: "Sri Lanka",
-      slug: "sri-lanka",
-      continent: "Asia",
-      price: "28,999",
-      duration: "5-6 Days",
-      image: "https://images.unsplash.com/photo-1586016413664-864c0dd76f53?w=800&q=80",
-      highlights: ["Sigiriya", "Kandy", "Galle"],
-      popular: false
-    }
-  ];
+  // State for destinations
+  const [internationalDestinations, setInternationalDestinations] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch destinations from API
+  useEffect(() => {
+    const fetchDestinations = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/destinations/get?category=international`);
+        // API already sorts by updatedAt and createdAt in descending order
+        const formattedDestinations = response.data.map(dest => ({
+          name: dest.destinationName,
+          slug: dest.slug,
+          continent: dest.category === 'international' ? 'Asia' : 'Other',
+          price: dest.heroSection?.startingPrice ? dest.heroSection.startingPrice.toLocaleString('en-IN') : '0',
+          duration: dest.heroSection?.durationRange || '5-7 Days',
+          image: dest.imageUrl || dest.heroSection?.heroImage || 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80',
+          highlights: dest.heroSection?.highlights || [],
+          popular: true
+        }));
+        setInternationalDestinations(formattedDestinations);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching destinations:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchDestinations();
+  }, []);
 
   const handleDestinationClick = (slug) => {
     navigate(`/international-trips/${slug}`);

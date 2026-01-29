@@ -1,59 +1,33 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const InternationalTrips = () => {
   const navigate = useNavigate();
+  const [destinations, setDestinations] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  const destinations = [
-    {
-      name: "Europe",
-      slug: "europe",
-      price: "1,49,999",
-      image: "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80"
-    },
-    {
-      name: "Vietnam",
-      slug: "vietnam",
-      price: "59,999",
-      image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80"
-    },
-    {
-      name: "Bali",
-      slug: "bali",
-      price: "49,999",
-      image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80"
-    },
-    {
-      name: "Thailand",
-      slug: "thailand",
-      price: "44,999",
-      image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80"
-    },
-    {
-      name: "Japan",
-      slug: "japan",
-      price: "1,29,999",
-      image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=800&q=80"
-    },
-    {
-      name: "Sri Lanka",
-      slug: "sri-lanka",
-      price: "28,999",
-      image: "https://images.unsplash.com/photo-1586016413664-864c0dd76f53?w=800&q=80"
-    },
-    {
-      name: "Philippines",
-      slug: "philippines",
-      price: "79,990",
-      image: "https://images.unsplash.com/photo-1518509562904-e7ef99cdcc86?w=800&q=80"
-    },
-    {
-      name: "Kazakhstan",
-      slug: "kazakhstan",
-      price: "47,999",
-      image: "https://images.unsplash.com/photo-1565967511849-76a60a516170?w=800&q=80"
-    }
-  ];
+  useEffect(() => {
+    const fetchDestinations = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/destinations/get?category=international`);
+        // API already sorts by updatedAt and createdAt in descending order
+        const formattedDestinations = response.data.map(dest => ({
+          name: dest.destinationName,
+          slug: dest.slug,
+          price: dest.heroSection?.startingPrice ? dest.heroSection.startingPrice.toLocaleString('en-IN') : '0',
+          image: dest.imageUrl || dest.heroSection?.heroImage || 'https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80'
+        }));
+        setDestinations(formattedDestinations.slice(0, 8)); // Limit to 8 destinations
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching destinations:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchDestinations();
+  }, []);
 
   const handleDestinationClick = (slug) => {
     navigate(`/international-trips/${slug}`);
@@ -93,26 +67,36 @@ const InternationalTrips = () => {
 
           {/* Right: Destination Grid */}
           <div className="grid grid-cols-4 gap-4 flex-1 ml-8">
-            {destinations.map((destination, index) => (
-              <div 
-                key={index} 
-                className="group cursor-pointer"
-                onClick={() => handleDestinationClick(destination.slug)}
-              >
-                <div className="relative overflow-hidden rounded-lg">
-                  <img
-                    alt={destination.name}
-                    className="w-full h-32 object-cover group-hover:scale-110 transition-transform duration-300"
-                    src={destination.image}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                  <div className="absolute bottom-2 left-2 text-white">
-                    <h3 className="text-sm font-bold">{destination.name}</h3>
-                    <p className="text-xs">Starting Price Rs. {destination.price}/-</p>
+            {loading ? (
+              <div className="col-span-4 text-center py-8">
+                <p className="text-gray-600">Loading destinations...</p>
+              </div>
+            ) : destinations.length === 0 ? (
+              <div className="col-span-4 text-center py-8">
+                <p className="text-gray-600">No destinations available</p>
+              </div>
+            ) : (
+              destinations.map((destination, index) => (
+                <div 
+                  key={index} 
+                  className="group cursor-pointer"
+                  onClick={() => handleDestinationClick(destination.slug)}
+                >
+                  <div className="relative overflow-hidden rounded-lg">
+                    <img
+                      alt={destination.name}
+                      className="w-full h-32 object-cover group-hover:scale-110 transition-transform duration-300"
+                      src={destination.image}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute bottom-2 left-2 text-white">
+                      <h3 className="text-sm font-bold">{destination.name}</h3>
+                      <p className="text-xs">Starting Price Rs. {destination.price}/-</p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
         </div>
       </div>

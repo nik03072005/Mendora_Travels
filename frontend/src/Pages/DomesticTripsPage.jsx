@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import axios from 'axios';
 import HomeNavbar from '../Components/HomeNavbar';
 import DomesticHeroSection from '../Components/Domestic/DomesticHeroSection';
 import DestinationGrid from '../Components/Domestic/DestinationGrid';
@@ -50,129 +51,36 @@ const DomesticTripsPage = () => {
     setTimeout(() => setShowSuccessMessage(false), 5000);
   };
 
-  // Domestic destinations data
-  const domesticDestinations = [
-    {
-      name: "Kashmir",
-      slug: "kashmir",
-      region: "North India",
-      price: "15,999",
-      duration: "5-7 Days",
-      image: "https://images.unsplash.com/photo-1609920658906-8223bd289001?w=800&q=80",
-      highlights: ["Dal Lake", "Gulmarg", "Pahalgam"],
-      popular: true
-    },
-    {
-      name: "Himachal Pradesh",
-      slug: "himachal-pradesh",
-      region: "North India",
-      price: "12,999",
-      duration: "5-6 Days",
-      image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80",
-      highlights: ["Manali", "Shimla", "Dharamshala"],
-      popular: true
-    },
-    {
-      name: "Ladakh",
-      slug: "ladakh",
-      region: "North India",
-      price: "24,999",
-      duration: "6-8 Days",
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
-      highlights: ["Leh", "Pangong Lake", "Nubra Valley"],
-      popular: true
-    },
-    {
-      name: "Rajasthan",
-      slug: "rajasthan",
-      region: "North India",
-      price: "14,999",
-      duration: "6-8 Days",
-      image: "https://images.unsplash.com/photo-1524230507669-27e3047ba033?w=800&q=80",
-      highlights: ["Jaipur", "Udaipur", "Jaisalmer"],
-      popular: true
-    },
-    {
-      name: "Kerala",
-      slug: "kerala",
-      region: "South India",
-      price: "16,999",
-      duration: "5-7 Days",
-      image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=800&q=80",
-      highlights: ["Munnar", "Alleppey", "Kochi"],
-      popular: true
-    },
-    {
-      name: "Goa",
-      slug: "goa",
-      region: "West India",
-      price: "10,999",
-      duration: "4-5 Days",
-      image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800&q=80",
-      highlights: ["Beach", "Water Sports", "Nightlife"],
-      popular: true
-    },
-    {
-      name: "Uttarakhand",
-      slug: "uttarakhand",
-      region: "North India",
-      price: "13,999",
-      duration: "5-6 Days",
-      image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80",
-      highlights: ["Mussoorie", "Nainital", "Rishikesh"],
-      popular: false
-    },
-    {
-      name: "Sikkim",
-      slug: "sikkim",
-      region: "East India",
-      price: "18,999",
-      duration: "5-7 Days",
-      image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80",
-      highlights: ["Gangtok", "Pelling", "Lachung"],
-      popular: false
-    },
-    {
-      name: "Andaman",
-      slug: "andaman",
-      region: "Islands",
-      price: "22,999",
-      duration: "5-6 Days",
-      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80",
-      highlights: ["Havelock", "Neil Island", "Port Blair"],
-      popular: false
-    },
-    {
-      name: "North East",
-      slug: "north-east",
-      region: "East India",
-      price: "19,999",
-      duration: "7-9 Days",
-      image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80",
-      highlights: ["Meghalaya", "Assam", "Arunachal Pradesh"],
-      popular: false
-    },
-    {
-      name: "Karnataka",
-      slug: "karnataka",
-      region: "South India",
-      price: "11,999",
-      duration: "4-6 Days",
-      image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800&q=80",
-      highlights: ["Coorg", "Bangalore", "Hampi"],
-      popular: false
-    },
-    {
-      name: "Tamil Nadu",
-      slug: "tamil-nadu",
-      region: "South India",
-      price: "13,999",
-      duration: "5-7 Days",
-      image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=800&q=80",
-      highlights: ["Ooty", "Kodaikanal", "Madurai"],
-      popular: false
-    }
-  ];
+  // State for destinations
+  const [domesticDestinations, setDomesticDestinations] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch destinations from API
+  useEffect(() => {
+    const fetchDestinations = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/destinations/get?category=domestic`);
+        // API already sorts by updatedAt and createdAt in descending order
+        const formattedDestinations = response.data.map(dest => ({
+          name: dest.destinationName,
+          slug: dest.slug,
+          region: dest.category === 'domestic' ? 'India' : 'Other',
+          price: dest.heroSection?.startingPrice ? dest.heroSection.startingPrice.toLocaleString('en-IN') : '0',
+          duration: dest.heroSection?.durationRange || '5-7 Days',
+          image: dest.imageUrl || dest.heroSection?.heroImage || 'https://images.unsplash.com/photo-1477587458883-47145ed94245?w=800&q=80',
+          highlights: dest.heroSection?.highlights || [],
+          popular: true
+        }));
+        setDomesticDestinations(formattedDestinations);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching destinations:', error);
+        setLoading(false);
+      }
+    };
+
+    fetchDestinations();
+  }, []);
 
   const handleDestinationClick = (slug) => {
     navigate(`/domestic-trips/${slug}`);
