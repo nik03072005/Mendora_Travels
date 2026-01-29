@@ -134,7 +134,7 @@ const PrivacyPolicy = () => {
               In case you have any queries regarding the privacy policy or any related discrepancies, please get in touch with our grievance officer at the information provided below.
             </p>
             <p className="mb-2">
-              <strong>Abhijit Biswas</strong>
+              <strong>John Snow</strong>
             </p>
             <p className="mb-4">
               Email:{" "}

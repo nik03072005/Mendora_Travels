@@ -45,7 +45,7 @@ const SPECIAL_TRIPS = [
 ];
 
 const QUICK_LINKS = [
-  { name: "Team Section", path: "/about-us", useLink: true },
+  { name: "About us", path: "/about-us", useLink: true },
   { name: "Contact Us", path: "/contact-us", useLink: true },
   { name: "Blogs", path: "/blogs" },
   { name: "Careers", path: "/career" },

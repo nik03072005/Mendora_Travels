@@ -432,7 +432,7 @@ const singaporeFaqs = [
 
 const singaporeReviews = [
   {
-    name: 'Rajesh Kumar',
+    name: 'Arya Stark',
     rating: 5,
     location: 'Delhi',
     comment: 'Fantastic Singapore trip! Universal Studios was amazing, Gardens by the Bay breathtaking, and food incredible. Very clean and safe city. Loved every moment!',

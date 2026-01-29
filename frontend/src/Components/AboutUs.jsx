@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import founderImg from "../assets/founder-trip.jpg";
-import sDas from '../assets/Sdas.png'
-import Dipika from '../assets/Dipika.jpg'
 import logo from "../assets/mendora-logo.png";
 import { useNavigate } from "react-router-dom";
 import { FiMenu, FiX } from "react-icons/fi";
@@ -66,7 +63,7 @@ const AboutUs = () => {
                 Blogs
               </button>
               <button className={`text-sm font-bold transition-all ${scrolled ? 'bg-[#007aff]-500' : 'bg-[#007aff]-300 drop-shadow-md'}`}>
-                Team Section
+                About us
               </button>
               <button onClick={() => navigate('/payment')} className={`text-sm font-medium transition-all hover:bg-[#007aff]-500 ${scrolled ? 'text-gray-700' : 'text-white drop-shadow-md'}`}>
                 Payments
@@ -105,7 +102,7 @@ const AboutUs = () => {
                 Blogs
               </button>
               <button className="block w-full text-left px-4 py-2 text-sm bg-[#007aff]-500 font-bold hover:bg-gray-100 rounded">
-                Team Section
+                About us
               </button>
               <button onClick={() => { navigate('/career'); setMobileMenuOpen(false); }} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">
                 Career
@@ -152,7 +149,7 @@ const AboutUs = () => {
       <div className="relative h-screen bg-gradient-to-br from-teal-600 via-blue-600 to-purple-600 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            alt="Team Section"
+            alt="About us"
             className="w-full h-full object-cover opacity-30 mix-blend-overlay"
             src="https://images.unsplash.com/photo-1527004013197-933c4bb611b3?w=1200&q=80"
           />
@@ -366,39 +363,36 @@ const AboutUs = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           <div className="text-center group">
-            <div className="relative overflow-hidden rounded-2xl mb-4">
-              <img
-                alt="Abhijit Biswas"
-                className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300"
-                src={founderImg}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div className="relative overflow-hidden rounded-2xl mb-4 bg-gray-200">
+              <div className="w-full h-80 flex items-center justify-center">
+                <svg className="w-32 h-32 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-1">Abhijit Biswas</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-1">John Snow</h3>
             <p className="text-teal-600 font-medium">Founder & CEO</p>
           </div>
           <div className="text-center group">
-            <div className="relative overflow-hidden rounded-2xl mb-4">
-              <img
-                alt="S. Das"
-                className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300"
-                src={sDas}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div className="relative overflow-hidden rounded-2xl mb-4 bg-gray-200">
+              <div className="w-full h-80 flex items-center justify-center">
+                <svg className="w-32 h-32 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-1">S. Das</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-1">Arya Stark</h3>
             <p className="text-teal-600 font-medium">Co-Founder</p>
           </div>
           <div className="text-center group">
-            <div className="relative overflow-hidden rounded-2xl mb-4">
-              <img
-                alt="Dipika"
-                className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-300"
-                src={Dipika}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            <div className="relative overflow-hidden rounded-2xl mb-4 bg-gray-200">
+              <div className="w-full h-80 flex items-center justify-center">
+                <svg className="w-32 h-32 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+              </div>
             </div>
-            <h3 className="text-xl font-bold text-gray-900 mb-1">Dipika</h3>
+            <h3 className="text-xl font-bold text-gray-900 mb-1">Lanister</h3>
             <p className="text-teal-600 font-medium">Travel Operations Executive</p>
           </div>
         </div>
