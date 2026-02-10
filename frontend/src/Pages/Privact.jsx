@@ -1,5 +1,5 @@
 import React from "react";
-import TNavbar from "../Components/TransparentNavbar";
+import HomeNavbar from "../Components/HomeNavbar";
 import privacy from '../assets/privacy-policy.jpg';
 import { Helmet } from "react-helmet-async";
 
@@ -13,7 +13,7 @@ const PrivacyPolicy = () => {
           content="Mendora Travels is committed to protecting your privacy. Learn how we collect, use, and protect your personal information."
         />
       </Helmet>
-      <TNavbar />
+      <HomeNavbar variant="minimal" showMenuItems={false} showCurrency={false} />
       <div className=" text-gray-800">
         {/* Banner */}
         <header

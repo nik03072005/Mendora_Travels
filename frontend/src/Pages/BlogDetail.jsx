@@ -6,7 +6,7 @@ import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import DOMPurify from 'dompurify';
 import { Helmet } from 'react-helmet-async';
-import PNavbar from '../Components/PackageNavbar';
+import HomeNavbar from '../Components/HomeNavbar';
 
 const BlogDetail = () => {
   const { title } = useParams(); // Changed from 'id' to 'title' to match slug-based routing
@@ -34,7 +34,7 @@ const BlogDetail = () => {
   if (loading) {
     return (
       <>
-        <PNavbar />
+        <HomeNavbar variant="solid" />
         <div className="min-h-screen bg-gray-50 pt-16 sm:pt-20 pb-12">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <Skeleton height={400} className="mb-4 rounded-xl" />
@@ -55,7 +55,7 @@ const BlogDetail = () => {
   if (!blog) {
     return (
       <>
-        <PNavbar />
+        <HomeNavbar variant="solid" />
         <div className="min-h-screen bg-gray-50 flex items-center justify-center pt-16">
           <div className="text-center text-gray-500 text-lg">Blog not found.</div>
         </div>
@@ -71,7 +71,7 @@ const BlogDetail = () => {
         <title>{blog.title} | All About Our Adventures</title>
         <meta name="description" content={description} />
       </Helmet>
-      <PNavbar />
+      <HomeNavbar variant="solid" />
       <div className="min-h-screen bg-gray-50 pt-16 sm:pt-20 pb-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <img

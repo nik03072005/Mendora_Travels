@@ -3,7 +3,7 @@ import RequestCallbackCard from "../Components/Callback/CallbackCard";
 import { LiaHotelSolid } from "react-icons/lia";
 import { MdEmojiTransportation } from "react-icons/md";
 import { GiBinoculars } from "react-icons/gi";
-import PNavbar from "../Components/PackageNavbar";
+import HomeNavbar from "../Components/HomeNavbar";
 import { useParams } from "react-router-dom";
 import FAQ from "../Components/Admin/FAQS/Faqs";
 import { FaCar, FaChevronDown, FaChevronUp, FaParachuteBox } from "react-icons/fa";
@@ -498,7 +498,7 @@ if (loading) {
                   />
                 </Helmet>
 
-      <PNavbar />
+      <HomeNavbar variant="solid" />
       {tripData.imageUrls && <ImageGallery tripData={tripData} />}
       
       <div className="mt-0 lg:flex gap-4 max-w-6xl mx-auto p-4">

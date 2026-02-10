@@ -1,23 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Helmet } from "react-helmet-async";
-import logo from "../assets/mendora-logo.png";
-import { useNavigate } from "react-router-dom";
-import { FiMenu, FiX } from "react-icons/fi";
+import HomeNavbar from "./HomeNavbar";
 
 const AboutUs = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const navigate = useNavigate();
-
-  // Handle navbar scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <>
       <Helmet>
@@ -28,122 +13,7 @@ const AboutUs = () => {
         />
       </Helmet>
 
-      {/* Modern Transparent Navbar */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-20">
-            {/* Logo */}
-            <button onClick={() => navigate('/')} className="flex items-center space-x-3 transition-transform hover:scale-105">
-              <img alt="Mendora Travels Logo" className={`h-8 w-auto transition-all duration-300 ${scrolled ? '' : 'drop-shadow-lg'}`} src={logo} />
-            </button>
-
-            {/* Search Bar - Desktop Only */}
-            <div className="hidden lg:flex flex-1 max-w-md mx-8">
-              <div className="relative w-full">
-                <input
-                  placeholder="Where do you want to go?"
-                  className={`w-full px-4 py-2 pl-10 pr-4 text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500 transition-all ${scrolled ? 'border border-gray-300 bg-white' : 'bg-white/90 backdrop-blur-sm border border-white/30'}`}
-                  type="text"
-                />
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-            </div>
-
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-6">
-              <button onClick={() => navigate('/group-tours')} className={`text-sm font-medium transition-all hover:bg-[#007aff]-500 ${scrolled ? 'text-gray-700' : 'text-white drop-shadow-md'}`}>
-                Upcoming Trips
-              </button>
-              <button onClick={() => navigate('/corporate')} className={`text-sm font-medium transition-all hover:bg-[#007aff]-500 ${scrolled ? 'text-gray-700' : 'text-white drop-shadow-md'}`}>
-                Corporate Tours
-              </button>
-              <button onClick={() => navigate('/blogs')} className={`text-sm font-medium transition-all hover:bg-[#007aff]-500 ${scrolled ? 'text-gray-700' : 'text-white drop-shadow-md'}`}>
-                Blogs
-              </button>
-              <button className={`text-sm font-bold transition-all ${scrolled ? 'bg-[#007aff]-500' : 'bg-[#007aff]-300 drop-shadow-md'}`}>
-                About us
-              </button>
-              <button onClick={() => navigate('/payment')} className={`text-sm font-medium transition-all hover:bg-[#007aff]-500 ${scrolled ? 'text-gray-700' : 'text-white drop-shadow-md'}`}>
-                Payments
-              </button>
-            </nav>
-
-            {/* Desktop Phone Number */}
-            <div className="hidden lg:flex items-center">
-              <a href="tel:+919547306912" className={`px-4 py-2 text-sm font-medium transition-all hover:scale-105 ${scrolled ? 'text-gray-700 hover:bg-[#007aff]-500' : 'text-white hover:bg-[#007aff]-300 drop-shadow-md'}`}>
-                +91-9547306912
-              </a>
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden p-2 rounded-md transition-all hover:bg-white/10">
-              {mobileMenuOpen ? (
-                <FiX className={`text-xl transition-colors ${scrolled ? 'text-gray-700' : 'text-white drop-shadow-md'}`} />
-              ) : (
-                <FiMenu className={`text-xl transition-colors ${scrolled ? 'text-gray-700' : 'text-white drop-shadow-md'}`} />
-              )}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu Dropdown */}
-        {mobileMenuOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-200">
-            <div className="px-4 py-2 space-y-2">
-              <button onClick={() => { navigate('/group-tours'); setMobileMenuOpen(false); }} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">
-                Upcoming Trips
-              </button>
-              <button onClick={() => { navigate('/corporate'); setMobileMenuOpen(false); }} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">
-                Corporate Tours
-              </button>
-              <button onClick={() => { navigate('/blogs'); setMobileMenuOpen(false); }} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">
-                Blogs
-              </button>
-              <button className="block w-full text-left px-4 py-2 text-sm bg-[#007aff]-500 font-bold hover:bg-gray-100 rounded">
-                About us
-              </button>
-              <button onClick={() => { navigate('/career'); setMobileMenuOpen(false); }} className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">
-                Career
-              </button>
-              <a href="tel:+919147144627" className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded">
-                Call: +91-9147144627
-              </a>
-            </div>
-          </div>
-        )}
-
-        {/* Mobile Bottom Navigation */}
-        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 z-40">
-          <div className="grid grid-cols-4 gap-1">
-            <button onClick={() => navigate('/')} className="flex flex-col items-center py-2 px-1 text-xs text-gray-600 hover:bg-[#007aff]-500">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-              </svg>
-              <span>Home</span>
-            </button>
-            <button className="flex flex-col items-center py-2 px-1 text-xs text-gray-600 hover:bg-[#007aff]-500">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>Explore</span>
-            </button>
-            <button onClick={() => navigate('/search')} className="flex flex-col items-center py-2 px-1 text-xs text-gray-600 hover:bg-[#007aff]-500">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-              <span>Search</span>
-            </button>
-            <button onClick={() => navigate('/contact-us')} className="flex flex-col items-center py-2 px-1 text-xs text-gray-600 hover:bg-[#007aff]-500">
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mb-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              <span>Contact</span>
-            </button>
-          </div>
-        </div>
-      </header>
+      <HomeNavbar variant="transparent" />
 
       {/* Hero Section with Gradient Background */}
       <div className="relative h-screen bg-gradient-to-br from-teal-600 via-blue-600 to-purple-600 overflow-hidden">
@@ -188,7 +58,11 @@ const AboutUs = () => {
             <span className="text-teal-600 font-semibold text-sm uppercase tracking-wide mb-2 block">Our Journey</span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Our Story</h2>
             <p className="text-lg text-gray-600 leading-relaxed">
-              Founded with a passion for exploration and a commitment to excellence, Mendora Travels has been transforming the way people experience the world. We believe that travel is not just about visiting new places, but about creating meaningful connections, discovering diverse cultures, and making memories that last forever.
+              Mendora Travels is a trusted travel company committed to delivering smooth, personalized, and memorable travel experiences. We specialize in designing well-planned domestic and international holiday packages that suit every traveler’s needs, preferences, and budget.
+We believe that travel is more than just reaching a destination — it is about comfort, safety, discovery, and creating lifelong memories. That’s why our experienced travel professionals focus on providing end-to-end travel solutions, including flight bookings, hotel reservations, sightseeing tours, transfers, visa assistance, and customized itinerary planning.
+At Mendora Travels, transparency, reliability, and customer satisfaction are the foundation of our service. We work closely with verified airlines, hotels, and local partners to ensure high-quality service standards and hassle-free journeys for our clients.
+Whether you are planning a family vacation, honeymoon trip, group tour, corporate travel, or a customized holiday experience, Mendora Travels is dedicated to making your journey stress-free and enjoyable from start to finish.
+Our mission is to simplify travel planning while delivering exceptional value and unforgettable experiences. With Mendora Travels, every trip is carefully crafted to turn your travel dreams into reality.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">

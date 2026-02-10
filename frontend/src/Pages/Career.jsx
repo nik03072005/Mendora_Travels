@@ -6,7 +6,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import DOMPurify from "dompurify";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
-import PNavbar from "../Components/PackageNavbar";
+import HomeNavbar from "../Components/HomeNavbar";
 import careerbanner from "../assets/joinourteam.jpg";
 import { Helmet } from "react-helmet-async";
 
@@ -63,7 +63,7 @@ const Career = () => {
           content="Explore exciting career opportunities at Mendora Travels. Join a team that values innovation, growth, and your unique contributions. Apply today and build your future with us."
         />
       </Helmet>
-      <PNavbar />
+      <HomeNavbar variant="solid" />
       <div className="min-h-screen bg-gray-50">
         {/* Full-Width Banner Section */}
         <div className="w-full pt-14 sm:pt-16">

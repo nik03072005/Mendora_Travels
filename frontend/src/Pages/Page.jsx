@@ -6,7 +6,7 @@ import AllPackageCards from '../Components/Packages/AllPackages';
 import ReviewCardsD from '../Components/Reviews/ReviewbyDestinationId';
 import { Helmet } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
-import TNavbar from '../Components/TransparentNavbar';
+import HomeNavbar from '../Components/HomeNavbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faPhone, faEnvelope, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
@@ -86,7 +86,7 @@ export default function DestinationPage() {
         />
       </Helmet>
 
-      <TNavbar />
+      <HomeNavbar variant="transparent" />
       
       {/* Hero Section */}
       <div className="relative h-[50vh] sm:h-[60vh] lg:h-[70vh] overflow-hidden">

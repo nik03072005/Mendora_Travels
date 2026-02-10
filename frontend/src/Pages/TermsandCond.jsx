@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import TNavbar from "../Components/TransparentNavbar";
+import HomeNavbar from "../Components/HomeNavbar";
 import terms from "../assets/terms.jpg"; // Adjust the path to your terms image
 import { Helmet } from "react-helmet-async";
 
@@ -409,7 +409,7 @@ const TermsAndConditions = () => {
         <title>Terms & Conditions | Mendora Travels</title>
         <meta name="description" content="Read the Terms & Conditions for using Mendora Travels' website and booking services. Understand your rights, responsibilities, and our service policies." />
       </Helmet>
-      <TNavbar />
+      <HomeNavbar variant="minimal" showMenuItems={false} showCurrency={false} />
       <div className="text-gray-800">
         {/* Banner */}
         <header

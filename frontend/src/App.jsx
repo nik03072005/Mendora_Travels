@@ -53,6 +53,8 @@ import GroupToursPage from './Pages/GroupToursPage'
 import CorporateTripsPage from './Pages/CorporateTripsPage'
 import WeekendGetawaysPage from './Pages/WeekendGetawaysPage'
 import UniversalDestinationPage from './Pages/UniversalDestinationPage'
+import InterestsPage from './Pages/InterestsPage'
+import WhyChooseUsPage from './Pages/WhyChooseUsPage'
 
 
 const AdminLoginRoute = () => {
@@ -148,8 +150,8 @@ function App() {
           <Route path="/international" element={<Layout><HomePage/></Layout>} />
           <Route path="/domestic" element={<Layout><HomePage/></Layout>} />
           <Route path="/destinations" element={<Layout><HomePage/></Layout>} />
-          <Route path="/interests" element={<Layout><HomePage/></Layout>} />
-          <Route path="/why-choose-us" element={<Layout><HomePage/></Layout>} />
+          <Route path="/interests" element={<Layout><InterestsPage/></Layout>} />
+          <Route path="/why-choose-us" element={<Layout><WhyChooseUsPage/></Layout>} />
           <Route path="/faq" element={<Layout><HomePage/></Layout>} />
           
           {/* Special Trip Categories */}

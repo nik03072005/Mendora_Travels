@@ -4,7 +4,7 @@ import { FaWhatsapp } from 'react-icons/fa';
 import axios from 'axios';
 import contactus from '../assets/trip-contact.jpg';
 import Footer from './Footer';
-import PNavbar from './PackageNavbar';
+import HomeNavbar from './HomeNavbar';
 import { Helmet } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
 
@@ -97,7 +97,7 @@ export const Contact = () => {
         />
       </Helmet>
 
-      <PNavbar />
+      <HomeNavbar variant="solid" />
       <div className="flex flex-col min-h-screen bg-gray-50">
         <main className="flex-grow max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 lg:pt-24 pb-10 sm:pb-12">
           <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-6 sm:mb-8 text-center">

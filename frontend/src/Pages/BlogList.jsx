@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import { Helmet } from 'react-helmet-async';
-import PNavbar from '../Components/PackageNavbar';
+import HomeNavbar from '../Components/HomeNavbar';
 import slugify from 'slugify';
 
 // Helper function to create a URL-friendly slug from the title
@@ -52,7 +52,7 @@ const BlogList = () => {
           content="Get inspired for your next journey! Explore travel stories, destination guides, and tips from the All About Our Adventures blog archive."
         />
       </Helmet>
-      <PNavbar />
+      <HomeNavbar variant="solid" />
       <div className="min-h-screen bg-gray-50 pt-16 sm:pt-20 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8 text-center text-gray-900">

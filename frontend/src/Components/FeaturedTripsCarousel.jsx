@@ -31,7 +31,7 @@ const FeaturedTripsCarousel = () => {
               <div key={index} className="w-full flex-shrink-0">
                 <img
                   alt={image.alt}
-                  className="w-full h-64 object-cover rounded-xl"
+                  className="w-full h-80 object-cover rounded-xl"
                   src={image.src}
                 />
               </div>

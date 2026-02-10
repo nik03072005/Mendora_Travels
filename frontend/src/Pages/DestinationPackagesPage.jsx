@@ -12,7 +12,7 @@ import {
   faSearch
 } from '@fortawesome/free-solid-svg-icons';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
-import TNavbar from '../Components/TransparentNavbar';
+import HomeNavbar from '../Components/HomeNavbar';
 import { convertPrice } from '../utils/priceConverter';
 import RequestCallbackCard from '../Components/Callback/CallbackCard';
 import slugify from "slugify";
@@ -175,7 +175,7 @@ const createSlug = (title) => {
         />
       </Helmet>
 
-      <TNavbar />
+      <HomeNavbar variant="transparent" />
 
       {/* Hero Section */}
       <div className="relative h-[400px] overflow-hidden">

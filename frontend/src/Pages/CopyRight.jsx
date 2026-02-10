@@ -1,5 +1,5 @@
 import React from "react";
-import TNavbar from "../Components/TransparentNavbar";
+import HomeNavbar from "../Components/HomeNavbar";
 import copyright from "../assets/copyright.jpg"; // Adjust the path to your copyright image
 import { Helmet } from "react-helmet-async";
 
@@ -11,7 +11,7 @@ const Copyright = () => {
         <meta name="description" content="Review Mendora Travels' copyright policy to understand how our content and media are protected and how to request permission or report infringement."/>
       </Helmet>
       <>
-        <TNavbar />
+        <HomeNavbar variant="minimal" showMenuItems={false} showCurrency={false} />
         <div className=" text-gray-800">
           {/* Banner */}
           <header

@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import PNavbar from "../Components/PackageNavbar";
+import HomeNavbar from "../Components/HomeNavbar";
 
 const NotFoundPage = () => {
   const navigate = useNavigate();
 
   return (
     <>
-      <PNavbar />
+      <HomeNavbar variant="solid" />
       <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 flex flex-col items-center justify-center px-4 text-center pt-16">
         <img
           src="https://cdn-icons-png.flaticon.com/512/201/201623.png"
