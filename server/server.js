@@ -37,6 +37,12 @@ app.use(cors({
 // Middleware
 app.use(express.json());
 app.use(bodyParser.json());
+
+// Health check endpoint
+app.get("/api", (req, res) => {
+  res.json({ success: true, message: "API working" });
+});
+
 // Routes
 app.use('/api/users', userRoutes);
 app.use('/api/destinations', destinationRoutes);
