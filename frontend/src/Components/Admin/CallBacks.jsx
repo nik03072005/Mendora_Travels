@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -12,7 +13,7 @@ const TravelInquiryTable = () => {
   const fetchInquiries = async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/travel-inquiry/get-inquiry`,
+        `${API_BASE_URL}/api/travel-inquiry/get-inquiry`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -31,7 +32,7 @@ const TravelInquiryTable = () => {
     try {
       const updatedStatus = currentStatus === "pending" ? "resolved" : "pending";
       await axios.put(
-        `${import.meta.env.VITE_API_URL}/api/travel-inquiry/update-status/${id}`,
+        `${API_BASE_URL}/api/travel-inquiry/update-status/${id}`,
         { status: updatedStatus },
         {
           headers: {
@@ -79,7 +80,7 @@ const TravelInquiryTable = () => {
     try {
       setDeletingId(id);
       await axios.delete(
-        `${import.meta.env.VITE_API_URL}/api/travel-inquiry/delete-inquiry/${id}`,
+        `${API_BASE_URL}/api/travel-inquiry/delete-inquiry/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

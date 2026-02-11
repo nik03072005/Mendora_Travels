@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
@@ -148,7 +149,7 @@ const AddDestination = () => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/destinations/create`,
+        `${API_BASE_URL}/api/destinations/create`,
         data,
         {
           headers: {

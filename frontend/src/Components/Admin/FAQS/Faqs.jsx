@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../../utils/apiBaseUrl';
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -11,7 +12,7 @@ export default function FAQ( { destinationId }) {
 
   useEffect(() => {
     // Replace with your actual API endpoint
-    axios.get(`${import.meta.env.VITE_API_URL}/api/faqs/get/${destinationId}`)
+    axios.get(`${API_BASE_URL}/api/faqs/get/${destinationId}`)
       .then((response) => {
         setFaqs(response.data.data || []);
       })

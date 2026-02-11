@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import React, { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import axios from "axios";
@@ -83,7 +84,7 @@ const ReviewCards = ({ packageId, refProp }) => {
     const fetchReviews = async () => {
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/reviews/getbyPackage/${packageId}`
+          `${API_BASE_URL}/api/reviews/getbyPackage/${packageId}`
         );
         setReviews(res.data.reviews);
         setPackageTitle(res.data.packageTitle);

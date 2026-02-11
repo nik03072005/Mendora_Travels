@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../utils/apiBaseUrl';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -22,7 +23,7 @@ const Career = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/job/jobs`,
+          `${API_BASE_URL}/api/job/jobs`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

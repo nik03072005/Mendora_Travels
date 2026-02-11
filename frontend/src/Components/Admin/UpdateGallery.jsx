@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import React, { useState, useEffect } from 'react';
 import {
   Box,
@@ -35,7 +36,7 @@ const UpdateGallery = () => {
   useEffect(() => {
     const fetchDestinations = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/destinations/get`);
+        const response = await axios.get(`${API_BASE_URL}/api/destinations/get`);
         setDestinations(response.data);
       } catch (error) {
         toast.error('Failed to fetch destinations');
@@ -56,7 +57,7 @@ const UpdateGallery = () => {
       setFetchingGallery(true);
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/gallery/get/${destinationId}`
+          `${API_BASE_URL}/api/gallery/get/${destinationId}`
         );
         setGallery(response.data);
         console.log(response)
@@ -96,7 +97,7 @@ const UpdateGallery = () => {
     if (!gallery) return;
     setLoading(true);
     try {
-      const response = await axios.delete( `${import.meta.env.VITE_API_URL}/api/gallery/delete/${gallery._id}/image/${encodeURIComponent(imageUrl)}`,{
+      const response = await axios.delete( `${API_BASE_URL}/api/gallery/delete/${gallery._id}/image/${encodeURIComponent(imageUrl)}`,{
         headers:{
            Authorization: `Bearer ${token}`, // Include token in Authorization header
         }
@@ -131,7 +132,7 @@ const UpdateGallery = () => {
 
     try {
       const response = await axios.put(
-        `${import.meta.env.VITE_API_URL}/api/gallery/update/${gallery._id}`,
+        `${API_BASE_URL}/api/gallery/update/${gallery._id}`,
         formData,{
           headers:{
              Authorization: `Bearer ${token}`, // Include token in Authorization header

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { FaArrowLeft, FaEdit, FaTrash, FaPlus, FaSave, FaTimes, FaCalendar, FaUsers, FaMoneyBillWave } from 'react-icons/fa';
@@ -27,7 +28,7 @@ const ManageGroupTours = () => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/destinations/${destinationId}`);
+      const response = await fetch(`${API_BASE_URL}/api/destinations/${destinationId}`);
       const data = await response.json();
       setDestination(data.destination || data);
       setGroupTours((data.destination || data).groupTours || []);
@@ -110,7 +111,7 @@ const ManageGroupTours = () => {
       if (editingTour) {
         // Update existing tour
         response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/destinations/${destinationId}/group-tours/${editingTour}`,
+          `${API_BASE_URL}/api/destinations/${destinationId}/group-tours/${editingTour}`,
           {
             method: 'PUT',
             headers: {
@@ -123,7 +124,7 @@ const ManageGroupTours = () => {
       } else {
         // Add new tour
         response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/destinations/${destinationId}/group-tours`,
+          `${API_BASE_URL}/api/destinations/${destinationId}/group-tours`,
           {
             method: 'POST',
             headers: {
@@ -155,7 +156,7 @@ const ManageGroupTours = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/destinations/${destinationId}/group-tours/${tourId}`,
+        `${API_BASE_URL}/api/destinations/${destinationId}/group-tours/${tourId}`,
         {
           method: 'DELETE',
           headers: {

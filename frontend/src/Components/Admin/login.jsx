@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import axios from 'axios';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -17,7 +18,7 @@ export default function LoginPage() {
     e.preventDefault();
     setIsLoading(true); // Disable button when login starts
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/users/login`, { email, password });
+      const response = await axios.post(`${API_BASE_URL}/api/users/login`, { email, password });
       localStorage.setItem('token', response.data.token);
       toast.success('Login successful! Redirecting...', { position: 'top-center' });
       setTimeout(() => {

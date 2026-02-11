@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { API_BASE_URL } from '../utils/apiBaseUrl';
 
 const ExploreIndia = () => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const ExploreIndia = () => {
   useEffect(() => {
     const fetchDestinations = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/destinations/get?category=domestic`);
+        const response = await axios.get(`${API_BASE_URL}/api/destinations/get?category=domestic`);
         // API already sorts by updatedAt and createdAt in descending order
         const formattedDestinations = response.data.map(dest => ({
           name: dest.destinationName,

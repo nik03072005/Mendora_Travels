@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../utils/apiBaseUrl';
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -9,7 +10,7 @@ export default function DestinationsSection() {
   useEffect(() => {
     const fetchDestinationData = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/destinations/get`);
+        const res = await axios.get(`${API_BASE_URL}/api/destinations/get`);
         console.log("he",res.data);
         if (res?.data) {
           setDestinationData(res.data);

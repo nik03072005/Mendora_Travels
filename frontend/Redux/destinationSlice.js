@@ -1,10 +1,11 @@
+import { API_BASE_URL } from '../src/utils/apiBaseUrl';
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 
 export const fetchDestinations = createAsyncThunk(
     'destinations/fetchDestinations',
     async () => {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/destinations/get`);
+        const response = await fetch(`${API_BASE_URL}/api/destinations/get`);
         if (!response.ok) {
             throw new Error('Failed to fetch destinations');
         }

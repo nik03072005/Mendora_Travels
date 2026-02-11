@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../utils/apiBaseUrl';
 import React, { useEffect, useRef, useState } from "react";
 import RequestCallbackCard from "../Components/Callback/CallbackCard";
 import { LiaHotelSolid } from "react-icons/lia";
@@ -416,7 +417,7 @@ export default function TripCard() {
     const fetchTripData = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/tour-packages/slug/${slug}`);
+        const response = await fetch(`${API_BASE_URL}/api/tour-packages/slug/${slug}`);
         if (!response.ok) {
           throw new Error(`Failed to fetch trip data: ${response.status}`);
         }

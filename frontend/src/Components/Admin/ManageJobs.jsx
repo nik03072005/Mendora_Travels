@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
@@ -18,7 +19,7 @@ const ManageJobs = () => {
     const fetchJobs = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/job/jobs`, {
+        const response = await axios.get(`${API_BASE_URL}/api/job/jobs`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -39,7 +40,7 @@ const ManageJobs = () => {
 
     const toastId = toast.loading('Deleting job...');
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/job/jobs/${id}`, {
+      await axios.delete(`${API_BASE_URL}/api/job/jobs/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

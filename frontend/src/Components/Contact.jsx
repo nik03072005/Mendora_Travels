@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../utils/apiBaseUrl';
 import { useState } from 'react';
 import { Phone, Mail, MapPin, User, Calendar , MessageSquare } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
@@ -66,7 +67,7 @@ export const Contact = () => {
 
     try {
       await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/travel-inquiry/submit-inquiry`,
+        `${API_BASE_URL}/api/travel-inquiry/submit-inquiry`,
         formData
       );
       setSuccessMessage('Your inquiry has been submitted successfully!');

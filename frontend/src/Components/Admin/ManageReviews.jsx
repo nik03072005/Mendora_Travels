@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
@@ -56,7 +57,7 @@ const ManageReviews = () => {
     const fetchDestinations = async () => {
       setFetching(true);
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/destinations/get`);
+        const response = await axios.get(`${API_BASE_URL}/api/destinations/get`);
         setDestinations(response.data || []);
       } catch (error) {
         toast.error('Failed to load destinations');
@@ -74,7 +75,7 @@ const ManageReviews = () => {
       const fetchPackages = async () => {
         setFetching(true);
         try {
-          const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/tour-packages/destination/${formData.destinationId}`);
+          const response = await axios.get(`${API_BASE_URL}/api/tour-packages/destination/${formData.destinationId}`);
           setPackages(response.data || []);
           setFormData((prev) => ({ ...prev, packageId: '' }));
         } catch (error) {
@@ -98,9 +99,9 @@ const ManageReviews = () => {
     const fetchReviews = async () => {
       setLoading(true);
       try {
-        let url = `${import.meta.env.VITE_API_URL}/api/reviews/getbyDestination/${formData.destinationId}`;
+        let url = `${API_BASE_URL}/api/reviews/getbyDestination/${formData.destinationId}`;
         if (formData.packageId) {
-          url = `${import.meta.env.VITE_API_URL}/api/reviews/getbyPackage/${formData.packageId}`;
+          url = `${API_BASE_URL}/api/reviews/getbyPackage/${formData.packageId}`;
         }
         const response = await axios.get(url, {
           headers: { Authorization: `Bearer ${token}` },
@@ -126,7 +127,7 @@ const ManageReviews = () => {
   const handleDeleteReview = async (reviewId) => {
     setLoading(true);
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/reviews/delete/${reviewId}`, {
+      await axios.delete(`${API_BASE_URL}/api/reviews/delete/${reviewId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success('Review deleted successfully');

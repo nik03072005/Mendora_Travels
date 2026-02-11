@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../../utils/apiBaseUrl';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,7 +37,7 @@ const AddFAQ = () => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/faqs/create`,
+        `${API_BASE_URL}/api/faqs/create`,
         {
           destinationId: selectedDestination,
           question,
