@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -34,7 +35,7 @@ const AddPackage = () => {
   useEffect(() => {
     const fetchDestinations = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/destinations/get`);
+        const response = await axios.get(`${API_BASE_URL}/api/destinations/get`);
         const fetchedDestinations = Array.isArray(response.data) && response.data.length > 0
           ? response.data
           : staticDestinations;
@@ -190,7 +191,7 @@ const AddPackage = () => {
 
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_API_URL}/api/tour-packages`,
+        `${API_BASE_URL}/api/tour-packages`,
         data,
         {
           headers: {

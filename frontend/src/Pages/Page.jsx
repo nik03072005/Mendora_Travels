@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../utils/apiBaseUrl';
 
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
@@ -42,7 +43,7 @@ export default function DestinationPage() {
   const fetchThailandPackages = async (destinationId) => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/tour-packages/destination/${destinationId}`
+        `${API_BASE_URL}/api/tour-packages/destination/${destinationId}`
       );
       const data = response.data;
       const formattedPackages = data.map((pkg, index) => ({

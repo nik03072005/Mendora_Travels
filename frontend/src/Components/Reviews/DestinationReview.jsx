@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FaStar } from "react-icons/fa";
@@ -17,7 +18,7 @@ export default function ReviewCarousel({ packageId }) {
 
     const fetchReviews = async () => {
       try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/reviews/getbyDestination/${packageId}`);
+        const res = await axios.get(`${API_BASE_URL}/api/reviews/getbyDestination/${packageId}`);
         setReviews(res.data.reviews);
         setPackageTitle(res.data.packageTitle);
       } catch (error) {

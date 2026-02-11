@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../utils/apiBaseUrl';
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -30,7 +31,7 @@ const UniversalDestinationPage = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/destinations/page/${slug}`
+          `${API_BASE_URL}/api/destinations/page/${slug}`
         );
         setPageData(response.data);
         setError(null);

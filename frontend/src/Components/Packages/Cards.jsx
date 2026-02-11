@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 
 
 import slugify from 'slugify'
@@ -136,7 +137,7 @@ useEffect(() => {
     // console.log(selectedPackage._id);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/travel-inquiry/submit-inquiry`, {
+      const response = await fetch(`${API_BASE_URL}/api/travel-inquiry/submit-inquiry`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaBoxOpen, FaUsers, FaEdit } from 'react-icons/fa';
@@ -19,7 +20,7 @@ const DestinationList = () => {
   const fetchDestinations = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/destinations/get?category=${category}`);
+      const response = await fetch(`${API_BASE_URL}/api/destinations/get?category=${category}`);
       const data = await response.json();
       
       // Debug: Check the response structure

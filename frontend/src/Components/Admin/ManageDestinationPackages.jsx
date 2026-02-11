@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { FaArrowLeft, FaEdit, FaTrash, FaPlus, FaEye } from 'react-icons/fa';
@@ -18,7 +19,7 @@ const ManageDestinationPackages = () => {
       setLoading(true);
       
       // Fetch destination details
-      const destResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/destinations/${destinationId}`);
+      const destResponse = await fetch(`${API_BASE_URL}/api/destinations/${destinationId}`);
       if (!destResponse.ok) {
         throw new Error('Failed to fetch destination');
       }
@@ -27,7 +28,7 @@ const ManageDestinationPackages = () => {
 
       // Fetch packages for this destination
       const packagesResponse = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/tour-packages/destination/${destinationId}`
+        `${API_BASE_URL}/api/tour-packages/destination/${destinationId}`
       );
       
       if (packagesResponse.ok) {
@@ -51,7 +52,7 @@ const ManageDestinationPackages = () => {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/tour-packages/${packageId}`,
+        `${API_BASE_URL}/api/tour-packages/${packageId}`,
         {
           method: 'DELETE',
           headers: {

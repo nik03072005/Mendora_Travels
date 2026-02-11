@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -34,7 +35,7 @@ const ManagePackages = () => {
   useEffect(() => {
     const fetchDestinations = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/destinations/get`);
+        const response = await axios.get(`${API_BASE_URL}/api/destinations/get`);
         const fetchedDestinations = Array.isArray(response.data) && response.data.length > 0
           ? response.data
           : staticDestinations;
@@ -64,7 +65,7 @@ const ManagePackages = () => {
 
   const handleDelete = async (pkgId) => {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/tour-packages/${pkgId}`,{
+      await axios.delete(`${API_BASE_URL}/api/tour-packages/${pkgId}`,{
         headers:{
            Authorization: `Bearer ${token}`, // Include token in Authorization header
         }

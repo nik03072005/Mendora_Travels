@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../utils/apiBaseUrl';
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -68,7 +69,7 @@ const DestinationPackagesPage = () => {
 
       // Fetch packages for this destination
       const response = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/tour-packages/destination/${matchedDestination._id}`
+        `${API_BASE_URL}/api/tour-packages/destination/${matchedDestination._id}`
       );
 
       const formattedPackages = await Promise.all(

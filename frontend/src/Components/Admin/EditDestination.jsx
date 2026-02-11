@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
@@ -41,7 +42,7 @@ const EditDestination = () => {
       try {
         setLoading(true);
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/destinations/${id}`
+          `${API_BASE_URL}/api/destinations/${id}`
         );
         const dest = response.data;
         
@@ -185,7 +186,7 @@ const EditDestination = () => {
 
     try {
       const response = await axios.put(
-        `${import.meta.env.VITE_API_URL}/api/destinations/update/${id}`,
+        `${API_BASE_URL}/api/destinations/update/${id}`,
         data,
         {
           headers: {

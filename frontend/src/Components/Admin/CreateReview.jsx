@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
@@ -61,7 +62,7 @@ const CreateReview = () => {
     const fetchDestinations = async () => {
       setFetching(true);
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/destinations/get`);
+        const response = await axios.get(`${API_BASE_URL}/api/destinations/get`);
         setDestinations(response.data || []);
       } catch (error) {
         toast.error('Failed to load destinations. Please try again later.');
@@ -79,7 +80,7 @@ const CreateReview = () => {
       const fetchPackages = async () => {
         setFetching(true);
         try {
-          const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/tour-packages/destination/${formData.destinationId}`);
+          const response = await axios.get(`${API_BASE_URL}/api/tour-packages/destination/${formData.destinationId}`);
           setPackages(response.data || []);
           setFormData((prev) => ({ ...prev, packageId: '' }));
         } catch (error) {
@@ -166,7 +167,7 @@ const CreateReview = () => {
     images.forEach((image) => data.append('images', image));
 
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/reviews/create`, data, {
+      const response = await axios.post(`${API_BASE_URL}/api/reviews/create`, data, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',

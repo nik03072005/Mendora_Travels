@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import React, { useState, useRef } from 'react';
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
@@ -57,7 +58,7 @@ const CreateJob = () => {
           const formData = new FormData();
           formData.append('image', file);
 
-          const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/blog/upload-image`, formData, {
+          const response = await axios.post(`${API_BASE_URL}/api/blog/upload-image`, formData, {
             headers: { 
               'Content-Type': 'multipart/form-data',
               Authorization: `Bearer ${token}`,
@@ -97,7 +98,7 @@ const handleSubmit = async (e) => {
   const toastId = toast.loading('Creating job...');
   try {
     await axios.post(
-      `${import.meta.env.VITE_API_URL}/api/job/create-job`,
+      `${API_BASE_URL}/api/job/create-job`,
       { title, content },
       {
         headers: {

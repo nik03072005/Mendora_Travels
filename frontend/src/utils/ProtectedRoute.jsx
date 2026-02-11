@@ -1,3 +1,4 @@
+import { API_BASE_URL } from './apiBaseUrl';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -15,7 +16,7 @@ const ProtectedRoute = () => {
 
       try {
         // Verify token with backend
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/users/verify`, {
+        const response = await axios.get(`${API_BASE_URL}/api/users/verify`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setIsAuthenticated(response.data.isValid);

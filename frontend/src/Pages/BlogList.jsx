@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../utils/apiBaseUrl';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -31,7 +32,7 @@ const BlogList = () => {
     const fetchBlogs = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/blog/get-blogs`);
+        const response = await axios.get(`${API_BASE_URL}/api/blog/get-blogs`);
         setBlogs(response.data.blogs || []);
       } catch (error) {
         toast.error('Error fetching blogs: ' + error.message);

@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import React, { useState, useEffect } from 'react';
 import {
   Box,
@@ -31,7 +32,7 @@ const CreateGallery = () => {
   useEffect(() => {
     const fetchDestinations = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/destinations/get`);
+        const response = await axios.get(`${API_BASE_URL}/api/destinations/get`);
         setDestinations(response.data);
       } catch (error) {
         toast.error('Failed to fetch destinations');
@@ -87,7 +88,7 @@ const CreateGallery = () => {
     });
 
     try {
-      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/gallery/create`, formData,{
+      const response = await axios.post(`${API_BASE_URL}/api/gallery/create`, formData,{
         headers:{
            Authorization: `Bearer ${token}`, // Include token in Authorization header
           'Content-Type': 'multipart/form-data', // Explicitly set for formData

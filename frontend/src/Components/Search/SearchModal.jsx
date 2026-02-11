@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../utils/apiBaseUrl';
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState, useCallback } from "react";
@@ -95,7 +96,7 @@ export default function SearchModal({ onClose }) {
       const { minDays, maxDays } = getDurationRange(duration);
 
       try {
-        const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/search`, {
+        const response = await axios.get(`${API_BASE_URL}/api/search`, {
           params: {
             keyword,
             ...(minDays && maxDays !== Infinity ? { minDays, maxDays } : minDays ? { minDays } : {}),

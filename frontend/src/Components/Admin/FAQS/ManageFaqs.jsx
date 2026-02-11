@@ -1,3 +1,4 @@
+import { API_BASE_URL } from '../../../utils/apiBaseUrl';
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,7 +33,7 @@ const ManageFAQsByDestination = () => {
 
     setIsLoading(true);
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/faqs/get/${destinationId}`, {
+      const res = await axios.get(`${API_BASE_URL}/api/faqs/get/${destinationId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -70,7 +71,7 @@ const ManageFAQsByDestination = () => {
 
     setIsLoading(true);
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/api/faqs/delete/${id}`, {
+      await axios.delete(`${API_BASE_URL}/api/faqs/delete/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -107,7 +108,7 @@ const ManageFAQsByDestination = () => {
     setIsLoading(true);
     try {
       await axios.put(
-        `${import.meta.env.VITE_API_URL}/api/faqs/update/${editingId}`,
+        `${API_BASE_URL}/api/faqs/update/${editingId}`,
         {
           question: editedQuestion,
           answer: editedAnswer,
