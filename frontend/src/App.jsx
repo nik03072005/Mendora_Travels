@@ -140,8 +140,8 @@ function App() {
           {/* Universal route for ALL Domestic destinations */}
           <Route path="/domestic-trips/:slug" element={<Layout><UniversalDestinationPage /></Layout>} />
           
-          {/* Individual Destination Pages - Legacy support */}
-          <Route path="/tours/:slug" element={<Layout><TripCard/></Layout>} />
+          {/* Individual Package Details Page */}
+          <Route path="/packages/:slug" element={<Layout><TripCard/></Layout>} />
           
           {/* Dynamic Destination Packages Page */}
           <Route path="/destination/:destination" element={<Layout><DestinationPackagesPage /></Layout>} />

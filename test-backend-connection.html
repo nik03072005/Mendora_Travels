@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backend Connection Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-box {
+            background: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .success { background: #4CAF50; color: white; }
+        .error { background: #f44336; color: white; }
+        .pending { background: #FFC107; color: black; }
+        button {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #1976D2; }
+        pre {
+            background: #f5f5f5;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        .step {
+            border-left: 3px solid #2196F3;
+            padding-left: 15px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Mendora Travels - Backend Connection Test</h1>
+    
+    <div class="test-box">
+        <h2>Configuration Check</h2>
+        <div id="config">Loading...</div>
+    </div>
+
+    <div class="test-box">
+        <h2>Connection Tests</h2>
+        <button onclick="runAllTests()">Run All Tests</button>
+        <button onclick="clearResults()">Clear Results</button>
+        <div id="tests"></div>
+    </div>
+
+    <div class="test-box">
+        <h2>Login Test</h2>
+        <div style="margin-bottom: 10px;">
+            <input type="email" id="email" placeholder="Email" value="admin@mendoratravels.com" style="padding: 8px; width: 250px;">
+        </div>
+        <div style="margin-bottom: 10px;">
+            <input type="password" id="password" placeholder="Password" value="Admin@123" style="padding: 8px; width: 250px;">
+        </div>
+        <button onclick="testLogin()">Test Login</button>
+        <div id="loginResult"></div>
+    </div>
+
+    <script>
+        // Configuration from your .env
+        const PRODUCTION_API = 'https://mendoratravels.com/api';
+        const LOCAL_API = 'http://localhost:3000';
+        
+        // Your API_BASE_URL logic
+        function getApiBaseUrl(rawUrl) {
+            const withoutTrailingSlashes = rawUrl.replace(/\/+$/, '');
+            return withoutTrailingSlashes.endsWith('/api')
+                ? withoutTrailingSlashes.slice(0, -4)
+                : withoutTrailingSlashes;
+        }
+
+        const API_BASE_URL = getApiBaseUrl(PRODUCTION_API);
+
+        // Display configuration
+        document.getElementById('config').innerHTML = `
+            <div class="step">
+                <strong>1. .env VITE_API_URL:</strong> ${PRODUCTION_API}
+            </div>
+            <div class="step">
+                <strong>2. After processing (API_BASE_URL):</strong> ${API_BASE_URL}
+            </div>
+            <div class="step">
+                <strong>3. Login endpoint will be:</strong> ${API_BASE_URL}/api/users/login
+            </div>
+        `;
+
+        async function testEndpoint(name, url, method = 'GET', body = null) {
+            const testDiv = document.createElement('div');
+            testDiv.className = 'step';
+            testDiv.innerHTML = `<strong>${name}:</strong> <span class="status pending">Testing...</span>`;
+            document.getElementById('tests').appendChild(testDiv);
+
+            try {
+                const options = {
+                    method,
+                    headers: { 'Content-Type': 'application/json' }
+                };
+                if (body) options.body = JSON.stringify(body);
+
+                const startTime = Date.now();
+                const response = await fetch(url, options);
+                const duration = Date.now() - startTime;
+                
+                let data;
+                try {
+                    data = await response.json();
+                } catch {
+                    data = await response.text();
+                }
+
+                testDiv.innerHTML = `
+                    <strong>${name}:</strong> 
+                    <span class="status ${response.ok ? 'success' : 'error'}">
+                        ${response.status} ${response.statusText}
+                    </span>
+                    <small>(${duration}ms)</small>
+                    <pre>${JSON.stringify(data, null, 2)}</pre>
+                `;
+            } catch (error) {
+                testDiv.innerHTML = `
+                    <strong>${name}:</strong> 
+                    <span class="status error">ERROR</span>
+                    <pre>${error.message}\n\nPossible issues:\n- Backend server not running\n- CORS not configured\n- Domain not pointing to server\n- Firewall blocking requests</pre>
+                `;
+            }
+        }
+
+        async function runAllTests() {
+            document.getElementById('tests').innerHTML = '<h3>Running tests...</h3>';
+            
+            // Test 1: Check if server is responding
+            await testEndpoint(
+                'Step 1: Root URL Check',
+                'https://mendoratravels.com'
+            );
+            
+            // Test 2: Check API endpoint
+            await testEndpoint(
+                'Step 2: API Base URL',
+                `${API_BASE_URL}/api`
+            );
+            
+            // Test 3: Check specific endpoints
+            await testEndpoint(
+                'Step 3: Destinations Endpoint',
+                `${API_BASE_URL}/api/destinations`
+            );
+            
+            // Test 4: Check login endpoint (without credentials)
+            await testEndpoint(
+                'Step 4: Login Endpoint (POST)',
+                `${API_BASE_URL}/api/users/login`,
+                'POST',
+                { email: 'test', password: 'test' }
+            );
+        }
+
+        async function testLogin() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const resultDiv = document.getElementById('loginResult');
+            
+            resultDiv.innerHTML = '<span class="status pending">Logging in...</span>';
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/api/users/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    resultDiv.innerHTML = `
+                        <div class="step">
+                            <span class="status success">✓ Login Successful!</span>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="step">
+                            <span class="status error">✗ Login Failed</span>
+                            <pre>${JSON.stringify(data, null, 2)}</pre>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `
+                    <div class="step">
+                        <span class="status error">✗ Connection Error</span>
+                        <pre>${error.message}</pre>
+                    </div>
+                `;
+            }
+        }
+
+        function clearResults() {
+            document.getElementById('tests').innerHTML = '';
+            document.getElementById('loginResult').innerHTML = '';
+        }
+
+        // Auto-run on page load
+        window.onload = () => {
+            console.log('API Configuration:', {
+                raw: PRODUCTION_API,
+                processed: API_BASE_URL,
+                loginEndpoint: `${API_BASE_URL}/api/users/login`
+            });
+        };
+    </script>
+</body>
+</html>

@@ -6,7 +6,7 @@ const TourPackagesSection = ({ packages = [] }) => {
   const navigate = useNavigate();
 
   const handlePackageClick = (pkg) => {
-    navigate(`/tours/${pkg.slug}`);
+    navigate(`/packages/${pkg.slug}`);
   };
 
   if (!packages || packages.length === 0) {

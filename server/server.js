@@ -36,12 +36,18 @@ app.use(cors({
 
 // Middleware
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Health check endpoint
 app.get("/api", (req, res) => {
   res.json({ success: true, message: "API working" });
 });
+
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'OK', service: 'Mendora API' });
+});
+
 
 // Routes
 app.use('/api/users', userRoutes);

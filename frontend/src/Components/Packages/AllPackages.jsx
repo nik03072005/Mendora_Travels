@@ -70,7 +70,7 @@ const AllPackageCards = ({ title, packages, viewAllRoute }) => {
     };
 
   const handleCardClick = (destination) => {
-  navigate(`/tours/${createSlug(destination.title)}`)
+  navigate(`/packages/${createSlug(destination.title)}`)
   };
 
   const handleChatNow = () => setShowChat(true);

@@ -76,7 +76,7 @@ export default function SearchModal({ onClose }) {
 
    const slugify = (name) => name.toLowerCase().replace(/\s+/g, '-');
 
-    navigate(`/tours/${slugify(preparedDestination.destinationName)}`, {
+    navigate(`/packages/${slugify(preparedDestination.destinationName)}`, {
   state: { destination: preparedDestination },
 });
   };

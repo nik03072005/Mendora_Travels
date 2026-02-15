@@ -119,7 +119,7 @@ const createSlug = (title) => {
       });
     };
   const handlePackageClick = (pkg) => {
-    navigate(`/tours/${createSlug(pkg.name)}`);
+    navigate(`/packages/${createSlug(pkg.name)}`);
   };
 
   const handleCallbackClose = () => {

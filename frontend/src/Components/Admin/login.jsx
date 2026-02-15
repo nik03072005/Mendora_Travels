@@ -12,8 +12,6 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false); // Added loading state
   const navigate = useNavigate();
 
-  const BASE_URL = import.meta.env.VITE_SERVER_DOMAIN;
-
   const handleLogin = async (e) => {
     e.preventDefault();
     setIsLoading(true); // Disable button when login starts

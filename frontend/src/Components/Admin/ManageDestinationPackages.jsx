@@ -205,7 +205,7 @@ const ManageDestinationPackages = () => {
                   {/* Action Buttons */}
                   <div className="flex flex-wrap gap-3 mt-6">
                     <Link
-                      to={`/tours/${pkg.slug}`}
+                      to={`/packages/${pkg.slug}`}
                       target="_blank"
                       className="flex items-center gap-2 px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
                     >
