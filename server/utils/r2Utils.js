@@ -11,23 +11,28 @@ const r2Client = new S3Client({
 });
 
 // Utility function to upload a file to R2
-export const uploadToR2 = async (fileBuffer, fileName, bucketName) => {
+export const uploadToR2 = async (fileBuffer, fileName, bucketName = null, contentType = 'image/jpeg') => {
   try {
+    const bucket = bucketName || process.env.R2_BUCKET_NAME;
+    console.log(`Uploading to R2 bucket: ${bucket}, file: ${fileName}`);
+    
     const command = new PutObjectCommand({
-      Bucket: bucketName || process.env.R2_BUCKET_NAME,
+      Bucket: bucket,
       Key: fileName,
       Body: fileBuffer,
-      ContentType: 'image/jpeg', // Adjust based on file type
+      ContentType: contentType,
     });
 
     await r2Client.send(command);
 
     // Construct the URL (if the bucket is public)
     const fileUrl = `${process.env.CLOUDFLAIRE_URL_PREFIX}/${fileName}`;
+    console.log(`Upload successful! URL: ${fileUrl}`);
     return { success: true, fileUrl };
   } catch (error) {
     console.error('Error uploading to R2:', error.message);
-    throw new Error('Failed to upload to R2');
+    console.error('Error details:', error);
+    throw new Error(`Failed to upload to R2: ${error.message}`);
   }
 };
 

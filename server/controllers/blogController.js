@@ -12,7 +12,7 @@ export const createBlog = async (req, res) => {
 
     const fileBuffer = req.file.buffer;
     const fileName = `images/${Date.now()}-${req.file.originalname}`;
-    const bucketName = 'travel';
+    const bucketName = process.env.R2_BUCKET_NAME || 'mendora'; // Use environment variable
 
     const result = await uploadToR2(fileBuffer, fileName, bucketName);
 
@@ -53,7 +53,7 @@ export const uploadImage = async (req, res) => {
 
     const fileBuffer = req.file.buffer;
     const fileName = `images/${Date.now()}-${req.file.originalname}`;
-    const bucketName = 'travel';
+    const bucketName = process.env.R2_BUCKET_NAME || 'mendora'; // Use environment variable
 
     const result = await uploadToR2(fileBuffer, fileName, bucketName);
 

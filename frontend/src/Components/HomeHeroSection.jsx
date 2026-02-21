@@ -18,7 +18,7 @@ const HomeHeroSection = () => {
           onError={(e) => console.error('❌ Video error:', e)}
         >
           <source 
-            src="https://pub-0b67f355528a459b82e08d0ec786c68a.r2.dev/main.mp4" 
+            src="https://files.mendoratravels.com/main.mp4" 
             type="video/mp4" 
           />
         </video>

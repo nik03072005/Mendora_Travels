@@ -22,6 +22,7 @@ const AddPackage = () => {
     packageDetails: { included: [''], excluded: [''] },
     imageFiles: [null],
     destinationId: '',
+    tags: [],
   });
   const [destinations, setDestinations] = useState([]);
   const [message, setMessage] = useState('');
@@ -174,6 +175,7 @@ const AddPackage = () => {
     data.append('highlights', JSON.stringify(formData.highlights));
     data.append('hotelsIncluded', JSON.stringify(formData.hotelsIncluded));
     data.append('packageDetails', JSON.stringify(formData.packageDetails));
+    data.append('tags', JSON.stringify(formData.tags));
 
     // Append package image files
     formData.imageFiles.forEach((file, index) => {
@@ -213,6 +215,7 @@ const AddPackage = () => {
         packageDetails: { included: [''], excluded: [''] },
         imageFiles: [null],
         destinationId: '',
+        tags: [],
       });
       setPreviews([]);
       setDayImagePreviews([]);
@@ -318,6 +321,37 @@ const AddPackage = () => {
               </option>
             ))}
           </select>
+        </div>
+        
+        {/* Package Tags Section */}
+        <div className="border-2 border-blue-200 rounded-lg p-4 bg-blue-50">
+          <label className="block text-base font-semibold text-gray-800 mb-3">
+            📌 Package Tags (Select all that apply)
+          </label>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {['honeymoon', 'corporate', 'group-tour', 'weekend-getaway', 'adventure', 'family', 'luxury', 'budget'].map((tag) => (
+              <label key={tag} className="flex items-center p-2 bg-white rounded border border-gray-300 hover:border-blue-500 hover:bg-blue-50 cursor-pointer transition-colors">
+                <input
+                  type="checkbox"
+                  checked={formData.tags.includes(tag)}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setFormData({ ...formData, tags: [...formData.tags, tag] });
+                    } else {
+                      setFormData({ ...formData, tags: formData.tags.filter(t => t !== tag) });
+                    }
+                  }}
+                  className="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
+                />
+                <span className="ml-2 text-sm font-medium text-gray-700 capitalize">
+                  {tag.replace(/-/g, ' ')}
+                </span>
+              </label>
+            ))}
+          </div>
+          <p className="text-xs text-gray-600 mt-2 italic">
+            Selected tags: {formData.tags.length > 0 ? formData.tags.join(', ') : 'None'}
+          </p>
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700">Trip Summary</label>

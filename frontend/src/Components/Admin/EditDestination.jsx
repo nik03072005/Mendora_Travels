@@ -61,6 +61,11 @@ const EditDestination = () => {
         });
 
         // Set preview images
+        console.log('Destination loaded:', {
+          name: dest.destinationName,
+          mainImageUrl: dest.imageUrl,
+          heroImageUrl: dest.heroSection?.heroImage
+        });
         setPreview(dest.imageUrl || null);
         setHeroPreview(dest.heroSection?.heroImage || null);
 
@@ -87,13 +92,19 @@ const EditDestination = () => {
     if (name === 'imageFile') {
       const file = files[0];
       setFormData({ ...formData, imageFile: file });
-      if (file) setPreview(URL.createObjectURL(file));
-      else setPreview(null);
+      if (file) {
+        setPreview(URL.createObjectURL(file));
+        console.log('New main image selected:', file.name);
+      }
+      // Don't set to null, keep existing preview
     } else if (name === 'heroImageFile') {
       const file = files[0];
       setFormData({ ...formData, heroImageFile: file });
-      if (file) setHeroPreview(URL.createObjectURL(file));
-      else setHeroPreview(null);
+      if (file) {
+        setHeroPreview(URL.createObjectURL(file));
+        console.log('New hero image selected:', file.name);
+      }
+      // Don't set to null, keep existing preview
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -162,8 +173,14 @@ const EditDestination = () => {
     // Basic fields
     data.append('destinationName', formData.destinationName);
     data.append('category', formData.category);
-    if (formData.imageFile) data.append('imageFile', formData.imageFile);
-    if (formData.heroImageFile) data.append('heroImageFile', formData.heroImageFile);
+    if (formData.imageFile) {
+      data.append('imageFile', formData.imageFile);
+      console.log('Updating main image:', formData.imageFile.name);
+    }
+    if (formData.heroImageFile) {
+      data.append('heroImageFile', formData.heroImageFile);
+      console.log('Updating hero image:', formData.heroImageFile.name);
+    }
     
     // Build destination data object
     const destinationDataObj = {
@@ -295,8 +312,23 @@ const EditDestination = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-2 border rounded"
               />
-              {preview && (
-                <img src={preview} alt="Preview" className="mt-2 h-48 object-cover rounded" />
+              {preview ? (
+                <div className="mt-2">
+                  <img 
+                    src={preview} 
+                    alt="Preview" 
+                    className="h-48 object-cover rounded shadow"
+                    onError={(e) => {
+                      console.error('Failed to load main image:', preview);
+                      e.target.src = 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80';
+                    }}
+                  />
+                  <p className="text-xs text-gray-500 mt-1 break-all">Current: {preview.substring(0, 60)}...</p>
+                </div>
+              ) : (
+                <div className="mt-2 h-48 bg-gray-200 rounded flex items-center justify-center text-gray-500">
+                  No image available - Upload one
+                </div>
               )}
             </div>
           </div>
@@ -363,8 +395,23 @@ const EditDestination = () => {
                 onChange={handleChange}
                 className="w-full px-4 py-2 border rounded"
               />
-              {heroPreview && (
-                <img src={heroPreview} alt="Hero Preview" className="mt-2 h-48 object-cover rounded" />
+              {heroPreview ? (
+                <div className="mt-2">
+                  <img 
+                    src={heroPreview} 
+                    alt="Hero Preview" 
+                    className="h-48 object-cover rounded shadow"
+                    onError={(e) => {
+                      console.error('Failed to load hero image:', heroPreview);
+                      e.target.src = 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80';
+                    }}
+                  />
+                  <p className="text-xs text-gray-500 mt-1 break-all">Current: {heroPreview.substring(0, 60)}...</p>
+                </div>
+              ) : (
+                <div className="mt-2 h-48 bg-gray-200 rounded flex items-center justify-center text-gray-500">
+                  No hero image available - Upload one
+                </div>
               )}
             </div>
           </div>

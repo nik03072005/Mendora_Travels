@@ -51,13 +51,21 @@ const AddDestination = () => {
     if (name === 'imageFile') {
       const file = files[0];
       setFormData({ ...formData, imageFile: file });
-      if (file) setPreview(URL.createObjectURL(file));
-      else setPreview(null);
+      if (file) {
+        setPreview(URL.createObjectURL(file));
+        console.log('Main image selected:', file.name, file.type);
+      } else {
+        setPreview(null);
+      }
     } else if (name === 'heroImageFile') {
       const file = files[0];
       setFormData({ ...formData, heroImageFile: file });
-      if (file) setHeroPreview(URL.createObjectURL(file));
-      else setHeroPreview(null);
+      if (file) {
+        setHeroPreview(URL.createObjectURL(file));
+        console.log('Hero image selected:', file.name, file.type);
+      } else {
+        setHeroPreview(null);
+      }
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -125,7 +133,14 @@ const AddDestination = () => {
     // Basic fields
     data.append('destinationName', formData.destinationName);
     data.append('category', formData.category);
-    if (formData.imageFile) data.append('imageFile', formData.imageFile);
+    if (formData.imageFile) {
+      data.append('imageFile', formData.imageFile);
+      console.log('Appending main image:', formData.imageFile.name);
+    }
+    if (formData.heroImageFile) {
+      data.append('heroImageFile', formData.heroImageFile);
+      console.log('Appending hero image:', formData.heroImageFile.name);
+    }
     
     // Build destination data object
     const destinationDataObj = {
@@ -180,8 +195,12 @@ const AddDestination = () => {
       setPreview(null);
       setHeroPreview(null);
       setActiveTab('basic');
+      
+      console.log('Destination created successfully:', response.data.destination);
     } catch (error) {
-      setMessage('❌ ' + (error.response?.data?.message || 'Error adding destination'));
+      console.error('Error creating destination:', error);
+      console.error('Error response:', error.response?.data);
+      setMessage('❌ ' + (error.response?.data?.message || error.response?.data?.error || 'Error adding destination'));
     } finally {
       setLoading(false);
     }
@@ -319,6 +338,23 @@ const AddDestination = () => {
                   className="w-full p-3 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
               </div>
+            </div>
+            
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Hero Background Image</label>
+              <input
+                type="file"
+                name="heroImageFile"
+                accept="image/*"
+                onChange={handleChange}
+                className="w-full p-3 border rounded"
+              />
+              <p className="text-xs text-gray-500 mt-1">Optional: Upload a different image for the hero banner (defaults to main image)</p>
+              {heroPreview && (
+                <div className="mt-4">
+                  <img src={heroPreview} alt="Hero Preview" className="max-w-md h-auto rounded shadow" />
+                </div>
+              )}
             </div>
           </div>
         )}

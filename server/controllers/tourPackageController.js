@@ -17,6 +17,7 @@ export const createTourPackage = async (req, res) => {
       hotelsIncluded,
       packageDetails,
       destinationId,
+      tags,
     } = req.body;
 
     // Parse JSON-stringified fields
@@ -24,6 +25,7 @@ export const createTourPackage = async (req, res) => {
     const parsedHighlights = JSON.parse(highlights);
     const parsedHotelsIncluded = JSON.parse(hotelsIncluded);
     const parsedPackageDetails = JSON.parse(packageDetails);
+    const parsedTags = tags ? JSON.parse(tags) : [];
 
     // Verify destination exists
     const destination = await Destination.findById(destinationId);
@@ -38,7 +40,7 @@ export const createTourPackage = async (req, res) => {
     }
 
     // Upload package images to Cloudflare R2 and collect URLs
-    const bucketName = 'travel'; // Your R2 bucket name
+    const bucketName = process.env.R2_BUCKET_NAME || 'mendora'; // Use environment variable
     const imageUrls = [];
     for (const file of Array.isArray(imageFiles) ? imageFiles : [imageFiles]) {
       const fileBuffer = file.buffer;
@@ -90,6 +92,7 @@ export const createTourPackage = async (req, res) => {
       packageDetails: parsedPackageDetails,
       imageUrls,
       destination: destinationId,
+      tags: parsedTags,
     });
     await tourPackage.save();
 
@@ -286,6 +289,7 @@ export const updateTourPackage = async (req, res) => {
       hotelsIncluded,
       packageDetails,
       existingImageUrls,
+      tags,
     } = req.body;
 
     // Parse JSON fields if strings
@@ -293,6 +297,7 @@ export const updateTourPackage = async (req, res) => {
     const parsedHighlights = typeof highlights === 'string' ? JSON.parse(highlights) : highlights;
     const parsedHotelsIncluded = typeof hotelsIncluded === 'string' ? JSON.parse(hotelsIncluded) : hotelsIncluded;
     const parsedPackageDetails = typeof packageDetails === 'string' ? JSON.parse(packageDetails) : packageDetails;
+    const parsedTags = tags ? (typeof tags === 'string' ? JSON.parse(tags) : tags) : [];
 
     // Handle existingImageUrls
     let parsedExistingImageUrls = [];
@@ -329,7 +334,7 @@ export const updateTourPackage = async (req, res) => {
       });
     }
 
-    const bucketName = 'travel';
+    const bucketName = process.env.R2_BUCKET_NAME || 'mendora'; // Use environment variable
 
     // Handle package image uploads
     let imageUrls = [...parsedExistingImageUrls];
@@ -375,6 +380,7 @@ export const updateTourPackage = async (req, res) => {
       packageDetails: parsedPackageDetails,
       imageUrls,
       destination: destinationId,
+      tags: parsedTags,
     };
 
     // Update destination references if changed
@@ -403,6 +409,45 @@ export const updateTourPackage = async (req, res) => {
 
 
 
+// Get tour packages by tags and category (international/domestic)
+export const getTourPackagesByTags = async (req, res) => {
+  try {
+    const { tags, category } = req.query;
+
+    // Build query
+    let query = {};
+
+    // Add tags filter if provided
+    if (tags) {
+      const tagArray = tags.split(',').map(tag => tag.trim());
+      query.tags = { $in: tagArray };
+    }
+
+    // Find packages with populated destination to filter by category
+    let packages = await TourPackage.find(query)
+      .populate('destination', 'category destinationName slug heroSection')
+      .sort({ createdAt: -1 });
+
+    // Filter by category if provided
+    if (category) {
+      packages = packages.filter(pkg => pkg.destination?.category === category);
+    }
+
+    res.status(200).json({
+      success: true,
+      count: packages.length,
+      data: packages
+    });
+  } catch (error) {
+    console.error('Error fetching packages by tags:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Server error while fetching packages',
+      error: error.message
+    });
+  }
+};
+
 // Default export as an object containing all functions
 export default {
   createTourPackage,
@@ -410,6 +455,6 @@ export default {
   getTourPackageById,
   deleteTourPackageById,
   updateTourPackage,
-  getTourPackageBySlug
-
+  getTourPackageBySlug,
+  getTourPackagesByTags
 };

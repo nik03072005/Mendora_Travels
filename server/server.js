@@ -18,7 +18,6 @@ import { uploadToR2 } from './utils/r2Utils.js';
 import cors from 'cors'
 import blogRoutes from './routes/blogRoutes.js'
 import jobRoutes from './routes/jobRoutes.js'
-import bodyParser from 'body-parser';
 
 const app = express();
 
@@ -37,7 +36,6 @@ app.use(cors({
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
 // Health check endpoint
 app.get("/api", (req, res) => {
@@ -71,7 +69,7 @@ app.use('/api',searchRoutes)
 
 //     const fileBuffer = req.file.buffer;
 //     const fileName = `images/${Date.now()}-${req.file.originalname}`; // e.g., 'images/1698765432100-my-image.jpg'
-//     const bucketName = 'travel'; // Replace with your R2 bucket name
+//     const bucketName = process.env.R2_BUCKET_NAME || 'mendora'; // Use environment variable
 
 //     const result = await uploadToR2(fileBuffer, fileName, bucketName);
 //     res.json({ success: true, fileUrl: result.fileUrl });

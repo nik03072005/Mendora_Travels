@@ -35,7 +35,7 @@ export const createReview = async (req, res) => {
       for (const file of req.files) {
         const fileBuffer = file.buffer;
         const fileName = `images/${Date.now()}-${file.originalname}`;
-        const bucketName = 'travel';
+        const bucketName = process.env.R2_BUCKET_NAME || 'mendora';
 
         const result = await uploadToR2(fileBuffer, fileName, bucketName);
         images.push(result.fileUrl);
@@ -151,7 +151,7 @@ export const updateReview = async (req, res) => {
       for (const file of req.files) {
         const fileBuffer = file.buffer;
         const fileName = `images/${Date.now()}-${file.originalname}`;
-        const bucketName = 'travel';
+        const bucketName = process.env.R2_BUCKET_NAME || 'mendora'; // Use environment variable
 
         const result = await uploadToR2(fileBuffer, fileName, bucketName);
         images.push(result.fileUrl);

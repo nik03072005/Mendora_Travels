@@ -60,13 +60,27 @@ export default function DestinationsSection() {
   {destinationData?.map((destination) => (
     <div
       key={destination._id}
-      className="flex-shrink-0 w-[195px] h-[250px] sm:w-[205px] sm:h-[280px] aspect-[2/3] rounded-xl overflow-hidden shadow-md snap-center cursor-pointer"
+      className="flex-shrink-0 w-[195px] h-[250px] sm:w-[205px] sm:h-[280px] aspect-[2/3] rounded-xl overflow-hidden shadow-md snap-center cursor-pointer relative"
       onClick={() => handleCardClick(destination)}
     >
-      <img
-        src={destination?.imageUrl}
-        className="w-full h-full object-cover"
-      />
+      {destination?.imageUrl ? (
+        <img
+          src={destination.imageUrl}
+          alt={destination.destinationName}
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            console.error(`Failed to load image for ${destination.destinationName}:`, destination.imageUrl);
+            e.target.src = 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80';
+          }}
+        />
+      ) : (
+        <div className="w-full h-full bg-gray-300 flex items-center justify-center">
+          <span className="text-gray-600 text-sm">No Image</span>
+        </div>
+      )}
+      <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-center text-sm font-semibold">
+        {destination.destinationName}
+      </div>
     </div>
   ))}
 </div>
@@ -76,13 +90,27 @@ export default function DestinationsSection() {
   {destinationData?.map((destination) => (
     <div
       key={destination._id}
-      className="w-[205px] h-[280px] aspect-[2/3] rounded-xl overflow-hidden shadow-md cursor-pointer"
+      className="w-[205px] h-[280px] aspect-[2/3] rounded-xl overflow-hidden shadow-md cursor-pointer relative"
       onClick={() => handleCardClick(destination)}
     >
-      <img
-        src={destination?.imageUrl}
-        className="w-full h-full object-cover"
-      />
+      {destination?.imageUrl ? (
+        <img
+          src={destination.imageUrl}
+          alt={destination.destinationName}
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            console.error(`Failed to load image for ${destination.destinationName}:`, destination.imageUrl);
+            e.target.src = 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80';
+          }}
+        />
+      ) : (
+        <div className="w-full h-full bg-gray-300 flex items-center justify-center">
+          <span className="text-gray-600 text-sm">No Image</span>
+        </div>
+      )}
+      <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 text-center text-sm font-semibold">
+        {destination.destinationName}
+      </div>
     </div>
   ))}
 </div>

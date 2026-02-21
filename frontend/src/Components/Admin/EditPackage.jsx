@@ -26,6 +26,7 @@ export default function EditPackage() {
     packageDetails: { included: [''], excluded: [''] },
     imageFiles: [],
     destinationId: '',
+    tags: [],
   });
   const [destinations, setDestinations] = useState([]);
   const [message, setMessage] = useState('');
@@ -82,10 +83,19 @@ export default function EditPackage() {
           },
           imageFiles: pkg.imageUrls?.length > 0 ? pkg.imageUrls.map(() => null) : [null],
           destinationId: pkg.destination?._id || pkg.destinationId || '',
+          tags: pkg.tags || [],
         };
         setFormData(packageData);
-        setPreviews(pkg.imageUrls || []);
-        setDayImagePreviews(pkg.tripSummary?.map((day) => day.dayImage || '') || ['']);
+        // Filter out empty/null URLs and validate them
+        const validImageUrls = (pkg.imageUrls || []).map(url => 
+          url && url.trim() !== '' ? url : null
+        );
+        setPreviews(validImageUrls);
+        
+        const validDayImages = (pkg.tripSummary || []).map((day) => 
+          day.dayImage && day.dayImage.trim() !== '' ? day.dayImage : ''
+        );
+        setDayImagePreviews(validDayImages.length > 0 ? validDayImages : ['']);
       } catch (error) {
         console.error('Error fetching package:', error);
         setMessage('Failed to fetch package data.');
@@ -115,10 +125,19 @@ export default function EditPackage() {
             },
             imageFiles: pkg.imageUrls?.length > 0 ? pkg.imageUrls.map(() => null) : [null],
             destinationId: pkg.destination?._id || pkg.destinationId || '',
+            tags: pkg.tags || [],
           };
           setFormData(packageData);
-          setPreviews(pkg.imageUrls || []);
-          setDayImagePreviews(pkg.tripSummary?.map((day) => day.dayImage || '') || ['']);
+          // Filter out empty/null URLs and validate them
+          const validImageUrls = (pkg.imageUrls || []).map(url => 
+            url && url.trim() !== '' ? url : null
+          );
+          setPreviews(validImageUrls);
+          
+          const validDayImages = (pkg.tripSummary || []).map((day) => 
+            day.dayImage && day.dayImage.trim() !== '' ? day.dayImage : ''
+          );
+          setDayImagePreviews(validDayImages.length > 0 ? validDayImages : ['']);
         }
       }
     };
@@ -162,7 +181,8 @@ export default function EditPackage() {
       setFormData({ ...formData, imageFiles: updatedFiles });
 
       const updatedPreviews = [...previews];
-      updatedPreviews[index] = file ? URL.createObjectURL(file) : null;
+      // Keep existing preview if no new file selected, otherwise create new blob URL
+      updatedPreviews[index] = file ? URL.createObjectURL(file) : previews[index];
       setPreviews(updatedPreviews);
     } else {
       const updatedArray = [...formData[field]];
@@ -256,6 +276,7 @@ export default function EditPackage() {
     data.append('highlights', JSON.stringify(formData.highlights));
     data.append('hotelsIncluded', JSON.stringify(formData.hotelsIncluded));
     data.append('packageDetails', JSON.stringify(formData.packageDetails));
+    data.append('tags', JSON.stringify(formData.tags));
 
     // Append package image files
     formData.imageFiles.forEach((file, index) => {
@@ -396,6 +417,37 @@ export default function EditPackage() {
             ))}
           </select>
         </div>
+        
+        {/* Package Tags Section */}
+        <div className="border-2 border-blue-200 rounded-lg p-4 bg-blue-50">
+          <label className="block text-base font-semibold text-gray-800 mb-3">
+            📌 Package Tags (Select all that apply)
+          </label>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {['honeymoon', 'corporate', 'group-tour', 'weekend-getaway', 'adventure', 'family', 'luxury', 'budget'].map((tag) => (
+              <label key={tag} className="flex items-center p-2 bg-white rounded border border-gray-300 hover:border-blue-500 hover:bg-blue-50 cursor-pointer transition-colors">
+                <input
+                  type="checkbox"
+                  checked={formData.tags.includes(tag)}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setFormData({ ...formData, tags: [...formData.tags, tag] });
+                    } else {
+                      setFormData({ ...formData, tags: formData.tags.filter(t => t !== tag) });
+                    }
+                  }}
+                  className="form-checkbox h-5 w-5 text-blue-600 rounded focus:ring-2 focus:ring-blue-500"
+                />
+                <span className="ml-2 text-sm font-medium text-gray-700 capitalize">
+                  {tag.replace(/-/g, ' ')}
+                </span>
+              </label>
+            ))}
+          </div>
+          <p className="text-xs text-gray-600 mt-2 italic">
+            Selected tags: {formData.tags.length > 0 ? formData.tags.join(', ') : 'None'}
+          </p>
+        </div>
         <div>
           <label className="block text-sm font-medium text-gray-700">Trip Summary</label>
           <button
@@ -456,7 +508,7 @@ export default function EditPackage() {
                 onChange={(e) => handleArrayChange(index, 'tripSummary', 'dayImage', e.target.files)}
                 className="p-2 w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
-              {dayImagePreviews[index] && (
+              {dayImagePreviews[index] && dayImagePreviews[index].trim() !== '' ? (
                 <div className="mt-2">
                   <img
                     src={dayImagePreviews[index]}
@@ -464,9 +516,13 @@ export default function EditPackage() {
                     className="max-w-full h-auto rounded"
                     onError={(e) => {
                       e.target.style.display = 'none';
-                      setMessage('Failed to load day image preview.');
+                      setMessage(`Failed to load Day ${day.day} image. The URL might be broken or inaccessible.`);
                     }}
                   />
+                </div>
+              ) : (
+                <div className="mt-2 p-3 bg-gray-100 border border-gray-300 rounded text-sm text-gray-600">
+                  No existing image for this day. Upload a new one to add.
                 </div>
               )}
             </div>
@@ -631,7 +687,7 @@ export default function EditPackage() {
                 onChange={(e) => handleSimpleArrayChange('imageFiles', index, e.target.files)}
                 className="p-2 w-full border rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
-              {previews[index] && (
+              {previews[index] && previews[index].trim() !== '' ? (
                 <div className="mt-2">
                   <img
                     src={previews[index]}
@@ -639,9 +695,13 @@ export default function EditPackage() {
                     className="max-w-full h-auto rounded"
                     onError={(e) => {
                       e.target.style.display = 'none';
-                      setMessage('Failed to load package image preview.');
+                      setMessage(`Failed to load package image #${index + 1}. The URL might be broken or inaccessible.`);
                     }}
                   />
+                </div>
+              ) : (
+                <div className="mt-2 p-3 bg-gray-100 border border-gray-300 rounded text-sm text-gray-600">
+                  No existing image. Upload a new one to add.
                 </div>
               )}
               <button

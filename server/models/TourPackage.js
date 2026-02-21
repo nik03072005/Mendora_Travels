@@ -123,6 +123,11 @@ const tourPackageSchema = new mongoose.Schema({
     ref: 'Destination',
     required: [true, 'Destination is required'],
   },
+  tags: [{
+    type: String,
+    enum: ['honeymoon', 'corporate', 'group-tour', 'weekend-getaway', 'adventure', 'family', 'luxury', 'budget'],
+    trim: true,
+  }],
    reviews: [{
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Review',

@@ -26,6 +26,7 @@ const upload = multer({
   { name: 'dayImages', maxCount: 10 },  // For trip summary day images
 ]);
 router.post('/',authMiddleware, upload, tourPackageController.createTourPackage);
+router.get('/by-tags', tourPackageController.getTourPackagesByTags);
 router.get('/destination/:destinationId', tourPackageController.getTourPackagesByDestination);
 router.get('/:id', tourPackageController.getTourPackageById);
 router.get('/slug/:slug', tourPackageController.getTourPackageBySlug);

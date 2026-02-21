@@ -27,22 +27,29 @@ export const createDestination = async (req, res) => {
 
     // Check for main image file
     if (!req.files || !req.files.imageFile || !req.files.imageFile[0]) {
+         console.error('No image file in request');
          return res.status(400).json({ error: 'No main image file uploaded' });
        }
    
        // Upload main destination image
        const mainImageBuffer = req.files.imageFile[0].buffer;
        const mainImageFileName = `images/${Date.now()}-${req.files.imageFile[0].originalname}`;
-       const bucketName = 'travel'; // Replace with your R2 bucket name
-   
-       const mainImageResult = await uploadToR2(mainImageBuffer, mainImageFileName, bucketName);
+       const mainFileMimeType = req.files.imageFile[0].mimetype;
+       
+       console.log(`Uploading main image: ${mainImageFileName} (${mainFileMimeType})`);
+       const mainImageResult = await uploadToR2(mainImageBuffer, mainImageFileName, null, mainFileMimeType);
+       console.log(`Main image uploaded successfully: ${mainImageResult.fileUrl}`);
        
        // Upload hero image if provided
        let heroImageUrl = mainImageResult.fileUrl; // Default to main image
        if (req.files.heroImageFile && req.files.heroImageFile[0]) {
          const heroImageBuffer = req.files.heroImageFile[0].buffer;
          const heroImageFileName = `images/${Date.now()}-hero-${req.files.heroImageFile[0].originalname}`;
-         const heroImageResult = await uploadToR2(heroImageBuffer, heroImageFileName, bucketName);
+         const heroFileMimeType = req.files.heroImageFile[0].mimetype;
+         
+         console.log(`Uploading hero image: ${heroImageFileName} (${heroFileMimeType})`);
+         const heroImageResult = await uploadToR2(heroImageBuffer, heroImageFileName, null, heroFileMimeType);
+         console.log(`Hero image uploaded successfully: ${heroImageResult.fileUrl}`);
          heroImageUrl = heroImageResult.fileUrl;
        }
 
@@ -192,8 +199,11 @@ export const updateDestination = async (req, res) => {
       if (req.files.imageFile && req.files.imageFile[0]) {
         const mainImageBuffer = req.files.imageFile[0].buffer;
         const mainImageFileName = `images/${Date.now()}-${req.files.imageFile[0].originalname}`;
-        const bucketName = 'travel';
-        const mainImageResult = await uploadToR2(mainImageBuffer, mainImageFileName, bucketName);
+        const mainFileMimeType = req.files.imageFile[0].mimetype;
+        
+        console.log(`Updating main image: ${mainImageFileName} (${mainFileMimeType})`);
+        const mainImageResult = await uploadToR2(mainImageBuffer, mainImageFileName, null, mainFileMimeType);
+        console.log(`Main image updated successfully: ${mainImageResult.fileUrl}`);
         imageURL = mainImageResult.fileUrl;
       }
 
@@ -201,7 +211,11 @@ export const updateDestination = async (req, res) => {
       if (req.files.heroImageFile && req.files.heroImageFile[0]) {
         const heroImageBuffer = req.files.heroImageFile[0].buffer;
         const heroImageFileName = `images/${Date.now()}-hero-${req.files.heroImageFile[0].originalname}`;
-        const heroImageResult = await uploadToR2(heroImageBuffer, heroImageFileName, 'travel');
+        const heroFileMimeType = req.files.heroImageFile[0].mimetype;
+        
+        console.log(`Updating hero image: ${heroImageFileName} (${heroFileMimeType})`);
+        const heroImageResult = await uploadToR2(heroImageBuffer, heroImageFileName, null, heroFileMimeType);
+        console.log(`Hero image updated successfully: ${heroImageResult.fileUrl}`);
         heroImageUrl = heroImageResult.fileUrl;
       }
     }

@@ -6,6 +6,7 @@ import { uploadToR2 } from '../utils/r2Utils.js';
 export const createGallery = async (req, res) => {
   try {
     const { destinationId } = req.body;
+    console.log('Creating gallery for destinationId:', destinationId);
 
     // Check if destinationId is provided
     if (!destinationId) {
@@ -15,11 +16,13 @@ export const createGallery = async (req, res) => {
     // Verify destination exists
     const destination = await Destination.findById(destinationId);
     if (!destination) {
+      console.log('Destination not found:', destinationId);
       return res.status(404).json({ error: 'Destination not found' });
     }
 
     // Check if destination already has a gallery
     if (destination.gallery) {
+      console.log('Destination already has gallery:', destination.gallery);
       return res.status(400).json({ error: 'Destination already has a gallery. Use update to modify images.' });
     }
 
@@ -29,7 +32,8 @@ export const createGallery = async (req, res) => {
     }
 
     // Upload each image to R2 and collect URLs
-    const bucketName = 'travel'; // Your R2 bucket name
+    const bucketName = process.env.R2_BUCKET_NAME || 'mendora'; // Use environment variable
+    console.log('Using bucket:', bucketName);
     const imageUrls = await Promise.all(
       req.files.map(async (file) => {
         const fileName = `images/${Date.now()}-${file.originalname}`;
@@ -44,6 +48,7 @@ export const createGallery = async (req, res) => {
       images: imageUrls,
     });
     await gallery.save();
+    console.log('Gallery created with ID:', gallery._id, 'for destinationId:', destinationId);
 
     // Update the Destination with the new Gallery ID
     await Destination.findByIdAndUpdate(
@@ -51,6 +56,7 @@ export const createGallery = async (req, res) => {
       { $set: { gallery: gallery._id } }, // Set single gallery ID
       { new: true }
     );
+    console.log('Destination updated with gallery ID');
 
     res.status(201).json(gallery);
   } catch (error) {
@@ -74,13 +80,21 @@ export const getAllGalleries = async (req, res) => {
 export const getGalleryById = async (req, res) => {
   try {
     const { id } = req.params; // id is destinationId
+    console.log('Fetching gallery for destinationId:', id);
+    
     const gallery = await Gallery.findOne({ destinationId: id });
+    console.log('Gallery found:', gallery ? 'Yes' : 'No');
+    
     if (!gallery) {
-      return res.status(404).json({ error: 'Gallery not found for this destination' });
+      console.log('No gallery found for destinationId:', id);
+      return res.status(404).json({ 
+        error: 'Gallery not found for this destination',
+        destinationId: id 
+      });
     }
     res.json(gallery);
   } catch (error) {
-    console.error('Error fetching gallery:', error);
+    console.error('Error fetching gallery for destinationId:', id, error);
     res.status(500).json({ error: 'Failed to fetch gallery' });
   }
 };
@@ -125,7 +139,8 @@ export const updateGallery = async (req, res) => {
 
     // Handle new image uploads
     if (req.files && req.files.length > 0) {
-      const bucketName = 'travel';
+      const bucketName = process.env.R2_BUCKET_NAME || 'mendora'; // Use environment variable
+      console.log('Using bucket for update:', bucketName);
       const newImageUrls = await Promise.all(
         req.files.map(async (file) => {
           const fileName = `images/${Date.now()}-${file.originalname}`;
@@ -187,7 +202,7 @@ export const deleteImage = async (req, res) => {
 
     // Optionally delete the image from R2
     // try {
-    //   await deleteFromR2(decodedImageUrl, 'travel'); // Adjust bucket name
+    //   await deleteFromR2(decodedImageUrl, process.env.R2_BUCKET_NAME || 'mendora');
     // } catch (r2Error) {
     //   console.error('Error deleting image from R2:', r2Error);
     //   // Continue despite R2 error to avoid blocking the response
