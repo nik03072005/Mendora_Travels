@@ -271,8 +271,22 @@ export default function EditPackage() {
     data.append('originalPrice', formData.originalPrice);
     data.append('discountedPrice', formData.discountedPrice);
     data.append('destinationId', formData.destinationId);
-    // Send full tripSummary including dayImage URLs
-    data.append('tripSummary', JSON.stringify(formData.tripSummary));
+    
+    // Clean tripSummary: remove dayImage if it's a File object (will be sent separately)
+    // Only include dayImage if it's a valid string URL
+    const cleanedTripSummary = formData.tripSummary.map(day => {
+      const { dayImage, ...rest } = day;
+      
+      // Only include dayImage if it's a valid string URL
+      if (typeof dayImage === 'string' && dayImage.trim() !== '') {
+        return { ...rest, dayImage };
+      }
+      
+      // Don't include dayImage if it's a File, empty, or invalid
+      return rest;
+    });
+    
+    data.append('tripSummary', JSON.stringify(cleanedTripSummary));
     data.append('highlights', JSON.stringify(formData.highlights));
     data.append('hotelsIncluded', JSON.stringify(formData.hotelsIncluded));
     data.append('packageDetails', JSON.stringify(formData.packageDetails));
@@ -298,6 +312,17 @@ export default function EditPackage() {
         data.append('dayImages', day.dayImage);
       }
     });
+
+    // 🔍 DEBUG LOG - See what's being sent to backend
+    console.log('\n📤 FRONTEND SENDING TO BACKEND:');
+    console.log('FormData entries:');
+    for (let [key, value] of data.entries()) {
+      console.log(`  ${key}:`, typeof value === 'object' && value instanceof File 
+        ? `File(${value.name})` 
+        : value.substring ? value.substring(0, 100) : value
+      );
+    }
+    console.log('\n');
 
     try {
       const response = await axios.put(

@@ -60,7 +60,20 @@ export const createTourPackage = async (req, res) => {
           const result = await uploadToR2(fileBuffer, fileName, bucketName);
           return { ...day, dayImage: result.fileUrl };
         }
-        return { ...day, dayImage: null }; // If no image for this day
+        
+        // SAFETY CHECK: If dayImage is an object (wrong type), ignore it
+        let dayImageValue = day.dayImage;
+        if (typeof dayImageValue === 'object' && dayImageValue !== null) {
+          console.warn(`Invalid dayImage for day ${day.day}: received object instead of string`);
+          dayImageValue = null;
+        }
+        
+        // Only use valid string URLs
+        const finalDayImage = (typeof dayImageValue === 'string' && dayImageValue.trim() !== '') 
+          ? dayImageValue 
+          : null;
+        
+        return { ...day, dayImage: finalDayImage };
       })
     );
 
@@ -258,6 +271,12 @@ export const deleteTourPackageById = async (req, res) => {
 export const updateTourPackage = async (req, res) => {
   try {
     const { id } = req.params;
+    
+    // 🔍 DEBUG LOG - See what's being sent from frontend
+    console.log('\n📦 UPDATE PACKAGE REQUEST:');
+    console.log('Package ID:', id);
+    console.log('Request Body Keys:', Object.keys(req.body));
+    console.log('Raw tripSummary:', req.body.tripSummary);
 
     // Validate ID format (MongoDB ObjectId)
     if (!id.match(/^[0-9a-fA-F]{24}$/)) {
@@ -294,6 +313,10 @@ export const updateTourPackage = async (req, res) => {
 
     // Parse JSON fields if strings
     const parsedTripSummary = typeof tripSummary === 'string' ? JSON.parse(tripSummary) : tripSummary;
+    
+    // 🔍 DEBUG LOG - See parsed tripSummary
+    console.log('\n📝 PARSED TRIP SUMMARY:');
+    console.log(JSON.stringify(parsedTripSummary, null, 2));
     const parsedHighlights = typeof highlights === 'string' ? JSON.parse(highlights) : highlights;
     const parsedHotelsIncluded = typeof hotelsIncluded === 'string' ? JSON.parse(hotelsIncluded) : hotelsIncluded;
     const parsedPackageDetails = typeof packageDetails === 'string' ? JSON.parse(packageDetails) : packageDetails;
@@ -363,7 +386,20 @@ export const updateTourPackage = async (req, res) => {
         }
         // Preserve existing dayImage from database or form data
         const existingDay = existingPackage.tripSummary[index] || {};
-        return { ...day, dayImage: day.dayImage || existingDay.dayImage || null };
+        
+        // SAFETY CHECK: If dayImage is an object (wrong type), ignore it
+        let dayImageValue = day.dayImage;
+        if (typeof dayImageValue === 'object' && dayImageValue !== null) {
+          console.warn(`Invalid dayImage for day ${day.day}: received object instead of string`);
+          dayImageValue = undefined; // Treat as missing
+        }
+        
+        // Use valid string URL or fall back to existing or null
+        const finalDayImage = (typeof dayImageValue === 'string' && dayImageValue.trim() !== '') 
+          ? dayImageValue 
+          : existingDay.dayImage || null;
+        
+        return { ...day, dayImage: finalDayImage };
       })
     );
 
@@ -388,6 +424,11 @@ export const updateTourPackage = async (req, res) => {
       await Destination.findByIdAndUpdate(existingPackage.destination, { $pull: { tourPackages: id } });
       await Destination.findByIdAndUpdate(destinationId, { $addToSet: { tourPackages: id } });
     }
+
+    // 🔍 DEBUG LOG - Final data being saved to MongoDB
+    console.log('\n💾 FINAL DATA TO SAVE:');
+    console.log('tripSummary with images:', JSON.stringify(updatedData.tripSummary, null, 2));
+    console.log('\n');
 
     // Update the tour package
     const updatedPackage = await TourPackage.findByIdAndUpdate(id, { $set: updatedData }, { new: true });
