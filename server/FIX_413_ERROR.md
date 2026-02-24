@@ -24,13 +24,14 @@ Frontend → Nginx (VPS) → Express Server → MongoDB
 
 ### Default Limits:
 - **Nginx default:** `client_max_body_size 1M` ❌ TOO SMALL
-- **Express default:** `express.json()` no limit for multipart ✅
-- **Multer config:** 5MB per file, 60 files max ✅
+- **Multer per file:** 5MB ✅ MAIN PROTECTION (blocks 2.5GB images!)
+- **Express total request:** 30MB ✅ Allows multiple images
+- **Nginx total request:** 30MB ✅ Matches Express
 
 When uploading multiple images:
-- 10 package images × 2MB each = 20MB
-- Day images × 1MB each = additional MBs
-- **Total request:** 30-50MB
+- 10 package images × 2-3MB each = 20-30MB total ✅
+- **Individual file > 5MB:** ❌ REJECTED by Multer
+- **Total request > 30MB:** ❌ REJECTED by Nginx/Express
 
 **Result:** Nginx blocks at 1MB → 413 error → Browser shows CORS error
 
@@ -44,9 +45,11 @@ When uploading multiple images:
 
 Already updated to:
 ```javascript
-app.use(express.json({ limit: '50mb' }));
-app.use(express.urlencoded({ limit: '50mb', extended: true }));
+app.use(express.json({ limit: '30mb' }));
+app.use(express.urlencoded({ limit: '30mb', extended: true }));
 ```
+
+**Note:** 30MB total request size allows ~10-15 images at 2-3MB each. Individual files are still limited to 5MB by Multer.
 
 ### Step 2: Update Nginx Configuration (VPS)
 
@@ -67,12 +70,14 @@ server {
     server_name api.mendoratravels.com;
     
     # 🚀 ADD THIS LINE
-    client_max_body_size 100M;  # Allow up to 100MB
-    client_body_timeout 300s;    # 5 minutes for uploads
+    client_max_body_size 30M;   # Total request size (~10-15 images)
+    client_body_timeout 120s;   # 2 minutes for uploads
     
     # ... rest of config
 }
 ```
+
+**Note:** Individual files are still limited to 5MB by Multer config.
 
 **Test and reload:**
 ```bash
@@ -121,7 +126,7 @@ sudo grep -r "client_max_body_size" /etc/nginx/sites-available/
 
 **Expected output:**
 ```
-client_max_body_size 100M;
+client_max_body_size 30M;
 ```
 
 ### 2. Restart Services
@@ -184,9 +189,9 @@ server {
     # ... existing config
     
     # Buffer settings
-    client_max_body_size 100M;         # Max request size
-    client_body_buffer_size 10M;       # Buffer size
-    client_body_timeout 300s;          # Upload timeout (5 min)
+    client_max_body_size 30M;          # Total request size (~10-15 images)
+    client_body_buffer_size 5M;        # Buffer size
+    client_body_timeout 120s;          # Upload timeout (2 min)
     
     # Proxy timeouts (for file processing)
     proxy_connect_timeout 300s;
@@ -221,7 +226,7 @@ sudo cat /etc/nginx/nginx.conf | grep client_max_body_size
 ```nginx
 # In /etc/nginx/nginx.conf
 http {
-    client_max_body_size 100M;  # Global setting
+    client_max_body_size 30M;  # Global setting
     
     # ... include sites
 }
@@ -289,27 +294,37 @@ pm2 logs mendora-api --lines 50
 ```
 ┌─────────────────────────────────────────────────────┐
 │ Frontend (mendoratravels.com)                       │
-│ - Creates FormData with images (30-50MB)            │
+│ - Creates FormData with images                      │
+│ - Each file should be < 5MB                         │
+│ - Total request ~20-30MB for multiple images        │
 └──────────────────┬──────────────────────────────────┘
                    │
                    ▼
 ┌─────────────────────────────────────────────────────┐
 │ Nginx (api.mendoratravels.com)                      │
-│ ✅ client_max_body_size 100M  (was 1M)              │
-│ ✅ Allows large requests                             │
+│ ✅ client_max_body_size 30M  (was 1M)               │
+│ ✅ Allows multiple image uploads                    │
 └──────────────────┬──────────────────────────────────┘
                    │
                    ▼
 ┌─────────────────────────────────────────────────────┐
 │ Express Server (PORT 7000)                          │
-│ ✅ express.json({ limit: '50mb' })                  │
-│ ✅ Multer: 5MB per file, 60 files max               │
+│ ✅ express.json({ limit: '30mb' })                  │
+│ ✅ Matches Nginx limit                              │
+└──────────────────┬──────────────────────────────────┘
+                   │
+                   ▼
+┌─────────────────────────────────────────────────────┐
+│ Multer Middleware                                    │
+│ 🛡️ 5MB per file (MAIN PROTECTION)                   │
+│ ❌ Rejects any file > 5MB (like 2.5GB images!)      │
+│ ✅ Max 60 files total                               │
 └──────────────────┬──────────────────────────────────┘
                    │
                    ▼
 ┌─────────────────────────────────────────────────────┐
 │ Cloudflare R2                                        │
-│ ✅ Stores images, returns URLs                       │
+│ ✅ Stores valid images, returns URLs                │
 └──────────────────┬──────────────────────────────────┘
                    │
                    ▼
@@ -353,7 +368,7 @@ cd /path/to/Mendora_Travels && git pull origin main
 
 # Update Nginx
 sudo nano /etc/nginx/sites-available/api.mendoratravels.com
-# Add: client_max_body_size 100M;
+# Add: client_max_body_size 30M;
 
 # Test & reload
 sudo nginx -t && sudo systemctl reload nginx

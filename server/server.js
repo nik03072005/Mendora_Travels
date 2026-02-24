@@ -46,9 +46,9 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Middleware - increase limits for large requests
-app.use(express.json({ limit: '50mb' })); // For JSON payloads
-app.use(express.urlencoded({ limit: '50mb', extended: true })); // For URL-encoded data
+// Middleware - reasonable limits for multi-image uploads
+app.use(express.json({ limit: '30mb' })); // For JSON payloads  
+app.use(express.urlencoded({ limit: '30mb', extended: true })); // For URL-encoded data
 
 // Health check endpoint
 app.get("/api", (req, res) => {

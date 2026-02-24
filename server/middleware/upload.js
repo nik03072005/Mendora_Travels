@@ -14,13 +14,13 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-// 📦 Multer configuration with limits
+// 📦 Multer configuration with strict limits
 const uploadConfig = multer({
   storage,
   fileFilter,
   limits: {
-    fileSize: 5 * 1024 * 1024, // 5MB per file
-    files: 60 // Max 60 files (10 package images + 50 day images)
+    fileSize: 5 * 1024 * 1024, // 🛡️ 5MB per file (MAIN PROTECTION against huge files)
+    files: 60 // Max 60 files total (10 package images + 50 day images)
   }
 });
 

@@ -30,7 +30,8 @@
 - [ ] Nginx installed (if using reverse proxy)
 
 ### ✅ Nginx Configuration (VPS Only)
-- [ ] `client_max_body_size 100M;` set in server block
+- [ ] `client_max_body_size 30M;` set in server block
+- [ ] Multer enforces 5MB per file limit (main protection)
 - [ ] Nginx reloaded after configuration changes
 - [ ] No 413 errors in Nginx logs
 - [ ] SSL certificates valid and not expired
@@ -73,8 +74,10 @@ cd server
 sudo nano /etc/nginx/sites-available/api.mendoratravels.com
 
 # Add this inside server block:
-client_max_body_size 100M;
-client_body_timeout 300s;
+client_max_body_size 30M;  # Total request (~10-15 images × 2-3MB each)
+client_body_timeout 120s;   # 2 minutes for uploads
+
+# Note: Individual files are limited to 5MB by Multer (protects against 2.5GB mistakes!)
 
 # Test configuration
 sudo nginx -t
@@ -375,8 +378,9 @@ pm2 env 0  # Shows environment variables for process 0
 # Quick Fix:
 sudo nano /etc/nginx/sites-available/api.mendoratravels.com
 
-# Add inside server block:
-client_max_body_size 100M;
+# Add inside server block (port 443):
+client_max_body_size 30M;  # Total request size
+client_body_timeout 120s;
 
 # Test and reload:
 sudo nginx -t && sudo systemctl reload nginx
@@ -386,12 +390,14 @@ sudo nginx -t && sudo systemctl reload nginx
 
 **Why this happens:**
 - Nginx default body size: 1MB
-- Multiple image uploads: 30-50MB
+- Multiple image uploads: 20-30MB total
+- **Single file > 5MB:** Blocked by Multer (e.g., 2.5GB image ❌)
 - Result: Nginx blocks → 413 error → CORS error appears
 
 **After fix:**
-- ✅ Can upload 10+ images per package
-- ✅ No 413 errors
+- ✅ Can upload ~10-15 images per package (2-3MB each)
+- ✅ Individual files limited to 5MB max
+- ✅ No 413 errors for normal usage
 - ✅ No misleading CORS errors
 
 ### Issue: CastError still occurring
