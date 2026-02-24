@@ -1,3 +1,9 @@
+// ⚠️ DEPRECATED - DO NOT USE
+// This file contains old base64 conversion logic
+// Use the new upload middleware in middleware/upload.js instead
+// Kept for reference only
+
+/*
 import TourPackage from '../models/TourPackage.js';
 
    // Function to save tour package with images to MongoDB
@@ -39,3 +45,6 @@ import TourPackage from '../models/TourPackage.js';
    }
 
    export default { saveTourPackage };
+*/
+
+// No exports - file deprecated

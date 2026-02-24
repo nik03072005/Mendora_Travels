@@ -79,9 +79,16 @@ const tourPackageSchema = new mongoose.Schema({
       required: [true, 'Day description is required'],
       trim: true,
     },
-    dayImage:{
-      type:String,
-      required:false
+    dayImage: {
+      type: String,
+      default: null,
+      validate: {
+        validator: function(v) {
+          // Only allow null or valid string (no objects!)
+          return v === null || typeof v === 'string';
+        },
+        message: 'dayImage must be a string URL or null'
+      }
     }
   }],
   highlights: [{
