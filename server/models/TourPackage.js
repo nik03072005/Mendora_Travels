@@ -141,4 +141,38 @@ const tourPackageSchema = new mongoose.Schema({
   timestamps: true,
 });
 
+// 🛡️ Pre-save hook to sanitize dayImage values
+tourPackageSchema.pre('save', function(next) {
+  if (this.tripSummary && Array.isArray(this.tripSummary)) {
+    this.tripSummary = this.tripSummary.map(day => {
+      // If dayImage is an object or invalid, convert to null
+      if (typeof day.dayImage === 'object' && day.dayImage !== null) {
+        console.warn(`⚠️  Schema validation: Invalid dayImage for day ${day.day}, converting to null`);
+        day.dayImage = null;
+      } else if (typeof day.dayImage === 'string' && day.dayImage.trim() === '') {
+        day.dayImage = null;
+      }
+      return day;
+    });
+  }
+  next();
+});
+
+// 🛡️ Pre-update hook to sanitize dayImage values
+tourPackageSchema.pre('findOneAndUpdate', function(next) {
+  const update = this.getUpdate();
+  if (update.tripSummary && Array.isArray(update.tripSummary)) {
+    update.tripSummary = update.tripSummary.map(day => {
+      if (typeof day.dayImage === 'object' && day.dayImage !== null) {
+        console.warn(`⚠️  Schema validation: Invalid dayImage for day ${day.day}, converting to null`);
+        day.dayImage = null;
+      } else if (typeof day.dayImage === 'string' && day.dayImage.trim() === '') {
+        day.dayImage = null;
+      }
+      return day;
+    });
+  }
+  next();
+});
+
 export default mongoose.model('TourPackage', tourPackageSchema);

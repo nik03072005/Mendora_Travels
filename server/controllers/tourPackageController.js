@@ -3,6 +3,19 @@ import Destination from '../models/Destination.js'; // Update to ES modules
 import TourPackage from '../models/TourPackage.js'; // Update to ES modules // Update to ES modules
 import uploadToR2 from '../utils/r2Utils.js';
 
+// 🛡️ Helper function to sanitize dayImage values
+const sanitizeDayImage = (dayImage) => {
+  // If it's a valid non-empty string, return it
+  if (typeof dayImage === 'string' && dayImage.trim() !== '') {
+    return dayImage.trim();
+  }
+  // If it's an object, null, undefined, or empty string, return null
+  if (typeof dayImage === 'object' && dayImage !== null) {
+    console.warn('⚠️  Invalid dayImage detected: received object instead of string, converting to null');
+  }
+  return null;
+};
+
 export const createTourPackage = async (req, res) => {
   try {
     // Extract fields from req.body, parsing JSON strings where necessary
@@ -61,17 +74,8 @@ export const createTourPackage = async (req, res) => {
           return { ...day, dayImage: result.fileUrl };
         }
         
-        // SAFETY CHECK: If dayImage is an object (wrong type), ignore it
-        let dayImageValue = day.dayImage;
-        if (typeof dayImageValue === 'object' && dayImageValue !== null) {
-          console.warn(`Invalid dayImage for day ${day.day}: received object instead of string`);
-          dayImageValue = null;
-        }
-        
-        // Only use valid string URLs
-        const finalDayImage = (typeof dayImageValue === 'string' && dayImageValue.trim() !== '') 
-          ? dayImageValue 
-          : null;
+        // Use helper to sanitize dayImage
+        const finalDayImage = sanitizeDayImage(day.dayImage);
         
         return { ...day, dayImage: finalDayImage };
       })
@@ -388,17 +392,14 @@ export const updateTourPackage = async (req, res) => {
         // Preserve existing dayImage from database or form data
         const existingDay = existingPackage.tripSummary[index] || {};
         
-        // SAFETY CHECK: If dayImage is an object (wrong type), ignore it
-        let dayImageValue = day.dayImage;
-        if (typeof dayImageValue === 'object' && dayImageValue !== null) {
-          console.warn(`Invalid dayImage for day ${day.day}: received object instead of string`);
-          dayImageValue = undefined; // Treat as missing
-        }
+        // Sanitize incoming dayImage
+        const newDayImage = sanitizeDayImage(day.dayImage);
         
-        // Use valid string URL or fall back to existing or null
-        const finalDayImage = (typeof dayImageValue === 'string' && dayImageValue.trim() !== '') 
-          ? dayImageValue 
-          : existingDay.dayImage || null;
+        // Sanitize existing dayImage from database (in case bad data exists)
+        const existingDayImage = sanitizeDayImage(existingDay.dayImage);
+        
+        // Use new image if provided, otherwise fall back to existing
+        const finalDayImage = newDayImage || existingDayImage;
         
         return { ...day, dayImage: finalDayImage };
       })
