@@ -159,7 +159,7 @@ const Copyright = () => {
                 8, Ho Chi Minh Sarani, Park Street<br/>
                 Kolkata - 700071<br/><br/>
                 Email: mendoratravels@gmail.com | info@mendoratravels.com<br/>
-                Phone: +91 9547306912
+                Phone: +91 9147144627
               </p>
             </section>
           </main>

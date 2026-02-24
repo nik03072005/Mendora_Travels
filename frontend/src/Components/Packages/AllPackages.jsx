@@ -227,7 +227,7 @@ const AllPackageCards = ({ title, packages, viewAllRoute }) => {
               +91 95473 06912
             </p>
             <a
-              href="https://wa.me/919547306912"
+              href="https://wa.me/919147144627"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-block bg-green-600 cursor-pointer text-white px-4 py-2 rounded hover:bg-green-700 transition"
