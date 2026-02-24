@@ -28,6 +28,8 @@ const upload = multer({
 router.post('/',authMiddleware, upload, tourPackageController.createTourPackage);
 router.get('/by-tags', tourPackageController.getTourPackagesByTags);
 router.get('/destination/:destinationId', tourPackageController.getTourPackagesByDestination);
+router.get('/destination-slug/:slug', tourPackageController.getTourPackagesByDestinationSlug);
+router.post('/:id/click', tourPackageController.incrementPackageClicks);
 router.get('/:id', tourPackageController.getTourPackageById);
 router.get('/slug/:slug', tourPackageController.getTourPackageBySlug);
 router.delete('/:id',authMiddleware, tourPackageController.deleteTourPackageById);

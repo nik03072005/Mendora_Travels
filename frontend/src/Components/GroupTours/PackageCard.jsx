@@ -19,10 +19,10 @@ const PackageCard = ({
   return (
     <div 
       onClick={onClick}
-      className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group"
+      className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group flex flex-col h-full"
     >
       {/* Image Container */}
-      <div className="relative h-56 overflow-hidden">
+      <div className="relative h-56 overflow-hidden flex-shrink-0">
         <img 
           src={image} 
           alt={title}
@@ -43,7 +43,7 @@ const PackageCard = ({
       </div>
 
       {/* Content */}
-      <div className="p-5">
+      <div className="p-5 flex flex-col flex-grow">
         {/* Destination */}
         {destination && (
           <div className="flex items-center gap-2 mb-2">
@@ -80,11 +80,12 @@ const PackageCard = ({
 
         {/* Highlights */}
         {highlights && highlights.length > 0 && (
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex gap-2 mb-4 overflow-hidden">
             {highlights.slice(0, 3).map((highlight, index) => (
               <span 
                 key={index}
-                className="text-xs bg-orange-50 text-orange-700 px-2 py-1 rounded-full"
+                className="text-xs bg-orange-50 text-orange-700 px-2 py-1 rounded-full whitespace-nowrap truncate"
+                title={highlight}
               >
                 {highlight}
               </span>
@@ -103,7 +104,7 @@ const PackageCard = ({
             </div>
             <span className="text-xs text-gray-500">per person</span>
           </div>
-          <button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors">
+          <button className="bg-orange-600 hover:bg-orange-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition-colors mt-auto">
             View Details
           </button>
         </div>

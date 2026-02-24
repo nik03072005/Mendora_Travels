@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import axios from 'axios';
@@ -54,7 +54,25 @@ const InternationalTripsPage = () => {
 
   // State for destinations
   const [internationalDestinations, setInternationalDestinations] = useState([]);
-  const [loading, setLoading] = useState(true);
+  
+  // State for best seller packages based on clicks
+  const [bestSellerDynamicPackages, setBestSellerDynamicPackages] = useState([]);
+  
+  // State to track if all best seller packages are shown
+  const [showAllBestSellers, setShowAllBestSellers] = useState(false);
+  
+  // State for dynamic packages from each country
+  const [dynamicPackages, setDynamicPackages] = useState({
+    europe: [],
+    bali: [],
+    dubai: [],
+    vietnam: [],
+    maldives: [],
+    malaysia: [],
+    singapore: [],
+    'sri-lanka': [],
+    bhutan: []
+  });
 
   // Fetch destinations from API
   useEffect(() => {
@@ -73,10 +91,8 @@ const InternationalTripsPage = () => {
           popular: true
         }));
         setInternationalDestinations(formattedDestinations);
-        setLoading(false);
       } catch (error) {
         console.error('Error fetching destinations:', error);
-        setLoading(false);
       }
     };
 
@@ -86,6 +102,112 @@ const InternationalTripsPage = () => {
   const handleDestinationClick = (slug) => {
     navigate(`/international-trips/${slug}`);
   };
+
+  // Handle package click with tracking
+  const handlePackageClick = useCallback(async (packageId, packageSlug) => {
+    try {
+      // Track the click
+      await axios.post(`${API_BASE_URL}/api/tour-packages/${packageId}/click`);
+    } catch (error) {
+      console.error('Error tracking package click:', error);
+    }
+    // Navigate to package detail page
+    navigate(`/packages/${packageSlug}`);
+  }, [navigate]);
+
+  // Fetch packages for each country section
+  useEffect(() => {
+    const fetchCountryPackages = async () => {
+      const countrySlugMap = {
+        'europe': 'europe',
+        'bali': 'bali',
+        'dubai': 'dubai',
+        'vietnam': 'vietnam',
+        'maldives': 'maldives',
+        'malaysia': 'malaysia',
+        'singapore': 'singapore',
+        'sri-lanka': 'sri-lanka',
+        'bhutan': 'bhutan'
+      };
+
+      for (const [key, slug] of Object.entries(countrySlugMap)) {
+        try {
+          const response = await axios.get(
+            `${API_BASE_URL}/api/tour-packages/destination-slug/${slug}`
+          );
+          
+          if (response.data && response.data.tourPackages) {
+            // Sort by clicks (most clicked first), then by createdAt (earliest first) for ties
+            const sortedPackages = response.data.tourPackages
+              .sort((a, b) => {
+                // Primary sort: by clicks (descending - most clicks first)
+                if (b.clicks !== a.clicks) {
+                  return (b.clicks || 0) - (a.clicks || 0);
+                }
+                // Secondary sort: by createdAt (ascending - earliest/first created first)
+                return new Date(a.createdAt) - new Date(b.createdAt);
+              })
+              .map(pkg => ({
+                packageId: pkg._id,
+                packageSlug: pkg.slug,
+                image: pkg.imageUrls?.[0] || 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=80',
+                title: pkg.name,
+                price: pkg.discountedPrice?.toLocaleString('en-IN') || pkg.originalPrice?.toLocaleString('en-IN') || 'N/A',
+                originalPrice: pkg.originalPrice ? pkg.originalPrice.toLocaleString('en-IN') : undefined,
+                duration: `${pkg.noOfNights}N/${pkg.noOfDays}D`,
+                route: pkg.route || `${slug} - ${slug}`,
+                dates: pkg.availableDates?.[0] || 'On Request',
+                highlights: pkg.highlights?.slice(0, 3) || [],
+                clicks: pkg.clicks || 0,
+                createdAt: pkg.createdAt,
+                onClick: () => handlePackageClick(pkg._id, pkg.slug)
+              }));
+            
+            setDynamicPackages(prev => ({
+              ...prev,
+              [key]: sortedPackages
+            }));
+          }
+        } catch (error) {
+          console.error(`Error fetching packages for ${slug}:`, error);
+        }
+      }
+    };
+
+    fetchCountryPackages();
+  }, [navigate, handlePackageClick]);
+
+  // Fetch best seller packages based on clicks
+  useEffect(() => {
+    // Combine all packages from different countries and sort by clicks
+    const allPackages = [
+      ...dynamicPackages.europe,
+      ...dynamicPackages.bali,
+      ...dynamicPackages.dubai,
+      ...dynamicPackages.vietnam,
+      ...dynamicPackages.maldives,
+      ...dynamicPackages.malaysia,
+      ...dynamicPackages.singapore,
+      ...dynamicPackages['sri-lanka'],
+      ...dynamicPackages.bhutan
+    ];
+
+    if (allPackages.length > 0) {
+      // Sort by clicks (descending - most clicks first), then by createdAt (ascending - earliest first)
+      const sortedPackages = [...allPackages]
+        .sort((a, b) => {
+          // Primary sort: by clicks (descending - most clicks first)
+          if (b.clicks !== a.clicks) {
+            return (b.clicks || 0) - (a.clicks || 0);
+          }
+          // Secondary sort: by createdAt (ascending - earliest created first)
+          return new Date(a.createdAt) - new Date(b.createdAt);
+        })
+        .slice(0, 6); // Get top 6 packages
+      
+      setBestSellerDynamicPackages(sortedPackages);
+    }
+  }, [dynamicPackages]);
 
   return (
     <div className="bg-gray-50 min-h-screen">
@@ -123,69 +245,92 @@ const InternationalTripsPage = () => {
             <div className="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {bestSellerPackages(navigate).map((pkg, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {(bestSellerDynamicPackages.length > 0 
+              ? bestSellerDynamicPackages 
+              : bestSellerPackages(navigate)
+            ).slice(0, showAllBestSellers ? undefined : 3).map((pkg, index) => (
               <PackageCard key={index} {...pkg} />
             ))}
           </div>
+
+          {/* View All Button */}
+          {((bestSellerDynamicPackages.length > 0 ? bestSellerDynamicPackages : bestSellerPackages(navigate)).length > 3) && (
+            <div className="flex justify-center">
+              <button
+                onClick={() => setShowAllBestSellers(!showAllBestSellers)}
+                className="flex items-center gap-2 text-gray-600 hover:text-blue-600 font-medium transition-colors duration-200"
+              >
+                {showAllBestSellers ? 'Show Less' : 'View All Packages'}
+                <svg 
+                  className={`w-4 h-4 transition-transform duration-200 ${showAllBestSellers ? 'rotate-180' : ''}`}
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+            </div>
+          )}
         </div>
 
         {/* Country-wise Package Sections */}
         <CountryPackageSection
           title="Best of Europe"
           slug="europe"
-          packages={europePackages(navigate)}
+          packages={[...dynamicPackages.europe, ...europePackages(navigate)]}
         />
 
         <CountryPackageSection
           title="Best of Bali"
           slug="bali"
-          packages={baliPackages(navigate)}
+          packages={[...dynamicPackages.bali, ...baliPackages(navigate)]}
         />
 
         <CountryPackageSection
           title="Best of Dubai"
           slug="dubai"
-          packages={dubaiPackages(navigate)}
+          packages={[...dynamicPackages.dubai, ...dubaiPackages(navigate)]}
         />
 
         <CountryPackageSection
           title="Best of Vietnam"
           slug="vietnam"
-          packages={vietnamPackages(navigate)}
+          packages={[...dynamicPackages.vietnam, ...vietnamPackages(navigate)]}
         />
 
         <CountryPackageSection
           title="Best of Maldives"
           slug="maldives"
-          packages={maldivesPackages(navigate)}
+          packages={[...dynamicPackages.maldives, ...maldivesPackages(navigate)]}
         />
 
         <CountryPackageSection
           title="Best of Malaysia"
           slug="malaysia"
-          packages={malaysiaPackages(navigate)}
+          packages={[...dynamicPackages.malaysia, ...malaysiaPackages(navigate)]}
         />
 
         <CountryPackageSection
           title="Best of Singapore"
           slug="singapore"
-          packages={singaporePackages(navigate)}
+          packages={[...dynamicPackages.singapore, ...singaporePackages(navigate)]}
         />
 
         <CountryPackageSection
           title="Best of Sri Lanka"
           slug="sri-lanka"
-          packages={sriLankaPackages(navigate)}
+          packages={[...dynamicPackages['sri-lanka'], ...sriLankaPackages(navigate)]}
         />
 
         <CountryPackageSection
           title="Best of Bhutan"
           slug="bhutan"
-          packages={bhutanPackages(navigate)}
+          packages={[...dynamicPackages.bhutan, ...bhutanPackages(navigate)]}
         />
 
-        {/* All Packages Grid - Show all destinations again */}
+        {/* All Packages Grid - Show all destinations again
         <div className="mb-16">
           <div className="text-center mb-8">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">All Packages</h2>
@@ -212,7 +357,7 @@ const InternationalTripsPage = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Why Choose Us Section - Mendora Travels' Secret Sauce */}
         <div className="mb-16">

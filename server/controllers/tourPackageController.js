@@ -489,6 +489,57 @@ export const getTourPackagesByTags = async (req, res) => {
   }
 };
 
+// Get tour packages by destination slug
+export const getTourPackagesByDestinationSlug = async (req, res) => {
+  try {
+    const { slug } = req.params;
+
+    // Find destination by slug
+    const destination = await Destination.findOne({ slug });
+    if (!destination) {
+      return res.status(404).json({ message: 'Destination not found' });
+    }
+
+    // Find all tour packages for this destination
+    const tourPackages = await TourPackage.find({ destination: destination._id });
+
+    if (!tourPackages || tourPackages.length === 0) {
+      return res.status(200).json({ tourPackages: [] });
+    }
+
+    // Return complete package data
+    res.status(200).json({ tourPackages });
+  } catch (error) {
+    console.error('Error fetching tour packages by destination slug:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
+// Increment click count for a package
+export const incrementPackageClicks = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const tourPackage = await TourPackage.findByIdAndUpdate(
+      id,
+      { $inc: { clicks: 1 } },
+      { new: true }
+    );
+
+    if (!tourPackage) {
+      return res.status(404).json({ message: 'Tour package not found' });
+    }
+
+    res.status(200).json({ 
+      success: true, 
+      clicks: tourPackage.clicks 
+    });
+  } catch (error) {
+    console.error('Error incrementing package clicks:', error);
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
 // Default export as an object containing all functions
 export default {
   createTourPackage,
@@ -497,5 +548,7 @@ export default {
   deleteTourPackageById,
   updateTourPackage,
   getTourPackageBySlug,
-  getTourPackagesByTags
+  getTourPackagesByTags,
+  getTourPackagesByDestinationSlug,
+  incrementPackageClicks
 };

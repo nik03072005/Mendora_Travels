@@ -48,6 +48,11 @@ const tourPackageSchema = new mongoose.Schema({
     min: 0,
     default: 0
   },
+  clicks: {
+    type: Number,
+    min: 0,
+    default: 0
+  },
   tripSummary: [{
     day: {
       type: Number,
