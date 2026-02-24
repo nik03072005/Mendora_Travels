@@ -81,7 +81,7 @@ const tourPackageSchema = new mongoose.Schema({
     },
     dayImage:{
       type:String,
-      required:true
+      required:false
     }
   }],
   highlights: [{
