@@ -134,7 +134,7 @@ const UniversalDestinationPage = () => {
       />
 
       {/* Tour Packages Section */}
-      <TourPackagesSection packages={destination.tourPackages || []} />
+      <TourPackagesSection packages={destination.tourPackages || []} destinationName={destination.destinationName} />
 
       {/* About Section */}
       <AboutSection 
@@ -144,12 +144,12 @@ const UniversalDestinationPage = () => {
 
       {/* Activities Section */}
       {destination.activities && destination.activities.length > 0 && (
-        <ActivitiesSection activities={destination.activities} />
+        <ActivitiesSection activities={destination.activities} destinationName={destination.destinationName} />
       )}
 
       {/* Group Tours Section */}
       {destination.groupTours && destination.groupTours.length > 0 && (
-        <GroupToursSection groupTours={destination.groupTours} />
+        <GroupToursSection groupTours={destination.groupTours} destinationName={destination.destinationName} />
       )}
 
       {/* Sub-Destinations Grid */}

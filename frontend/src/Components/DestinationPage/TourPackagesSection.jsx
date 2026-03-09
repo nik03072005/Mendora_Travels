@@ -2,7 +2,7 @@ import React from 'react';
 import { FaMapMarkerAlt, FaStar } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
-const TourPackagesSection = ({ packages = [] }) => {
+const TourPackagesSection = ({ packages = [], destinationName = '' }) => {
   const navigate = useNavigate();
 
   const handlePackageClick = (pkg) => {
@@ -13,7 +13,7 @@ const TourPackagesSection = ({ packages = [] }) => {
     return (
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Tour Packages</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular {destinationName} Tour Packages</h2>
           <div className="text-center py-12">
             <p className="text-gray-600">No tour packages available at the moment.</p>
           </div>
@@ -25,7 +25,7 @@ const TourPackagesSection = ({ packages = [] }) => {
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular Thailand Tour Packages</h2>
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Popular {destinationName} Tour Packages</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {packages.map((pkg) => (
