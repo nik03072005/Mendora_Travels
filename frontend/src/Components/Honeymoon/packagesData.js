@@ -1,6 +1,7 @@
 // Honeymoon packages data
 
 export const internationalHoneymoonPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     id: 1,
     title: "Romantic Maldives - 5 Days of Paradise",
@@ -85,9 +86,11 @@ export const internationalHoneymoonPackages = (navigate) => [
     dates: "15 batches available",
     onClick: () => navigate('/package/dubai-honeymoon')
   }
+  */
 ];
 
 export const domesticHoneymoonPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     id: 7,
     title: "Kashmir - Heaven on Earth for Lovers",
@@ -172,6 +175,7 @@ export const domesticHoneymoonPackages = (navigate) => [
     dates: "Available Year Round",
     onClick: () => navigate('/package/udaipur-honeymoon')
   }
+  */
 ];
 
 export const honeymoonDestinations = [

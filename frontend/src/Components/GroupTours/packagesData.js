@@ -1,6 +1,7 @@
 // Group Tours packages data
 
 export const internationalGroupTours = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     id: 1,
     title: "Europe Backpacking - 15 Days Adventure",
@@ -91,9 +92,11 @@ export const internationalGroupTours = (navigate) => [
     groupSize: "18-20 people",
     onClick: () => navigate('/package/singapore-group-tour')
   }
+  */
 ];
 
 export const domesticGroupTours = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     id: 7,
     title: "Leh Ladakh Bike Trip - Group Adventure",
@@ -184,6 +187,7 @@ export const domesticGroupTours = (navigate) => [
     groupSize: "25-30 people",
     onClick: () => navigate('/package/goa-group-tour')
   }
+  */
 ];
 
 export const groupToursDestinations = [

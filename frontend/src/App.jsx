@@ -69,60 +69,7 @@ function App() {
     dispatch(fetchDestinations());
   }, [dispatch]);
 
-  // BotPenguin chat widget - loads once for entire app
-  useEffect(() => {
-    // Check if bot is already loaded (script exists or bot element exists)
-    const botScript = document.getElementById('messenger-widget-b');
-    const botElement = document.querySelector('.bot-element, #botpenguin-container, [class*="botpenguin"]');
-    
-    if (botScript || botElement) {
-      console.log('[BotPenguin] Already loaded, skipping...');
-      return;
-    }
 
-    // Add a small delay to prevent duplicate loading in strict mode
-    const loadTimer = setTimeout(() => {
-      console.log('[BotPenguin] Loading chat widget...');
-      
-      const script = document.createElement('script');
-      script.id = 'messenger-widget-b';
-      script.src = 'https://cdn.botpenguin.com/website-bot.js';
-      script.defer = true;
-      script.setAttribute('data-bot-id', '695b57982cd09804d72cf510');
-      script.setAttribute('data-cfasync', 'false');
-      
-      // Add bot configuration
-      const botConfig = document.createTextNode('695b57982cd09804d72cf510,69594a69959c8904ca1af798');
-      script.appendChild(botConfig);
-      
-      // Add error handler
-      script.onerror = () => {
-        console.error('[BotPenguin] Failed to load chat widget');
-      };
-      
-      script.onload = () => {
-        console.log('[BotPenguin] Chat widget loaded successfully');
-      };
-      
-      document.body.appendChild(script);
-    }, 100);
-
-    // Cleanup function
-    return () => {
-      clearTimeout(loadTimer);
-      const existingScript = document.getElementById('messenger-widget-b');
-      if (existingScript) {
-        console.log('[BotPenguin] Cleaning up script...');
-        existingScript.remove();
-      }
-      
-      // Remove bot container if exists
-      const botContainer = document.querySelector('.bot-element, #botpenguin-container, [class*="botpenguin"]');
-      if (botContainer) {
-        botContainer.remove();
-      }
-    };
-  }, []);
 
   return (
     <BrowserRouter>

@@ -1,6 +1,7 @@
 // Weekend Getaways Packages Data
 
 export const internationalWeekendGetaways = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     id: 'weekend-int-1',
     title: 'Dubai Weekend Special',
@@ -103,9 +104,11 @@ export const internationalWeekendGetaways = (navigate) => [
     ],
     onClick: () => navigate('/international-trips/malaysia')
   }
+  */
 ];
 
 export const domesticWeekendGetaways = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     id: 'weekend-dom-1',
     title: 'Goa Beach Weekend',
@@ -242,6 +245,7 @@ export const domesticWeekendGetaways = (navigate) => [
     ],
     onClick: () => navigate('/domestic-trips/agra')
   }
+  */
 ];
 
 export const weekendDestinations = [

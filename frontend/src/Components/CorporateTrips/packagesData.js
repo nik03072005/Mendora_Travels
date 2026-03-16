@@ -1,6 +1,7 @@
 // Corporate Trips Packages Data
 
 export const internationalCorporateTrips = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     id: 'corp-int-1',
     title: 'Singapore Corporate Retreat',
@@ -109,9 +110,11 @@ export const internationalCorporateTrips = (navigate) => [
     teamSize: '18-50 people',
     onClick: () => navigate('/international-trips/vietnam')
   }
+  */
 ];
 
 export const domesticCorporateTrips = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     id: 'corp-dom-1',
     title: 'Goa Corporate Offsite',
@@ -220,6 +223,7 @@ export const domesticCorporateTrips = (navigate) => [
     teamSize: '12-40 people',
     onClick: () => navigate('/domestic-trips/munnar')
   }
+  */
 ];
 
 export const corporateDestinations = [

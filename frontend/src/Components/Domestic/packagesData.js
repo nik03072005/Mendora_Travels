@@ -1,6 +1,7 @@
 // All package data for domestic destinations
 
 export const bestSellerPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80",
     title: "6-Day Manali Group Trip with Solang Valley & Rohtang Pass",
@@ -36,9 +37,11 @@ export const bestSellerPackages = (navigate) => [
     highlights: ["Pangong Lake", "Nubra Valley", "Khardung La"],
     onClick: () => navigate('/domestic-trips/ladakh')
   }
+  */
 ];
 
 export const kashmirPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1609920658906-8223bd289001?w=600&q=80",
     title: "Kashmir Paradise Package - Dal Lake & Gulmarg",
@@ -74,9 +77,11 @@ export const kashmirPackages = (navigate) => [
     isCustomised: true,
     onClick: () => navigate('/domestic-trips/kashmir')
   }
+  */
 ];
 
 export const himachalPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80",
     title: "Manali Backpacking Trip - 5 Days",
@@ -112,9 +117,11 @@ export const himachalPackages = (navigate) => [
     isRecommended: true,
     onClick: () => navigate('/domestic-trips/himachal-pradesh')
   }
+  */
 ];
 
 export const ladakhPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80",
     title: "Leh Ladakh Bike Trip - 8 Days",
@@ -150,9 +157,11 @@ export const ladakhPackages = (navigate) => [
     isRecommended: true,
     onClick: () => navigate('/domestic-trips/ladakh')
   }
+  */
 ];
 
 export const rajasthanPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1524230507669-27e3047ba033?w=600&q=80",
     title: "Jaipur Weekend Getaway - 3 Days",
@@ -188,9 +197,11 @@ export const rajasthanPackages = (navigate) => [
     isRecommended: true,
     onClick: () => navigate('/domestic-trips/rajasthan')
   }
+  */
 ];
 
 export const keralaPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80",
     title: "Kerala Backwaters & Munnar - 6 Days",
@@ -227,9 +238,11 @@ export const keralaPackages = (navigate) => [
     isCustomised: true,
     onClick: () => navigate('/domestic-trips/kerala')
   }
+  */
 ];
 
 export const goaPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&q=80",
     title: "Goa Beach Party Trip - 4 Days",
@@ -265,9 +278,11 @@ export const goaPackages = (navigate) => [
     isRecommended: true,
     onClick: () => navigate('/domestic-trips/goa')
   }
+  */
 ];
 
 export const spitiValleyPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80",
     title: "Spiti Valley Adventure - 8 Days",
@@ -303,9 +318,11 @@ export const spitiValleyPackages = (navigate) => [
     highlights: ["Tabo", "Kaza", "Kalpa", "Nako"],
     onClick: () => navigate('/domestic-trips/spiti-valley')
   }
+  */
 ];
 
 export const meghalayaPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1597074866923-dc0589150358?w=600&q=80",
     title: "Meghalaya - Land of Clouds 6 Days",
@@ -341,9 +358,11 @@ export const meghalayaPackages = (navigate) => [
     highlights: ["Kaziranga Safari", "Double Decker Bridge", "Mawsmai Cave"],
     onClick: () => navigate('/domestic-trips/meghalaya')
   }
+  */
 ];
 
 export const nagalandPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80",
     title: "Nagaland Hornbill Festival - 7 Days",
@@ -379,9 +398,11 @@ export const nagalandPackages = (navigate) => [
     highlights: ["Dzukou Valley Trek", "Kohima Museum", "Wildlife Safari"],
     onClick: () => navigate('/domestic-trips/nagaland')
   }
+  */
 ];
 
 export const andamanPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80",
     title: "Andaman Beach Paradise - 6 Days",
@@ -418,4 +439,5 @@ export const andamanPackages = (navigate) => [
     isCustomised: true,
     onClick: () => navigate('/domestic-trips/andaman')
   }
+  */
 ];

@@ -1,6 +1,7 @@
 // All package data for international destinations
 
 export const bestSellerPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80",
     title: "6-Day Dubai Group Trip with Ferrari World & City Tours",
@@ -35,9 +36,11 @@ export const bestSellerPackages = (navigate) => [
     highlights: ["Hanoi", "Ha Long Bay", "Ninh Binh"],
     onClick: () => navigate('/international-trips/vietnam')
   }
+  */
 ];
 
 export const europePackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80",
     title: "10 Days Finland and Sweden Tour: Northern Lights Special",
@@ -72,9 +75,11 @@ export const europePackages = (navigate) => [
     highlights: ["3N Paris", "2N Switzerland", "1N Rome"],
     onClick: () => navigate('/international-trips/europe')
   }
+  */
 ];
 
 export const baliPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80",
     title: "Bali with Gili and Nusa Penida Island",
@@ -110,9 +115,11 @@ export const baliPackages = (navigate) => [
     isPopular: true,
     onClick: () => navigate('/international-trips/bali')
   }
+  */
 ];
 
 export const dubaiPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80",
     title: "6-Day Dubai Group Trip with Ferrari World",
@@ -147,11 +154,13 @@ export const dubaiPackages = (navigate) => [
     highlights: ["Sheikh Zayed Mosque", "Louvre", "Yas Island"],
     onClick: () => navigate('/international-trips/dubai')
   }
+  */
 ];
 
 // Add similar arrays for Vietnam, Maldives, Malaysia, Singapore, Sri Lanka, Bhutan, Kazakhstan
 
 export const vietnamPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=600&q=80",
     title: "The Ultimate 7-Day Vietnam Tour Package",
@@ -186,9 +195,11 @@ export const vietnamPackages = (navigate) => [
     highlights: ["Sapa", "Mekong Delta", "Cu Chi Tunnels"],
     onClick: () => navigate('/international-trips/vietnam')
   }
+  */
 ];
 
 export const maldivesPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-5142820401047-d79a71a590e8?w=600&q=80",
     title: "Medufushi Island Resort",
@@ -222,9 +233,11 @@ export const maldivesPackages = (navigate) => [
     isCustomised: true,
     onClick: () => navigate('/international-trips/maldives')
   }
+  */
 ];
 
 export const malaysiaPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=600&q=80",
     title: "7-Day Singapore Malaysia Trip: From Sentosa to Genting!",
@@ -258,9 +271,11 @@ export const malaysiaPackages = (navigate) => [
     isCustomised: true,
     onClick: () => navigate('/international-trips/malaysia')
   }
+  */
 ];
 
 export const singaporePackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80",
     title: "6 Days Singapore Trip: Best Vacation for Your Family",
@@ -294,9 +309,11 @@ export const singaporePackages = (navigate) => [
     isCustomised: true,
     onClick: () => navigate('/international-trips/singapore')
   }
+  */
 ];
 
 export const sriLankaPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1586016413664-864c0dd76f53?w=600&q=80",
     title: "Explore Sri Lanka in 8 Days - Community Trip",
@@ -330,9 +347,11 @@ export const sriLankaPackages = (navigate) => [
     highlights: ["Unawatuna", "Nuwara Eliya", "Kandy"],
     onClick: () => navigate('/international-trips/sri-lanka')
   }
+  */
 ];
 
 export const bhutanPackages = (navigate) => [
+  /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=600&q=80",
     title: "Bhutan Road Trip Package",
@@ -366,4 +385,5 @@ export const bhutanPackages = (navigate) => [
     isCustomised: true,
     onClick: () => navigate('/international-trips/bhutan')
   }
+  */
 ];
