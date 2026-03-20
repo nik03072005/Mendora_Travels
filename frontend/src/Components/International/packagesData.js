@@ -1,6 +1,6 @@
 // All package data for international destinations
 
-export const bestSellerPackages = (navigate) => [
+export const bestSellerPackages = () => [
   /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80",
@@ -39,7 +39,7 @@ export const bestSellerPackages = (navigate) => [
   */
 ];
 
-export const europePackages = (navigate) => [
+export const europePackages = () => [
   /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=600&q=80",
@@ -78,7 +78,7 @@ export const europePackages = (navigate) => [
   */
 ];
 
-export const baliPackages = (navigate) => [
+export const baliPackages = () => [
   /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600&q=80",
@@ -118,7 +118,7 @@ export const baliPackages = (navigate) => [
   */
 ];
 
-export const dubaiPackages = (navigate) => [
+export const dubaiPackages = () => [
   /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80",
@@ -159,7 +159,7 @@ export const dubaiPackages = (navigate) => [
 
 // Add similar arrays for Vietnam, Maldives, Malaysia, Singapore, Sri Lanka, Bhutan, Kazakhstan
 
-export const vietnamPackages = (navigate) => [
+export const vietnamPackages = () => [
   /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=600&q=80",
@@ -198,7 +198,7 @@ export const vietnamPackages = (navigate) => [
   */
 ];
 
-export const maldivesPackages = (navigate) => [
+export const maldivesPackages = () => [
   /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-5142820401047-d79a71a590e8?w=600&q=80",
@@ -236,7 +236,7 @@ export const maldivesPackages = (navigate) => [
   */
 ];
 
-export const malaysiaPackages = (navigate) => [
+export const malaysiaPackages = () => [
   /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=600&q=80",
@@ -274,7 +274,7 @@ export const malaysiaPackages = (navigate) => [
   */
 ];
 
-export const singaporePackages = (navigate) => [
+export const singaporePackages = () => [
   /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80",
@@ -312,7 +312,7 @@ export const singaporePackages = (navigate) => [
   */
 ];
 
-export const sriLankaPackages = (navigate) => [
+export const sriLankaPackages = () => [
   /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1586016413664-864c0dd76f53?w=600&q=80",
@@ -350,7 +350,7 @@ export const sriLankaPackages = (navigate) => [
   */
 ];
 
-export const bhutanPackages = (navigate) => [
+export const bhutanPackages = () => [
   /* Hardcoded data kept for reference.
   {
     image: "https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=600&q=80",

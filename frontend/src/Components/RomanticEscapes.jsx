@@ -5,49 +5,49 @@ const ROMANTIC_DESTINATIONS = [
     id: 1,
     name: "Bali",
     image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80",
-    price: "44,999"
+    price: "89,487"
   },
   {
     id: 2,
     name: "Maldives",
     image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80",
-    price: "74,999"
+    price: "45,789"
   },
   {
     id: 3,
     name: "Singapore",
     image: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=800&q=80",
-    price: "34,999"
+    price: "89,457"
   },
   {
     id: 4,
     name: "Thailand",
     image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80",
-    price: "44,999"
+    price: "35,789"
   },
   {
     id: 5,
     name: "Vietnam",
     image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80",
-    price: "57,999"
+    price: "99,878"
   },
   {
     id: 6,
     name: "Kashmir",
     image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=800&q=80",
-    price: "24,499"
+    price: "89,478"
   },
   {
     id: 7,
     name: "Andaman",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
-    price: "29,999"
+    price: "45,484"
   },
   {
     id: 8,
     name: "Kerala",
     image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=800&q=80",
-    price: "14,000"
+    price: "35,687"
   }
 ];
 

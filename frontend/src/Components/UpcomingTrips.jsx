@@ -8,7 +8,7 @@ const TRIPS_DATA = [
     title: "6-Days Dubai & Abu Dhabi Community Trip | New Year Edition",
     image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80",
     originalPrice: "89,999",
-    discountedPrice: "82,999",
+    discountedPrice: "89,487",
     duration: "5N/6D",
     location: "Dubai - Dubai",
     date: "29 Dec"
@@ -18,7 +18,7 @@ const TRIPS_DATA = [
     title: "Meghalaya With Kaziranga Road Trip - Christmas and New Year Special Edition",
     image: "https://images.unsplash.com/photo-1597074866923-dc0589150358?w=800&q=80",
     originalPrice: "36,999",
-    discountedPrice: "32,999",
+    discountedPrice: "45,789",
     duration: "6N/7D",
     location: "Guwahati - Guwahati",
     date: "29 Dec"
@@ -28,7 +28,7 @@ const TRIPS_DATA = [
     title: "Fantastic Thailand Vacation | Christmas and New Year Special Tour Package",
     image: "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=800&q=80",
     originalPrice: "79,999",
-    discountedPrice: "74,999",
+    discountedPrice: "89,457",
     duration: "6N/7D",
     location: "Phuket Airport - Phuket Airport",
     date: "29 Dec"
@@ -38,7 +38,7 @@ const TRIPS_DATA = [
     title: "Chopta Tungnath Christmas - New Year Trip Package",
     image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80",
     originalPrice: null,
-    discountedPrice: "12,999",
+    discountedPrice: "35,789",
     duration: "2N/3D",
     location: "Delhi - Delhi",
     date: "29 Dec"
@@ -48,7 +48,7 @@ const TRIPS_DATA = [
     title: "Bali Adventure Trip - New Year Special Edition",
     image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80",
     originalPrice: "69,999",
-    discountedPrice: "64,999",
+    discountedPrice: "99,878",
     duration: "5N/6D",
     location: "Bali - Bali",
     date: "30 Dec"
@@ -58,7 +58,7 @@ const TRIPS_DATA = [
     title: "Vietnam Backpacking Trip - Winter Special",
     image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&q=80",
     originalPrice: "54,999",
-    discountedPrice: "49,999",
+    discountedPrice: "89,478",
     duration: "6N/7D",
     location: "Hanoi - Ho Chi Minh",
     date: "31 Dec"
@@ -68,7 +68,7 @@ const TRIPS_DATA = [
     title: "Kashmir Winter Wonderland - New Year Celebration",
     image: "https://images.unsplash.com/photo-1595815771614-ade9d652a65d?w=800&q=80",
     originalPrice: "32,999",
-    discountedPrice: "28,999",
+    discountedPrice: "45,484",
     duration: "4N/5D",
     location: "Srinagar - Srinagar",
     date: "01 Jan"
@@ -78,7 +78,7 @@ const TRIPS_DATA = [
     title: "Goa Beach Party - New Year Eve Special",
     image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=800&q=80",
     originalPrice: "24,999",
-    discountedPrice: "21,999",
+    discountedPrice: "35,687",
     duration: "3N/4D",
     location: "Goa - Goa",
     date: "30 Dec"

@@ -1,6 +1,6 @@
 // Honeymoon packages data
 
-export const internationalHoneymoonPackages = (navigate) => [
+export const internationalHoneymoonPackages = () => [
   /* Hardcoded data kept for reference.
   {
     id: 1,
@@ -86,97 +86,96 @@ export const internationalHoneymoonPackages = (navigate) => [
     dates: "15 batches available",
     onClick: () => navigate('/package/dubai-honeymoon')
   }
-  */
 ];
 
 export const domesticHoneymoonPackages = (navigate) => [
-  /* Hardcoded data kept for reference.
-  {
-    id: 7,
-    title: "Kashmir - Heaven on Earth for Lovers",
-    destination: "Kashmir",
-    price: "28,999",
-    originalPrice: "34,999",
-    duration: "5N/6D",
-    image: "https://images.unsplash.com/photo-1609920658906-8223bd289001?w=600&q=80",
-    rating: 4.8,
-    reviews: 276,
-    highlights: ["Shikara Ride", "Gulmarg", "Pahalgam Valley"],
-    dates: "Mar-Oct batches",
-    onClick: () => navigate('/package/kashmir-honeymoon')
-  },
-  {
-    id: 8,
-    title: "Kerala Backwaters - Romance in God's Own Country",
-    destination: "Kerala",
-    price: "24,999",
-    originalPrice: "29,999",
-    duration: "4N/5D",
-    image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80",
-    rating: 4.7,
-    reviews: 234,
-    highlights: ["Houseboat Stay", "Munnar Tea Gardens", "Alleppey Backwaters"],
-    dates: "Available Year Round",
-    onClick: () => navigate('/package/kerala-honeymoon')
-  },
-  {
-    id: 9,
-    title: "Andaman Islands - Tropical Romance",
-    destination: "Andaman",
-    price: "32,999",
-    originalPrice: "39,999",
-    duration: "5N/6D",
-    image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80",
-    rating: 4.8,
-    reviews: 198,
-    highlights: ["Radhanagar Beach", "Scuba Diving", "Ross Island"],
-    dates: "Oct-May batches",
-    onClick: () => navigate('/package/andaman-honeymoon')
-  },
-  {
-    id: 10,
-    title: "Goa Beach Romance - Sun, Sand & Love",
-    destination: "Goa",
-    price: "18,999",
-    originalPrice: "23,999",
-    duration: "3N/4D",
-    image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&q=80",
-    rating: 4.6,
-    reviews: 412,
-    highlights: ["Beach Shacks", "Dudhsagar Falls", "Candolim Beach"],
-    dates: "12 batches available",
-    onClick: () => navigate('/package/goa-honeymoon')
-  },
-  {
-    id: 11,
-    title: "Manali Honeymoon - Snow & Romance",
-    destination: "Manali",
-    price: "22,999",
-    originalPrice: "27,999",
-    duration: "4N/5D",
-    image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80",
-    rating: 4.7,
-    reviews: 267,
-    highlights: ["Rohtang Pass", "Solang Valley", "Hot Springs"],
-    dates: "Available Year Round",
-    onClick: () => navigate('/package/manali-honeymoon')
-  },
-  {
-    id: 12,
-    title: "Udaipur Royal - Palace Romance",
-    destination: "Rajasthan",
-    price: "26,999",
-    originalPrice: "31,999",
-    duration: "3N/4D",
-    image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=600&q=80",
-    rating: 4.8,
-    reviews: 189,
-    highlights: ["Lake Palace", "City Palace", "Boat Ride"],
-    dates: "Available Year Round",
-    onClick: () => navigate('/package/udaipur-honeymoon')
-  }
-  */
-];
+    {
+      id: 7,
+      title: "Kashmir - Heaven on Earth for Lovers",
+      destination: "Kashmir",
+      price: "28,999",
+      originalPrice: "34,999",
+      duration: "5N/6D",
+      image: "https://images.unsplash.com/photo-1609920658906-8223bd289001?w=600&q=80",
+      rating: 4.8,
+      reviews: 276,
+      highlights: ["Shikara Ride", "Gulmarg", "Pahalgam Valley"],
+      dates: "Mar-Oct batches",
+      onClick: () => navigate('/package/kashmir-honeymoon')
+    },
+    {
+      id: 8,
+      title: "Kerala Backwaters - Romance in God's Own Country",
+      destination: "Kerala",
+      price: "24,999",
+      originalPrice: "29,999",
+      duration: "4N/5D",
+      image: "https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?w=600&q=80",
+      rating: 4.7,
+      reviews: 234,
+      highlights: ["Houseboat Stay", "Munnar Tea Gardens", "Alleppey Backwaters"],
+      dates: "Available Year Round",
+      onClick: () => navigate('/package/kerala-honeymoon')
+    },
+    {
+      id: 9,
+      title: "Andaman Islands - Tropical Romance",
+      destination: "Andaman",
+      price: "32,999",
+      originalPrice: "39,999",
+      duration: "5N/6D",
+      image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80",
+      rating: 4.8,
+      reviews: 198,
+      highlights: ["Radhanagar Beach", "Scuba Diving", "Ross Island"],
+      dates: "Oct-May batches",
+      onClick: () => navigate('/package/andaman-honeymoon')
+    },
+    {
+      id: 10,
+      title: "Goa Beach Romance - Sun, Sand & Love",
+      destination: "Goa",
+      price: "18,999",
+      originalPrice: "23,999",
+      duration: "3N/4D",
+      image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?w=600&q=80",
+      rating: 4.6,
+      reviews: 412,
+      highlights: ["Beach Shacks", "Dudhsagar Falls", "Candolim Beach"],
+      dates: "12 batches available",
+      onClick: () => navigate('/package/goa-honeymoon')
+    },
+    {
+      id: 11,
+      title: "Manali Honeymoon - Snow & Romance",
+      destination: "Manali",
+      price: "22,999",
+      originalPrice: "27,999",
+      duration: "4N/5D",
+      image: "https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=600&q=80",
+      rating: 4.7,
+      reviews: 267,
+      highlights: ["Rohtang Pass", "Solang Valley", "Hot Springs"],
+      dates: "Available Year Round",
+      onClick: () => navigate('/package/manali-honeymoon')
+    },
+    {
+      id: 12,
+      title: "Udaipur Royal - Palace Romance",
+      destination: "Rajasthan",
+      price: "26,999",
+      originalPrice: "31,999",
+      duration: "3N/4D",
+      image: "https://images.unsplash.com/photo-1599661046289-e31897846e41?w=600&q=80",
+      rating: 4.8,
+      reviews: 189,
+      highlights: ["Lake Palace", "City Palace", "Boat Ride"],
+      dates: "Available Year Round",
+      onClick: () => navigate('/package/udaipur-honeymoon')
+    }
+    */
+  ];
+
 
 export const honeymoonDestinations = [
   {

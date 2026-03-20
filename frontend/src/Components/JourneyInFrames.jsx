@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80";
+
 const GALLERY_DESTINATIONS = [
   {
     id: 1,
@@ -39,7 +41,7 @@ const GALLERY_DESTINATIONS = [
   {
     id: 8,
     name: "Sikkim",
-    image: "https://images.unsplash.com/photo-1622308644420-4eb86a2f9814?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80"
   },
   {
     id: 9,
@@ -49,7 +51,7 @@ const GALLERY_DESTINATIONS = [
   {
     id: 10,
     name: "Himachal",
-    image: "https://images.unsplash.com/photo-1585516482738-d8afd4d9693a?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80"
   },
   {
     id: 11,
@@ -69,7 +71,7 @@ const GALLERY_DESTINATIONS = [
   {
     id: 14,
     name: "Bhutan",
-    image: "https://images.unsplash.com/photo-1578128178001-2c3e37ce5b3a?w=800&q=80"
+    image: "https://images.unsplash.com/photo-1553856622-d1b352e9a211?w=800&q=80"
   },
   {
     id: 15,
@@ -121,6 +123,10 @@ const JourneyInFrames = () => {
                 <img 
                   src={destination.image} 
                   alt={destination.name}
+                  onError={(e) => {
+                    e.currentTarget.onerror = null;
+                    e.currentTarget.src = FALLBACK_IMAGE;
+                  }}
                   className="w-full h-32 object-cover group-hover:scale-110 transition-transform duration-300"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
